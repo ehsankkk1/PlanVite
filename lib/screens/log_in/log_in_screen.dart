@@ -103,11 +103,14 @@ class LoginScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    left: width * 0.34,
-                    right: width * 0.34,
+                    left: width * 0.3,
+                    right: width * 0.3,
                     top: height * 0.04,
                     bottom: 0),
                 child: Container(
+                  width: controller.selectedLangBool.value
+                      ? width * 0.3
+                      : width * 0.33,
                   decoration: BoxDecoration(
                     color: kTextFieldBorder,
                     borderRadius: BorderRadius.circular(20.0),

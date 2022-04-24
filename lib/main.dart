@@ -3,8 +3,10 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/screens/bindings/log_in_binding.dart';
 import 'package:plane_vite/screens/bindings/sign_up_binding.dart';
+import 'package:plane_vite/screens/bindings/welcome_binding.dart';
 import 'package:plane_vite/screens/log_in/log_in_screen.dart';
 import 'package:plane_vite/screens/sign_up/sign_up_screen.dart';
+import 'package:plane_vite/screens/splash/welcome_screen.dart';
 
 
 import 'translations.dart';
@@ -25,12 +27,13 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: Locale('en'),
       fallbackLocale: Locale('en'),
-      initialRoute: '/login',
+      initialRoute: '/splash',
 
       getPages: [
 
         GetPage(name: '/login', page: ()=>LoginScreen(),binding: LoginBinding()),
         GetPage(name: '/signup', page: ()=>SignupScreen(),binding: SignupBinding()),
+        GetPage(name: '/splash', page: ()=>WelcomeScreen(),binding: WelcomeBinding()),
 
       ],
 
