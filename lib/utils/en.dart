@@ -6,4 +6,11 @@ Map <String, String> en={
   'please sign in to your account':'please sign in to your account',
   'Don\'t have an account?':'Don\'t have an account?',
   'Sign up':'Sign up',
+  'Create New Account':'Create New Account',
+  'please fill in the form to continue':'please fill in the form to continue',
+  'Name':'Name',
+  'Confirm Password':'Confirm Password',
+  'Register':'Register',
+  'Already have an account?':'Already have an account?',
+  'Sign in':'Sign in',
 };

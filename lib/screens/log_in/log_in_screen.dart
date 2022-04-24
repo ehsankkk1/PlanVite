@@ -33,7 +33,9 @@ class LoginScreen extends StatelessWidget {
                             ? width * 0.19
                             : width * 0.34,
                         top: height * 0.09,
-                        bottom: height * 0.02),
+                        bottom: controller.selectedLangBool.value
+                            ? width * 0.02
+                            : 0,),
                     child: Row(
                       children: [
                         Directionality(
@@ -116,7 +118,10 @@ class LoginScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        final locale = Get.locale;
+                        print(locale);
+                      },
                       child: Text(
                         'Login'.tr,
                         style: const TextStyle(
@@ -180,7 +185,7 @@ class LoginScreen extends StatelessWidget {
                         left: width * 0.33,
                         right: width * 0.02,
                         top: height * 0.04,
-                        bottom: 0),
+                        bottom: height*0.1),
                     child: Directionality(
                       textDirection: TextDirection.ltr,
                       child: Row(

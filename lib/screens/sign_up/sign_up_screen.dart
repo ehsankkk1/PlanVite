@@ -9,6 +9,7 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String locale = Get.locale.toString();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -24,14 +25,16 @@ class SignupScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    left: width * 0.09,
-                    right: width * 0.013,
+                    left: locale == 'en' ? width * 0.09 : width * 0.1,
+                    right: locale == 'en' ? width * 0.01 : width * 0.16,
                     top: height * 0.04,
-                    bottom: height * 0.02),
+                    bottom:  locale == 'en' ? width * 0.02 : width * 0.01,
+
+                ),
                 child: Row(
-                  children: const [
+                  children: [
                     Text(
-                      'Create New Account',
+                      'Create New Account'.tr,
                       style: TextStyle(
                         fontSize: 35,
                         color: kWritings,
@@ -42,11 +45,14 @@ class SignupScreen extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    left: width * 0.13, right: width * 0.01, top: 0, bottom: 0),
+                    left: locale == 'en' ? width * 0.13 : width * 0.1,
+                    right:  locale == 'en' ? width * 0.01 : width * 0.18,
+                    top: 0,
+                    bottom: 0),
                 child: Row(
-                  children: const [
+                  children: [
                     Text(
-                      'please fill in the form to continue',
+                      'please fill in the form to continue'.tr,
                       style: TextStyle(
                         fontSize: 20,
                         color: kWritings,
@@ -55,33 +61,37 @@ class SignupScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  const Image(image: AssetImage('images/sign_up_second_flower.png')),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: width * 0.14,
-                        right: width * 0.01,
-                        top: height * 0.03,
-                        bottom: 0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
+              Directionality(
+                textDirection: TextDirection.ltr,
+                child: Row(
+                  children: [
+                    Image(
+                        image: AssetImage('images/sign_up_second_flower.png')),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left:   width * 0.14 ,
+                          right:   width * 0.01 ,
+                          top: height * 0.03,
+                          bottom: 0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                            color: kTextFieldBorder,
+                          ),
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        width: 150,
+                        height: 150,
+                        child: const Icon(
+                          Icons.add_a_photo,
+                          size: 70,
                           color: kTextFieldBorder,
                         ),
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      width: 150,
-                      height: 150,
-                      child: const Icon(
-                        Icons.add_a_photo,
-                        size: 70,
-                        color: kTextFieldBorder,
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               )
             ],
           ),
@@ -91,9 +101,12 @@ class SignupScreen extends StatelessWidget {
                 right: width * 0.1,
                 top: height * 0.06,
                 bottom: 0),
-            child: CustomTextField(
-              hintText: 'Name',
-              icon: Icons.person,
+            child: Directionality(
+              textDirection: TextDirection.ltr,
+              child: CustomTextField(
+                hintText: 'Name',
+                icon: Icons.person,
+              ),
             ),
           ),
           Padding(
@@ -143,8 +156,8 @@ class SignupScreen extends StatelessWidget {
               ),
               child: TextButton(
                   onPressed: () {},
-                  child: const Text(
-                    'Register',
+                  child:  Text(
+                    'Register'.tr,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -156,14 +169,14 @@ class SignupScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.only(
-                    left: width * 0.25,
-                    right: width * 0.01,
+                    left: locale =='en' ? width * 0.25: width*0.1,
+                    right: locale =='en' ? width * 0.01: width*0.32,
                     top: height * 0.02,
                     bottom: 0),
                 child: Row(
-                  children: const [
+                  children: [
                     Text(
-                      'Already have an account?',
+                      'Already have an account?'.tr,
                       style: TextStyle(
                         color: kGrey,
                         fontSize: 18,
@@ -178,14 +191,14 @@ class SignupScreen extends StatelessWidget {
                 },
                 child: Padding(
                   padding: EdgeInsets.only(
-                      left: width * 0.42,
-                      right: width * 0.01,
+                      left: locale=='en'?width * 0.42:width*0.1,
+                      right: locale=='en'?width * 0.01:width*0.35,
                       top: height * 0.003,
-                      bottom: 0),
+                      bottom: height*0.1,),
                   child: Row(
-                    children: const [
+                    children:  [
                       Text(
-                        'Sign in',
+                        'Sign in'.tr,
                         style: TextStyle(
                           color: kTextFieldBorder,
                           fontSize: 18,
