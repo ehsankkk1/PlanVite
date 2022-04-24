@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../splash/welcome_controller.dart';
+import '../welcome/welcome_controller.dart';
 
 
 class WelcomeBinding implements Bindings{
