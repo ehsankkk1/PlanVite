@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:plan_vite/widgets/custom_text_field.dart';
 
 import '../../constants.dart';
+import '../../widgets/custom_text_field.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({Key? key}) : super(key: key);
