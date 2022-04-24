@@ -52,7 +52,7 @@ class WelcomeScreen extends StatelessWidget {
              padding: EdgeInsets.only(left: width*0.1,right:width *0.4,top: height*0.04,bottom: 0),
              child: GestureDetector(
                onTap: (){
-                 Get.toNamed('/login');
+                 Get.offNamed('/login');
                },
                child: Container(
                  width:

@@ -7,8 +7,7 @@ class LoginController extends GetxController{
 
 
   var selectedLang;
-  var selectedLangBool;
-
+  var  selectedLangBool ;
 
 
 
@@ -16,6 +15,8 @@ class LoginController extends GetxController{
   void onInit() {
     selectedLang='en';
     selectedLangBool = true.obs;
+
+    super.onInit();
 
   }
 

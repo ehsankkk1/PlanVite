@@ -164,25 +164,25 @@ child: Icon(
                   ),
                 ),
               ),
-              Padding(
-                padding:  EdgeInsets.only(left: width*0.33,right: width*0.02,top: height*0.04,bottom: 0),
-                child: Row(
-                  children: [
-                    TextButton(onPressed: (){}, child: Text('English',
-                      style: TextStyle(
-                        color: kTextFieldBorder,
-                        fontSize: 18,
-                      ),
-                    )),
-                    TextButton(onPressed: (){}, child: Text('العربية',
-                      style: TextStyle(
-                        color: kGrey,
-                        fontSize: 18,
-                      ),
-                    ))
-                  ],
-                ),
-              ),
+              // Padding(
+              //   padding:  EdgeInsets.only(left: width*0.33,right: width*0.02,top: height*0.04,bottom: 0),
+              //   child: Row(
+              //     children: [
+              //       TextButton(onPressed: (){}, child: Text('English',
+              //         style: TextStyle(
+              //           color: kTextFieldBorder,
+              //           fontSize: 18,
+              //         ),
+              //       )),
+              //       TextButton(onPressed: (){}, child: Text('العربية',
+              //         style: TextStyle(
+              //           color: kGrey,
+              //           fontSize: 18,
+              //         ),
+              //       ))
+              //     ],
+              //   ),
+              // ),
             ],
           )
         ],

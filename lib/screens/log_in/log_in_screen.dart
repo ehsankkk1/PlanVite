@@ -150,7 +150,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.offNamed('/signup');
+                      Get.toNamed('/signup');
                     },
                     child: Padding(
                       padding: EdgeInsets.only(
@@ -194,15 +194,20 @@ class LoginScreen extends StatelessWidget {
                                   Get.updateLocale(
                                       Locale(controller.selectedLang));
                                 },
-                                child: Text(
-                                  'English',
-                                  style: TextStyle(
-                                    color: controller.selectedLangBool.value
-                                        ? kTextFieldBorder
-                                        : kGrey,
-                                    fontSize: 18,
-                                  ),
-                                )),
+                                child: Obx((){
+                                  return Text(
+                                    'English',
+                                    style: TextStyle(
+                                      color: controller.selectedLangBool.value
+                                          ? kTextFieldBorder
+                                          : kGrey,
+                                      fontSize: 18,
+                                    ),
+                                  );
+                                })
+
+
+                            ),
                           ),
                           GestureDetector(
                             child: TextButton(
@@ -213,15 +218,22 @@ class LoginScreen extends StatelessWidget {
                                   Get.updateLocale(
                                       Locale(controller.selectedLang));
                                 },
-                                child: Text(
-                                  'العربية',
-                                  style: TextStyle(
-                                    color: controller.selectedLangBool.value
-                                        ? kGrey
-                                        : kTextFieldBorder,
-                                    fontSize: 18,
-                                  ),
-                                )),
+                                child: Obx((){
+                                return  Text(
+                                    'العربية',
+                                    style: TextStyle(
+                                      color: controller.selectedLangBool.value
+                                          ? kGrey
+                                          : kTextFieldBorder,
+                                      fontSize: 18,
+                                    ),
+                                  );
+                                })
+
+
+
+
+                            ),
                           )
                         ],
                       ),
