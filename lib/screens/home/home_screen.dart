@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
+
 import '../Drawer/drawer_controller.dart';
 import '../Drawer/drawer_screen.dart';
+import 'home_controller.dart';
 
 
 
@@ -27,11 +29,8 @@ class HomeScreen extends GetView<MyDrawerController> {
   }
 }
 
-
-
-class MainScreen extends GetView<MyDrawerController> {
-  const MainScreen({Key? key}) : super(key: key);
-
+class MainScreen extends StatelessWidget {
+  MyDrawerController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,3 +44,4 @@ class MainScreen extends GetView<MyDrawerController> {
     );
   }
 }
+
