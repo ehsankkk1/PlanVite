@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kBackGround,
       body: GetBuilder<MyDrawerController>(
         builder: (_) => ZoomDrawer(
           moveMenuScreen: true,
@@ -42,7 +42,7 @@ class _MainScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: kBackGround,
+      backgroundColor:kBackGround,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -77,6 +77,89 @@ class _MainScreen extends StatelessWidget {
                       lineWidth: 20.0,
                       percent: 0.7,
                       center: new Text("70%",style: TextStyle(fontSize: 20,color: kMainPink,fontWeight: FontWeight.w900),),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding:  EdgeInsets.only(left: width*0.01,right: width*0.5,top: height*0.02,bottom: height*0.02),
+                  child: Text('My Projects',
+                  style: TextStyle(
+                    color: kWritings,
+                    fontSize: 25,
+                  ),
+                  ),
+                ),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+
+                    WhiteBox(height*0.35,double.infinity),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: height*0.27),
+                      child: Text('Sample Projects',
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: kWritings,
+                      ),),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: width*0.07),
+                      child: Column(
+                        
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(left: 0,right:width*0.66,top: height*0.05,bottom: height*0.01  ),
+                            child: Text('header',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: kWritings,
+                            ),
+                            ),
+                          ),
+                          LinearPercentIndicator(
+                            percent: 0.6,
+                            animation: true,
+                            backgroundColor: kLightPink,
+                            progressColor: kMainPink,
+                            width: width*0.75,
+                            lineHeight: height*0.028,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 0,right:width*0.66,top: height*0.02,bottom: height*0.01  ),
+                            child: Text('header',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: kWritings,
+                              ),
+                            ),
+                          ),
+                          LinearPercentIndicator(
+                            percent: 0.4,
+                            animation: true,
+                            backgroundColor: kLightPink,
+                            progressColor: kMainPink,
+                            width: width*0.75,
+                            lineHeight: height*0.028,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 0,right:width*0.66,top: height*0.02,bottom: height*0.01  ),
+                            child: Text('header',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: kWritings,
+                              ),
+                            ),
+                          ),
+                          LinearPercentIndicator(
+                            percent: 0.9,
+                            animation: true,
+                            backgroundColor: kLightPink,
+                            progressColor: kMainPink,
+                            width: width*0.75,
+                            lineHeight: height*0.028,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
