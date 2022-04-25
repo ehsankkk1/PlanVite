@@ -87,13 +87,23 @@ class _MainScreen extends StatelessWidget {
                       center: new Text("70%",style: TextStyle(fontSize: 20,color: kMainPink,fontWeight: FontWeight.w900),),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: height*0.27,left: width*0.37,right: width*0.23),
-                      child: Text('Tasks Done',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: kMainPink,
-                          fontWeight: FontWeight.bold,
-                        ),),
+                      padding: EdgeInsets.only(top: height*0.27),
+                      child: Column(
+                        children: [
+                          Text('Tasks',
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: kMainPink,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                          Text('Done',
+                            style: TextStyle(
+                              fontSize: 25,
+                              color: kMainPink,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                        ],
+                      ),
                     ),
                   ],
                 ),
