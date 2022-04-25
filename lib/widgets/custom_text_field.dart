@@ -16,7 +16,7 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
       child: TextFormField(
         keyboardType: textInputType,
 
-         cursorColor: kTextFieldBorder,
+         cursorColor: kMainPink,
         decoration: InputDecoration(
           hintText: hintText.tr,
           hintStyle: const TextStyle(color: kWritings,),
@@ -29,18 +29,18 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(
-                color: kTextFieldBorder,
+                color: kMainPink,
               )),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(
 
-                color: kTextFieldBorder,
+                color: kMainPink,
               )),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(
-                color: kTextFieldBorder,
+                color: kMainPink,
               )),
         ),
       ),

@@ -94,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                                   ? width * 0.3
                                   : width * 0.33,
                               decoration: BoxDecoration(
-                                color: kTextFieldBorder,
+                                color: kMainPink,
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               child: TextButton(
@@ -137,7 +137,7 @@ class LoginScreen extends StatelessWidget {
                                     Text(
                                       'Sign up'.tr,
                                       style: const TextStyle(
-                                        color: kTextFieldBorder,
+                                        color: kMainPink,
                                         fontSize: 18,
                                       ),
                                     ),
@@ -165,7 +165,7 @@ class LoginScreen extends StatelessWidget {
                                             'English',
                                             style: TextStyle(
                                               color: controller.selectedLangBool.value
-                                                  ? kTextFieldBorder
+                                                  ? kMainPink
                                                   : kGrey,
                                               fontSize: 18,
                                             ),
@@ -188,7 +188,7 @@ class LoginScreen extends StatelessWidget {
                                             style: TextStyle(
                                               color: controller.selectedLangBool.value
                                                   ? kGrey
-                                                  : kTextFieldBorder,
+                                                  : kMainPink,
                                               fontSize: 18,
                                             ),
                                           );

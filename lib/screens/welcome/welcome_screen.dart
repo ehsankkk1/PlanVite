@@ -44,7 +44,7 @@ class WelcomeScreen extends StatelessWidget {
                     child: Container(
                       width: width * 0.5,
                       decoration: BoxDecoration(
-                        color: kTextFieldBorder,
+                        color: kMainPink,
                         borderRadius: BorderRadius.circular(25.0),
                       ),
                       child: TextButton(

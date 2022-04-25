@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: Locale('en'),
       fallbackLocale: Locale('en'),
-      initialRoute: '/welcome',
+      initialRoute: '/home',
 
       getPages: [
 
