@@ -66,7 +66,15 @@ class _MainScreen extends StatelessWidget {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    WhiteBox(height*0.35,double.infinity),
+                    WhiteBox(height*0.38,double.infinity),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: height*0.27),
+                      child: Text('Summary',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: kWritings,
+                        ),),
+                    ),
                     CircularPercentIndicator(
                       animation: true,
                       circularStrokeCap: CircularStrokeCap.round,
@@ -77,6 +85,15 @@ class _MainScreen extends StatelessWidget {
                       lineWidth: 20.0,
                       percent: 0.7,
                       center: new Text("70%",style: TextStyle(fontSize: 20,color: kMainPink,fontWeight: FontWeight.w900),),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: height*0.27,left: width*0.37,right: width*0.23),
+                      child: Text('Tasks Done',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: kMainPink,
+                          fontWeight: FontWeight.bold,
+                        ),),
                     ),
                   ],
                 ),
@@ -93,7 +110,7 @@ class _MainScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   children: [
 
-                    WhiteBox(height*0.35,double.infinity),
+                    WhiteBox(height*0.38,double.infinity),
                     Padding(
                       padding: EdgeInsets.only(bottom: height*0.27),
                       child: Text('Sample Projects',
