@@ -77,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                                     textDirection: TextDirection.ltr,
                                     child: CustomTextField(
                                       onChange: (value){
-                                        controller.email=value;
+                                      //  controller.email=value;
                                       },
                                       fontSize: 15,
                                       hintText: 'Email',
