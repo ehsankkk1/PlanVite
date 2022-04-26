@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:plane_vite/widgets/white_box.dart';
 
@@ -11,8 +13,9 @@ class ProjectView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    double height = Get.height;
+    double width = Get.width;
+
     return Padding(
       padding: const EdgeInsets.only(left:15,right: 15,bottom: 35,top: 35),
       child: Container(

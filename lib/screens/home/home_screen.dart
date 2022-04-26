@@ -41,8 +41,9 @@ class _MainScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    double height = Get.height;
+    double width = Get.width;
+
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
