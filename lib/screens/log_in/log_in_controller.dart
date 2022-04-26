@@ -8,7 +8,6 @@ class LoginController extends GetxController{
 
   var selectedLang;
   var  selectedLangBool ;
-  var email;
 
 
 

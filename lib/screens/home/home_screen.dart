@@ -1,15 +1,17 @@
 import 'dart:ui';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:plane_vite/constants.dart';
+import '../../widgets/project_view_home.dart';
 import '../../widgets/white_box.dart';
 import '../Drawer/drawer_controller.dart';
 import '../Drawer/drawer_screen.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -25,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           mainScreen: _MainScreen(),
           borderRadius: 10.0,
           showShadow: true,
-          shadowLayer1Color:kLightPink,
+          shadowLayer1Color: kLightPink,
           shadowLayer2Color: kMainPink,
           angle: 0,
           slideWidth: MediaQuery.of(context).size.width * 0.75,
@@ -42,156 +44,131 @@ class _MainScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor:kBackGround,
+      backgroundColor: kBackGround,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding:  EdgeInsets.fromLTRB(width*0.05, height*0.025, width*0.05, 0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InkWell(
-                      child: Icon(Icons.menu_rounded, color: kMainPink,size: 40,),
-                      onTap: controller.toggleDrawer,
-                    ),
-                    InkWell(
-                      child: Icon(Icons.notifications, color: kMainPink,size: 40,),
-                      onTap: (){},
-                    ),
-                  ],
-                ),
-                SizedBox(height: 30,),
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    WhiteBox(height*0.38,double.infinity),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: height*0.27),
-                      child: Text('Summary',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: kWritings,
-                        ),),
-                    ),
-                    CircularPercentIndicator(
-                      animation: true,
-                      circularStrokeCap: CircularStrokeCap.round,
-                      reverse: true,
-                      progressColor: kMainPink,
-                      backgroundColor: kLightPink,
-                      radius: 150.0,
-                      lineWidth: 20.0,
-                      percent: 0.7,
-                      center: new Text("70%",style: TextStyle(fontSize: 20,color: kMainPink,fontWeight: FontWeight.w900),),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: height*0.27),
-                      child: Column(
-                        children: [
-                          Text('Tasks',
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: kMainPink,
-                              fontWeight: FontWeight.bold,
-                            ),),
-                          Text('Done',
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: kMainPink,
-                              fontWeight: FontWeight.bold,
-                            ),),
-                        ],
+        child: NotificationListener<OverscrollIndicatorNotification>(
+          onNotification: (overScroll) {
+            overScroll.disallowGlow();
+            return true;
+          },
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                  width * 0.05, height * 0.025, width * 0.05, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // notification and drawer
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        child: const Icon(
+                          Icons.menu_rounded,
+                          color: kMainPink,
+                          size: 40,
+                        ),
+                        onTap: controller.toggleDrawer,
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding:  EdgeInsets.only(left: width*0.01,right: width*0.5,top: height*0.02,bottom: height*0.02),
-                  child: Text('My Projects',
-                  style: TextStyle(
-                    color: kWritings,
-                    fontSize: 25,
+                      InkWell(
+                        child: const Icon(
+                          Icons.notifications,
+                          color: kMainPink,
+                          size: 40,
+                        ),
+                        onTap: () {},
+                      ),
+                    ],
                   ),
-                  ),
-                ),
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
 
-                    WhiteBox(height*0.38,double.infinity),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: height*0.27),
-                      child: Text('Sample Projects',
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: kWritings,
-                      ),),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: width*0.07),
-                      child: Column(
-                        
+
+                  const SizedBox(
+                    height: 30,
+                  ),
+
+                  // circular indicator widget
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                    child: Container(
+                      height: height * 0.36,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        alignment: Alignment.center,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 0,right:width*0.66,top: height*0.05,bottom: height*0.01  ),
-                            child: Text('header',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: kWritings,
-                            ),
-                            ),
-                          ),
-                          LinearPercentIndicator(
-                            percent: 0.6,
-                            animation: true,
-                            backgroundColor: kLightPink,
-                            progressColor: kMainPink,
-                            width: width*0.75,
-                            lineHeight: height*0.028,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 0,right:width*0.66,top: height*0.02,bottom: height*0.01  ),
-                            child: Text('header',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: kWritings,
+                          WhiteBox(double.infinity, double.infinity),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Text(
+                                'Summary',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: kWritings,
+                                ),
                               ),
-                            ),
-                          ),
-                          LinearPercentIndicator(
-                            percent: 0.4,
-                            animation: true,
-                            backgroundColor: kLightPink,
-                            progressColor: kMainPink,
-                            width: width*0.75,
-                            lineHeight: height*0.028,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(left: 0,right:width*0.66,top: height*0.02,bottom: height*0.01  ),
-                            child: Text('header',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: kWritings,
+                              CircularPercentIndicator(
+                                animation: true,
+                                circularStrokeCap: CircularStrokeCap.round,
+                                reverse: true,
+                                progressColor: kMainPink,
+                                backgroundColor: kLightPink,
+                                radius: 130.0,
+                                lineWidth: 15.0,
+                                percent: 0.7,
+                                center: const Text(
+                                  "70%",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: kMainPink,
+                                      fontWeight: FontWeight.w900),
+                                ),
                               ),
-                            ),
-                          ),
-                          LinearPercentIndicator(
-                            percent: 0.9,
-                            animation: true,
-                            backgroundColor: kLightPink,
-                            progressColor: kMainPink,
-                            width: width*0.75,
-                            lineHeight: height*0.028,
+                              const Text(
+                                'Tasks\nDone',
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  color: kMainPink,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
 
-              ],
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text(
+                    'My Projects',
+                    style: TextStyle(
+                      color: kWritings,
+                      fontSize: 25,
+                    ),
+                  ),
+
+                  //My projects
+                  NotificationListener<OverscrollIndicatorNotification>(
+                    onNotification: (overScroll) {
+                      overScroll.disallowGlow();
+                      return true;
+                    },
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.only(right: 15),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(
+                          3,
+                          (index) => ProjectView(),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -199,4 +176,3 @@ class _MainScreen extends StatelessWidget {
     );
   }
 }
-
