@@ -10,12 +10,18 @@ import 'package:plane_vite/screens/home/home_screen.dart';
 import 'package:plane_vite/screens/log_in/log_in_screen.dart';
 import 'package:plane_vite/screens/sign_up/sign_up_screen.dart';
 import 'package:plane_vite/screens/welcome/welcome_screen.dart';
+import 'package:flutter/services.dart';
 
 
 import 'translations.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   Get.put<MyDrawerController>(MyDrawerController());
   runApp(const MyApp());
 }
@@ -31,7 +37,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: Locale('en'),
       fallbackLocale: Locale('en'),
-      initialRoute: '/home',
+      initialRoute: '/login',
 
       getPages: [
 
