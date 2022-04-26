@@ -7,10 +7,6 @@ class LoginController extends GetxController{
 
   var selectedLang;
   var  selectedLangBool ;
-  double width=0;
-  double height=0;
-  late BuildContext context;
-  int num=0.abs();
 
 
   @override
