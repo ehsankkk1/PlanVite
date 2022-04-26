@@ -14,7 +14,7 @@ class ProjectView extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.only(right: 30,bottom: 50),
+      padding: const EdgeInsets.only(left:10,right: 10,bottom: 25,top: 25),
       child: Container(
         width: width*0.6,
         height: height * 0.30,
@@ -40,7 +40,7 @@ class ProjectView extends StatelessWidget {
                   const  Text(
                     'header',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       color: kWritings,
                     ),
                   ),
@@ -49,12 +49,12 @@ class ProjectView extends StatelessWidget {
                     animation: true,
                     backgroundColor: kLightPink,
                     progressColor: kMainPink,
-                    lineHeight: height * 0.02,
+                    lineHeight: height * 0.015,
                   ),
                   const  Text(
                     'header',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       color: kWritings,
                     ),
                   ),
@@ -63,12 +63,12 @@ class ProjectView extends StatelessWidget {
                     animation: true,
                     backgroundColor: kLightPink,
                     progressColor: kMainPink,
-                    lineHeight: height * 0.02,
+                    lineHeight: height * 0.015,
                   ),
                   const  Text(
                     'header',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                       color: kWritings,
                     ),
                   ),
@@ -77,7 +77,7 @@ class ProjectView extends StatelessWidget {
                     animation: true,
                     backgroundColor: kLightPink,
                     progressColor: kMainPink,
-                    lineHeight: height * 0.02,
+                    lineHeight: height * 0.015,
                   ),
                 ],
               ),
