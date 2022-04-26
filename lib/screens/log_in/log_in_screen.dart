@@ -8,11 +8,12 @@ import '../../constants.dart';
 import 'log_in_controller.dart';
 
 class LoginScreen extends StatelessWidget {
-  //final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   LoginController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
+
     double height = MediaQuery.of(context).size.height;
     double width= MediaQuery.of(context).size.width;
 
@@ -64,141 +65,148 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding:  EdgeInsets.fromLTRB(width*0.1 ,0 , width*0.1 , 0),
-                              child: Column(children: [
-                                Directionality(
-                                  textDirection: TextDirection.ltr,
-                                  child: CustomTextField(
-                                    fontSize: 15,
-                                    hintText: 'Email',
-                                    icon: Icons.email,
-                                    textInputType: TextInputType.emailAddress,
-                                  ),
-                                ),
-                                const SizedBox(height: 20,),
-                                Directionality(
-                                  textDirection: TextDirection.ltr,
-                                  child: CustomTextField(
-                                    hintText: 'Password',
-                                    icon: Icons.lock,
-                                  ),
-                                ),
-                              ],),
-                            ),
-                            const SizedBox(height: 30,),
-                            Container(
-                              width: controller.selectedLangBool.value
-                                  ? width * 0.3
-                                  : width * 0.33,
-                              decoration: BoxDecoration(
-                                color: kMainPink,
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: TextButton(
-                                  onPressed: () {
-                                    final locale = Get.locale;
-                                    print(locale);
-                                  },
-                                  child: Text(
-                                    'Login'.tr,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
+                        Form(
+                          key: _globalKey,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding:  EdgeInsets.fromLTRB(width*0.1 ,0 , width*0.1 , 0),
+                                child: Column(children: [
+                                  Directionality(
+                                    textDirection: TextDirection.ltr,
+                                    child: CustomTextField(
+                                      onChange: (value){
+                                        controller.email=value;
+                                      },
+                                      fontSize: 15,
+                                      hintText: 'Email',
+                                      icon: Icons.email,
+                                      textInputType: TextInputType.emailAddress,
                                     ),
-                                  )),
-                            ),
-                            const SizedBox(height: 30,),
-                            Text(
-                              'Don\'t have an account?'.tr,
-                              style: const TextStyle(
-                                color: kGrey,
-                                fontSize: 18,
+                                  ),
+                                  const SizedBox(height: 20,),
+                                  Directionality(
+                                    textDirection: TextDirection.ltr,
+                                    child: CustomTextField(
+                                      hintText: 'Password',
+                                      icon: Icons.lock,
+                                    ),
+                                  ),
+                                ],),
                               ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Get.toNamed('/signup');
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.only(
-                                    left: controller.selectedLangBool.value
-                                        ? width * 0.42
-                                        : width * 0.01,
-                                    right: controller.selectedLangBool.value
-                                        ? width * 0.01
-                                        : width * 0.38,
-                                    top: height * 0.003,
-                                    bottom: 0),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      'Sign up'.tr,
+                              const SizedBox(height: 30,),
+                              Container(
+                                width: controller.selectedLangBool.value
+                                    ? width * 0.3
+                                    : width * 0.33,
+                                decoration: BoxDecoration(
+                                  color: kMainPink,
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                child: TextButton(
+                                    onPressed: () {
+                                      final locale = Get.locale;
+                                      print(locale);
+                                    },
+                                    child: Text(
+                                      'Login'.tr,
                                       style: const TextStyle(
-                                        color: kMainPink,
+                                        color: Colors.white,
                                         fontSize: 18,
                                       ),
-                                    ),
-                                  ],
+                                    )),
+                              ),
+                              const SizedBox(height: 30,),
+                              Text(
+                                'Don\'t have an account?'.tr,
+                                style: const TextStyle(
+                                  color: kGrey,
+                                  fontSize: 18,
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 30,),
-                            Directionality(
-                              textDirection: TextDirection.ltr,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  GestureDetector(
-                                    child: TextButton(
-                                        onPressed: () {
-                                          controller.selectedLang = 'en';
-                                          controller.changeSelectedLang();
+                              GestureDetector(
+                                onTap: () {
 
-                                          Get.updateLocale(
-                                              Locale(controller.selectedLang));
-                                        },
-                                        child: Obx((){
-                                          return Text(
-                                            'English',
-                                            style: TextStyle(
-                                              color: controller.selectedLangBool.value
-                                                  ? kMainPink
-                                                  : kGrey,
-                                              fontSize: 18,
-                                            ),
-                                          );
-                                        })
-                                    ),
+                                  Get.toNamed('/signup');
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      left: controller.selectedLangBool.value
+                                          ? width * 0.42
+                                          : width * 0.01,
+                                      right: controller.selectedLangBool.value
+                                          ? width * 0.01
+                                          : width * 0.38,
+                                      top: height * 0.003,
+                                      bottom: 0),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Sign up'.tr,
+                                        style: const TextStyle(
+                                          color: kMainPink,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  GestureDetector(
-                                    child: TextButton(
-                                        onPressed: () {
-                                          controller.selectedLang = 'ar';
-                                          controller.changeSelectedLang();
-
-                                          Get.updateLocale(
-                                              Locale(controller.selectedLang));
-                                        },
-                                        child: Obx((){
-                                          return  Text(
-                                            'العربية',
-                                            style: TextStyle(
-                                              color: controller.selectedLangBool.value
-                                                  ? kGrey
-                                                  : kMainPink,
-                                              fontSize: 18,
-                                            ),
-                                          );
-                                        })
-                                    ),
-                                  )
-                                ],
+                                ),
                               ),
-                            )
-                          ],
+                              const SizedBox(height: 30,),
+                              Directionality(
+                                textDirection: TextDirection.ltr,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GestureDetector(
+                                      child: TextButton(
+                                          onPressed: () {
+                                            controller.selectedLang = 'en';
+                                            controller.changeSelectedLang();
+
+                                            Get.updateLocale(
+                                                Locale(controller.selectedLang));
+                                          },
+                                          child: Obx((){
+                                            return Text(
+                                              'English',
+                                              style: TextStyle(
+                                                color: controller.selectedLangBool.value
+                                                    ? kMainPink
+                                                    : kGrey,
+                                                fontSize: 18,
+                                              ),
+                                            );
+                                          })
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      child: TextButton(
+                                          onPressed: () {
+                                            controller.selectedLang = 'ar';
+                                            controller.changeSelectedLang();
+
+                                            Get.updateLocale(
+                                                Locale(controller.selectedLang));
+                                          },
+                                          child: Obx((){
+                                            return  Text(
+                                              'العربية',
+                                              style: TextStyle(
+                                                color: controller.selectedLangBool.value
+                                                    ? kGrey
+                                                    : kMainPink,
+                                                fontSize: 18,
+                                              ),
+                                            );
+                                          })
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ],
                     ),

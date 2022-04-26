@@ -8,12 +8,18 @@ String hintText;
 IconData icon;
 TextInputType? textInputType;
 int? fontSize;
-CustomTextField({required this.hintText,required this.icon,this.textInputType, this.fontSize});
+Function(String)? onChange;
+CustomTextField({required this.hintText,required this.icon,this.textInputType, this.fontSize, this.onChange});
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: TextFormField(
+       onChanged : onChange,
+
+
+
+
         keyboardType: textInputType,
 
          cursorColor: kMainPink,
