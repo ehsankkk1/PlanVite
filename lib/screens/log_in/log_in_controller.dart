@@ -1,14 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 
 
 class LoginController extends GetxController{
 
-
-
   var selectedLang;
   var  selectedLangBool ;
-
+  double width=0;
+  double height=0;
+  late BuildContext context;
+  int num=0.abs();
 
 
   @override
@@ -20,7 +22,7 @@ class LoginController extends GetxController{
 
   }
 
-  void changeSelectedLang()async{
+  void changeSelectedLang(){
     if(selectedLang=='ar'){
       selectedLangBool.value=false;
     }
