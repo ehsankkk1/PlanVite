@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackGround,
+      backgroundColor: kLightPink,
       body: GetBuilder<MyDrawerController>(
         builder: (_) => ZoomDrawer(
           moveMenuScreen: true,
@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           mainScreen: _MainScreen(),
           borderRadius: 10.0,
           showShadow: true,
-          shadowLayer1Color: kLightPink,
+          shadowLayer1Color: kBackGround,
           shadowLayer2Color: kMainPink,
           angle: 0,
           slideWidth: MediaQuery.of(context).size.width * 0.75,
@@ -43,7 +43,6 @@ class _MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = Get.height;
     double width = Get.width;
-
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
