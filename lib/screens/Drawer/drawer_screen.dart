@@ -51,6 +51,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 ),
 
                 DrawerItem(Icons.home,35, 'Home', (){}),
+                DrawerItem(Icons.task,35, 'Todo Tasks', (){}),
                 const Divider(thickness:1,color: kMainPink,),
                 const Padding(
                   padding: EdgeInsets.all(15.0),
@@ -69,7 +70,6 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 ),
                 DrawerItem(Icons.add,35, 'Add Project', (){}),
                 const Divider(thickness:1,color: kMainPink,),
-                DrawerItem(Icons.task,35, 'Todo Tasks', (){}),
                 DrawerItem(Icons.notifications,35, 'Notifications', (){}),
                 DrawerItem(Icons.settings,35, 'Settings', (){}),
             ],
