@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -18,19 +19,20 @@ class HomeScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackGround,
+      backgroundColor: Colors.white,
       body: GetBuilder<MyDrawerController>(
         builder: (_) => ZoomDrawer(
           moveMenuScreen: true,
           controller: _.zoomDrawerController,
           menuScreen: DrawerScreen(),
           mainScreen: _MainScreen(),
-          borderRadius: 10.0,
           showShadow: true,
-          shadowLayer1Color: kLightPink,
-          shadowLayer2Color: kMainPink,
-          angle: 0,
-          slideWidth: MediaQuery.of(context).size.width * 0.75,
+          mainScreenOverlayColor: Colors.black.withOpacity(0.5),
+          style: DrawerStyle.style1,
+  /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
+          shadowLayer2Color: kMainPink,*/
+          angle: -0,
+          slideWidth: MediaQuery.of(context).size.width * 0.90,
         ),
       ),
     );
@@ -41,8 +43,8 @@ class _MainScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+    double height = Get.height;
+    double width = Get.width;
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
