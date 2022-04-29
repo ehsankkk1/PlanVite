@@ -14,222 +14,201 @@ class SignupScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: kBackGround,
-      body: ListView(
-        children: [
-          const Align(
-              alignment: Alignment.topLeft,
-              child: Image(
-                image: AssetImage('images/sign_up_first_flower.png'),
-              )),
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    left: locale == 'en' ? width * 0.09 : width * 0.1,
-                    right: locale == 'en' ? width * 0.01 : width * 0.16,
-                    top: height * 0.04,
-                    bottom:  locale == 'en' ? width * 0.02 : width * 0.01,
 
-                ),
-                child: Row(
-                  children: [
-                    Text(
-                      'Create New Account'.tr,
-                      style: TextStyle(
-                        fontSize: 35,
-                        color: kWritings,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: locale == 'en' ? width * 0.13 : width * 0.1,
-                    right:  locale == 'en' ? width * 0.01 : width * 0.18,
-                    top: 0,
-                    bottom: 0),
-                child: Row(
-                  children: [
-                    Text(
-                      'please fill in the form to continue'.tr,
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: kWritings,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Directionality(
-                textDirection: TextDirection.ltr,
-                child: Row(
-                  children: [
-                    Image(
-                        image: AssetImage('images/sign_up_second_flower.png')),
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left:   width * 0.14 ,
-                          right:   width * 0.01 ,
-                          top: height * 0.03,
-                          bottom: 0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                            color: kMainPink,
-                          ),
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        width: 150,
-                        height: 150,
-                        child: const Icon(
-                          Icons.add_a_photo,
-                          size: 70,
-                          color: kMainPink,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: width * 0.1,
-                right: width * 0.1,
-                top: height * 0.06,
-                bottom: 0),
-            child: Directionality(
-              textDirection: TextDirection.ltr,
-              child: CustomTextField(
-                hintText: 'Name',
-                icon: Icons.person,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: width * 0.1,
-                right: width * 0.1,
-                top: height * 0.03,
-                bottom: 0),
-            child: CustomTextField(
-              hintText: 'Email',
-              icon: Icons.email,
-              textInputType: TextInputType.emailAddress,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: width * 0.1,
-                right: width * 0.1,
-                top: height * 0.03,
-                bottom: 0),
-            child: CustomTextField(
-              hintText: 'Password',
-              icon: Icons.lock,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: width * 0.1,
-                right: width * 0.1,
-                top: height * 0.03,
-                bottom: 0),
-            child: CustomTextField(
-              hintText: 'Confirm Password',
-              icon: Icons.lock,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-                left: width * 0.34,
-                right: width * 0.34,
-                top: height * 0.04,
-                bottom: 0),
+      body: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: (overScroll) {
+          overScroll.disallowGlow();
+          return true;
+        },
+        child: SingleChildScrollView(
+          child: SafeArea(
             child: Container(
-              decoration: BoxDecoration(
-                color: kMainPink,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: TextButton(
-                  onPressed: () {},
-                  child:  Text(
-                    'Register'.tr,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
+              height: height*0.93,
+
+              child: Stack(
+                alignment: Alignment.center,
+                fit: StackFit.expand,
+                children: [
+                  const Align(
+                      alignment: Alignment.topLeft,
+                      child: Image(
+                        image: AssetImage('images/sign_up_first_flower.png'),
+                      )),
+                  Container(
+                    margin: EdgeInsets.only(top: height*0.13),
+
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                      children: [
+
+                        Column(
+                          children: [
+
+                            Directionality(
+                              textDirection: TextDirection.ltr,
+
+                              child: Text(
+                                'Create New Account'.tr,
+                                style: TextStyle(
+                                  fontSize: 35,
+                                  color: kWritings,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              'please fill in the form to continue'.tr,
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: kWritings,
+                              ),
+                            ),
+                            Directionality(
+                              textDirection: TextDirection.ltr,
+                              child: Row(
+
+                                children: [
+                                  Image(
+                                      image: AssetImage('images/sign_up_second_flower.png')),
+                                  SizedBox(
+                                    width: width*0.12,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                        color: kMainPink,
+                                      ),
+                                      borderRadius: BorderRadius.circular(100),
+                                    ),
+                                    width: 150,
+                                    height: 150,
+                                    child: const Icon(
+                                      Icons.add_a_photo,
+                                      size: 70,
+                                      color: kMainPink,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding:  EdgeInsets.fromLTRB(width*0.1 ,0 , width*0.1 , 0),
+                            child:
+                              Column(
+                                children: [
+                                  SizedBox(height: 20,),
+                                  Directionality(
+                                    textDirection: TextDirection.ltr,
+                                    child: CustomTextField(
+                                      hintText: 'Name',
+                                      icon: Icons.person,
+                                    ),
+                                  ),
+                                  SizedBox(height: 20,),
+                                  CustomTextField(
+                                    hintText: 'Email',
+                                    icon: Icons.email,
+                                    textInputType: TextInputType.emailAddress,
+                                  ),
+                                  SizedBox(height: 20,),
+                                  CustomTextField(
+                                    hintText: 'Password',
+                                    icon: Icons.lock,
+                                  ),
+                                  SizedBox(height: 20,),
+                                  CustomTextField(
+                                    hintText: 'Confirm Password',
+                                    icon: Icons.lock,
+                                  ),
+                                  SizedBox(height: 20,),
+
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+
+                        Container(
+                          decoration: BoxDecoration(
+                            color: kMainPink,
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          child: TextButton(
+                              onPressed: () {},
+                              child:  Text(
+                                'Register'.tr,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              )),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Already have an account?'.tr,
+                                  style: TextStyle(
+                                    color: kGrey,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Get.offNamed('/login');
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children:  [
+                                  Text(
+                                    'Sign in'.tr,
+                                    style: TextStyle(
+                                      color: kMainPink,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // Padding(
+                            //   padding:  EdgeInsets.only(left: width*0.33,right: width*0.02,top: height*0.04,bottom: 0),
+                            //   child: Row(
+                            //     children: [
+                            //       TextButton(onPressed: (){}, child: Text('English',
+                            //         style: TextStyle(
+                            //           color: kTextFieldBorder,
+                            //           fontSize: 18,
+                            //         ),
+                            //       )),
+                            //       TextButton(onPressed: (){}, child: Text('العربية',
+                            //         style: TextStyle(
+                            //           color: kGrey,
+                            //           fontSize: 18,
+                            //         ),
+                            //       ))
+                            //     ],
+                            //   ),
+                            // ),
+                          ],
+                        )],
                     ),
-                  )),
+                  )
+
+                ],
+              ),
             ),
           ),
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    left: locale =='en' ? width * 0.25: width*0.1,
-                    right: locale =='en' ? width * 0.01: width*0.32,
-                    top: height * 0.02,
-                    bottom: 0),
-                child: Row(
-                  children: [
-                    Text(
-                      'Already have an account?'.tr,
-                      style: TextStyle(
-                        color: kGrey,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.offNamed('/login');
-                },
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      left: locale=='en'?width * 0.42:width*0.1,
-                      right: locale=='en'?width * 0.01:width*0.35,
-                      top: height * 0.003,
-                      bottom: height*0.1,),
-                  child: Row(
-                    children:  [
-                      Text(
-                        'Sign in'.tr,
-                        style: TextStyle(
-                          color: kMainPink,
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              // Padding(
-              //   padding:  EdgeInsets.only(left: width*0.33,right: width*0.02,top: height*0.04,bottom: 0),
-              //   child: Row(
-              //     children: [
-              //       TextButton(onPressed: (){}, child: Text('English',
-              //         style: TextStyle(
-              //           color: kTextFieldBorder,
-              //           fontSize: 18,
-              //         ),
-              //       )),
-              //       TextButton(onPressed: (){}, child: Text('العربية',
-              //         style: TextStyle(
-              //           color: kGrey,
-              //           fontSize: 18,
-              //         ),
-              //       ))
-              //     ],
-              //   ),
-              // ),
-            ],
-          )
-        ],
+        ),
       ),
     );
   }
