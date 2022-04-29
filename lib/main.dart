@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/screens/Drawer/drawer_controller.dart';
+import 'package:plane_vite/screens/bindings/board_binding.dart';
 import 'package:plane_vite/screens/bindings/home_binding.dart';
 import 'package:plane_vite/screens/bindings/log_in_binding.dart';
 import 'package:plane_vite/screens/bindings/sign_up_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
+import 'package:plane_vite/screens/board/board_screen.dart';
 import 'package:plane_vite/screens/home/home_screen.dart';
 import 'package:plane_vite/screens/log_in/log_in_screen.dart';
 import 'package:plane_vite/screens/sign_up/sign_up_screen.dart';
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: Locale('en'),
       fallbackLocale: Locale('en'),
-      initialRoute: '/login',
+      initialRoute: '/board',
 
       getPages: [
 
@@ -45,6 +47,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/signup', page: ()=> SignupScreen(),binding: SignupBinding()),
         GetPage(name: '/welcome', page: ()=>WelcomeScreen(),binding: WelcomeBinding()),
         GetPage(name: '/home', page: ()=>HomeScreen(),binding:HomeBinding()),
+        GetPage(name: '/board', page: ()=>BoardScreen(),binding:BoardBinding()),
 
       ],
 
