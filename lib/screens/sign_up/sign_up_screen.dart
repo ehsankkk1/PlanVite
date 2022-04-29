@@ -23,7 +23,7 @@ class SignupScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: SafeArea(
             child: Container(
-              height: height*0.93,
+              height: locale=='en'?height*0.93:height,
 
               child: Stack(
                 alignment: Alignment.center,
@@ -35,7 +35,7 @@ class SignupScreen extends StatelessWidget {
                         image: AssetImage('images/sign_up_first_flower.png'),
                       )),
                   Container(
-                    margin: EdgeInsets.only(top: height*0.13),
+                    margin: EdgeInsets.only(top: height*0.12),
 
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,7 +68,7 @@ class SignupScreen extends StatelessWidget {
                               child: Row(
 
                                 children: [
-                                  Image(
+                                  const Image(
                                       image: AssetImage('images/sign_up_second_flower.png')),
                                   SizedBox(
                                     width: width*0.12,
@@ -134,6 +134,7 @@ class SignupScreen extends StatelessWidget {
                         ),
 
                         Container(
+                          width: 120,
                           decoration: BoxDecoration(
                             color: kMainPink,
                             borderRadius: BorderRadius.circular(20.0),
@@ -199,6 +200,7 @@ class SignupScreen extends StatelessWidget {
                             //     ],
                             //   ),
                             // ),
+
                           ],
                         )],
                     ),

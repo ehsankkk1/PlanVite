@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import '../constants.dart';
@@ -8,15 +9,18 @@ String hintText;
 IconData icon;
 TextInputType? textInputType;
 int? fontSize;
-Function(String)? onChange;
-CustomTextField({required this.hintText,required this.icon,this.textInputType, this.fontSize, this.onChange});
+TextEditingController? controller2;
+FormFieldValidator? validator;
+
+CustomTextField({required this.hintText,required this.icon,this.textInputType, this.fontSize, this.controller2,this.validator});
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: TextFormField(
-       onChanged : onChange,
 
+        validator: validator,
+       controller: controller2,
 
 
 
@@ -39,8 +43,9 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
               )),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
 
+              borderSide: const BorderSide(
+                 width: 2,
                 color: kMainPink,
               )),
           border: OutlineInputBorder(

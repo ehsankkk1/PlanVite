@@ -6,11 +6,14 @@ import 'package:get/get.dart';
 class LoginController extends GetxController{
 
   var selectedLang;
-  var  selectedLangBool ;
-
+  var selectedLangBool ;
+  var email;
+  var password;
 
   @override
   void onInit() {
+    email='';
+    password='';
     selectedLang='en';
     selectedLangBool = true.obs;
 
