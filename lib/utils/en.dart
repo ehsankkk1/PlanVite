@@ -17,4 +17,7 @@ Map <String, String> en={
   'Email is empty ! ':'Email is empty ! ',
   'Password Is Empty ! ':'Password Is Empty ! ',
   'Confirm Password Is Empty ! ':'Confirm Password Is Empty ! ',
+  'Summary':'Summary',
+  'Tasks\nDone':'Tasks\nDone',
+  'My Projects':'My Projects',
 };

@@ -101,8 +101,8 @@ class _MainScreen extends StatelessWidget {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              const Text(
-                                'Summary',
+                               Text(
+                                'Summary'.tr,
                                 style: TextStyle(
                                   fontSize: 25,
                                   color: kWritings,
@@ -125,8 +125,8 @@ class _MainScreen extends StatelessWidget {
                                       fontWeight: FontWeight.w900),
                                 ),
                               ),
-                              const Text(
-                                'Tasks\nDone',
+                               Text(
+                                'Tasks\nDone'.tr,
                                 style: TextStyle(
                                   fontSize: 25,
                                   color: kMainPink,
@@ -144,8 +144,8 @@ class _MainScreen extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  const Text(
-                    'My Projects',
+                   Text(
+                    'My Projects'.tr,
                     style: TextStyle(
                       color: kWritings,
                       fontSize: 25,

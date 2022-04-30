@@ -14,6 +14,15 @@ Map <String, String> ar={
   'Already have an account?':'لديك حساب سابق ؟ ',
   'Sign in':'تسجيل الدخول',
   'Name is Empty ! ':'! الاسم فارغ',
+  'Email is empty ! ':'!البريد الالكتروني فارغ',
+  'Password Is Empty ! ':'!كلمة المرور فارغة',
+  'Confirm Password Is Empty ! ':'!تأكيد كلمة المرور فارغ',
+  'Summary':'الملخص',
+  'Tasks\nDone':'انتهت المهام',
+  'My Projects':'مشاريعي',
+
+
+
 
 
 
