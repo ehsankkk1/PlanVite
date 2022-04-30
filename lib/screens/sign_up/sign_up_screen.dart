@@ -7,15 +7,16 @@ import '../../widgets/custom_text_field.dart';
 
 class SignupScreen extends StatelessWidget {
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
+  TextEditingController confirmPasswordController = new TextEditingController();
+  SignupController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    SignupController controller = Get.find();
 
-    TextEditingController nameController = new TextEditingController();
-    TextEditingController emailController = new TextEditingController();
-    TextEditingController passwordController = new TextEditingController();
-    TextEditingController confirmPasswordController = new TextEditingController();
+
     final String locale = Get.locale.toString();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -23,12 +24,12 @@ class SignupScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kBackGround,
 
-      body: SafeArea(
-        child: ListView(
+      body: InteractiveViewer(
+        child: SafeArea(
+          child: ListView(
 
-          children: [
-            Expanded(
-              child: Container(
+            children: [
+              Container(
               height: locale=='en'? height*1.1:height*1.15,
 
               child: Stack(
@@ -154,7 +155,7 @@ class SignupScreen extends StatelessWidget {
                                         icon: Icons.lock,
                                       );
                                     }),
-                                    
+
                                     SizedBox(height: 20,),
                                     Obx((){
                                       return CustomTextField(
@@ -269,9 +270,9 @@ class SignupScreen extends StatelessWidget {
 
                 ],
               ),
-          ),
             ),],
-        )
+          )
+        ),
       ),
     );
   }
