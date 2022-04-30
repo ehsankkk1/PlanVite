@@ -13,6 +13,8 @@ Map <String, String> ar={
   'Register':'تسجيل',
   'Already have an account?':'لديك حساب سابق ؟ ',
   'Sign in':'تسجيل الدخول',
+  'Name is Empty ! ':'! الاسم فارغ',
+
 
 
 

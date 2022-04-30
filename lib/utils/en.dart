@@ -13,4 +13,8 @@ Map <String, String> en={
   'Register':'Register',
   'Already have an account?':'Already have an account?',
   'Sign in':'Sign in',
+  'Name is Empty ! ':'Name is Empty ! ',
+  'Email is empty ! ':'Email is empty ! ',
+  'Password Is Empty ! ':'Password Is Empty ! ',
+  'Confirm Password Is Empty ! ':'Confirm Password Is Empty ! ',
 };

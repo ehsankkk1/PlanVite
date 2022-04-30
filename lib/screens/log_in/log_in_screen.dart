@@ -76,9 +76,10 @@ TextEditingController passwordController = new TextEditingController();
                                   Directionality(
                                     textDirection: TextDirection.ltr,
                                     child: CustomTextField(
+                                      passwordBool: false,
                                       validator: (value){
                                         if(value.isEmpty){
-                                          return 'Email is empty ! ';
+                                          return 'Email Is Empty ! '.tr;
                                         }
 
 
@@ -94,16 +95,22 @@ TextEditingController passwordController = new TextEditingController();
                                   const SizedBox(height: 20,),
                                   Directionality(
                                     textDirection: TextDirection.ltr,
-                                    child: CustomTextField(
-                                      validator: (value){
-                                        if(value.isEmpty){
-                                          return 'Email is empty ! ';
-                                        }
-                                      },
-                                      controller2: passwordController,
-                                      hintText: 'Password',
-                                      icon: Icons.lock,
-                                    ),
+                                    child:Obx((){
+                                      return CustomTextField(
+                                        passwordBool: controller.passwordBool.value,
+                                        secureText: controller.securePassword,
+                                        validator: (value){
+                                          if(value.isEmpty){
+                                            return 'Password is Empty ! ';
+                                          }
+                                        },
+                                        controller2: passwordController,
+                                        hintText: 'Password',
+                                        icon2: controller.passwordBool.value==true ? Icons.visibility_off:Icons.visibility,
+                                        icon: Icons.lock,
+                                      );
+                                    })
+
                                   ),
                                 ],),
                               ),

@@ -11,8 +11,12 @@ TextInputType? textInputType;
 int? fontSize;
 TextEditingController? controller2;
 FormFieldValidator? validator;
+IconData? icon2;
+Function()? secureText;
+bool  passwordBool;
 
-CustomTextField({required this.hintText,required this.icon,this.textInputType, this.fontSize, this.controller2,this.validator});
+
+CustomTextField({required this.hintText,required this.icon,this.textInputType, this.fontSize, this.controller2,this.validator,this.icon2,this.secureText, required this.passwordBool});
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -21,6 +25,7 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
 
         validator: validator,
        controller: controller2,
+        obscureText: passwordBool,
 
 
 
@@ -30,6 +35,16 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
         decoration: InputDecoration(
           hintText: hintText.tr,
           hintStyle: const TextStyle(color: kWritings,),
+          suffixIcon: GestureDetector(
+            onTap: (){
+
+              secureText!();
+            },
+            child: Icon(
+              icon2,
+              color: kWritings,
+            ),
+          ),
           prefixIcon: Icon(
             icon,
             color: kWritings,

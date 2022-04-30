@@ -9,6 +9,7 @@ class LoginController extends GetxController{
   var selectedLangBool ;
   var email;
   var password;
+  var passwordBool;
 
   @override
   void onInit() {
@@ -16,9 +17,13 @@ class LoginController extends GetxController{
     password='';
     selectedLang='en';
     selectedLangBool = true.obs;
+    passwordBool=true.obs;
 
     super.onInit();
 
+  }
+  void securePassword(){
+    passwordBool.value=!passwordBool.value;
   }
 
   void changeSelectedLang(){
