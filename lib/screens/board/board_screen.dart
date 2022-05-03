@@ -65,16 +65,22 @@ class _MainScreen extends StatelessWidget {
               child: SingleChildScrollView(
 
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(
-                    3,
-                    (index) => SprintWidget(
-                      addButton: true,
-                        sprintName: "Pending",
-                        coloredBoxes: List.generate(index + 4,
-                            (index) => ColorBox('Build Flutter UwU'),
-                        ),
+                child: InteractiveViewer(
+                  boundaryMargin: (EdgeInsets.all(double.infinity)),
+                  minScale: 0.5,
+                  maxScale: 4,
+
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: List.generate(
+                      3,
+                      (index) => SprintWidget(
+                        addButton: true,
+                          sprintName: "Pending",
+                          coloredBoxes: List.generate(index + 4,
+                              (index) => ColorBox('Build Flutter UwU'),
+                          ),
+                      ),
                     ),
                   ),
                 ),
