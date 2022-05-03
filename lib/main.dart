@@ -37,15 +37,15 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
-      locale: Locale('en'),
-      fallbackLocale: Locale('en'),
-      initialRoute: '/signup',
+      locale: const Locale('en'),
+      fallbackLocale: const Locale('en'),
+      initialRoute: '/board',
 
       getPages: [
 
         GetPage(name: '/login', page: ()=>LoginScreen(),binding: LoginBinding()),
         GetPage(name: '/signup', page: ()=> SignupScreen(),binding: SignupBinding()),
-        GetPage(name: '/welcome', page: ()=>WelcomeScreen(),binding: WelcomeBinding()),
+        GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
         GetPage(name: '/home', page: ()=>HomeScreen(),binding:HomeBinding()),
         GetPage(name: '/board', page: ()=>BoardScreen(),binding:BoardBinding()),
 

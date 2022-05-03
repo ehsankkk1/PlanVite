@@ -13,8 +13,7 @@ class ProjectView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = Get.height;
-    double width = Get.width;
+
 
     return Padding(
       padding: const EdgeInsets.only(left:15,right: 15,bottom: 35,top: 35),

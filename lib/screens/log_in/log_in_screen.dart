@@ -15,8 +15,6 @@ TextEditingController passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    double height = Get.height;
-    double width = Get.width;
 
     return Scaffold(
       backgroundColor: kBackGround,
@@ -81,8 +79,6 @@ TextEditingController passwordController = new TextEditingController();
                                         if(value.isEmpty){
                                           return 'Email Is Empty ! '.tr;
                                         }
-
-
                                       },
 
                                       controller2: emailController,

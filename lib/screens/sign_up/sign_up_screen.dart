@@ -18,8 +18,7 @@ class SignupScreen extends StatelessWidget {
 
 
     final String locale = Get.locale.toString();
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
+
 
     return Scaffold(
       backgroundColor: kBackGround,

@@ -8,6 +8,7 @@ import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:plane_vite/constants.dart';
+import 'package:plane_vite/widgets/app_bar.dart';
 import '../../widgets/project_view_home.dart';
 import '../../widgets/white_box.dart';
 import '../Drawer/drawer_controller.dart';
@@ -32,7 +33,7 @@ class HomeScreen extends StatelessWidget {
   /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
           shadowLayer2Color: kMainPink,*/
           angle: -0,
-          slideWidth: MediaQuery.of(context).size.width * 0.90,
+          slideWidth: width * 0.90,
         ),
       ),
     );
@@ -43,8 +44,7 @@ class _MainScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
   @override
   Widget build(BuildContext context) {
-    double height = Get.height;
-    double width = Get.width;
+
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
@@ -61,33 +61,10 @@ class _MainScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // notification and drawer
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      InkWell(
-                        child: const Icon(
-                          Icons.menu_rounded,
-                          color: kMainPink,
-                          size: 40,
-                        ),
-                        onTap: controller.toggleDrawer,
-                      ),
-                      InkWell(
-                        child: const Icon(
-                          Icons.notifications,
-                          color: kMainPink,
-                          size: 40,
-                        ),
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
-
-
+                  AppBarWidget(controller: controller,head: 'Home',),
                   const SizedBox(
                     height: 30,
                   ),
-
                   // circular indicator widget
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: width * 0.05),
@@ -103,7 +80,7 @@ class _MainScreen extends StatelessWidget {
                             children: [
                                Text(
                                 'Summary'.tr,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 25,
                                   color: kWritings,
                                 ),
@@ -127,7 +104,7 @@ class _MainScreen extends StatelessWidget {
                               ),
                                Text(
                                 'Tasks\nDone'.tr,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 25,
                                   color: kMainPink,
                                   fontWeight: FontWeight.bold,
@@ -146,7 +123,7 @@ class _MainScreen extends StatelessWidget {
                   ),
                    Text(
                     'My Projects'.tr,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: kWritings,
                       fontSize: 25,
                     ),

@@ -44,7 +44,6 @@ class DrawerScreen extends GetView<MyDrawerController> {
                         style: TextStyle(
                           fontSize: 16,
                           color: kWritings,
-
                         ),
                       ),],
                   ),

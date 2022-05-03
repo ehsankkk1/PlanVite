@@ -26,9 +26,6 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
         validator: validator,
        controller: controller2,
         obscureText: passwordBool,
-
-
-
         keyboardType: textInputType,
 
          cursorColor: kMainPink,

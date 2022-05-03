@@ -7,8 +7,7 @@ class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    double height = Get.height;
-    double width = Get.width;
+
 
     return Scaffold(
       backgroundColor: kBackGround,

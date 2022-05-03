@@ -20,11 +20,11 @@ class LoginController extends GetxController{
     passwordBool=true.obs;
 
     super.onInit();
-
   }
   void securePassword(){
     passwordBool.value=!passwordBool.value;
   }
+
 
   void changeSelectedLang(){
     if(selectedLang=='ar'){
