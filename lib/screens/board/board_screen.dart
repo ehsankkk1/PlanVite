@@ -69,6 +69,7 @@ class _MainScreen extends StatelessWidget {
                   boundaryMargin: (EdgeInsets.all(double.infinity)),
                   minScale: 0.5,
                   maxScale: 4,
+                  //constrained: false,
 
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
