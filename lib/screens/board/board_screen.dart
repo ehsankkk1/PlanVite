@@ -40,8 +40,6 @@ class _MainScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
   @override
   Widget build(BuildContext context) {
-    double height = Get.height;
-    double width = Get.width;
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
@@ -65,23 +63,16 @@ class _MainScreen extends StatelessWidget {
               child: SingleChildScrollView(
 
                 scrollDirection: Axis.horizontal,
-                child: InteractiveViewer(
-                  boundaryMargin: (EdgeInsets.all(double.infinity)),
-                  minScale: 0.5,
-                  maxScale: 4,
-                  //constrained: false,
-
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: List.generate(
-                      3,
-                      (index) => SprintWidget(
-                        addButton: true,
-                          sprintName: "Pending",
-                          coloredBoxes: List.generate(index + 4,
-                              (index) => ColorBox('Build Flutter UwU'),
-                          ),
-                      ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: List.generate(
+                    3,
+                    (index) => SprintWidget(
+                      addButton: true,
+                        sprintName: "Pending",
+                        coloredBoxes: List.generate(index + 4,
+                            (index) => ColorBox('Build Flutter UwU'),
+                        ),
                     ),
                   ),
                 ),

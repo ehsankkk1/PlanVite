@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class WhiteBox extends StatelessWidget {
 
 
-  WhiteBox(this.height,this.width);
+  WhiteBox({required this.height,required this.width,this.child});
 
   double height;
   double width;
+  Widget? child;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,6 +24,7 @@ class WhiteBox extends StatelessWidget {
           color: Colors.white,
           borderRadius: const BorderRadius.all(Radius.circular(10))
       ),
+      child: child,
     );
   }
 }
