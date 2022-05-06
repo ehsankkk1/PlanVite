@@ -6,6 +6,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:plane_vite/widgets/app_bar.dart';
 import 'package:plane_vite/widgets/colored_box.dart';
+import 'package:plane_vite/widgets/white_box.dart';
 import '../../constants.dart';
 import '../../widgets/sprint_widget.dart';
 import '../Drawer/drawer_controller.dart';
@@ -57,7 +58,7 @@ class _MainScreen extends StatelessWidget {
             ),
             NotificationListener<OverscrollIndicatorNotification>(
               onNotification: (overScroll) {
-                overScroll.disallowGlow();
+                overScroll.disallowIndicator();
                 return true;
               },
               child: SingleChildScrollView(
@@ -65,16 +66,40 @@ class _MainScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: List.generate(
-                    3,
-                    (index) => SprintWidget(
-                      addButton: true,
-                        sprintName: "Pending",
-                        coloredBoxes: List.generate(index + 4,
-                            (index) => ColorBox('Build Flutter UwU'),
+                  children: [
+                    // sprints
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: List.generate(
+                        3,
+                        (index) => SprintWidget(
+                          addButton: true,
+                            sprintName: "Pending",
+                            coloredBoxes: List.generate(index + 4,
+                                (index) => ColorBox('Build Flutter UwU'),
+                            ),
                         ),
+                      ),
                     ),
-                  ),
+
+                    // add sprint
+                    Container(
+                      margin: EdgeInsets.fromLTRB(width * 0.03, 35, width * 0.03, 35),
+                        child: WhiteBox(height: height*0.35, width: width*0.7,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                          Icon(Icons.add_circle_outline_rounded,size: 120,color: kMainPink,),
+                            Text(
+                              'Add new sprint',
+                              style:  TextStyle(
+                                color: kWritings,
+                                fontSize: 18,
+                              ),
+                            ),
+                        ],),)
+                    ),
+                  ],
                 ),
               ),
             ),
