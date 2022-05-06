@@ -6,11 +6,13 @@ import 'package:plane_vite/screens/bindings/board_binding.dart';
 import 'package:plane_vite/screens/bindings/home_binding.dart';
 import 'package:plane_vite/screens/bindings/log_in_binding.dart';
 import 'package:plane_vite/screens/bindings/sign_up_binding.dart';
+import 'package:plane_vite/screens/bindings/splash_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
 import 'package:plane_vite/screens/board/board_screen.dart';
 import 'package:plane_vite/screens/home/home_screen.dart';
 import 'package:plane_vite/screens/log_in/log_in_screen.dart';
 import 'package:plane_vite/screens/sign_up/sign_up_screen.dart';
+import 'package:plane_vite/screens/splash/splash_screen.dart';
 import 'package:plane_vite/screens/welcome/welcome_screen.dart';
 import 'package:flutter/services.dart';
 
@@ -39,10 +41,10 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/board',
+      initialRoute: '/splash',
 
       getPages: [
-
+        GetPage(name: '/splash', page: ()=>SplashScreen(),binding: SplashBinding()),
         GetPage(name: '/login', page: ()=>LoginScreen(),binding: LoginBinding()),
         GetPage(name: '/signup', page: ()=> SignupScreen(),binding: SignupBinding()),
         GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
