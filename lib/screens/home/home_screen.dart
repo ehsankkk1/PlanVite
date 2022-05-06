@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
           showShadow: true,
           mainScreenOverlayColor: Colors.black.withOpacity(0.5),
           style: DrawerStyle.style1,
-  /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
+          /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
           shadowLayer2Color: kMainPink,*/
           angle: -0,
           slideWidth: width * 0.90,
@@ -44,7 +44,6 @@ class _MainScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
@@ -61,7 +60,10 @@ class _MainScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // notification and drawer
-                  AppBarWidget(controller: controller,head: 'Home',),
+                  AppBarWidget(
+                    controller: controller,
+                    head: 'Home',
+                  ),
                   const SizedBox(
                     height: 30,
                   ),
@@ -70,50 +72,47 @@ class _MainScreen extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: width * 0.05),
                     child: Container(
                       height: height * 0.36,
-                      child: Stack(
-                        fit: StackFit.expand,
-                        alignment: Alignment.center,
-                        children: [
-                          WhiteBox(double.infinity, double.infinity),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                               Text(
-                                'Summary'.tr,
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  color: kWritings,
-                                ),
+                      child: WhiteBox(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              'Summary'.tr,
+                              style: const TextStyle(
+                                fontSize: 25,
+                                color: kWritings,
                               ),
-                              CircularPercentIndicator(
-                                animation: true,
-                                circularStrokeCap: CircularStrokeCap.round,
-                                reverse: true,
-                                progressColor: kMainPink,
-                                backgroundColor: kLightPink,
-                                radius: 130.0,
-                                lineWidth: 15.0,
-                                percent: 0.7,
-                                center: const Text(
-                                  "70%",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: kMainPink,
-                                      fontWeight: FontWeight.w900),
-                                ),
+                            ),
+                            CircularPercentIndicator(
+                              animation: true,
+                              circularStrokeCap: CircularStrokeCap.round,
+                              reverse: true,
+                              progressColor: kMainPink,
+                              backgroundColor: kLightPink,
+                              radius: 130.0,
+                              lineWidth: 15.0,
+                              percent: 0.7,
+                              center: const Text(
+                                "70%",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: kMainPink,
+                                    fontWeight: FontWeight.w900),
                               ),
-                               Text(
-                                'Tasks\nDone'.tr,
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  color: kMainPink,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              'Tasks\nDone'.tr,
+                              style: const TextStyle(
+                                fontSize: 25,
+                                color: kMainPink,
+                                fontWeight: FontWeight.bold,
                               ),
-                            ],
-                          ),
-                        ],
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -121,7 +120,7 @@ class _MainScreen extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                   Text(
+                  Text(
                     'My Projects'.tr,
                     style: const TextStyle(
                       color: kWritings,

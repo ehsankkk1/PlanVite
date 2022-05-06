@@ -7,84 +7,77 @@ import 'package:plane_vite/widgets/white_box.dart';
 
 import '../constants.dart';
 
-
 class ProjectView extends StatelessWidget {
   const ProjectView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-
     return Padding(
-      padding: const EdgeInsets.only(left:15,right: 15,bottom: 35,top: 35),
+      padding: const EdgeInsets.only(left: 15, right: 15, bottom: 35, top: 35),
       child: Container(
-        width: width*0.6,
+        width: width * 0.6,
         height: height * 0.30,
-        child: Stack(
-          fit: StackFit.expand,
-          alignment: Alignment.center,
-          children: [
-            WhiteBox(double.infinity, double.infinity),
-            Padding(
-              padding: EdgeInsets.fromLTRB( width * 0.07,0,width * 0.07,0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Sample Projects',
-                    style: TextStyle(
+        child: WhiteBox(
+          width: double.infinity,
+          height: double.infinity,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(width * 0.07, 0, width * 0.07, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Sample Projects',
+                  style: TextStyle(
                       fontSize: 20,
                       color: kWritings,
-                      fontWeight: FontWeight.bold
-                    ),
+                      fontWeight: FontWeight.bold),
+                ),
+                const Text(
+                  'header',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: kWritings,
                   ),
-                  const  Text(
-                    'header',
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: kWritings,
-                    ),
+                ),
+                LinearPercentIndicator(
+                  percent: 0.6,
+                  animation: true,
+                  backgroundColor: kLightPink,
+                  progressColor: kMainPink,
+                  lineHeight: height * 0.015,
+                ),
+                const Text(
+                  'header',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: kWritings,
                   ),
-                  LinearPercentIndicator(
-                    percent: 0.6,
-                    animation: true,
-                    backgroundColor: kLightPink,
-                    progressColor: kMainPink,
-                    lineHeight: height * 0.015,
+                ),
+                LinearPercentIndicator(
+                  percent: 0.4,
+                  animation: true,
+                  backgroundColor: kLightPink,
+                  progressColor: kMainPink,
+                  lineHeight: height * 0.015,
+                ),
+                const Text(
+                  'header',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: kWritings,
                   ),
-                  const  Text(
-                    'header',
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: kWritings,
-                    ),
-                  ),
-                  LinearPercentIndicator(
-                    percent: 0.4,
-                    animation: true,
-                    backgroundColor: kLightPink,
-                    progressColor: kMainPink,
-                    lineHeight: height * 0.015,
-                  ),
-                  const  Text(
-                    'header',
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: kWritings,
-                    ),
-                  ),
-                  LinearPercentIndicator(
-                    percent: 0.9,
-                    animation: true,
-                    backgroundColor: kLightPink,
-                    progressColor: kMainPink,
-                    lineHeight: height * 0.015,
-                  ),
-                ],
-              ),
+                ),
+                LinearPercentIndicator(
+                  percent: 0.9,
+                  animation: true,
+                  backgroundColor: kLightPink,
+                  progressColor: kMainPink,
+                  lineHeight: height * 0.015,
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
