@@ -49,7 +49,7 @@ class _MainScreen extends StatelessWidget {
       body: SafeArea(
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (overScroll) {
-            overScroll.disallowGlow();
+            overScroll.disallowIndicator();
             return true;
           },
           child: SingleChildScrollView(
@@ -131,7 +131,7 @@ class _MainScreen extends StatelessWidget {
                   //My projects
                   NotificationListener<OverscrollIndicatorNotification>(
                     onNotification: (overScroll) {
-                      overScroll.disallowGlow();
+                      overScroll.disallowIndicator();
                       return true;
                     },
                     child: SingleChildScrollView(

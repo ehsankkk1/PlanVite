@@ -8,7 +8,6 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:plane_vite/screens/board/board_controller.dart';
 import 'package:plane_vite/widgets/app_bar.dart';
 import 'package:plane_vite/widgets/colored_box.dart';
-import 'package:plane_vite/widgets/white_box.dart';
 import '../../constants.dart';
 import '../../widgets/sprint_widget.dart';
 import '../Drawer/drawer_controller.dart';
@@ -52,7 +51,7 @@ class _MainScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // notification and drawer
+            // App Bar
             Padding(
               padding: EdgeInsets.fromLTRB(
                   width * 0.03, height * 0.025, width * 0.03, 0),
@@ -61,67 +60,25 @@ class _MainScreen extends StatelessWidget {
                 head: 'Sample Project',
               ),
             ),
-            NotificationListener<OverscrollIndicatorNotification>(
-              onNotification: (overScroll) {
-                overScroll.disallowIndicator();
-                return true;
-              },
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // sprints
-                    Container(
-                      width: width,
-                      child: CarouselSlider(
-                        items: List.generate(
-                          1,
-                          (index) => SprintWidget(
-                            addButton: true,
-                            sprintName: "Pending",
-                            coloredBoxes: List.generate(
-                              2,
-                              (index) => ColorBox('Build Flutter UwU'),
-                            ),
-                          ),
-                        ),
-                        options: CarouselOptions(
-                          enableInfiniteScroll: false,
-                        ),
-                      ),
-                    ),
 
-                    // add sprint
-                    Container(
-                        margin: EdgeInsets.fromLTRB(
-                            width * 0.03, 20, width * 0.03, 5),
-                        child: WhiteBox(
-                          height: height * 0.35,
-                          width: width * 0.7,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(
-                                Icons.add_circle_outline_rounded,
-                                size: 120,
-                                color: kMainPink,
-                              ),
-                              SizedBox(
-                                height: 30,
-                              ),
-                              Text(
-                                'Add new Sprint',
-                                style: TextStyle(
-                                  color: kWritings,
-                                  fontSize: 18,
-                                ),
-                              ),
-                            ],
-                          ),
-                        )),
-                  ],
+            // Body
+            CarouselSlider(
+              items: List.generate(
+                3,
+                (index) => SprintWidget(
+
+                  addButton: true,
+                  sprintName: "Pending",
+                  coloredBoxes: List.generate(
+                  index+5,
+                    (index) => ColorBox('Build Flutter UwU'),
+                  ),
                 ),
+              ),
+              options: CarouselOptions(
+                viewportFraction: 0.8,
+                  height: height*0.88,
+                enableInfiniteScroll: false,
               ),
             ),
           ],

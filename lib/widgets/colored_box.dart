@@ -13,7 +13,7 @@ class ColorBox extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Container(
-        width: width * 0.65 ,
+
         decoration: BoxDecoration(
           /*border: Border.all(color: darkSecondaryColor,width: 3),*/
             boxShadow:[BoxShadow(
@@ -22,7 +22,7 @@ class ColorBox extends StatelessWidget {
               blurRadius: 10,
               offset: const Offset(0,5),  //changes position of shadow
             )],
-            color: kColoredCard,
+            color: Colors.white,
             borderRadius: const BorderRadius.all(Radius.circular(10))
         ),
         child: Padding(
