@@ -77,12 +77,12 @@ class _MainScreen extends StatelessWidget {
                       child: CarouselSlider(
                         items: List.generate(
                           1,
-                              (index) => SprintWidget(
+                          (index) => SprintWidget(
                             addButton: true,
                             sprintName: "Pending",
                             coloredBoxes: List.generate(
                               2,
-                                  (index) => ColorBox('Build Flutter UwU'),
+                              (index) => ColorBox('Build Flutter UwU'),
                             ),
                           ),
                         ),

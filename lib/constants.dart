@@ -14,7 +14,6 @@ const kColoredCard=Color(0xFFF6DBD9);
 const kTextFieldFill=Color(0xFFFFFFFF);
 const kWritings =Color(0xFF698474);
 const kGrey=Color(0xFFC6C6C6);
-
 double height = Get.height;
 double width = Get.width;
 

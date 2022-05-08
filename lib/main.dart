@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
-      locale: const Locale('ar'),
+      locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
       initialRoute: '/board',
 

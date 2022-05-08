@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:plane_vite/widgets/drawer_item.dart';
 import '../../constants.dart';
@@ -51,13 +49,13 @@ class DrawerScreen extends GetView<MyDrawerController> {
                   ),
                 ),
 
-                DrawerItem(Icons.home,35, 'Home'.tr, (){}),
-                DrawerItem(Icons.task,35, 'Todo Tasks'.tr, (){}),
+                DrawerItem(Icons.home,35, 'Home', (){}),
+                DrawerItem(Icons.task,35, 'Todo Tasks', (){}),
                 const Divider(thickness:1,color: kMainPink,),
-                 Padding(
+                const Padding(
                   padding: EdgeInsets.all(15.0),
                   child: Text(
-                    'WorkSpaces'.tr,
+                    'WorkSpaces',
                     style: TextStyle(
                       fontSize: 15,
                       color: Colors.black54,
@@ -67,12 +65,12 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 ),
                 Column(
                   children: List.generate(
-                    3, (index) => DrawerItem(FontAwesomeIcons.userGroup,25, 'Sample Project'.tr, (){print(index);}),),
+                    3, (index) => DrawerItem(FontAwesomeIcons.userGroup,25, 'Sample Project', (){print(index);}),),
                 ),
-                DrawerItem(Icons.add,35, 'Add Project'.tr, (){}),
+                DrawerItem(Icons.add,35, 'Add Project', (){}),
                 const Divider(thickness:1,color: kMainPink,),
-                DrawerItem(Icons.notifications,35, 'Notifications'.tr, (){}),
-                DrawerItem(Icons.settings,35, 'Settings'.tr, (){}),
+                DrawerItem(Icons.notifications,35, 'Notifications', (){}),
+                DrawerItem(Icons.settings,35, 'Settings', (){}),
             ],
     ),
           ),
