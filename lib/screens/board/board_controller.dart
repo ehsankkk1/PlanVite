@@ -1,14 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
-
+import '../../constants.dart';
 
 class BoardController extends GetxController{
 
 
   var selectedLang;
   var  selectedLangBool ;
-
-
+  final key1=GlobalKey();
 
   @override
   void onInit() {
@@ -27,6 +26,7 @@ class BoardController extends GetxController{
       selectedLangBool.value=true;
     }
   }
+
 
 
 }

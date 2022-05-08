@@ -52,11 +52,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/board', page: ()=>BoardScreen(),binding:BoardBinding()),
 
       ],
-
-
       builder: EasyLoading.init(),
-
-
     );
 
   }

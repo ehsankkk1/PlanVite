@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../constants.dart';
+import '../screens/board/board_controller.dart';
 import 'colored_box.dart';
 
 class SprintWidget extends StatelessWidget {
@@ -9,11 +12,13 @@ class SprintWidget extends StatelessWidget {
   List<ColorBox> coloredBoxes;
   String sprintName;
   bool addButton=true;
-  EdgeInsets edges=EdgeInsets.fromLTRB(width * 0.03, 10, width * 0.03, 10);
+  EdgeInsets edges=EdgeInsets.fromLTRB(width * 0.03, 5, width * 0.03, 5);
   @override
   Widget build(BuildContext context) {
+    BoardController _boardController = Get.find();
     return Container(
-      margin:  EdgeInsets.fromLTRB(width * 0.03, 35, width * 0.03, 35),
+      key: _boardController.key1,
+      margin:  EdgeInsets.fromLTRB(width * 0.03, 20, width * 0.03, 35),
       width: width * 0.65,
       decoration: BoxDecoration(
           /*border: Border.all(color: darkSecondaryColor,width: 3),*/
@@ -58,7 +63,7 @@ class SprintWidget extends StatelessWidget {
             ),
           ),
           ConstrainedBox(
-            constraints:  BoxConstraints( maxHeight: height*0.7,),
+            constraints:  BoxConstraints( maxHeight: height*0.75,),
             child: SingleChildScrollView(
               child: Container(
                 margin: edges,
