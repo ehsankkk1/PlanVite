@@ -45,7 +45,7 @@ class BoardScreen extends StatelessWidget {
 class _MainScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
   BoardController _boardController = Get.find();
-  int item = 0;
+
 
   @override
   Widget build(BuildContext context) {
