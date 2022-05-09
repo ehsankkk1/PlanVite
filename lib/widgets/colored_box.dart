@@ -22,7 +22,7 @@ class ColorBox extends StatelessWidget {
               blurRadius: 10,
               offset: const Offset(0,5),  //changes position of shadow
             )],
-            color: Colors.white,
+            color: kColoredCard,
             borderRadius: const BorderRadius.all(Radius.circular(10))
         ),
         child: Padding(
