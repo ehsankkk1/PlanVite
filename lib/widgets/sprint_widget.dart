@@ -58,7 +58,7 @@ class SprintWidget extends StatelessWidget {
             ),
           ),
           ConstrainedBox(
-            constraints:  BoxConstraints( maxHeight: height*0.7,),
+            constraints:  BoxConstraints( maxHeight: height*0.75,),
             child: Padding(
               padding:  EdgeInsets.only(bottom: height * 0.01),
               child: SingleChildScrollView(
