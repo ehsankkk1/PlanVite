@@ -14,9 +14,9 @@ Map <String, String> ar={
   'Already have an account?':'لديك حساب سابق ؟ ',
   'Sign in':'تسجيل الدخول',
   'Name is Empty ! ':'! الاسم فارغ',
-  'Email is empty ! ':'!البريد الالكتروني فارغ',
-  'Password Is Empty ! ':'!كلمة المرور فارغة',
-  'Confirm Password Is Empty ! ':'!تأكيد كلمة المرور فارغ',
+  'Email is empty ! ':'! البريد الالكتروني فارغ',
+  'Password Is Empty ! ':'! كلمة المرور فارغة',
+  'Confirm Password Is Empty ! ':'! تأكيد كلمة المرور فارغ',
   'Summary':'الملخص',
   'Tasks\nDone':'انتهت المهام',
   'My Projects':'مشاريعي',
@@ -32,6 +32,14 @@ Map <String, String> ar={
   'Todo Tasks':'مهام لفعلها',
   'header':'عنوان',
   'Keep me sign in':'أبقني متصلا',
+  'Please Enter at least 8 Characters !':'! الرجاء ادخال 8 محارف على الأقل',
+  'Not equal to the password ! ':'! لا يطابق كلمة المرور',
+  'Phone number is empty !':'! رقم الهاتف فارغ',
+  'Phone ':'رقم الهاتف',
+
+
+
+
 
 
 

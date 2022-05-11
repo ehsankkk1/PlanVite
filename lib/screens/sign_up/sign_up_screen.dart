@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/screens/sign_up/sign_up_controller.dart';
 
@@ -11,6 +12,7 @@ class SignupScreen extends StatelessWidget {
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
   TextEditingController confirmPasswordController = new TextEditingController();
+  TextEditingController phonelController=new TextEditingController();
   SignupController controller = Get.find();
 
   @override
@@ -135,6 +137,9 @@ class SignupScreen extends StatelessWidget {
                                         if (value.isEmpty) {
                                           return 'Password Is Empty ! '.tr;
                                         }
+                                        else if (value.length<8){
+                                          return 'Please Enter at least 8 Characters !'.tr;
+                                        }
                                       },
                                       controller2: passwordController,
                                       hintText: 'Password'.tr,
@@ -155,8 +160,13 @@ class SignupScreen extends StatelessWidget {
                                           : Icons.visibility,
                                       validator: (value) {
                                         if (value.isEmpty) {
-                                          return 'Confirm Password Is Empty ! '
-                                              .tr;
+                                          return 'Confirm Password Is Empty ! '.tr;
+                                        }
+                                        else if (value.length<8){
+                                          return 'Please Enter at least 8 Characters !'.tr;
+                                        }
+                                        if(value != controller.password){
+                                          return 'Not equal to the password ! '.tr;
                                         }
                                       },
                                       controller2: confirmPasswordController,
@@ -164,6 +174,21 @@ class SignupScreen extends StatelessWidget {
                                       icon: Icons.lock,
                                     );
                                   }),
+                                  SizedBox(height: height*0.015,),
+                                  CustomTextField(
+                                    passwordBool: false,
+                                    validator: (value) {
+                                      if (value.isEmpty) {
+                                        return 'Phone number is empty !'.tr;
+                                      }
+
+
+                                    },
+                                    controller2: phonelController,
+                                    hintText: 'Phone '.tr,
+                                    icon: Icons.add_call,
+                                    textInputType: TextInputType.phone,
+                                  ),
                                   SizedBox(height: locale == 'en'?height*0.07:height*0.02,),
                                 ],
                               ),
@@ -183,8 +208,10 @@ class SignupScreen extends StatelessWidget {
                                 controller.name = nameController.text;
                                 controller.email = emailController.text;
                                 controller.password = passwordController.text;
-                                controller.confirmPassword =
-                                    confirmPasswordController.text;
+                                controller.confirmPassword = confirmPasswordController.text;
+                                controller.phoneNumber = phonelController.text;
+                                onClick();
+
                                 Get.offNamed('/home');
                               }
                             },
@@ -260,5 +287,26 @@ class SignupScreen extends StatelessWidget {
             )),
       ),
     );
+  }
+  void onClick() async {
+    EasyLoading.show(
+      status: 'Loading...',
+      dismissOnTap: true,
+
+    );
+
+    await controller.registerOnClick();
+    if (controller.signupStatus) {
+      Get.offNamed('/login');
+      EasyLoading.showSuccess(controller.message);
+    } else {
+      EasyLoading.showError(
+        controller.message,
+        duration: Duration(seconds: 10),
+        dismissOnTap: true,
+      );
+
+      print('error here');
+    }
   }
 }

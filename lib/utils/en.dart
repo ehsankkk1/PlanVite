@@ -32,4 +32,8 @@ Map <String, String> en={
   'Todo Tasks':'Todo Tasks',
   'header':'header',
   'Keep me sign in':'Keep me sign in',
+  'Please Enter at least 8 Characters !':'Please Enter at least 8 Characters !',
+  'Not equal to the password ! ':'Not equal to the password ! ',
+  'Phone number is empty !':'Phone number is empty !',
+  'Phone ':'Phone ',
 };
