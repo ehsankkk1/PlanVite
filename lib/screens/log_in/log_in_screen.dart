@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/widgets/custom_text_field.dart';
 import '../../constants.dart';
+import '../../widgets/custom_check_box.dart';
 import 'log_in_controller.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -140,6 +141,44 @@ TextEditingController passwordController = new TextEditingController();
                                     )),
                               ),
                               const SizedBox(height: 30,),
+                              Padding(
+                               padding: EdgeInsets.only(
+                                    left: controller.selectedLangBool.value
+                                        ? width * 0.29
+                                        : width * 0.02,
+                                    right: controller.selectedLangBool.value
+                                        ? width * 0.01
+                                        : width * 0.35,
+                                    top: height * 0.003,
+                                    bottom: height*0.02),
+                                child: Row(
+                                  //mainAxisAlignment: MainAxisAlignment.center,
+                                  //crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                     Text(
+                                      'Keep me sign in'.tr,
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: kWritings,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Obx((){
+                                      return  CustomCheckbox(
+                                        onTap: () {
+                                          controller.changeCheckBoxStatus();
+
+                                        },
+                                        size: 25,
+                                        iconSize: 20,
+                                        isSelected: controller.checkBoxStatus.value,
+                                      );
+                                    },),
+                                  ],
+                                ),
+                              ),
                               Text(
                                 'Don\'t have an account?'.tr,
                                 style: const TextStyle(

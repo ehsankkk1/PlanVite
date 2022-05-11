@@ -31,6 +31,8 @@ Map <String, String> ar={
   'WorkSpaces':'مساحة العمل',
   'Todo Tasks':'مهام لفعلها',
   'header':'عنوان',
+  'Keep me sign in':'أبقني متصلا',
+
 
 
 

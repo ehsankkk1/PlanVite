@@ -31,4 +31,5 @@ Map <String, String> en={
   'WorkSpaces':'WorkSpaces',
   'Todo Tasks':'Todo Tasks',
   'header':'header',
+  'Keep me sign in':'Keep me sign in',
 };

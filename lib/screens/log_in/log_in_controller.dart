@@ -10,6 +10,8 @@ class LoginController extends GetxController{
   var email;
   var password;
   var passwordBool;
+  var checkBoxStatus;
+
 
   @override
   void onInit() {
@@ -18,6 +20,8 @@ class LoginController extends GetxController{
     selectedLang='en';
     selectedLangBool = true.obs;
     passwordBool=true.obs;
+    checkBoxStatus=false.obs;
+
 
     super.onInit();
   }
@@ -33,6 +37,13 @@ class LoginController extends GetxController{
     else{
       selectedLangBool.value=true;
     }
+  }
+  void changeCheckBoxStatus()async{
+
+    checkBoxStatus(! (checkBoxStatus.value));
+
+
+
   }
 
 
