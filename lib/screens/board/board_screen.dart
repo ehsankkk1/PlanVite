@@ -20,23 +20,26 @@ class BoardScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: GetBuilder<MyDrawerController>(
-        builder: (_) =>
-            ZoomDrawer(
-              moveMenuScreen: true,
-              controller: _.zoomDrawerController,
-              menuScreen: const DrawerScreen(),
-              mainScreen: _MainScreen(),
-              showShadow: true,
-              mainScreenOverlayColor: Colors.black.withOpacity(0.5),
-              style: DrawerStyle.style1,
-              /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
-          shadowLayer2Color: kMainPink,*/
-              angle: -0,
-              slideWidth: width * 0.90,
-            ),
+    return Directionality(
+            textDirection: TextDirection.ltr,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: GetBuilder<MyDrawerController>(
+          builder: (_) =>
+              ZoomDrawer(
+                moveMenuScreen: true,
+                controller: _.zoomDrawerController,
+                menuScreen: const DrawerScreen(),
+                mainScreen: _MainScreen(),
+                showShadow: true,
+                mainScreenOverlayColor: Colors.black.withOpacity(0.5),
+                style: DrawerStyle.style1,
+                /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
+            shadowLayer2Color: kMainPink,*/
+                angle: -0,
+                slideWidth: width * 0.90,
+              ),
+        ),
       ),
     );
   }
@@ -61,7 +64,7 @@ class _MainScreen extends StatelessWidget {
                   width * 0.03, height * 0.025, width * 0.03, 0),
               child: AppBarWidget(
                 controller: controller,
-                head: 'Sample Project',
+                head: 'Sample Project'.tr,
               ),
             ),
             NotificationListener<OverscrollIndicatorNotification>(
@@ -82,7 +85,7 @@ class _MainScreen extends StatelessWidget {
                         children: [
                           SprintWidget(
                             addButton: true,
-                            sprintName: "Pending",
+                            sprintName: "Pending".tr,
                             coloredBoxes: List.generate(
                               index + 4,
                                   (index) => ColorBox('Build Flutter UwU'),

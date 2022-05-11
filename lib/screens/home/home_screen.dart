@@ -19,21 +19,24 @@ class HomeScreen extends StatelessWidget {
   @override
   MyDrawerController controller = Get.find();
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: GetBuilder<MyDrawerController>(
-        builder: (_) => ZoomDrawer(
-          moveMenuScreen: true,
-          controller: _.zoomDrawerController,
-          menuScreen: DrawerScreen(),
-          mainScreen: _MainScreen(),
-          showShadow: true,
-          mainScreenOverlayColor: Colors.black.withOpacity(0.5),
-          style: DrawerStyle.style1,
-          /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
-          shadowLayer2Color: kMainPink,*/
-          angle: -0,
-          slideWidth: width * 0.90,
+    return Directionality(
+     textDirection: TextDirection.ltr,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: GetBuilder<MyDrawerController>(
+          builder: (_) => ZoomDrawer(
+            moveMenuScreen: true,
+            controller: _.zoomDrawerController,
+            menuScreen: DrawerScreen(),
+            mainScreen: _MainScreen(),
+            showShadow: true,
+            mainScreenOverlayColor: Colors.black.withOpacity(0.5),
+            style: DrawerStyle.style1,
+            /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
+            shadowLayer2Color: kMainPink,*/
+            angle: -0,
+            slideWidth: width * 0.90,
+          ),
         ),
       ),
     );
@@ -62,7 +65,7 @@ class _MainScreen extends StatelessWidget {
                   // notification and drawer
                   AppBarWidget(
                     controller: controller,
-                    head: 'Home',
+                    head: 'Home'.tr,
                   ),
                   const SizedBox(
                     height: 30,
@@ -79,7 +82,7 @@ class _MainScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              'Summary'.tr,
+                              'Summary'.tr.tr,
                               style: const TextStyle(
                                 fontSize: 25,
                                 color: kWritings,

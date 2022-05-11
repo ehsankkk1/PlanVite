@@ -20,6 +20,17 @@ Map <String, String> ar={
   'Summary':'الملخص',
   'Tasks\nDone':'انتهت المهام',
   'My Projects':'مشاريعي',
+  'Sample Project':'مشروع معين',
+  "Pending":"معلق",
+  'Add new sprint':'اضافة قائمة مهام جديدة',
+  'Home':'الصفحة الرئيسية',
+  'Sample Projects':'مشاريع معينة',
+  'Settings':'الاعدادات',
+  'Notifications':'الاشعارات',
+  'Add Project':'اضافة مشروع',
+  'WorkSpaces':'مساحة العمل',
+  'Todo Tasks':'مهام لفعلها',
+  'header':'عنوان',
 
 
 

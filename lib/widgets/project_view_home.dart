@@ -26,15 +26,15 @@ class ProjectView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Sample Projects',
+                 Text(
+                  'Sample Projects'.tr,
                   style: TextStyle(
                       fontSize: 20,
                       color: kWritings,
                       fontWeight: FontWeight.bold),
                 ),
-                const Text(
-                  'header',
+                 Text(
+                  'header'.tr,
                   style: TextStyle(
                     fontSize: 17,
                     color: kWritings,
@@ -47,8 +47,8 @@ class ProjectView extends StatelessWidget {
                   progressColor: kMainPink,
                   lineHeight: height * 0.015,
                 ),
-                const Text(
-                  'header',
+                 Text(
+                  'header'.tr,
                   style: TextStyle(
                     fontSize: 17,
                     color: kWritings,
@@ -61,8 +61,8 @@ class ProjectView extends StatelessWidget {
                   progressColor: kMainPink,
                   lineHeight: height * 0.015,
                 ),
-                const Text(
-                  'header',
+                 Text(
+                  'header'.tr,
                   style: TextStyle(
                     fontSize: 17,
                     color: kWritings,
