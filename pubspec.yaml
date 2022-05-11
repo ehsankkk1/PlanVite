@@ -37,4 +37,9 @@ flutter:
 
   assets:
      - images/
+     -
+  fonts:
+  - family: OleoScriptSwashCaps
+    fonts:
+     - asset: fonts/OleoScriptSwashCaps-Regular.ttf
 

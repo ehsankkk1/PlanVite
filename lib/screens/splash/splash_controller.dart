@@ -28,14 +28,14 @@ class SplashController extends GetxController{
       await validToken(token);
       if(validityToken){
         UserInformation.User_Token=token;
-        Get.offAllNamed('/home');
+       // Get.offAllNamed('/home');
       }
       else {
         EasyLoading.showError(_service.message);
-        Get.offAllNamed('/login');
+       // Get.offAllNamed('/login');
       }
     }else{
-      Get.offNamed('/login');
+     // Get.offNamed('/login');
 
     }
 

@@ -18,22 +18,19 @@ class SplashScreen extends StatelessWidget {
           ),
           child:Column(
             children: [
+SizedBox(height: height*0.1,),
+              Image(image: AssetImage('images/logo-02.png'),),
+              SizedBox(height: height*0.1,),
+              Center(
+                child: Text(
+                  'Plan Vite',
+                  style: TextStyle(
+                    fontFamily: 'OleoScriptSwashCaps',
+                    color: kWritings,
 
-              Image(image: AssetImage('images/log_in_flower.png'),),
-              Row(
-                children: [
-
-                  Text(
-                    'Plan Vite',
-                    style: TextStyle(
-                      color: kLightPink,
-
-                      fontSize: 35,
-                    ),
+                    fontSize: 30,
                   ),
-
-
-                ],
+                ),
               ),
             ],
           ),
