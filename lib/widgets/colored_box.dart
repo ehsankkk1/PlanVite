@@ -4,7 +4,6 @@ import '../constants.dart';
 
 class ColorBox extends StatelessWidget {
 
-
   ColorBox(this.data);
 
   String data;
@@ -13,14 +12,13 @@ class ColorBox extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: Container(
-
         decoration: BoxDecoration(
           /*border: Border.all(color: darkSecondaryColor,width: 3),*/
             boxShadow:[BoxShadow(
               color: Colors.grey.withOpacity(0.8),
               spreadRadius: 1,
-              blurRadius: 10,
-              offset: const Offset(0,5),  //changes position of shadow
+              blurRadius: 3,
+              offset: const Offset(0,4),  //changes position of shadow
             )],
             color: kColoredCard,
             borderRadius: const BorderRadius.all(Radius.circular(10))

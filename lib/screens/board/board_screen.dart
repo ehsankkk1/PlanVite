@@ -1,4 +1,3 @@
-import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -32,6 +31,7 @@ class BoardScreen extends StatelessWidget {
                 menuScreen: const DrawerScreen(),
                 mainScreen: _MainScreen(),
                 showShadow: true,
+                isRtl: false,
                 mainScreenOverlayColor: Colors.black.withOpacity(0.5),
                 style: DrawerStyle.style1,
                 /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
@@ -46,9 +46,9 @@ class BoardScreen extends StatelessWidget {
 }
 
 class _MainScreen extends StatelessWidget {
+
   MyDrawerController controller = Get.find();
   BoardController _boardController = Get.find();
-
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +61,14 @@ class _MainScreen extends StatelessWidget {
             // notification and drawer
             Padding(
               padding: EdgeInsets.fromLTRB(
-                  width * 0.03, height * 0.025, width * 0.03, 0),
+                   width * 0.03, height * 0.025, width * 0.03, 0),
               child: AppBarWidget(
                 controller: controller,
                 head: 'Sample Project'.tr,
               ),
             ),
             NotificationListener<OverscrollIndicatorNotification>(
+
               onNotification: (overScroll) {
                 overScroll.disallowIndicator();
                 return true;

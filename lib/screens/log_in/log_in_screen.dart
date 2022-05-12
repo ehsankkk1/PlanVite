@@ -81,7 +81,6 @@ TextEditingController passwordController = new TextEditingController();
                                           return 'Email Is Empty ! '.tr;
                                         }
                                       },
-
                                       controller2: emailController,
                                       fontSize: 15,
                                       hintText: 'Email',
