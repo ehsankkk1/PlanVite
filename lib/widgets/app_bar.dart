@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../constants.dart';
 import '../screens/Drawer/drawer_controller.dart';
@@ -39,7 +40,10 @@ class AppBarWidget extends StatelessWidget {
             color: kMainPink,
             size: 40,
           ),
-          onTap: () {},
+          onTap: () {
+            Get.toNamed('/notifications');
+
+          },
         ),
       ],
     );
