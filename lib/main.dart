@@ -8,6 +8,7 @@ import 'package:plane_vite/screens/bindings/log_in_binding.dart';
 import 'package:plane_vite/screens/bindings/notifications_binding.dart';
 import 'package:plane_vite/screens/bindings/sign_up_binding.dart';
 import 'package:plane_vite/screens/bindings/splash_binding.dart';
+import 'package:plane_vite/screens/bindings/task_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
 import 'package:plane_vite/screens/board/board_screen.dart';
 import 'package:plane_vite/screens/home/home_screen.dart';
@@ -15,11 +16,10 @@ import 'package:plane_vite/screens/log_in/log_in_screen.dart';
 import 'package:plane_vite/screens/notifications/notifications_screen.dart';
 import 'package:plane_vite/screens/sign_up/sign_up_screen.dart';
 import 'package:plane_vite/screens/splash/splash_screen.dart';
+import 'package:plane_vite/screens/task/task_screen.dart';
 import 'package:plane_vite/screens/welcome/welcome_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:plane_vite/test/test.dart';
-
-
 import 'translations.dart';
 
 
@@ -42,9 +42,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
-      locale: const Locale('en'),
+      locale: const Locale('ar'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/test',
+      initialRoute: '/board',
 
       getPages: [
 
@@ -54,13 +54,12 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
         GetPage(name: '/home', page: ()=>HomeScreen(),binding:HomeBinding()),
         GetPage(name: '/board', page: ()=>BoardScreen(),binding:BoardBinding()),
+        GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
-        GetPage(name: '/test', page: ()=>TestScreen()),
-
+        GetPage(name: '/test', page: ()=>BoardViewExample()),
 
       ],
       builder: EasyLoading.init(),
-
     );
 
   }

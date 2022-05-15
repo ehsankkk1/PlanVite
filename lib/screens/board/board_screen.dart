@@ -9,6 +9,7 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:plane_vite/widgets/app_bar.dart';
 import 'package:plane_vite/widgets/colored_box.dart';
 import '../../constants.dart';
+import '../../test/test.dart';
 import '../../widgets/sprint_widget.dart';
 import '../Drawer/drawer_controller.dart';
 import '../Drawer/drawer_screen.dart';
@@ -68,7 +69,11 @@ class _MainScreen extends StatelessWidget {
                 head: 'Sample Project'.tr,
               ),
             ),
-            NotificationListener<OverscrollIndicatorNotification>(
+            Container(
+                height: height * 0.88,
+                child: BoardViewExample()
+            ),
+            /*NotificationListener<OverscrollIndicatorNotification>(
 
               onNotification: (overScroll) {
                 overScroll.disallowIndicator();
@@ -97,7 +102,7 @@ class _MainScreen extends StatelessWidget {
                   },
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       ),

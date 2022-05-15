@@ -1,9 +1,7 @@
-import 'package:boardview/boardview_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 
-class BoardController extends GetxController{
+class TaskController extends GetxController{
 
 
   var selectedLang;
