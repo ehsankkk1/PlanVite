@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:plane_vite/screens/sign_up/sign_up_controller.dart';
-
+import 'dart:io';
 import '../../constants.dart';
 import '../../widgets/custom_text_field.dart';
 
@@ -14,6 +17,20 @@ class SignupScreen extends StatelessWidget {
   TextEditingController confirmPasswordController = new TextEditingController();
   TextEditingController phonelController=new TextEditingController();
   SignupController controller = Get.find();
+  File? _file1;
+
+  Future gellarypicker() async {
+    final myfile = await ImagePicker().pickImage(source: ImageSource.gallery);
+      _file1 = File(myfile!.path);
+  }
+  Future upload()async{
+    if(_file1==null) { return;}
+    String base64=base64Encode(_file1!.readAsBytesSync());
+    String imagename=_file1!.path.split("/").last;
+  //  controller.encodedImage=base64;
+  //  controller.imageName=imagename;
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,10 +94,15 @@ class SignupScreen extends StatelessWidget {
                             ),
                             width: 120,
                             height: 120,
-                            child: const Icon(
-                              Icons.add_a_photo,
-                              size: 50,
-                              color: kMainPink,
+                            child: GestureDetector(
+                              onTap: (){
+                                gellarypicker();
+                              },
+                              child: const Icon(
+                                Icons.add_a_photo,
+                                size: 50,
+                                color: kMainPink,
+                              ),
                             ),
                           ),
                         ],
