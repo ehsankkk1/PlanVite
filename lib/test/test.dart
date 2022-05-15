@@ -58,11 +58,17 @@ class BoardViewExample extends StatelessWidget {
     for (int i = 0; i < _listData.length; i++) {
       _lists.add(_createBoardList(_listData[i]) as BoardList);
     }
-    return BoardView(
-      width: width*0.9,
-      scrollbarStyle: ScrollbarStyle(),
-      lists: _lists,
-      boardViewController: boardViewController,
+    return NotificationListener<OverscrollIndicatorNotification>(
+      onNotification: (overScroll) {
+        overScroll.disallowIndicator();
+        return true;
+      },
+      child: BoardView(
+        width: width*0.85,
+        scrollbarStyle: ScrollbarStyle(),
+        lists: _lists,
+        boardViewController: boardViewController,
+      ),
     );
   }
   Widget _createBoardList(BoardListObject list) {
