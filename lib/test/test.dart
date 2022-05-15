@@ -4,6 +4,9 @@ import 'package:boardview/boardview.dart';
 import 'package:boardview/boardview_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:plane_vite/widgets/colored_box.dart';
+
+import '../constants.dart';
 
 class BoardItemObject{
 
@@ -33,15 +36,13 @@ class BoardListObject{
   }
 }
 
-
-
-
 class BoardViewExample extends StatelessWidget {
 
-
-
-  List<BoardListObject> _listData = [
-    BoardListObject(title: "List title 1",items: [BoardItemObject(title: 'dsaffdsa')]),
+  final List<BoardListObject> _listData = [
+    BoardListObject(title: "List title 1",items: [
+      BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),
+    ],
+    ),
     BoardListObject(title: "List title 2"),
     BoardListObject(title: "List title 3")
   ];
@@ -58,6 +59,8 @@ class BoardViewExample extends StatelessWidget {
       _lists.add(_createBoardList(_listData[i]) as BoardList);
     }
     return BoardView(
+      width: width*0.9,
+      scrollbarStyle: ScrollbarStyle(),
       lists: _lists,
       boardViewController: boardViewController,
     );
@@ -81,16 +84,37 @@ class BoardViewExample extends StatelessWidget {
         _listData.removeAt(oldListIndex!);
         _listData.insert(listIndex!, list);
       },
-      headerBackgroundColor: Color.fromARGB(255, 235, 236, 240),
-      backgroundColor: Color.fromARGB(255, 235, 236, 240),
+      headerBackgroundColor: Colors.white,
+      backgroundColor: Colors.white,
+      draggable: false,
       header: [
         Expanded(
-            child: Padding(
+            child: Container(
                 padding: EdgeInsets.all(5),
-                child: Text(
-                  list.title!,
-                  style: TextStyle(fontSize: 20),
-                ))),
+                child:  Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Pending",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: kWritings,
+                      ),
+                    ),
+                    InkWell(
+                      child: const Icon(
+                        Icons.add,
+                        size: 40,
+                        color: kMainPink,
+                      ),
+                      onTap: () {
+                        print("tapped");
+                      },
+                    )
+                  ],
+                ),
+            )
+        ),
       ],
       items: items,
     );
@@ -100,7 +124,6 @@ class BoardViewExample extends StatelessWidget {
   Widget buildBoardItem(BoardItemObject itemObject) {
     return BoardItem(
         onStartDragItem: (int? listIndex, int? itemIndex, BoardItemState? state) {
-
         },
         onDropItem: (int? listIndex, int? itemIndex, int? oldListIndex,
             int? oldItemIndex, BoardItemState? state) {
@@ -112,12 +135,7 @@ class BoardViewExample extends StatelessWidget {
         onTapItem: (int? listIndex, int? itemIndex, BoardItemState? state) async {
 
         },
-        item: Card(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(itemObject.title!),
-          ),
-        ));
+        item: ColorBox('Build Flutter UwU'));
   }
 
 

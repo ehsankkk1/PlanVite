@@ -36,14 +36,13 @@ class SprintWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  sprintName,
+                  "Pending",
                   style: const TextStyle(
                     fontSize: 20,
                     color: kWritings,
                   ),
                 ),
-                addButton
-                    ? InkWell(
+                InkWell(
                   child: const Icon(
                     Icons.add,
                     size: 40,
@@ -53,7 +52,7 @@ class SprintWidget extends StatelessWidget {
                     print("tapped");
                   },
                 )
-                    : Container()
+
               ],
             ),
           ),
@@ -71,6 +70,7 @@ class SprintWidget extends StatelessWidget {
               ),
             ),
           ),
+
         ],
       ),
     );
