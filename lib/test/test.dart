@@ -1,46 +1,124 @@
+import 'package:boardview/board_item.dart';
+import 'package:boardview/board_list.dart';
+import 'package:boardview/boardview.dart';
+import 'package:boardview/boardview_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class TestScreen extends StatefulWidget {
-  const TestScreen({Key? key}) : super(key: key);
+class BoardItemObject{
 
-  @override
-  State<TestScreen> createState() => _TestScreenState();
+  String? title;
+
+  BoardItemObject({this.title}){
+    if(this.title == null){
+      this.title = "";
+    }
+  }
+
 }
 
-class _TestScreenState extends State<TestScreen> {
-  final items =[
-    'item 1',
-    'item 2',
-    'item 3',
-    'item 4',
-    'item 5',
-    'item 6',
+
+class BoardListObject{
+
+  String? title;
+  List<BoardItemObject>? items;
+
+  BoardListObject({this.title,this.items}){
+    if(this.title == null){
+      this.title = "";
+    }
+    if(this.items == null){
+      this.items = [];
+    }
+  }
+}
+
+
+
+
+class BoardViewExample extends StatelessWidget {
+
+
+
+  List<BoardListObject> _listData = [
+    BoardListObject(title: "List title 1",items: [BoardItemObject(title: 'dsaffdsa')]),
+    BoardListObject(title: "List title 2"),
+    BoardListObject(title: "List title 3")
   ];
+
+
+  //Can be used to animate to different sections of the BoardView
+  BoardViewController boardViewController = new BoardViewController();
+
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body:ReorderableListView(
-          children: List.generate(5, (index){
-            return ListTile(
-              title: Text('item$index'),
-              key: ValueKey('item$index'),
-            );
-          }),
-          onReorder: (int oldindex,newindex){
-            setState(() {
-              _updateMyItem(oldindex,newindex);
-            });
-          },
-        ) ,
-      ),
+    List<BoardList> _lists = [];
+    for (int i = 0; i < _listData.length; i++) {
+      _lists.add(_createBoardList(_listData[i]) as BoardList);
+    }
+    return BoardView(
+      lists: _lists,
+      boardViewController: boardViewController,
     );
   }
-  void _updateMyItem(int oldsindex,int newindex){
+  Widget _createBoardList(BoardListObject list) {
+    List<BoardItem> items = [];
+    for (int i = 0; i < list.items!.length; i++) {
+      items.insert(i, buildBoardItem(list.items![i]) as BoardItem);
+    }
 
-    final String item = items.removeAt(oldsindex);
-    items.insert(newindex, item);
+    return BoardList(
+      onStartDragList: (int? listIndex) {
 
+      },
+      onTapList: (int? listIndex) async {
+
+      },
+      onDropList: (int? listIndex, int? oldListIndex) {
+        //Update our local list data
+        var list = _listData[oldListIndex!];
+        _listData.removeAt(oldListIndex!);
+        _listData.insert(listIndex!, list);
+      },
+      headerBackgroundColor: Color.fromARGB(255, 235, 236, 240),
+      backgroundColor: Color.fromARGB(255, 235, 236, 240),
+      header: [
+        Expanded(
+            child: Padding(
+                padding: EdgeInsets.all(5),
+                child: Text(
+                  list.title!,
+                  style: TextStyle(fontSize: 20),
+                ))),
+      ],
+      items: items,
+    );
   }
+
+
+  Widget buildBoardItem(BoardItemObject itemObject) {
+    return BoardItem(
+        onStartDragItem: (int? listIndex, int? itemIndex, BoardItemState? state) {
+
+        },
+        onDropItem: (int? listIndex, int? itemIndex, int? oldListIndex,
+            int? oldItemIndex, BoardItemState? state) {
+          //Used to update our local item data
+          var item = _listData[oldListIndex!].items![oldItemIndex!];
+          _listData[oldListIndex].items!.removeAt(oldItemIndex!);
+          _listData[listIndex!].items!.insert(itemIndex!, item);
+        },
+        onTapItem: (int? listIndex, int? itemIndex, BoardItemState? state) async {
+
+        },
+        item: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(itemObject.title!),
+          ),
+        ));
+  }
+
 
 }
