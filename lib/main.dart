@@ -17,6 +17,7 @@ import 'package:plane_vite/screens/sign_up/sign_up_screen.dart';
 import 'package:plane_vite/screens/splash/splash_screen.dart';
 import 'package:plane_vite/screens/welcome/welcome_screen.dart';
 import 'package:flutter/services.dart';
+import 'package:plane_vite/test/test.dart';
 
 
 import 'translations.dart';
@@ -41,9 +42,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
-      locale: const Locale('ar'),
+      locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/board',
+      initialRoute: '/test',
 
       getPages: [
         GetPage(name: '/splash', page: ()=>SplashScreen(),binding: SplashBinding()),
@@ -53,6 +54,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/home', page: ()=>HomeScreen(),binding:HomeBinding()),
         GetPage(name: '/board', page: ()=>BoardScreen(),binding:BoardBinding()),
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
+        GetPage(name: '/test', page: ()=>TestScreen()),
+
 
       ],
       builder: EasyLoading.init(),
