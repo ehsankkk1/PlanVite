@@ -52,6 +52,7 @@ class _MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(

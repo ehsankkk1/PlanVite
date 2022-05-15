@@ -47,7 +47,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/test',
 
       getPages: [
-        GetPage(name: '/splash', page: ()=>SplashScreen(),binding: SplashBinding()),
+
+        GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),
         GetPage(name: '/login', page: ()=>LoginScreen(),binding: LoginBinding()),
         GetPage(name: '/signup', page: ()=> SignupScreen(),binding: SignupBinding()),
         GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
