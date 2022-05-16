@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/board', page: ()=>BoardScreen(),binding:BoardBinding()),
         GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
-        GetPage(name: '/test', page: ()=>BoardViewExample()),
+        //GetPage(name: '/test', page: ()=>BoardViewExample()),
 
       ],
       builder: EasyLoading.init(),
