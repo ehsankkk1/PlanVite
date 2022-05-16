@@ -7,10 +7,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:plane_vite/widgets/app_bar.dart';
-import 'package:plane_vite/widgets/colored_box.dart';
 import '../../constants.dart';
-import '../../test/test.dart';
-import '../../widgets/sprint_widget.dart';
+import '../../widgets/board_view_widget.dart';
 import '../Drawer/drawer_controller.dart';
 import '../Drawer/drawer_screen.dart';
 import 'board_controller.dart';
@@ -45,12 +43,10 @@ class BoardScreen extends StatelessWidget {
     );
   }
 }
-
 class _MainScreen extends StatelessWidget {
 
   MyDrawerController controller = Get.find();
   BoardController _boardController = Get.find();
-
   @override
   Widget build(BuildContext context) {
     
@@ -70,8 +66,9 @@ class _MainScreen extends StatelessWidget {
               ),
             ),
             Container(
+              margin: EdgeInsets.only(left: 10),
                 height: height * 0.88,
-                child: BoardViewExample()
+                child: BoardViewWidget()
             ),
             /*NotificationListener<OverscrollIndicatorNotification>(
 
