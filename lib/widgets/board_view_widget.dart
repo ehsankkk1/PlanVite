@@ -4,8 +4,9 @@ import 'package:boardview/boardview.dart';
 import 'package:boardview/boardview_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:plane_vite/widgets/colored_box.dart';
+import 'package:plane_vite/widgets/task_widget.dart';
 import '../constants.dart';
+import 'column_header.dart';
 
 class BoardItemObject{
 
@@ -97,34 +98,14 @@ class BoardViewWidget extends StatelessWidget {
         Expanded(
             child: Container(
               padding: EdgeInsets.all(5),
-              child:  Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Pending",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: kWritings,
-                    ),
-                  ),
-                  InkWell(
-                    child: const Icon(
-                      Icons.add,
-                      size: 40,
-                      color: kMainPink,
-                    ),
-                    onTap: () {
-                      print("tapped");
-                    },
-                  )
-                ],
-              ),
+              child:  ColumnHeader(),
             )
         ),
       ],
       items: items,
     );
   }
+
 
 
   Widget buildBoardItem(BoardItemObject itemObject) {
@@ -141,6 +122,7 @@ class BoardViewWidget extends StatelessWidget {
         onTapItem: (int? listIndex, int? itemIndex, BoardItemState? state) async {
 
         },
-        item: ColorBox('Build Flutter UwU'));
+        //Todo : add the task data here
+        item: TaskWidget(name:'Build Flutter UwU',dueDate: "May 22",priority: "High",));
   }
 }

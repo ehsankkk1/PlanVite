@@ -66,7 +66,7 @@ class _MainScreen extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 10),
+              margin: const EdgeInsets.only(left: 10),
                 height: height * 0.88,
                 child: BoardViewWidget()
             ),

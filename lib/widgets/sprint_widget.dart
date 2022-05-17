@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import 'colored_box.dart';
+import 'task_widget.dart';
 
 class SprintWidget extends StatelessWidget {
   SprintWidget({required this.sprintName, required this.coloredBoxes,  required this.addButton});
 
-  List<ColorBox> coloredBoxes;
+  List<TaskWidget> coloredBoxes;
   String sprintName;
   bool addButton=true;
   EdgeInsets edges=EdgeInsets.fromLTRB(width * 0.03, 10, width * 0.03, 10);
