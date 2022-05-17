@@ -70,7 +70,10 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 ),
                 DrawerItem(Icons.add,35, 'Add Project'.tr, (){}),
                 const Divider(thickness:1,color: kMainPink,),
-                DrawerItem(Icons.notifications,35, 'Notifications'.tr, (){}),
+                DrawerItem(Icons.notifications,35, 'Notifications'.tr, (){
+                  Get.toNamed('/notifications');
+
+                }),
                 DrawerItem(Icons.settings,35, 'Settings'.tr, (){}),
             ],
     ),

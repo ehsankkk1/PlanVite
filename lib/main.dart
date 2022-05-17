@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -23,13 +24,16 @@ import 'package:plane_vite/test/test.dart';
 import 'translations.dart';
 
 
-void main() {
+Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
   Get.put<MyDrawerController>(MyDrawerController());
+
   runApp(const MyApp());
 }
 
@@ -44,7 +48,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('ar'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/board',
+      initialRoute: '/task',
 
       getPages: [
 

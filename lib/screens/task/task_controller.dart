@@ -4,24 +4,43 @@ import 'package:get/get.dart';
 class TaskController extends GetxController{
 
 
-  var selectedLang;
-  var  selectedLangBool ;
+  var low;
+  var medium;
+  var high;
+  var approved;
+  var dueDate;
 
   @override
   void onInit() {
-    selectedLang='en';
-    selectedLangBool = true.obs;
+    low=false.obs;
+    medium=false.obs;
+    high=false.obs;
+    approved=false.obs;
+    dueDate=false.obs;
     super.onInit();
 
   }
 
-  void changeSelectedLang()async{
-    if(selectedLang=='en'){
-      selectedLangBool.value=false;
-    }
-    else{
-      selectedLangBool.value=true;
-    }
+  void PickLow(){
+    low.value=!low.value;
+    medium.value=false;
+    high.value=false;
+  }
+  void PickMedium(){
+    medium.value=!medium.value;
+    low.value=false;
+    high.value=false;
+  }
+  void PickHigh(){
+    high.value=!high.value;
+    low.value=false;
+    medium.value=false;
+  }
+  void PickApproved(){
+    approved.value=!approved.value;
+  }
+  void PickDueDate(){
+    dueDate.value=!dueDate.value;
   }
 
 

@@ -16,9 +16,7 @@ class NotificationsScreen extends StatelessWidget {
       child: Scaffold(
           backgroundColor: kBackGround,
           appBar: AppBar(
-            leading: BackButton(
-              color: kMainPink,
-            ),
+
             backgroundColor: kBackGround,
             title: Padding(
               padding: EdgeInsets.only(
