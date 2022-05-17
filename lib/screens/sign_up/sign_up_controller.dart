@@ -13,6 +13,8 @@ class SignupController extends GetxController {
   var phoneNumber;
   var signupStatus = false;
   var message;
+  var encodedImage='';
+  var imageName='';
 
   SignupService service = SignupService();
 
@@ -38,11 +40,15 @@ class SignupController extends GetxController {
   }
   Future<void> registerOnClick() async {
     User user = User(
+        encodedImage: encodedImage,
+        imageName: imageName,
         userName: name,
         email: email,
         password: password,
         confirmPassword: confirmPassword,
         phoneNumber: phoneNumber);
+    print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+    print(encodedImage);
     signupStatus = await service.register(user);
     message=service.message;
 

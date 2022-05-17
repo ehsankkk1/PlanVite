@@ -4,6 +4,8 @@ class User {
   String? password;
   String? confirmPassword;
   String? phoneNumber;
+  String? encodedImage;
+  String? imageName;
 
   User({
     this.userName,
@@ -11,5 +13,7 @@ class User {
     this.password,
     this.confirmPassword,
     this.phoneNumber,
+    this.encodedImage,
+    this.imageName,
   });
 }

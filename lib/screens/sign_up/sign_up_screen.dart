@@ -27,8 +27,8 @@ class SignupScreen extends StatelessWidget {
     if(_file1==null) { return;}
     String base64=base64Encode(_file1!.readAsBytesSync());
     String imagename=_file1!.path.split("/").last;
-  //  controller.encodedImage=base64;
-  //  controller.imageName=imagename;
+    controller.encodedImage=base64;
+    controller.imageName=imagename;
 
   }
 
@@ -187,7 +187,7 @@ class SignupScreen extends StatelessWidget {
                                         else if (value.length<8){
                                           return 'Please Enter at least 8 Characters !'.tr;
                                         }
-                                        if(value != controller.password){
+                                        if(value != passwordController.text){
                                           return 'Not equal to the password ! '.tr;
                                         }
                                       },
@@ -232,6 +232,7 @@ class SignupScreen extends StatelessWidget {
                                 controller.password = passwordController.text;
                                 controller.confirmPassword = confirmPasswordController.text;
                                 controller.phoneNumber = phonelController.text;
+                                upload();
                                 onClick();
 
                                 Get.offNamed('/home');

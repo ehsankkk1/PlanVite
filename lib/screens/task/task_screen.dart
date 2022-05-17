@@ -303,6 +303,7 @@ class TaskScreen extends StatelessWidget {
 
                       cursorColor: kMainPink,
                       decoration: InputDecoration(
+
                         focusedBorder:UnderlineInputBorder(
                           borderSide:  BorderSide(color: kMainPink, width: 2.0),
 
