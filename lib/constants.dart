@@ -8,7 +8,8 @@ import 'package:get/get.dart';
 const kMainPink=Color(0xFFFFAAA5);
 const kLightPink=Color(0xFFFFDFEC);
 const kColoredCard=Color(0xFFFDE3E1);
- const kWritings =Color(0xFF698474);
+const kWritings =Color(0xFF698474);
+const kPriortyColor=Color(0xffFFEAF3);
 //pink2
 const kBackGround=Color(0xFFfef6e4);
 //const kMainPink=Color(0xFFF582AE);

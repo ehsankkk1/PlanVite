@@ -141,6 +141,6 @@ class BoardViewWidget extends StatelessWidget {
         onTapItem: (int? listIndex, int? itemIndex, BoardItemState? state) async {
 
         },
-        item: ColorBox('Build Flutter UwU'));
+        item: ColorBox(name:'Build Flutter UwU',dueDate: "May 22",));
   }
 }
