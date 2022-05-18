@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class PriorityWidget extends StatelessWidget {
-  PriorityWidget(this.name, this.colour, this.textColor);
+  PriorityWidget({required this.name, required this.colour, required this.textColor});
 
   Color colour;
   String name;

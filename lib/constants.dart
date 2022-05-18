@@ -11,6 +11,13 @@ const kLightPink=Color(0xFFFFDFEC);
 const kColoredCard=Color(0xFFFDE3E1);
 const kWritings =Color(0xFF698474);
 const kPriortyColor=Color(0xffFFEAF3);
+final BoxShadow kBoxShadow=BoxShadow(
+  color: Colors.grey.withOpacity(0.8),
+  spreadRadius: 1,
+  blurRadius: 3,
+  offset: const Offset(0, 4), //changes position of shadow
+);
+
 //pink2
 //const kBackGround=Color(0xFFfef6e4);
 //const kMainPink=Color(0xFFF582AE);

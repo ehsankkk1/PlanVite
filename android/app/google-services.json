@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1019736102911",
+    "project_id": "plan-vite-6ab75",
+    "storage_bucket": "plan-vite-6ab75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019736102911:android:e95ba971ca4c8dd92739ca",
+        "android_client_info": {
+          "package_name": "com.example.plane_vite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019736102911-t13ehqgvgtp3d1ma08fh31sbamti483f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZwMS3D7oczajIz-0dnYShvqKGDFhXSAU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019736102911-t13ehqgvgtp3d1ma08fh31sbamti483f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

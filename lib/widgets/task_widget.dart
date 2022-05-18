@@ -31,7 +31,7 @@ class TaskWidget extends StatelessWidget {
                 spreadRadius: 1,
                 blurRadius: 3,
                 offset: const Offset(0, 4), //changes position of shadow
-              )
+              ),
             ],
             color: kColoredCard,
             borderRadius: const BorderRadius.all(Radius.circular(10))),
@@ -58,7 +58,7 @@ class TaskWidget extends StatelessWidget {
               priority != null
                   ? Padding(
                 padding: const EdgeInsets.only(bottom: 15),
-                child: PriorityWidget(priority!,kPriortyColor,kWritings),
+                child: PriorityWidget(name:priority!,colour:kPriortyColor,textColor:kWritings),
               ):Container(),
               Row(
                 children: [

@@ -8,7 +8,9 @@ import 'package:plane_vite/widgets/task_widget.dart';
 import '../constants.dart';
 import 'column_header.dart';
 
-class BoardItemObject{
+
+class BoardItemObject
+{
 
   String? title;
 
@@ -19,7 +21,6 @@ class BoardItemObject{
   }
 
 }
-
 
 class BoardListObject{
 
@@ -79,6 +80,7 @@ class BoardViewWidget extends StatelessWidget {
     }
 
     return BoardList(
+
       onStartDragList: (int? listIndex) {
 
       },
@@ -110,6 +112,7 @@ class BoardViewWidget extends StatelessWidget {
 
   Widget buildBoardItem(BoardItemObject itemObject) {
     return BoardItem(
+      draggable: true,
         onStartDragItem: (int? listIndex, int? itemIndex, BoardItemState? state) {
         },
         onDropItem: (int? listIndex, int? itemIndex, int? oldListIndex,

@@ -32,7 +32,7 @@ class ColumnHeader extends StatelessWidget {
             )
           ],
         ),
-        Row(
+       /* Row(
           children: [
             Checkbox(value: true, onChanged: (value){},activeColor: kMainPink,),
             Text(
@@ -42,7 +42,7 @@ class ColumnHeader extends StatelessWidget {
                 color: kWritings,
               ),)
           ],
-        )
+        )*/
       ],
     );
   }
