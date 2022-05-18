@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/signup',
+      initialRoute: '/task',
 
       getPages: [
 

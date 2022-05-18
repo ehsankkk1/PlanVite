@@ -157,9 +157,26 @@ class TaskScreen extends StatelessWidget {
                                     context: context,
                                     initialDate: DateTime.now(),
                                     firstDate: DateTime(2021),
-                                    lastDate: DateTime(2023)
+                                    lastDate: DateTime(2023),
+
+                                  builder: (context,child)=> Theme(
+                                    data: ThemeData().copyWith(
+                                      colorScheme: ColorScheme.dark(
+                                        primary: kMainPink,
+                                        onPrimary: Colors.black,
+                                        surface: kMainPink,
+                                      ),
+                                      dialogBackgroundColor: Colors.white30,
+                                    ),
+                                    child: child!,
+
+                                  ),
+
                                 )
                                     .then((date) {
+                                      controller.year=date?.year.toString();
+                                      controller.month=date?.month.toString();
+                                      controller.day=date?.day.toString();
 
 
 
@@ -174,7 +191,7 @@ class TaskScreen extends StatelessWidget {
                               },
 
                               child: Icon(
-                                Icons.calendar_today,
+                                Icons.date_range,
                                 color:controller.dateBool.value ?  kMainPink:kGrey,
                               ));
                         }),
@@ -188,7 +205,7 @@ class TaskScreen extends StatelessWidget {
 
                             controller.dateBool==false
                                 ? 'Due Date'
-                                :controller.date,
+                                :'${controller.year}/${controller.month}/${controller.day}',
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 20,
@@ -377,11 +394,12 @@ class TaskScreen extends StatelessWidget {
                     ),),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left:width*0.01,top: height*0.01),
+                    padding: EdgeInsets.only(left:width*0.01,top: height*0.001),
                     child: Row(
                       children: [
                         IconButton(onPressed: (){}, icon: Icon(Icons.add,
                           color: kMainPink,
+                          size: 30,
 
                         ),),
                         Expanded(

@@ -13,6 +13,9 @@ class TaskController extends GetxController{
   var fileBool;
   var date;
   var dateBool;
+  var year;
+  var month;
+  var day;
 
   @override
   void onInit() {
@@ -55,7 +58,6 @@ class TaskController extends GetxController{
     fileBool.value=true;
   }
   void PickDate(){
-
 
     dateBool.value=true;
 
