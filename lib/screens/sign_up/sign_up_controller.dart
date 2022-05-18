@@ -15,6 +15,7 @@ class SignupController extends GetxController {
   var message;
   var encodedImage='';
   var imageName='';
+  var fileBool;
 
   SignupService service = SignupService();
 
@@ -28,7 +29,11 @@ class SignupController extends GetxController {
     phoneNumber = '';
     passwordBool = true.obs;
     confirmPasswordBool = true.obs;
+    fileBool=false.obs;
     super.onInit();
+  }
+  void PickFile(){
+    fileBool.value=true;
   }
 
   void securePassword() {
@@ -47,8 +52,8 @@ class SignupController extends GetxController {
         password: password,
         confirmPassword: confirmPassword,
         phoneNumber: phoneNumber);
-    print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
-    print(encodedImage);
+
+    //print(encodedImage);
     signupStatus = await service.register(user);
     message=service.message;
 

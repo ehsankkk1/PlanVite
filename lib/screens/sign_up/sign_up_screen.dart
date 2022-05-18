@@ -22,6 +22,9 @@ class SignupScreen extends StatelessWidget {
   Future gellarypicker() async {
     final myfile = await ImagePicker().pickImage(source: ImageSource.gallery);
       _file1 = File(myfile!.path);
+    if(_file1 != null){
+      controller.PickFile();
+    }
   }
   Future upload()async{
     if(_file1==null) { return;}
@@ -94,16 +97,27 @@ class SignupScreen extends StatelessWidget {
                             ),
                             width: 120,
                             height: 120,
-                            child: GestureDetector(
-                              onTap: (){
-                                gellarypicker();
-                              },
-                              child: const Icon(
-                                Icons.add_a_photo,
-                                size: 50,
-                                color: kMainPink,
-                              ),
-                            ),
+
+                            child: Obx((){
+                              return  GestureDetector(
+                                onTap: (){
+                                  controller.fileBool.value=false;
+                                  gellarypicker();
+                                },
+                                child: (controller.fileBool.value)
+                                    ?CircleAvatar(
+                                    foregroundImage: Image.file(_file1!).image,
+                                    )
+                                    : Icon(
+                                  Icons.add_a_photo,
+                                  size: 50,
+                                  color: kMainPink,
+                                ),
+                              );
+                            }),
+
+
+
                           ),
                         ],
                       ),

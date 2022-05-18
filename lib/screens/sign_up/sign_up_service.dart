@@ -18,6 +18,9 @@ class SignupService {
       'password': user.password,
       'confirmPassword': user.confirmPassword,
       'phone': user.phoneNumber,
+      'encodedImage':user.encodedImage,
+      'imageName':user.imageName,
+
     });
    // print(response.statusCode);
    // print(response.body);
