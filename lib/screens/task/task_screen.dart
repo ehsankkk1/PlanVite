@@ -57,7 +57,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding:  EdgeInsets.only(left: width*0.07,top: height*0.01),
-                    child: Text('Build Your Task',
+                    child: Text('Build Your Task'.tr,
                       style: TextStyle(
                           color: kWritings,
                           fontSize: 25
@@ -83,7 +83,7 @@ class TaskScreen extends StatelessWidget {
                         SizedBox(
                           width: width*0.03,
                         ),
-                        Text('Approved',style: TextStyle(
+                        Text('Approved'.tr,style: TextStyle(
                           color: Colors.grey,
                           fontSize: 20,
                         ),)
@@ -204,7 +204,7 @@ class TaskScreen extends StatelessWidget {
                           return  Text(
 
                             controller.dateBool==false
-                                ? 'Due Date'
+                                ? 'Due Date'.tr
                                 :'${controller.year}/${controller.month}/${controller.day}',
                             style: TextStyle(
                               color: Colors.grey,
@@ -217,7 +217,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: width*0.05,top: height*0.04),
-                    child: Text('Fields',style: TextStyle(
+                    child: Text('Fields'.tr,style: TextStyle(
                       color: kWritings,
                       fontSize: 20,
                     ),),
@@ -248,7 +248,7 @@ class TaskScreen extends StatelessWidget {
                             width: width*0.03,
 
                           ),
-                          Text('Priorty',style: TextStyle(
+                          Text('Priority'.tr,style: TextStyle(
                             color: kWritings,
                             fontSize: 17,
                           ),),
@@ -274,7 +274,7 @@ class TaskScreen extends StatelessWidget {
                                   ),],
                                 ),
                                 child: Center(
-                                  child: Text('Low',style: TextStyle(
+                                  child: Text('Low'.tr,style: TextStyle(
                                     color: kWritings,
                                     fontSize: 17,
                                   ),),
@@ -305,7 +305,7 @@ class TaskScreen extends StatelessWidget {
                                   ),],
                                 ),
                                 child: Center(
-                                  child: Text('Medium',style: TextStyle(
+                                  child: Text('Medium'.tr,style: TextStyle(
                                     color: kWritings,
                                     fontSize: 17,
                                   ),),
@@ -336,7 +336,7 @@ class TaskScreen extends StatelessWidget {
                                   ),],
                                 ),
                                 child: Center(
-                                  child: Text('High',style: TextStyle(
+                                  child: Text('High'.tr,style: TextStyle(
                                     color: kWritings,
                                     fontSize: 17,
                                   ),),
@@ -351,7 +351,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: width*0.05,top: height*0.03),
-                    child: Text('Description',style: TextStyle(
+                    child: Text('Description'.tr,style: TextStyle(
                       color: kWritings,
                       fontSize: 17,
                     ),),
@@ -375,7 +375,7 @@ class TaskScreen extends StatelessWidget {
 
 
 
-                        hintText: 'Add More Details to this Task',
+                        hintText: 'Add More Details to this Task'.tr,
 
                         hintStyle: TextStyle(
                           color: Colors.grey,
@@ -388,7 +388,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: width*0.05,top: height*0.03),
-                    child: Text('Sub Tasks',style: TextStyle(
+                    child: Text('Sub Tasks'.tr,style: TextStyle(
                       color: kWritings,
                       fontSize: 17,
                     ),),
@@ -420,7 +420,7 @@ class TaskScreen extends StatelessWidget {
 
 
 
-                              hintText: 'Sub Task',
+                              hintText: 'Sub Task'.tr,
 
                               hintStyle: TextStyle(
                                 color: Colors.grey,
@@ -436,7 +436,7 @@ class TaskScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: width*0.05,top: height*0.03),
-                    child: Text('Image',style: TextStyle(
+                    child: Text('Image'.tr,style: TextStyle(
                       color: kWritings,
                       fontSize: 20,
                     ),),

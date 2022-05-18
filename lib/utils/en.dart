@@ -36,4 +36,18 @@ Map <String, String> en={
   'Not equal to the password ! ':'Not equal to the password ! ',
   'Phone number is empty !':'Phone number is empty !',
   'Phone ':'Phone ',
+  'Build Your Task':'Build Your Task',
+  'Approved':'Approved',
+  'Due Date':'Due Date',
+  'Fields':'Fields',
+  'Priority':'Priority',
+  'Low':'Low',
+  'Medium':'Medium',
+  'High':'High',
+  'Description':'Description',
+  'Image':'Image',
+  'Sub Task':'Sub Task',
+  'Sub Tasks':'Sub Tasks',
+  'Add More Details to this Task':'Add More Details to this Task',
+
 };

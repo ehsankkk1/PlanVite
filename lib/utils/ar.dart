@@ -36,6 +36,20 @@ Map <String, String> ar={
   'Not equal to the password ! ':'! لا يطابق كلمة المرور',
   'Phone number is empty !':'! رقم الهاتف فارغ',
   'Phone ':'رقم الهاتف',
+  'Build Your Task':'قم ببناء مهمتك',
+  'Approved':'الموافقة',
+  'Due Date':'اضافة وقت',
+  'Fields':'الحقول',
+  'Priority':'الأولوية',
+  'Low':'منخفضة',
+  'Medium':'متوسطة',
+  'High':'مرتفعة',
+  'Description':'التوصيف',
+  'Image':'الصورة',
+  'Sub Task':'مهمة مرتبطة',
+  'Sub Tasks':'مهام مرتبطة',
+  'Add More Details to this Task':'اضافة المزيد من التفاصيل على هذه المهمة',
+
 
 
 
