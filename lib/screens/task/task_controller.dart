@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 
@@ -9,6 +10,9 @@ class TaskController extends GetxController{
   var high;
   var approved;
   var dueDate;
+  var fileBool;
+  var date;
+  var dateBool;
 
   @override
   void onInit() {
@@ -17,6 +21,11 @@ class TaskController extends GetxController{
     high=false.obs;
     approved=false.obs;
     dueDate=false.obs;
+    fileBool=false.obs;
+    date='';
+    dateBool=false.obs;
+
+
     super.onInit();
 
   }
@@ -41,6 +50,16 @@ class TaskController extends GetxController{
   }
   void PickDueDate(){
     dueDate.value=!dueDate.value;
+  }
+  void PickFile(){
+    fileBool.value=true;
+  }
+  void PickDate(){
+
+
+    dateBool.value=true;
+
+
   }
 
 

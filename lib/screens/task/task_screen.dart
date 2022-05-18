@@ -8,12 +8,20 @@ import 'package:plane_vite/screens/task/task_controller.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 
 
+
 class TaskScreen extends StatelessWidget {
   TaskController controller = Get.find();
   File? _file1;
+
+
+
   Future gellarypicker() async {
     final myfile = await ImagePicker().pickImage(source: ImageSource.gallery);
     _file1 = File(myfile!.path);
+    if(_file1 != null){
+      controller.PickFile();
+    }
+
   }
   @override
   Widget build(BuildContext context) {
@@ -36,7 +44,10 @@ class TaskScreen extends StatelessWidget {
                           size: 35,
                         ),),
                       ),
-                      IconButton(onPressed: (){}, icon: Padding(
+                      IconButton(onPressed: (){
+                        print(_file1);
+
+                      }, icon: Padding(
                         padding: EdgeInsets.only(right: 0),
                         child: Icon(Icons.done,
                           color: kMainPink,size: 35,
@@ -137,22 +148,53 @@ class TaskScreen extends StatelessWidget {
 
                       children: [
                         Obx((){
-                          return  CustomCheckbox(onTap: (){
-                            controller.PickDueDate();
-                          },
-                            size: 25,
-                            iconSize: 20,
-                            isSelected: controller.dueDate.value,
-                          );
+                          return GestureDetector(
+
+                              onTap: () {
+                               controller.dateBool.value=false;
+                                showDatePicker(
+
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime(2021),
+                                    lastDate: DateTime(2023)
+                                )
+                                    .then((date) {
+
+
+
+
+                                  controller.date=date.toString();
+
+                                  controller.PickDate();
+
+
+
+                                });
+                              },
+
+                              child: Icon(
+                                Icons.calendar_today,
+                                color:controller.dateBool.value ?  kMainPink:kGrey,
+                              ));
                         }),
+
 
                         SizedBox(
                           width: width*0.03,
                         ),
-                        Text('Due Date',style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 20,
-                        ),)
+                        Obx((){
+                          return  Text(
+
+                            controller.dateBool==false
+                                ? 'Due Date'
+                                :controller.date,
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 20,
+                            ),);
+                        }),
+
                       ],
                     ),
                   ),
@@ -301,13 +343,19 @@ class TaskScreen extends StatelessWidget {
                     padding: EdgeInsets.only(left: width*0.05,top: 0,right: width*0.05),
                     child: TextField(
 
+
                       cursorColor: kMainPink,
                       decoration: InputDecoration(
 
                         focusedBorder:UnderlineInputBorder(
-                          borderSide:  BorderSide(color: kMainPink, width: 2.0),
+                          borderSide:  BorderSide.none,
 
                         ),
+                        enabledBorder: OutlineInputBorder(
+
+                            borderSide: BorderSide.none
+                             ),
+
 
 
                         hintText: 'Add More Details to this Task',
@@ -320,6 +368,53 @@ class TaskScreen extends StatelessWidget {
                       ),
 
                     ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: width*0.05,top: height*0.03),
+                    child: Text('Sub Tasks',style: TextStyle(
+                      color: kWritings,
+                      fontSize: 17,
+                    ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left:width*0.01,top: height*0.01),
+                    child: Row(
+                      children: [
+                        IconButton(onPressed: (){}, icon: Icon(Icons.add,
+                          color: kMainPink,
+
+                        ),),
+                        Expanded(
+                          child: TextField(
+
+
+                            cursorColor: kMainPink,
+                            decoration: InputDecoration(
+
+                              focusedBorder:UnderlineInputBorder(
+                                borderSide:  BorderSide.none,
+
+                              ),
+                              enabledBorder: OutlineInputBorder(
+
+                                  borderSide: BorderSide.none
+                              ),
+
+
+
+                              hintText: 'Sub Task',
+
+                              hintStyle: TextStyle(
+                                color: Colors.grey,
+
+                              ),
+
+                            ),
+
+                          ),
+                        ),
+                      ],
+                    )
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: width*0.05,top: height*0.03),
@@ -346,18 +441,29 @@ class TaskScreen extends StatelessWidget {
                           //second parameter is top to down
                         ),],
                       ),
-                      child:  GestureDetector(
-                        onTap: (){
-                          gellarypicker();
-                        },
-                        child: const Icon(
-                          Icons.add_a_photo,
-                          size: 50,
-                          color: kWritings,
-                        ),
-                      ),
+                      child: Obx((){
+                        return GestureDetector(
+                          onTap: (){
+                            gellarypicker();
+                          },
+                          child: (controller.fileBool.value)
+                              ? GestureDetector(
+                              onTap: (){
+                                controller.fileBool.value=false;
+                                gellarypicker();
+                              },
+                              child: Image.file(_file1!))
+                              : Icon(
+                            Icons.add_a_photo,
+                            size: 50,
+                            color: kWritings,
+                          ),
+                        );
+                      })
+
                     ),
-                  )
+                  ),
+                  SizedBox(height: height*0.05,),
                 ],
               ),
             ],
