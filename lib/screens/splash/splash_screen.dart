@@ -8,27 +8,30 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: kMainPink,
-
+          decoration: const BoxDecoration(
+            color: kBackGround,
           ),
-          child:Column(
+          child: Column(
             children: [
-SizedBox(height: height*0.1,),
-              Image(image: AssetImage('images/logo-02.png'),),
-              SizedBox(height: height*0.1,),
-              Center(
+              SizedBox(
+                height: height * 0.1,
+              ),
+              const Image(
+                image: AssetImage('images/logo-02.png'),
+              ),
+              SizedBox(
+                height: height * 0.1,
+              ),
+              const Center(
                 child: Text(
                   'Plan Vite',
                   style: TextStyle(
                     fontFamily: 'OleoScriptSwashCaps',
                     color: kWritings,
-
-                    fontSize: 30,
+                    fontSize: 40,
                   ),
                 ),
               ),
@@ -36,8 +39,6 @@ SizedBox(height: height*0.1,),
           ),
         ),
       ),
-
-
     );
   }
 }
