@@ -1,5 +1,8 @@
+import 'package:boardview/boardview_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
+import 'board_model.dart';
 
 
 class BoardController extends GetxController{
@@ -7,9 +10,18 @@ class BoardController extends GetxController{
 
   var selectedLang;
   var  selectedLangBool ;
-
+  BoardViewController boardViewController =  BoardViewController();
+  final List<BoardListObject> listData = [
+    BoardListObject(title: "List title 1",items: [
+      BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),
+    ],
+    ),
+    BoardListObject(title: "List title 2"),
+    BoardListObject(title: "List title 3")
+  ];
   @override
   void onInit() {
+
     selectedLang='en';
     selectedLangBool = true.obs;
     super.onInit();
@@ -24,6 +36,5 @@ class BoardController extends GetxController{
       selectedLangBool.value=true;
     }
   }
-
-
 }
+
