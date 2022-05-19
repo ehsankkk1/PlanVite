@@ -41,7 +41,6 @@ flutter:
 
   assets:
      - images/
-     -
   fonts:
   - family: OleoScriptSwashCaps
     fonts:

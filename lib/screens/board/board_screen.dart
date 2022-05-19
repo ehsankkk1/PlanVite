@@ -139,7 +139,7 @@ class _MainScreen extends StatelessWidget {
       onDropList: (int? listIndex, int? oldListIndex) {
         //Update our local list data
         var list = _boardController.listData[oldListIndex!];
-        _boardController.listData.removeAt(oldListIndex!);
+        _boardController.listData.removeAt(oldListIndex);
         _boardController.listData.insert(listIndex!, list);
       },
       headerBackgroundColor: Colors.white,
@@ -167,7 +167,7 @@ class _MainScreen extends StatelessWidget {
           var item =
               _boardController.listData[oldListIndex!].items![oldItemIndex!];
           _boardController.listData[oldListIndex].items!
-              .removeAt(oldItemIndex!);
+              .removeAt(oldItemIndex);
           _boardController.listData[listIndex!].items!.insert(itemIndex!, item);
         },
         onTapItem:
