@@ -70,6 +70,7 @@ class _MainScreen extends StatelessWidget {
               child: AppBarWidget(
                 controller: controller,
                 head: 'Sample Project'.tr,
+                backLog: true,
               ),
             ),
             Container(

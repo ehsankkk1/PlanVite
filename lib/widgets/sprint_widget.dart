@@ -16,8 +16,8 @@ class SprintWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.fromLTRB(width * 0.03, 35, width * 0.015, 35),
-      width: width * 0.85,
+      margin:  EdgeInsets.fromLTRB(5, 10, 5, 10),
+      width: width * 0.80,
       decoration: BoxDecoration(
         /*border: Border.all(color: darkSecondaryColor,width: 3),*/
           boxShadow: [
@@ -29,28 +29,43 @@ class SprintWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: edges,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+            child: Column(
               children: [
-                const Text(
-                  "Pending",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: kWritings,
-                  ),
-                ),
-                InkWell(
-                  child: const Icon(
-                    Icons.add,
-                    size: 40,
-                    color: kMainPink,
-                  ),
-                  onTap: () {
-                    print("tapped");
-                  },
-                )
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Pending",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: kWritings,
+                      ),
+                    ),
+                    InkWell(
+                      child: const Icon(
+                        Icons.add,
+                        size: 40,
+                        color: kMainPink,
+                      ),
+                      onTap: () {
+                        print("tapped");
+                      },
+                    )
 
+                  ],
+                ),
+                Row(
+                  children: [
+                    Checkbox(value: true, onChanged: (value){},activeColor: kMainPink,),
+                    const Text(
+                      'Activate',
+                      style:  TextStyle(
+                        fontSize: 15,
+                        color: kWritings,
+                      ),)
+                  ],
+                ),
               ],
             ),
           ),

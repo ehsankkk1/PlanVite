@@ -41,10 +41,10 @@ class AppBarWidget extends StatelessWidget {
                 child: const Icon(
                   Icons.airplay,
                   color: kMainPink,
-                  size: 40,
+                  size: 30,
                 ),
                 onTap: () {
-                  print('back');
+                  Get.toNamed('/backlog');
                 },
               )
             : InkWell(
