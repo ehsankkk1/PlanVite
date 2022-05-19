@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/screens/Drawer/drawer_controller.dart';
+import 'package:plane_vite/screens/back_log/back_log_screen.dart';
+import 'package:plane_vite/screens/bindings/backlog_binding.dart';
 import 'package:plane_vite/screens/bindings/board_binding.dart';
 import 'package:plane_vite/screens/bindings/home_binding.dart';
 import 'package:plane_vite/screens/bindings/log_in_binding.dart';
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/board',
+      initialRoute: '/home',
 
       getPages: [
         GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),
@@ -56,6 +58,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/signup', page: ()=> SignupScreen(),binding: SignupBinding()),
         GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
         GetPage(name: '/home', page: ()=>HomeScreen(),binding:HomeBinding()),
+        GetPage(name: '/backlog', page: ()=>const BackLogScreen(),binding:BackLogBinding()),
         GetPage(name: '/board', page: ()=>BoardScreen(),binding:BoardBinding()),
         GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),

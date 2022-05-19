@@ -50,7 +50,7 @@ class BoardScreen extends StatelessWidget {
 
 class _MainScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
-  BoardController _boardController = Get.find();
+  final BoardController _boardController = Get.find();
   @override
   Widget build(BuildContext context) {
     List<BoardList> _lists = [];
@@ -91,37 +91,6 @@ class _MainScreen extends StatelessWidget {
                     boardViewController: _boardController.boardViewController,
                   ),
                 )),
-
-            /*NotificationListener<OverscrollIndicatorNotification>(
-
-              onNotification: (overScroll) {
-                overScroll.disallowIndicator();
-                return true;
-              },
-              child: Container(
-                height: height * 0.88,
-                child: PageView.builder(
-                  clipBehavior: Clip.none,
-                  controller: PageController(viewportFraction: 0.78),
-                  itemCount: 4,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Wrap(
-                        alignment: WrapAlignment.center,
-                        children: [
-                          SprintWidget(
-                            addButton: true,
-                            sprintName: "Pending".tr,
-                            coloredBoxes: List.generate(
-                              index + 4,
-                                  (index) => ColorBox('Build Flutter UwU'),
-                            ),
-                          )
-                        ]);
-                  },
-                ),
-              ),
-            ),*/
           ],
         ),
       ),
@@ -148,8 +117,8 @@ class _MainScreen extends StatelessWidget {
       header: [
         Expanded(
             child: Container(
-          padding: EdgeInsets.all(5),
-          child: ColumnHeader(),
+          padding: const EdgeInsets.all(5),
+          child: const ColumnHeader(),
         )),
       ],
       items: items,

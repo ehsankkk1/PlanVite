@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:plane_vite/widgets/user_card_widget.dart';
 
 import '../constants.dart';
 import 'task_widget.dart';
@@ -6,27 +9,22 @@ import 'task_widget.dart';
 class SprintWidget extends StatelessWidget {
   SprintWidget({required this.sprintName, required this.coloredBoxes,  required this.addButton});
 
-  List<TaskWidget> coloredBoxes;
+  List<Widget> coloredBoxes;
   String sprintName;
   bool addButton=true;
   EdgeInsets edges=EdgeInsets.fromLTRB(width * 0.03, 10, width * 0.03, 10);
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.fromLTRB(width * 0.015, 35, width * 0.015, 35),
-      width: width,
+      margin:  EdgeInsets.fromLTRB(width * 0.03, 35, width * 0.015, 35),
+      width: width * 0.85,
       decoration: BoxDecoration(
         /*border: Border.all(color: darkSecondaryColor,width: 3),*/
           boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.8),
-              spreadRadius: 1,
-              blurRadius: 3,
-              offset: const Offset(0, 4), //changes position of shadow
-            )
+            kBoxShadow
           ],
           color: Colors.white,
-          borderRadius: const BorderRadius.all(Radius.circular(10))),
+          borderRadius: const BorderRadius.only(bottomLeft:Radius.circular(15) ,bottomRight: Radius.circular(15) ),),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,9 +33,9 @@ class SprintWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Pending",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 20,
                     color: kWritings,
                   ),
@@ -73,6 +71,6 @@ class SprintWidget extends StatelessWidget {
 
         ],
       ),
-    );
+      );
   }
 }

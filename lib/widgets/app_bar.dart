@@ -5,14 +5,16 @@ import '../constants.dart';
 import '../screens/Drawer/drawer_controller.dart';
 
 class AppBarWidget extends StatelessWidget {
-   AppBarWidget({
+  AppBarWidget({
     Key? key,
     required this.controller,
     this.head,
+    this.backLog,
   }) : super(key: key);
 
   final MyDrawerController controller;
   String? head;
+  bool? backLog = false;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -26,7 +28,7 @@ class AppBarWidget extends StatelessWidget {
           ),
           onTap: controller.toggleDrawer,
         ),
-         Text(
+        Text(
           "$head",
           style: const TextStyle(
             fontSize: 18,
@@ -34,17 +36,27 @@ class AppBarWidget extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        InkWell(
-          child: const Icon(
-            Icons.notifications,
-            color: kMainPink,
-            size: 40,
-          ),
-          onTap: () {
-            Get.toNamed('/notifications');
-
-          },
-        ),
+        backLog == true
+            ? InkWell(
+                child: const Icon(
+                  Icons.airplay,
+                  color: kMainPink,
+                  size: 40,
+                ),
+                onTap: () {
+                  print('back');
+                },
+              )
+            : InkWell(
+                child: const Icon(
+                  Icons.notifications,
+                  color: kMainPink,
+                  size: 40,
+                ),
+                onTap: () {
+                  Get.toNamed('/notifications');
+                },
+              ),
       ],
     );
   }

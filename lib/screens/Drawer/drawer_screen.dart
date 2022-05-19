@@ -17,7 +17,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
       body: SafeArea(
         child: NotificationListener<OverscrollIndicatorNotification>(
           onNotification: (overScroll) {
-            overScroll.disallowGlow();
+            overScroll.disallowIndicator();
             return true;
           },
           child: SingleChildScrollView(
@@ -54,10 +54,10 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 DrawerItem(Icons.task,35, 'Todo Tasks'.tr, (){}),
                 const Divider(thickness:1,color: kMainPink,),
                  Padding(
-                  padding: EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(15.0),
                   child: Text(
                     'WorkSpaces'.tr,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       color: Colors.black54,
                       fontWeight: FontWeight.bold,

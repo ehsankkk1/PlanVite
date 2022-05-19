@@ -32,17 +32,17 @@ class ColumnHeader extends StatelessWidget {
             )
           ],
         ),
-       /* Row(
+        Row(
           children: [
             Checkbox(value: true, onChanged: (value){},activeColor: kMainPink,),
-            Text(
+            const Text(
               'Only view my tasks',
               style:  TextStyle(
                 fontSize: 15,
                 color: kWritings,
               ),)
           ],
-        )*/
+        )
       ],
     );
   }
