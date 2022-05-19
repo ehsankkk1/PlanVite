@@ -16,14 +16,14 @@ class NotificationsScreen extends StatelessWidget {
       child: Scaffold(
           backgroundColor: kBackGround,
           appBar: AppBar(
-
+            iconTheme: const IconThemeData(color: kMainPink),
             backgroundColor: kBackGround,
             title: Padding(
               padding: EdgeInsets.only(
                   left: locale == 'en' ? width * 0.18 : width * 0.25),
               child: Text(
                 'Notifications'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: kWritings,
                 ),
               ),
