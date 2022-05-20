@@ -50,7 +50,10 @@ class DrawerScreen extends GetView<MyDrawerController> {
                   ),
                 ),
 
-                DrawerItem(Icons.home,35, 'Home'.tr, (){}),
+                DrawerItem(Icons.home,35, 'Home'.tr, (){
+                  Get.offNamed('/home');
+
+                }),
                 DrawerItem(Icons.task,35, 'Todo Tasks'.tr, (){
                   Get.toNamed('/todo');
 
@@ -69,9 +72,14 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 ),
                 Column(
                   children: List.generate(
-                    3, (index) => DrawerItem(FontAwesomeIcons.userGroup,25, 'Sample Project'.tr, (){print(index);}),),
+                    3, (index) => DrawerItem(FontAwesomeIcons.userGroup,25, 'Sample Project'.tr, (){
+                      Get.offNamed('/sprint');
+
+                  }),),
                 ),
-                DrawerItem(Icons.add,35, 'Add Project'.tr, (){}),
+                DrawerItem(Icons.add,35, 'Add Project'.tr, (){
+
+                }),
                 const Divider(thickness:1,color: kMainPink,),
                 DrawerItem(Icons.notifications,35, 'Notifications'.tr, (){
                   Get.toNamed('/notifications');

@@ -111,33 +111,39 @@ TextEditingController passwordController = new TextEditingController();
                                 ],),
                               ),
                               const SizedBox(height: 30,),
-                              Container(
-                                width: controller.selectedLangBool.value
-                                    ? width * 0.3
-                                    : width * 0.33,
-                                decoration: BoxDecoration(
-                                  color: kMainPink,
-                                  borderRadius: BorderRadius.circular(20.0),
+                              GestureDetector(
+                                onTap: (){
+
+                                },
+                                child: Container(
+                                  width: controller.selectedLangBool.value
+                                      ? width * 0.3
+                                      : width * 0.33,
+                                  decoration: BoxDecoration(
+                                    color: kMainPink,
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  child: TextButton(
+                                      onPressed: () {
+                                        if (_globalKey.currentState!.validate()){
+                                          controller.email=emailController.text;
+                                          controller.password=passwordController.text;
+                                          Get.offAllNamed('/home');
+
+
+                                        }
+
+
+
+                                      },
+                                      child: Text(
+                                        'Login'.tr,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                        ),
+                                      )),
                                 ),
-                                child: TextButton(
-                                    onPressed: () {
-                                      if (_globalKey.currentState!.validate()){
-                                        controller.email=emailController.text;
-                                        controller.password=passwordController.text;
-
-                                        print(controller.email);
-                                      }
-
-
-
-                                    },
-                                    child: Text(
-                                      'Login'.tr,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                      ),
-                                    )),
                               ),
                               const SizedBox(height: 30,),
                               Padding(

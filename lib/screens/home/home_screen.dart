@@ -145,16 +145,21 @@ class _MainScreen extends StatelessWidget {
                     overScroll.disallowIndicator();
                     return true;
                   },
-                  child: Container(
-                    height: height*0.4,
-                    child: PageView(
-                      controller:  PageController(viewportFraction: 0.80),
-                      scrollDirection: Axis.horizontal,
-                      children: List.generate(
-                        3,
-                            (index) => ProjectView(),
-                      ),
+                  child: GestureDetector(
+                    onTap: (){
+                      Get.toNamed('/sprint');
+                    },
+                    child: Container(
+                      height: height*0.4,
+                      child: PageView(
+                        controller:  PageController(viewportFraction: 0.80),
+                        scrollDirection: Axis.horizontal,
+                        children: List.generate(
+                          3,
+                              (index) => ProjectView(),
+                        ),
 
+                      ),
                     ),
                   ),
                 )

@@ -33,9 +33,11 @@ class SplashController extends GetxController{
       else {
         EasyLoading.showError(_service.message);
        // Get.offAllNamed('/login');
+        Get.offAllNamed('welcome');
       }
     }else{
      // Get.offNamed('/login');
+      Get.offAllNamed('welcome');
 
     }
 

@@ -38,7 +38,7 @@ class WelcomeScreen extends StatelessWidget {
                   const SizedBox(height: 20,),
                   GestureDetector(
                     onTap: () {
-                      Get.offNamed('/login');
+                      Get.offAllNamed('/login');
                     },
                     child: Container(
                       width: width * 0.5,
@@ -48,7 +48,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       child: TextButton(
                           onPressed: () {
-                            Get.toNamed('/login');
+                            Get.offAllNamed('/login');
                           },
                           child: const Text(
                             'Let’s Get Started',
