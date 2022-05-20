@@ -1,13 +1,11 @@
 import 'package:get/get.dart';
-
-import '../board/board_controller.dart';
-
+import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 
 
-class BoardBinding implements Bindings{
+class SprintBinding implements Bindings{
   @override
   void dependencies() {
-    Get.put<BoardController>(BoardController());
+    Get.put<SprintController>(SprintController());
   }
 
 }

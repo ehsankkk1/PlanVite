@@ -14,7 +14,7 @@ import 'package:plane_vite/screens/bindings/splash_binding.dart';
 import 'package:plane_vite/screens/bindings/task_binding.dart';
 import 'package:plane_vite/screens/bindings/to_do_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
-import 'package:plane_vite/screens/board/board_screen.dart';
+import 'package:plane_vite/screens/sprint/sprint_screen.dart';
 import 'package:plane_vite/screens/home/home_screen.dart';
 import 'package:plane_vite/screens/log_in/log_in_screen.dart';
 import 'package:plane_vite/screens/notifications/notifications_screen.dart';
@@ -24,7 +24,6 @@ import 'package:plane_vite/screens/task/task_screen.dart';
 import 'package:plane_vite/screens/to_do/to_do_screen.dart';
 import 'package:plane_vite/screens/welcome/welcome_screen.dart';
 import 'package:flutter/services.dart';
-import 'package:plane_vite/test/test.dart';
 import 'translations.dart';
 
 
@@ -52,7 +51,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/board',
+      initialRoute: '/sprint',
 
       getPages: [
         GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),
@@ -61,7 +60,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
         GetPage(name: '/home', page: ()=>HomeScreen(),binding:HomeBinding()),
         GetPage(name: '/backlog', page: ()=>const BackLogScreen(),binding:BackLogBinding()),
-        GetPage(name: '/board', page: ()=>BoardScreen(),binding:BoardBinding()),
+        GetPage(name: '/sprint', page: ()=>SprintScreen(),binding:SprintBinding()),
         GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
         GetPage(name: '/todo', page: ()=>ToDoScreen(),binding:ToDoBinding()),

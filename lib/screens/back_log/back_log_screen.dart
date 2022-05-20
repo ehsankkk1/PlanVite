@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:plane_vite/widgets/user_card_widget.dart';
 import '../../constants.dart';
 import '../../widgets/app_bar.dart';
-import '../../widgets/sprint_widget.dart';
+import '../../widgets/sprint_view_widget.dart';
 import '../Drawer/drawer_controller.dart';
 
 

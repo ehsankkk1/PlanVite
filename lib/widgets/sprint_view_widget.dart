@@ -1,10 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:plane_vite/widgets/user_card_widget.dart';
-
 import '../constants.dart';
-import 'task_widget.dart';
 
 class SprintWidget extends StatelessWidget {
   SprintWidget({required this.sprintName, required this.coloredBoxes,  required this.addButton});
@@ -12,11 +7,11 @@ class SprintWidget extends StatelessWidget {
   List<Widget> coloredBoxes;
   String sprintName;
   bool addButton=true;
-  EdgeInsets edges=EdgeInsets.fromLTRB(width * 0.03, 10, width * 0.03, 10);
+  EdgeInsets edges=EdgeInsets.fromLTRB(width * 0.03, 10, width * 0.03, 0);
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:  EdgeInsets.fromLTRB(5, 10, 5, 10),
+      margin:  const EdgeInsets.fromLTRB(5, 10, 5, 10),
       width: width * 0.80,
       decoration: BoxDecoration(
         /*border: Border.all(color: darkSecondaryColor,width: 3),*/
