@@ -78,6 +78,8 @@ class TaskScreen extends StatelessWidget {
                                   onTap: () {
                                     controller.PickApproved();
                                   },
+                                  color: kWritings,
+
                                   size: 20,
                                   iconSize: 18,
                                   isSelected: controller.approved.value,
@@ -286,6 +288,9 @@ class TaskScreen extends StatelessWidget {
                             padding: EdgeInsets.only(
                                 left: width * 0.05, top: 0, right: width * 0.05),
                             child: TextField(
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+
                               cursorColor: kMainPink,
                               decoration: InputDecoration(
                                 focusedBorder: const UnderlineInputBorder(
@@ -385,6 +390,7 @@ class TaskScreen extends StatelessWidget {
                         ],
                       ),
                   ),
+                  SizedBox(height: 10,),
                 ],
               ),
             ),

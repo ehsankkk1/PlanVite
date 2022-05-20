@@ -12,6 +12,7 @@ import 'package:plane_vite/screens/bindings/notifications_binding.dart';
 import 'package:plane_vite/screens/bindings/sign_up_binding.dart';
 import 'package:plane_vite/screens/bindings/splash_binding.dart';
 import 'package:plane_vite/screens/bindings/task_binding.dart';
+import 'package:plane_vite/screens/bindings/to_do_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
 import 'package:plane_vite/screens/sprint/sprint_screen.dart';
 import 'package:plane_vite/screens/home/home_screen.dart';
@@ -20,6 +21,7 @@ import 'package:plane_vite/screens/notifications/notifications_screen.dart';
 import 'package:plane_vite/screens/sign_up/sign_up_screen.dart';
 import 'package:plane_vite/screens/splash/splash_screen.dart';
 import 'package:plane_vite/screens/task/task_screen.dart';
+import 'package:plane_vite/screens/to_do/to_do_screen.dart';
 import 'package:plane_vite/screens/welcome/welcome_screen.dart';
 import 'package:flutter/services.dart';
 import 'translations.dart';
@@ -61,6 +63,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/sprint', page: ()=>SprintScreen(),binding:SprintBinding()),
         GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
+        GetPage(name: '/todo', page: ()=>ToDoScreen(),binding:ToDoBinding()),
+
         //GetPage(name: '/test', page: ()=>BoardViewExample()),
 
       ],

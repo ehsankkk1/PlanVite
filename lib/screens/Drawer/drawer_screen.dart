@@ -51,7 +51,10 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 ),
 
                 DrawerItem(Icons.home,35, 'Home'.tr, (){}),
-                DrawerItem(Icons.task,35, 'Todo Tasks'.tr, (){}),
+                DrawerItem(Icons.task,35, 'Todo Tasks'.tr, (){
+                  Get.toNamed('/todo');
+
+                }),
                 const Divider(thickness:1,color: kMainPink,),
                  Padding(
                   padding: const EdgeInsets.all(15.0),
