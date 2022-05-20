@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/screens/Drawer/drawer_controller.dart';
+import 'package:plane_vite/screens/Drawer/drawer_screen.dart';
 import 'package:plane_vite/screens/back_log/back_log_screen.dart';
 import 'package:plane_vite/screens/bindings/backlog_binding.dart';
 import 'package:plane_vite/screens/bindings/board_binding.dart';
+import 'package:plane_vite/screens/bindings/drawer_binding.dart';
 import 'package:plane_vite/screens/bindings/home_binding.dart';
 import 'package:plane_vite/screens/bindings/log_in_binding.dart';
 import 'package:plane_vite/screens/bindings/notifications_binding.dart';
@@ -35,7 +37,6 @@ Future<void> main() async{
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  Get.put<MyDrawerController>(MyDrawerController());
 
   runApp(const MyApp());
 }
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
         GetPage(name: '/todo', page: ()=>ToDoScreen(),binding:ToDoBinding()),
+        GetPage(name: '/drawer', page: ()=>const DrawerScreen(),binding:DrawerBinding()),
 
         //GetPage(name: '/test', page: ()=>BoardViewExample()),
 

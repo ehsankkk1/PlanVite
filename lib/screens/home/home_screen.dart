@@ -17,8 +17,8 @@ import 'package:percent_indicator/percent_indicator.dart';
 
 import 'home_controller.dart';
 
-class HomeScreen extends StatelessWidget {
-  MyDrawerController controller = Get.find();
+class HomeScreen extends GetView<MyDrawerController> {
+  final MyDrawerController _myDrawerController = Get.put(MyDrawerController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
         body: GetBuilder<MyDrawerController>(
           builder: (_) => ZoomDrawer(
             moveMenuScreen: true,
-            controller: _.zoomDrawerController,
+            controller: _myDrawerController.zoomDrawerController,
             menuScreen: DrawerScreen(),
             mainScreen: _MainScreen(),
             showShadow: true,

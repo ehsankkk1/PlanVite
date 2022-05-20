@@ -19,7 +19,7 @@ import 'sprint_controller.dart';
 import 'sprint_model.dart';
 
 class SprintScreen extends StatelessWidget {
-  MyDrawerController controller = Get.find();
+  MyDrawerController _drawerController = Get.put(MyDrawerController());
 
   @override
 
@@ -30,8 +30,10 @@ class SprintScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         body: GetBuilder<MyDrawerController>(
           builder: (_) => ZoomDrawer(
+            //duration: Duration(microseconds: 0),
+            //reverseDuration: Duration(microseconds: 0),
             moveMenuScreen: true,
-            controller: _.zoomDrawerController,
+            controller: _drawerController.zoomDrawerController,
             menuScreen: const DrawerScreen(),
             mainScreen: _MainScreen(),
             showShadow: true,
@@ -50,8 +52,7 @@ class SprintScreen extends StatelessWidget {
 }
 
 class _MainScreen extends StatelessWidget {
-  SprintController controller=Get.find();
-  MyDrawerController controller2 = Get.find();
+  MyDrawerController _myDrawerController = Get.find();
   final SprintController _boardController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -70,7 +71,7 @@ class _MainScreen extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(
                   width * 0.03, height * 0.025, width * 0.03, 0),
               child: AppBarWidget(
-                controller: controller2,
+                controller: _myDrawerController,
                 head: 'Sample Project'.tr,
                 backLog: true,
               ),

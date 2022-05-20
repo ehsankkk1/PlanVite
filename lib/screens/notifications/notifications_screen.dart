@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/notifications/notifications_controller.dart';
 
-import '../Drawer/drawer_controller.dart';
 
 class NotificationsScreen extends StatelessWidget {
   NotificationsController controller = Get.find();
@@ -40,7 +39,7 @@ class NotificationsScreen extends StatelessWidget {
                         left: width * 0.05,
                         right: width * 0.05,
                         bottom: height * 0.001,
-                        top: height * 0.01),
+                        top: height * 0.001),
                     child: Container(
                       color: kBackGround,
                       child: Column(
@@ -50,10 +49,10 @@ class NotificationsScreen extends StatelessWidget {
                               SizedBox(
                                 width: width * 0.02,
                               ),
-                              CircleAvatar(
+                              const CircleAvatar(
                                 radius: 37,
                                 backgroundColor: kMainPink,
-                                child: const CircleAvatar(
+                                child: CircleAvatar(
                                   radius: 35,
                                   backgroundColor: Colors.black12,
                                   foregroundImage: AssetImage('images/joey.png'),

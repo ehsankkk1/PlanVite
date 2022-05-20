@@ -12,15 +12,16 @@ class ColumnHeader extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
+          children:  [
+             const Text(
               "Pending",
               style: TextStyle(
                 fontSize: 20,
                 color: kWritings,
               ),
             ),
-            InkWell(
+            Container(height: 15,width: 15,)
+            /*InkWell(
               child: const Icon(
                 Icons.add,
                 size: 40,
@@ -29,7 +30,7 @@ class ColumnHeader extends StatelessWidget {
               onTap: () {
                 print("tapped");
               },
-            )
+            )*/
           ],
         ),
         Row(

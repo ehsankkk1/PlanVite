@@ -23,6 +23,7 @@ class SplashController extends GetxController{
   Future<void> checkToken ()async{
 
     String? token=await storage.read('token');
+    await Future.delayed(const Duration(seconds: 3));
     if(token != null){
 
       await validToken(token);
@@ -34,6 +35,7 @@ class SplashController extends GetxController{
         EasyLoading.showError(_service.message);
        // Get.offAllNamed('/login');
         Get.offAllNamed('welcome');
+
       }
     }else{
      // Get.offNamed('/login');
