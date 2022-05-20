@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/signup', page: ()=> SignupScreen(),binding: SignupBinding()),
         GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
         GetPage(name: '/home', page: ()=>HomeScreen(),binding:HomeBinding()),
-        GetPage(name: '/backlog', page: ()=>const BackLogScreen(),binding:BackLogBinding()),
+        GetPage(name: '/backlog', page: ()=> BackLogScreen(),binding:BackLogBinding()),
         GetPage(name: '/sprint', page: ()=>SprintScreen(),binding:SprintBinding()),
         GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class SprintWidget extends StatelessWidget {
-  SprintWidget({required this.sprintName, required this.coloredBoxes,  required this.addButton});
+  SprintWidget({required this.sprintName, required this.coloredBoxes,  this.addButton,this.checkBox});
 
   List<Widget> coloredBoxes;
   String sprintName;
-  bool addButton=true;
+  bool? addButton=false;
+  bool? checkBox=false;
   EdgeInsets edges=EdgeInsets.fromLTRB(width * 0.03, 10, width * 0.03, 0);
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class SprintWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(5, 5, 5, 5),
+            margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
             child: Column(
               children: [
                 Row(
@@ -37,7 +38,7 @@ class SprintWidget extends StatelessWidget {
                         color: kWritings,
                       ),
                     ),
-                    InkWell(
+                    addButton==true?InkWell(
                       child: const Icon(
                         Icons.add,
                         size: 40,
@@ -46,11 +47,11 @@ class SprintWidget extends StatelessWidget {
                       onTap: () {
                         print("tapped");
                       },
-                    )
+                    ):Container(width: 15,height: 15,)
 
                   ],
                 ),
-                Row(
+                checkBox==true ?Row(
                   children: [
                     Checkbox(value: true, onChanged: (value){},activeColor: kMainPink,),
                     const Text(
@@ -60,7 +61,7 @@ class SprintWidget extends StatelessWidget {
                         color: kWritings,
                       ),)
                   ],
-                ),
+                ):Container(width: 15,height: 15,),
               ],
             ),
           ),
