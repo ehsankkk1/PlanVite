@@ -13,7 +13,7 @@ import 'package:plane_vite/screens/bindings/sign_up_binding.dart';
 import 'package:plane_vite/screens/bindings/splash_binding.dart';
 import 'package:plane_vite/screens/bindings/task_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
-import 'package:plane_vite/screens/board/sprint_screen.dart';
+import 'package:plane_vite/screens/sprint/sprint_screen.dart';
 import 'package:plane_vite/screens/home/home_screen.dart';
 import 'package:plane_vite/screens/log_in/log_in_screen.dart';
 import 'package:plane_vite/screens/notifications/notifications_screen.dart';
@@ -22,7 +22,6 @@ import 'package:plane_vite/screens/splash/splash_screen.dart';
 import 'package:plane_vite/screens/task/task_screen.dart';
 import 'package:plane_vite/screens/welcome/welcome_screen.dart';
 import 'package:flutter/services.dart';
-import 'package:plane_vite/test/test.dart';
 import 'translations.dart';
 
 

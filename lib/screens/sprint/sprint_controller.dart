@@ -1,7 +1,5 @@
 import 'package:boardview/boardview_controller.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
 import 'sprint_model.dart';
 
 
