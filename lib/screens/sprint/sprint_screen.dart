@@ -19,8 +19,9 @@ import 'sprint_controller.dart';
 import 'sprint_model.dart';
 
 class SprintScreen extends StatelessWidget {
-  @override
   MyDrawerController controller = Get.find();
+
+  @override
 
   Widget build(BuildContext context) {
     return Directionality(
@@ -49,7 +50,8 @@ class SprintScreen extends StatelessWidget {
 }
 
 class _MainScreen extends StatelessWidget {
-  MyDrawerController controller = Get.find();
+  SprintController controller=Get.find();
+  MyDrawerController controller2 = Get.find();
   final SprintController _boardController = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class _MainScreen extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(
                   width * 0.03, height * 0.025, width * 0.03, 0),
               child: AppBarWidget(
-                controller: controller,
+                controller: controller2,
                 head: 'Sample Project'.tr,
                 backLog: true,
               ),

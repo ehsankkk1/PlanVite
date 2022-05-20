@@ -9,10 +9,10 @@ import '../../widgets/app_bar.dart';
 import '../../widgets/sprint_view_widget.dart';
 import '../Drawer/drawer_controller.dart';
 import '../Drawer/drawer_screen.dart';
+import 'back_log_controller.dart';
 
 class BackLogScreen extends StatelessWidget {
-  MyDrawerController controller = Get.find();
-
+  MyDrawerController controller=Get.find();
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.ltr,
@@ -39,7 +39,9 @@ class BackLogScreen extends StatelessWidget {
   }
 }
 class _MainScreen extends StatelessWidget {
-  MyDrawerController controller = Get.find();
+  BackLogController controller = Get.find();
+  MyDrawerController controller2 = Get.find();
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,7 @@ class _MainScreen extends StatelessWidget {
             children: [
               // notification and drawer
               AppBarWidget(
-                controller: controller,
+                controller: controller2,
                 head: 'Sample Project'.tr,
               ),
               NotificationListener<OverscrollIndicatorNotification>(

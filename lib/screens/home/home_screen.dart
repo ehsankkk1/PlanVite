@@ -15,9 +15,12 @@ import '../Drawer/drawer_controller.dart';
 import '../Drawer/drawer_screen.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import 'home_controller.dart';
+
 class HomeScreen extends StatelessWidget {
-  @override
   MyDrawerController controller = Get.find();
+
+  @override
   Widget build(BuildContext context) {
     return Directionality(
      textDirection: TextDirection.ltr,
@@ -44,7 +47,8 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _MainScreen extends StatelessWidget {
-  MyDrawerController controller = Get.find();
+  MyDrawerController controller2 = Get.find();
+  HomeController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +70,7 @@ class _MainScreen extends StatelessWidget {
                     children: [
                       // notification and drawer
                       AppBarWidget(
-                        controller: controller,
+                        controller: controller2,
                         head: 'Home'.tr,
                       ),
                       const SizedBox(
