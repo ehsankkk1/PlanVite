@@ -39,11 +39,10 @@ class BackLogScreen extends StatelessWidget {
   }
 }
 class _MainScreen extends StatelessWidget {
-  const _MainScreen({Key? key}) : super(key: key);
+  MyDrawerController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    MyDrawerController controller = Get.find();
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
