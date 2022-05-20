@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
+import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 
-import '../board/sprint_controller.dart';
+
 
 
 
