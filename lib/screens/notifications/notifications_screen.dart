@@ -50,10 +50,14 @@ class NotificationsScreen extends StatelessWidget {
                               SizedBox(
                                 width: width * 0.02,
                               ),
-                              const CircleAvatar(
-                                radius: 35,
-                                backgroundColor: Colors.black12,
-                                foregroundImage: AssetImage('images/joey.png'),
+                              CircleAvatar(
+                                radius: 37,
+                                backgroundColor: kMainPink,
+                                child: const CircleAvatar(
+                                  radius: 35,
+                                  backgroundColor: Colors.black12,
+                                  foregroundImage: AssetImage('images/joey.png'),
+                                ),
                               ),
                               SizedBox(
                                 width: width * 0.02,

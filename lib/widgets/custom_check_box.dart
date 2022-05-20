@@ -7,8 +7,9 @@ class CustomCheckbox extends StatelessWidget {
   final double? iconSize;
   late  bool? isSelected;
   final Function() onTap;
+  final Color color;
 
-  CustomCheckbox({ this.size, this.iconSize,this.isSelected=false ,  required this.onTap});
+  CustomCheckbox({ this.size, this.iconSize,this.isSelected=false ,  required this.onTap,required this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class CustomCheckbox extends StatelessWidget {
             color: isSelected! ? kMainPink : Colors.transparent,
             borderRadius: BorderRadius.circular(8.0),
             border: isSelected! ? null : Border.all(
-              color: kWritings,
+              color: color,
               width: 1.5,
             )
         ),

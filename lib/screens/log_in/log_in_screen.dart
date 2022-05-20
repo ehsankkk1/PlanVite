@@ -169,7 +169,9 @@ TextEditingController passwordController = new TextEditingController();
                                         onTap: () {
                                           controller.changeCheckBoxStatus();
 
+
                                         },
+                                        color: kWritings,
                                         size: 25,
                                         iconSize: 20,
                                         isSelected: controller.checkBoxStatus.value,
