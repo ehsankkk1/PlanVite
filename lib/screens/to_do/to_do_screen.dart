@@ -6,27 +6,148 @@ import 'package:plane_vite/screens/to_do/to_do_controller.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 
 class ToDoScreen extends StatelessWidget {
+  TextEditingController taskDescriptionController=new TextEditingController();
+  TextEditingController taskNameController=new TextEditingController();
   ToDoController controller = Get.find();
   void ShowAlert(BuildContext context){
     var alertDialog=AlertDialog(
-      title: Text('add task'),
-      content: TextField(
-        keyboardType: TextInputType.multiline,
-        maxLines: null,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
 
-        cursorColor: kMainPink,
-        decoration: InputDecoration(
-          focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide.none,
+      ),
+      actions: [
+        TextButton(onPressed: (){
+          controller.newTask=taskDescriptionController.text;
+          Navigator.pop(context);
+
+
+
+        }, child: Text('Add',
+          style: TextStyle(
+            color: kWritings,
           ),
-          enabledBorder:
-          const OutlineInputBorder(borderSide: BorderSide.none),
-          hintText: 'Add More Details to this Task'.tr,
-          hintStyle: const TextStyle(
-            color: Colors.grey,
-          ),
+
+        ),)
+      ],
+
+      backgroundColor: kBackGround,
+      title: Center(child: Text('Add Task',
+      style: TextStyle(
+        color: kWritings,
+      ),
+      )),
+      content: Container(
+        width: width*0.7,
+        height: height*0.3,
+        child: ListView(
+          children: [
+            Column(
+              children: [
+                SizedBox(height: height*0.01,),
+                TextField(
+                  controller:taskNameController,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+
+                  cursorColor: kMainPink,
+                  decoration: InputDecoration(
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide.none,
+                    ),
+                    enabledBorder:
+                    const OutlineInputBorder(borderSide: BorderSide.none),
+                    hintText: 'Task Name'.tr,
+                    hintStyle: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+                SizedBox(height: height*0.01,),
+                TextField(
+                  controller: taskDescriptionController,
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+
+                  cursorColor: kMainPink,
+                  decoration: InputDecoration(
+                    focusedBorder: const UnderlineInputBorder(
+                      borderSide: BorderSide.none,
+                    ),
+                    enabledBorder:
+                    const OutlineInputBorder(borderSide: BorderSide.none),
+                    hintText: 'Add More Details to this Task'.tr,
+                    hintStyle: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+                SizedBox(height: height*0.01,),
+                Row(
+                  children: [
+                    SizedBox(width: width*0.02,),
+                    Obx(() {
+                      return GestureDetector(
+                          onTap: () {
+                            controller.dateBool.value = false;
+                            showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(2021),
+                              lastDate: DateTime(2023),
+                              builder: (context, child) => Theme(
+                                data: ThemeData().copyWith(
+                                  colorScheme: const ColorScheme.dark(
+                                    primary: kMainPink,
+                                    onPrimary: Colors.black,
+                                    surface: kMainPink,
+                                  ),
+                                  dialogBackgroundColor: Colors.white30,
+                                ),
+                                child: child!,
+                              ),
+                            ).then((date) {
+                              controller.year = date?.year.toString();
+                              controller.month = date?.month.toString();
+                              controller.day = date?.day.toString();
+
+                              controller.date = date.toString();
+
+                              controller.PickDate();
+                            });
+                          },
+                          child: Icon(
+                            Icons.date_range,
+                            color: controller.dateBool.value
+                                ? kMainPink
+                                : kGrey,
+                          ));
+                    }),
+                    SizedBox(
+                      width: width * 0.05,
+                    ),
+                    Obx(() {
+                      return Text(
+                        controller.dateBool == false
+                            ? 'Due Date'.tr
+                            : '${controller.year}/${controller.month}/${controller.day}',
+                        style: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+                SizedBox(height: height*0.1,),
+
+
+
+              ],
+            ),
+          ],
         ),
       ),
+
     );
     showDialog(context: context,
         builder: (BuildContext){
@@ -43,7 +164,10 @@ class ToDoScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: kBackGround,
           actions: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.done),)
+            IconButton(onPressed: (){
+              print(controller.newTask);
+
+            }, icon: Icon(Icons.done),)
           ],
           iconTheme: IconThemeData(
             color: kMainPink,

@@ -7,9 +7,17 @@ var done;
 List<Rx> doing =[false.obs,false.obs,false.obs,false.obs,false.obs,false.obs,false.obs];
 RxInt count=0.obs;
 RxString percent='0'.obs;
+var newTask;
+var dateBool;
+var year;
+var month;
+var day;
+var date;
 @override
   void onInit() {
   done = false.obs;
+  dateBool=false.obs;
+  date='';
     super.onInit();
   }
   void Done(){
@@ -30,6 +38,13 @@ RxString percent='0'.obs;
   }
 
   }
+void PickDate(){
+
+  dateBool.value=true;
+
+
+}
+
 
 
 }
