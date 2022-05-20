@@ -2,10 +2,10 @@ import 'package:boardview/boardview_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import 'board_model.dart';
+import 'sprint_model.dart';
 
 
-class BoardController extends GetxController{
+class SprintController extends GetxController{
 
 
   var selectedLang;

@@ -1,10 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:plane_vite/widgets/user_card_widget.dart';
-
 import '../constants.dart';
-import 'task_widget.dart';
 
 class SprintWidget extends StatelessWidget {
   SprintWidget({required this.sprintName, required this.coloredBoxes,  required this.addButton});

@@ -15,10 +15,10 @@ import '../../widgets/column_header.dart';
 import '../../widgets/task_widget.dart';
 import '../Drawer/drawer_controller.dart';
 import '../Drawer/drawer_screen.dart';
-import 'board_controller.dart';
-import 'board_model.dart';
+import 'sprint_controller.dart';
+import 'sprint_model.dart';
 
-class BoardScreen extends StatelessWidget {
+class SprintScreen extends StatelessWidget {
   @override
   MyDrawerController controller = Get.find();
 
@@ -50,7 +50,7 @@ class BoardScreen extends StatelessWidget {
 
 class _MainScreen extends StatelessWidget {
   MyDrawerController controller = Get.find();
-  final BoardController _boardController = Get.find();
+  final SprintController _boardController = Get.find();
   @override
   Widget build(BuildContext context) {
     List<BoardList> _lists = [];
