@@ -51,7 +51,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 ),
 
                 DrawerItem(Icons.home,35, 'Home'.tr, (){
-                  Get.offNamed('/home');
+                  Get.offAllNamed('/home');
 
                 }),
                 DrawerItem(Icons.task,35, 'Todo Tasks'.tr, (){
