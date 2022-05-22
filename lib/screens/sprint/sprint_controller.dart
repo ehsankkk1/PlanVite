@@ -1,5 +1,6 @@
 import 'package:boardview/boardview_controller.dart';
 import 'package:get/get.dart';
+import '../Drawer/drawer_controller.dart';
 import 'sprint_model.dart';
 
 
@@ -8,7 +9,8 @@ class SprintController extends GetxController{
 
   var selectedLang;
   var  selectedLangBool ;
-  BoardViewController boardViewController =  BoardViewController();
+  BoardViewController boardViewController=BoardViewController();
+
   final List<BoardListObject> listData = [
     BoardListObject(title: "List title 1",items: [
       BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),
@@ -19,11 +21,15 @@ class SprintController extends GetxController{
   ];
   @override
   void onInit() {
-
     selectedLang='en';
     selectedLangBool = true.obs;
     super.onInit();
+  }
+@override
+  void onClose() {
+    // TODO: implement onClose
 
+    super.onClose();
   }
 
   void changeSelectedLang()async{

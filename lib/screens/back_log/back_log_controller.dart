@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../Drawer/drawer_controller.dart';
+
 
 
 class BackLogController extends GetxController{

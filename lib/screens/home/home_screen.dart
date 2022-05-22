@@ -1,54 +1,23 @@
-import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_zoom_drawer/config.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/widgets/app_bar.dart';
+import '../../skeleton/skeleton_controller.dart';
 import '../../widgets/project_view_home.dart';
-import '../../widgets/white_box.dart';
-import '../Drawer/drawer_controller.dart';
-import '../Drawer/drawer_screen.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../../widgets/white_box.dart';
 import 'home_controller.dart';
 
-class HomeScreen extends GetView<MyDrawerController> {
-  final MyDrawerController _myDrawerController = Get.put(MyDrawerController());
 
-  @override
-  Widget build(BuildContext context) {
-    return Directionality(
-     textDirection: TextDirection.ltr,
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: GetBuilder<MyDrawerController>(
-          builder: (_) => ZoomDrawer(
-            moveMenuScreen: true,
-            controller: _myDrawerController.zoomDrawerController,
-            menuScreen: DrawerScreen(),
-            mainScreen: _MainScreen(),
-            showShadow: true,
-            mainScreenOverlayColor: Colors.black.withOpacity(0.5),
-            style: DrawerStyle.style1,
-            /*        shadowLayer1Color: Colors.grey.withOpacity(0.25),
-            shadowLayer2Color: kMainPink,*/
-            angle: -0,
-            slideWidth: width * 0.90,
-          ),
-        ),
-      ),
-    );
-  }
-}
+class HomeScreen extends StatelessWidget {
+  final SkeletonController _skeletonController = Get.find();
+  HomeController controller =   Get.put(HomeController());
 
-class _MainScreen extends StatelessWidget {
-  MyDrawerController controller2 = Get.find();
-  HomeController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +39,7 @@ class _MainScreen extends StatelessWidget {
                     children: [
                       // notification and drawer
                       AppBarWidget(
-                        controller: controller2,
+                        controller: _skeletonController.myDrawerController,
                         head: 'Home'.tr,
                       ),
                       const SizedBox(

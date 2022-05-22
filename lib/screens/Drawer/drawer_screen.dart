@@ -8,10 +8,12 @@ import 'drawer_controller.dart';
 
 
 class DrawerScreen extends GetView<MyDrawerController> {
-  const DrawerScreen({Key? key}) : super(key: key);
+
+   DrawerScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final MyDrawerController _myDrawerController=  Get. put(MyDrawerController());
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(

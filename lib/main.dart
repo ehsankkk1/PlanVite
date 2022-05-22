@@ -6,16 +6,18 @@ import 'package:plane_vite/screens/Drawer/drawer_controller.dart';
 import 'package:plane_vite/screens/Drawer/drawer_screen.dart';
 import 'package:plane_vite/screens/back_log/back_log_screen.dart';
 import 'package:plane_vite/screens/bindings/backlog_binding.dart';
-import 'package:plane_vite/screens/bindings/board_binding.dart';
+import 'package:plane_vite/screens/bindings/sprint_binding.dart';
 import 'package:plane_vite/screens/bindings/drawer_binding.dart';
 import 'package:plane_vite/screens/bindings/home_binding.dart';
 import 'package:plane_vite/screens/bindings/log_in_binding.dart';
 import 'package:plane_vite/screens/bindings/notifications_binding.dart';
 import 'package:plane_vite/screens/bindings/sign_up_binding.dart';
+import 'package:plane_vite/screens/bindings/skeleton_binding.dart';
 import 'package:plane_vite/screens/bindings/splash_binding.dart';
 import 'package:plane_vite/screens/bindings/task_binding.dart';
 import 'package:plane_vite/screens/bindings/to_do_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
+import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 import 'package:plane_vite/screens/sprint/sprint_screen.dart';
 import 'package:plane_vite/screens/home/home_screen.dart';
 import 'package:plane_vite/screens/log_in/log_in_screen.dart';
@@ -26,6 +28,8 @@ import 'package:plane_vite/screens/task/task_screen.dart';
 import 'package:plane_vite/screens/to_do/to_do_screen.dart';
 import 'package:plane_vite/screens/welcome/welcome_screen.dart';
 import 'package:flutter/services.dart';
+import 'package:plane_vite/skeleton/skeleton_controller.dart';
+import 'package:plane_vite/skeleton/skeleton_screen.dart';
 import 'translations.dart';
 
 
@@ -37,7 +41,7 @@ Future<void> main() async{
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
+  Get.put<SkeletonController>(SkeletonController());
   runApp(const MyApp());
 }
 
@@ -52,10 +56,11 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/splash',
+      initialRoute: '/skeleton',
 
       getPages: [
         GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),
+        GetPage(name: '/skeleton', page: ()=> SkeletonScreen(),binding: SkeletonBinding()),
         GetPage(name: '/login', page: ()=>LoginScreen(),binding: LoginBinding()),
         GetPage(name: '/signup', page: ()=> SignupScreen(),binding: SignupBinding()),
         GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
@@ -65,10 +70,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
         GetPage(name: '/todo', page: ()=>ToDoScreen(),binding:ToDoBinding()),
-        GetPage(name: '/drawer', page: ()=>const DrawerScreen(),binding:DrawerBinding()),
-
+        GetPage(name: '/drawer', page: ()=> DrawerScreen(),binding:DrawerBinding()),
         //GetPage(name: '/test', page: ()=>BoardViewExample()),
-
       ],
       builder: EasyLoading.init(),
     );

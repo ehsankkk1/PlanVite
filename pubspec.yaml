@@ -16,7 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.1
   flutter_easyloading: ^3.0.3
-  flutter_zoom_drawer: ^3.0.1
+  flutter_zoom_drawer: ^3.0.2
   percent_indicator: ^3.4.0
   font_awesome_flutter: ^10.1.0
   http: ^0.13.4
