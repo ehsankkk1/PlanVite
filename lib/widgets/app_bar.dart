@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../constants.dart';
 import '../screens/Drawer/drawer_controller.dart';
+import '../skeleton/skeleton_controller.dart';
 
 class AppBarWidget extends StatelessWidget {
   AppBarWidget({
@@ -17,6 +18,7 @@ class AppBarWidget extends StatelessWidget {
   bool? backLog = false;
   @override
   Widget build(BuildContext context) {
+    SkeletonController _skeletonController=Get.find();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -44,7 +46,7 @@ class AppBarWidget extends StatelessWidget {
                   size: 30,
                 ),
                 onTap: () {
-                  Get.toNamed('/backlog');
+                  _skeletonController.changeScreen(2);
                 },
               )
             : InkWell(

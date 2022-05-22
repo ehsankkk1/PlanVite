@@ -11,17 +11,17 @@ import 'package:plane_vite/widgets/app_bar.dart';
 import '../../constants.dart';
 import '../../widgets/column_header.dart';
 import '../../widgets/task_widget.dart';
+import '../Drawer/drawer_controller.dart';
 import 'sprint_controller.dart';
 import 'sprint_model.dart';
 
 
-class SprintScreen extends StatelessWidget {
-
+class SprintScreen extends GetView<SprintController> {
 
   @override
   Widget build(BuildContext context) {
-    final SprintController _sprintController =  Get.find();
-    final SkeletonController _skeletonController = Get.find();
+    final SprintController _sprintController =  Get.put(SprintController());
+    final MyDrawerController _myDrawerController = Get.find();
     List<BoardList> _lists = [];
     for (int i = 0; i < _sprintController.listData.length; i++) {
       _lists.add(_createBoardList(_sprintController.listData[i]) as BoardList);
@@ -37,7 +37,7 @@ class SprintScreen extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(
                   width * 0.03, height * 0.025, width * 0.03, 0),
               child: AppBarWidget(
-                controller: _skeletonController.myDrawerController,
+                controller: _myDrawerController,
                 head: 'Sample Project'.tr,
                 backLog: true,
               ),

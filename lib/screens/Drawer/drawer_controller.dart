@@ -10,9 +10,12 @@ class MyDrawerController extends GetxController {
   ZoomDrawerController zoomDrawerController = ZoomDrawerController();
 
   void toggleDrawer() {
-    zoomDrawerController.close?.call();
     print("Toggle drawer");
     zoomDrawerController.toggle?.call();
+    update();
+  }
+  void kickDrawer(){
+    zoomDrawerController.close?.call();
     update();
   }
 }

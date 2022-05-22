@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:plane_vite/widgets/drawer_item.dart';
 import '../../constants.dart';
+import '../../skeleton/skeleton_controller.dart';
 import 'drawer_controller.dart';
 
 
@@ -13,7 +14,8 @@ class DrawerScreen extends GetView<MyDrawerController> {
 
   @override
   Widget build(BuildContext context) {
-    final MyDrawerController _myDrawerController=  Get. put(MyDrawerController());
+    final MyDrawerController _myDrawerController=  Get.put(MyDrawerController());
+    SkeletonController _skeletonController=Get.find();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -53,7 +55,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 ),
 
                 DrawerItem(Icons.home,35, 'Home'.tr, (){
-                  Get.offAllNamed('/home');
+                  _skeletonController.changeScreen(0);
 
                 }),
                 DrawerItem(Icons.task,35, 'Todo Tasks'.tr, (){
@@ -75,7 +77,8 @@ class DrawerScreen extends GetView<MyDrawerController> {
                 Column(
                   children: List.generate(
                     3, (index) => DrawerItem(FontAwesomeIcons.userGroup,25, 'Sample Project'.tr, (){
-                      Get.offNamed('/sprint');
+                    _skeletonController.changeScreen(1);
+                      //Get.offNamed('/sprint');
 
                   }),),
                 ),

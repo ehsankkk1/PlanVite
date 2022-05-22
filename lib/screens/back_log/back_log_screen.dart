@@ -12,11 +12,11 @@ import '../Drawer/drawer_controller.dart';
 import '../Drawer/drawer_screen.dart';
 import 'back_log_controller.dart';
 
-class BackLogScreen extends StatelessWidget {
+class BackLogScreen extends GetView<BackLogScreen> {
 
 
-  final SkeletonController _skeletonController = Get.find();
-  final BackLogController _backLogController = Get.find();
+  final MyDrawerController _myDrawerController = Get.find();
+  final BackLogController _backLogController = Get.put(BackLogController());
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class BackLogScreen extends StatelessWidget {
             children: [
               // notification and drawer
               AppBarWidget(
-                controller: _skeletonController.myDrawerController,
+                controller: _myDrawerController,
                 head: 'Sample Project'.tr,
               ),
               NotificationListener<OverscrollIndicatorNotification>(

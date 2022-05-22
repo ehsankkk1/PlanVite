@@ -11,12 +11,13 @@ import '../../widgets/project_view_home.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import '../../widgets/white_box.dart';
+import '../Drawer/drawer_controller.dart';
 import 'home_controller.dart';
 
 
-class HomeScreen extends StatelessWidget {
-  final SkeletonController _skeletonController = Get.find();
-  HomeController controller =   Get.put(HomeController());
+class HomeScreen extends GetView<HomeController> {
+  final MyDrawerController _myDrawerController = Get.find();
+  HomeController _homeController =   Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       // notification and drawer
                       AppBarWidget(
-                        controller: _skeletonController.myDrawerController,
+                        controller: _myDrawerController,
                         head: 'Home'.tr,
                       ),
                       const SizedBox(

@@ -17,7 +17,6 @@ import 'package:plane_vite/screens/bindings/splash_binding.dart';
 import 'package:plane_vite/screens/bindings/task_binding.dart';
 import 'package:plane_vite/screens/bindings/to_do_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
-import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 import 'package:plane_vite/screens/sprint/sprint_screen.dart';
 import 'package:plane_vite/screens/home/home_screen.dart';
 import 'package:plane_vite/screens/log_in/log_in_screen.dart';
@@ -41,7 +40,8 @@ Future<void> main() async{
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  Get.put<SkeletonController>(SkeletonController());
+  Get.put(MyDrawerController());
+
   runApp(const MyApp());
 }
 

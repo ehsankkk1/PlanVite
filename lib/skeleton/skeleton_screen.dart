@@ -1,20 +1,28 @@
 
+
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:plane_vite/screens/back_log/back_log_screen.dart';
+import 'package:plane_vite/screens/home/home_screen.dart';
+import 'package:plane_vite/screens/sprint/sprint_screen.dart';
 import 'package:plane_vite/skeleton/skeleton_controller.dart';
+
 import '../constants.dart';
 import '../screens/Drawer/drawer_controller.dart';
 import '../screens/Drawer/drawer_screen.dart';
-import '../screens/sprint/sprint_screen.dart';
 
+class SkeletonScreen extends GetView<SkeletonController> {
 
-
-class SkeletonScreen extends StatelessWidget {
-
+  final SkeletonController _skeletonController=Get.put(SkeletonController());
+  final MyDrawerController _myDrawerController = Get.find();
   @override
-  final SkeletonController _skeletonController =Get.put(SkeletonController());
   Widget build(BuildContext context) {
 
     return Directionality(
@@ -24,12 +32,12 @@ class SkeletonScreen extends StatelessWidget {
         body: GetBuilder<MyDrawerController>(
 
           builder: (_) => ZoomDrawer(
-            //duration: Duration(microseconds: 0),
-            //reverseDuration: Duration(microseconds: 0),
+
             moveMenuScreen: true,
-            controller: _skeletonController.myDrawerController.zoomDrawerController,
+            controller: _myDrawerController.zoomDrawerController,
             menuScreen:  DrawerScreen(),
-            mainScreen: _skeletonController.Screens[_skeletonController.screenIndex],
+
+            mainScreen: Obx(() => _skeletonController.Screens[_skeletonController.screenIndex.value],),
             showShadow: true,
             isRtl: false,
             mainScreenOverlayColor: Colors.black.withOpacity(0.5),
