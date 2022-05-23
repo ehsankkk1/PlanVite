@@ -17,10 +17,11 @@ import 'home_controller.dart';
 
 class HomeScreen extends GetView<HomeController> {
   final MyDrawerController _myDrawerController = Get.find();
-  HomeController _homeController =   Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
+    HomeController _homeController =   Get.put(HomeController());
+    SkeletonController _skeletonController =Get.find();
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
@@ -117,7 +118,7 @@ class HomeScreen extends GetView<HomeController> {
                   },
                   child: GestureDetector(
                     onTap: (){
-                      Get.toNamed('/sprint');
+                      _skeletonController.changeScreen(1);
                     },
                     child: Container(
                       height: height*0.4,
