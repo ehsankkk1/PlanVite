@@ -79,6 +79,7 @@ class ToDoScreen extends StatelessWidget {
                         const OutlineInputBorder(borderSide: BorderSide.none),
                     hintText: 'Add More Details to this Task'.tr,
                     hintStyle: const TextStyle(
+
                       color: Colors.grey,
                     ),
                   ),
@@ -104,10 +105,12 @@ class ToDoScreen extends StatelessWidget {
                                 data: ThemeData().copyWith(
                                   colorScheme: const ColorScheme.dark(
                                     primary: kMainPink,
-                                    onPrimary: Colors.black,
+                                    onPrimary: kWritings,
                                     surface: kMainPink,
+
+                                    onSurface: kWritings,
                                   ),
-                                  dialogBackgroundColor: Colors.white30,
+                                 // dialogBackgroundColor: Colors.white30,
                                 ),
                                 child: child!,
                               ),
@@ -350,15 +353,20 @@ class ToDoScreen extends StatelessWidget {
                                       SizedBox(
                                         width: width * 0.075,
                                       ),
-                                      Flexible(
-                                        child: Text(
-                                          'Need to study Data Base',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: kWritings,
+                                      Obx((){
+                                        return  Flexible(
+                                          child: Text(
+                                            'Need to study Data Base',
+                                            style: TextStyle(
+                                              decoration: controller.doing[index].value ?TextDecoration.lineThrough:TextDecoration.none,
+
+                                              fontSize: 15,
+                                              color: kWritings,
+                                            ),
                                           ),
-                                        ),
-                                      )
+                                        );
+                                      }),
+
                                     ],
                                   ),
                                 ],

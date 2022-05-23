@@ -112,11 +112,15 @@ class TaskScreen extends StatelessWidget {
                                         builder: (context, child) => Theme(
                                           data: ThemeData().copyWith(
                                             colorScheme: const ColorScheme.dark(
+
                                               primary: kMainPink,
-                                              onPrimary: Colors.black,
+                                              onPrimary: kWritings,
                                               surface: kMainPink,
+
+                                              onSurface: kWritings,
+
                                             ),
-                                            dialogBackgroundColor: Colors.white30,
+                                           // dialogBackgroundColor: Colors.white30,
                                           ),
                                           child: child!,
                                         ),

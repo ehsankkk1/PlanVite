@@ -6,6 +6,8 @@ class SkeletonBinding implements Bindings{
   @override
   void dependencies() {
     Get.put<SkeletonController>(SkeletonController());
+
+
   }
 
 }

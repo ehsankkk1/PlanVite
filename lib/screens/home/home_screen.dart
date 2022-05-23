@@ -20,8 +20,9 @@ class HomeScreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    HomeController _homeController =   Get.put(HomeController());
     SkeletonController _skeletonController =Get.find();
+
+    HomeController _homeController =   Get.put(HomeController());
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
