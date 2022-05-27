@@ -3,5 +3,6 @@ class ServerConfig {
   static  const checkValid='api/auth/check_valid';
 
  static const register='api/register';
+ static const login='api/login';
 
 }

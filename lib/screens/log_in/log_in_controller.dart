@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../models/user.dart';
+import 'log_in_service.dart';
+
 
 
 class LoginController extends GetxController{
@@ -11,6 +14,9 @@ class LoginController extends GetxController{
   var password;
   var passwordBool;
   var checkBoxStatus;
+  var loginStatus;
+  var message;
+  late LoginService service=LoginService();
 
 
   @override
@@ -21,7 +27,9 @@ class LoginController extends GetxController{
     selectedLangBool = true.obs;
     passwordBool=true.obs;
     checkBoxStatus=false.obs;
-
+    loginStatus=false;
+    message='';
+    service=LoginService();
 
     super.onInit();
   }
@@ -44,6 +52,25 @@ class LoginController extends GetxController{
 
 
 
+  }
+
+  Future<void> loginOnClick() async {
+    User user = User(
+
+      email: email,
+      password: password,
+    );
+
+    loginStatus = await service.login(user,checkBoxStatus.value);
+    message=service.message;
+
+    if(message is List){
+      String temp ='';
+      for(String s in message)temp += s + '\n';
+      message=temp;
+
+
+    }
   }
 
 

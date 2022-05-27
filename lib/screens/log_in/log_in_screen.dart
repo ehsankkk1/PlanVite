@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/widgets/custom_text_field.dart';
 import '../../constants.dart';
@@ -99,6 +100,9 @@ TextEditingController passwordController = new TextEditingController();
                                           if(value.isEmpty){
                                             return 'Password is Empty ! ';
                                           }
+                                          else if (value.length<8){
+                                            return 'Please Enter at least 8 Characters !'.tr;
+                                          }
                                         },
                                         controller2: passwordController,
                                         hintText: 'Password',
@@ -128,7 +132,8 @@ TextEditingController passwordController = new TextEditingController();
                                         if (_globalKey.currentState!.validate()){
                                           controller.email=emailController.text;
                                           controller.password=passwordController.text;
-                                          Get.offAllNamed('/home');
+                                          Get.offAllNamed('/skeleton');
+                                         // onClickLogin();
 
 
                                         }
@@ -286,5 +291,25 @@ TextEditingController passwordController = new TextEditingController();
         ),
       ),
     );
+  }
+  void onClickLogin() async {
+    EasyLoading.show(
+      status: 'Loading...',
+    );
+
+    await controller.loginOnClick();
+    if (controller.loginStatus) {
+      Get.offNamed('/login');
+      EasyLoading.showSuccess(controller.message);
+      Get.offAllNamed('/home');
+    } else {
+      EasyLoading.showError(
+        controller.message,
+        duration: Duration(seconds: 10),
+        dismissOnTap: true,
+      );
+
+      print('error here');
+    }
   }
 }
