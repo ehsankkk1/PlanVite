@@ -30,7 +30,8 @@ class SkeletonScreen extends GetView<SkeletonController> {
             controller: _myDrawerController.zoomDrawerController,
             menuScreen:  DrawerScreen(),
 
-            mainScreen: Obx(() => _skeletonController.Screens[_skeletonController.screenIndex.value],),
+            mainScreen: Obx(() =>
+            _skeletonController.Screens[_skeletonController.screenIndex.value],),
             mainScreenTapClose: true,
             showShadow: true,
             isRtl: false,

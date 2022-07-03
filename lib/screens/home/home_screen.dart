@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/widgets/app_bar.dart';
+import '../../config/SizeConfig.dart';
 import '../../skeleton/skeleton_controller.dart';
 import '../../widgets/project_view_home.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -15,13 +16,13 @@ import '../Drawer/drawer_controller.dart';
 import 'home_controller.dart';
 
 
-class HomeScreen extends GetView<HomeController> {
+class HomeScreen extends StatelessWidget {
   final MyDrawerController _myDrawerController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     SkeletonController _skeletonController =Get.find();
-
+    SizeConfig().init(context);
     HomeController _homeController =   Get.put(HomeController());
     return Scaffold(
       backgroundColor: kBackGround,
@@ -45,8 +46,8 @@ class HomeScreen extends GetView<HomeController> {
                         controller: _myDrawerController,
                         head: 'Home'.tr,
                       ),
-                      const SizedBox(
-                        height: 30,
+                      SizedBox(
+                        height: height*0.05,
                       ),
                       // circular indicator widget
                       Padding(
@@ -60,9 +61,9 @@ class HomeScreen extends GetView<HomeController> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
-                                  'Summary'.tr.tr,
-                                  style: const TextStyle(
-                                    fontSize: 25,
+                                  'Summary'.tr,
+                                  style:  TextStyle(
+                                    fontSize: 7*SizeConfig.blockSizeHorizontal,
                                     color: kWritings,
                                   ),
                                 ),
@@ -72,21 +73,21 @@ class HomeScreen extends GetView<HomeController> {
                                   reverse: true,
                                   progressColor: kMainPink,
                                   backgroundColor: kLightPink,
-                                  radius: 130.0,
-                                  lineWidth: 15.0,
+                                  radius: width > breakPoint ?130.0:110,
+                                  lineWidth: width > breakPoint ?15.0:13,
                                   percent: 0.7,
-                                  center: const Text(
+                                  center:  Text(
                                     "70%",
                                     style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize:  6*SizeConfig.blockSizeHorizontal,
                                         color: kMainPink,
                                         fontWeight: FontWeight.w900),
                                   ),
                                 ),
                                 Text(
                                   'Tasks\nDone'.tr,
-                                  style: const TextStyle(
-                                    fontSize: 25,
+                                  style:  TextStyle(
+                                    fontSize: 6*SizeConfig.blockSizeHorizontal,
                                     color: kMainPink,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -98,14 +99,14 @@ class HomeScreen extends GetView<HomeController> {
                         ),
                       ),
 
-                      const SizedBox(
-                        height: 30,
+                      SizedBox(
+                        height: height*0.05,
                       ),
                       Text(
                         'My Projects'.tr,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           color: kWritings,
-                          fontSize: 25,
+                          fontSize:6*SizeConfig.blockSizeHorizontal,
                         ),
                       ),
                     ],
