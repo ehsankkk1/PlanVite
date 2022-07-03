@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plane_vite/widgets/priorty_widget.dart';
+import '../config/SizeConfig.dart';
 import '../constants.dart';
 
 
@@ -20,19 +21,13 @@ class TaskWidget extends StatelessWidget {
   @override
 
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding:  EdgeInsets.all(width*0.02),
       child: Container(
         decoration: BoxDecoration(
             /*border: Border.all(color: darkSecondaryColor,width: 3),*/
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.8),
-                spreadRadius: 1,
-                blurRadius: 3,
-                offset: const Offset(0, 4), //changes position of shadow
-              ),
-            ],
+            boxShadow: [kBoxShadow],
             color: kColoredCard,
             borderRadius: const BorderRadius.all(Radius.circular(10))),
         child: Padding(
@@ -47,8 +42,8 @@ class TaskWidget extends StatelessWidget {
               Flexible(
                 child: Text(
                   name,
-                  style: const TextStyle(
-                    fontSize: 18,
+                  style:  TextStyle(
+                    fontSize: SizeConfig.blockSizeHorizontal*4.7,
                     color: kWritings,
                     fontWeight: FontWeight.w600
                   ),
@@ -62,13 +57,13 @@ class TaskWidget extends StatelessWidget {
               ):Container(),
               Row(
                 children: [
-                  const CircleAvatar(
+                   CircleAvatar(
                     radius: 15,
                     backgroundColor: kWritings,
                     child: Text(
                       'E',
                       style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: SizeConfig.blockSizeHorizontal*3.5, fontWeight: FontWeight.bold),
                     ),
                   ),
                   SizedBox(
@@ -77,8 +72,8 @@ class TaskWidget extends StatelessWidget {
                   dueDate != null
                       ? Text(
                         dueDate!,
-                        style: const TextStyle(
-                          fontSize: 15,
+                        style:  TextStyle(
+                          fontSize: SizeConfig.blockSizeHorizontal*3.7,
                           color: kWritings,
                         ),
                       ) : Container(),

@@ -44,7 +44,7 @@ class SprintScreen extends GetView<SprintController> {
             ),
             Container(
                 margin: const EdgeInsets.only(left: 10),
-                height: height * 0.88,
+                height: width > breakPoint?height * 0.875:height * 0.85,
                 child: NotificationListener<OverscrollIndicatorNotification>(
                   onNotification: (overScroll) {
                     overScroll.disallowIndicator();
@@ -88,7 +88,7 @@ class SprintScreen extends GetView<SprintController> {
       header: [
         Expanded(
             child: Container(
-          padding: const EdgeInsets.all(5),
+          padding:  EdgeInsets.all(width*0.01),
           child: const ColumnHeader(),
         )),
       ],
