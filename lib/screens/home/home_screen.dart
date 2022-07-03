@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: width * 0.05),
                         child: Container(
-                          height: height * 0.36,
+                          height: width * 0.8,
                           child: WhiteBox(
                             width: double.infinity,
                             height: double.infinity,
@@ -123,7 +123,7 @@ class HomeScreen extends StatelessWidget {
                       _skeletonController.changeScreen(1);
                     },
                     child: Container(
-                      height: height*0.4,
+                      height: width * 0.9,
                       child: PageView(
                         controller:  PageController(viewportFraction: 0.80),
                         scrollDirection: Axis.horizontal,
