@@ -31,6 +31,7 @@ import 'package:plane_vite/settings/settings_screen.dart';
 import 'package:plane_vite/skeleton/skeleton_controller.dart';
 import 'package:plane_vite/skeleton/skeleton_screen.dart';
 import 'package:plane_vite/widgets/loader_screen.dart';
+import 'constants.dart';
 import 'translations.dart';
 
 
@@ -54,11 +55,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme: ThemeData( colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink)),
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/skeleton',
+      initialRoute: '/splash',
 
       getPages: [
         GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),
