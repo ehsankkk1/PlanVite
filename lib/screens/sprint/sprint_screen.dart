@@ -28,41 +28,43 @@ class SprintScreen extends GetView<SprintController> {
     for (int i = 0; i < _sprintController.listData.length; i++) {
       _lists.add(_createBoardList(_sprintController.listData[i]) as BoardList);
     }
-    return Scaffold(
-      backgroundColor: kBackGround,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // notification and drawer
-              Padding(
-                padding: EdgeInsets.fromLTRB(
-                    width * 0.03, height * 0.025, width * 0.03, 0),
-                child: AppBarWidget(
-                  controller: _myDrawerController,
-                  head: 'Sample Project'.tr,
-                  backLog: true,
+    return Obx((){
+      return Scaffold(
+        backgroundColor: kBackGround.value,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // notification and drawer
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      width * 0.03, height * 0.025, width * 0.03, 0),
+                  child: AppBarWidget(
+                    controller: _myDrawerController,
+                    head: 'Sample Project'.tr,
+                    backLog: true,
+                  ),
                 ),
-              ),
-              Container(
-                  margin: const EdgeInsets.only(left: 10),
-                  height: width > breakPoint?height * 0.875:height * 0.85,
-                  child: BoardView(
-                    scrollbar: true,
-                    width: width * 0.85,
-                    scrollbarStyle: ScrollbarStyle(
-                        color: kMainPink,
-                        radius: const Radius.circular(5),
-                        thickness: 12),
-                    lists: _lists,
-                    boardViewController: _sprintController.boardViewController,
-                  )),
-            ],
+                Container(
+                    margin: const EdgeInsets.only(left: 10),
+                    height: width > breakPoint?height * 0.875:height * 0.85,
+                    child: BoardView(
+                      scrollbar: true,
+                      width: width * 0.85,
+                      scrollbarStyle: ScrollbarStyle(
+                          color: kMainPink,
+                          radius: const Radius.circular(5),
+                          thickness: 12),
+                      lists: _lists,
+                      boardViewController: _sprintController.boardViewController,
+                    )),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Widget _createBoardList(BoardListObject list) {
@@ -80,8 +82,8 @@ class SprintScreen extends GetView<SprintController> {
         _sprintController.listData.removeAt(oldListIndex);
         _sprintController.listData.insert(listIndex!, list);
       },
-      headerBackgroundColor: Colors.white,
-      backgroundColor: Colors.white,
+      headerBackgroundColor: kDrawerBackGround.value,
+      backgroundColor: kDrawerBackGround.value,
       draggable: false,
       header: [
         Expanded(

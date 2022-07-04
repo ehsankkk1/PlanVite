@@ -25,45 +25,46 @@ class TaskScreen extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: SafeArea(
-        child: Scaffold(
-          backgroundColor: kBackGround,
-          body: NotificationListener<OverscrollIndicatorNotification>(
-            onNotification: (overScroll) {
-              overScroll.disallowIndicator();
-              return true;
-            },
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: kMainPink,
-                          size: 35,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          print(_file1);
-                        },
-                        icon: Padding(
-                          padding: EdgeInsets.only(right: 20),
-                          child: Icon(
-                            Icons.done,
+        child: Obx((){
+          return Scaffold(
+            backgroundColor: kBackGround.value,
+            body: NotificationListener<OverscrollIndicatorNotification>(
+              onNotification: (overScroll) {
+                overScroll.disallowIndicator();
+                return true;
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.arrow_back,
                             color: kMainPink,
                             size: 35,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(width * 0.03, height * 0.025, width * 0.03, 0),
-                    child: Column(
+                        IconButton(
+                          onPressed: () {
+                            print(_file1);
+                          },
+                          icon: Padding(
+                            padding: EdgeInsets.only(right: 20),
+                            child: Icon(
+                              Icons.done,
+                              color: kMainPink,
+                              size: 35,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(width * 0.03, height * 0.025, width * 0.03, 0),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
@@ -120,7 +121,7 @@ class TaskScreen extends StatelessWidget {
                                               onSurface: kWritings,
 
                                             ),
-                                           // dialogBackgroundColor: Colors.white30,
+                                            // dialogBackgroundColor: Colors.white30,
                                           ),
                                           child: child!,
                                         ),
@@ -301,7 +302,7 @@ class TaskScreen extends StatelessWidget {
                                   borderSide: BorderSide.none,
                                 ),
                                 enabledBorder:
-                                    const OutlineInputBorder(borderSide: BorderSide.none),
+                                const OutlineInputBorder(borderSide: BorderSide.none),
                                 hintText: 'Add More Details to this Task'.tr,
                                 hintStyle: const TextStyle(
                                   color: Colors.grey,
@@ -378,28 +379,29 @@ class TaskScreen extends StatelessWidget {
                                     },
                                     child: (controller.fileBool.value)
                                         ? GestureDetector(
-                                            onTap: () {
-                                              controller.fileBool.value = false;
-                                              gellarypicker();
-                                            },
-                                            child: Image.file(_file1!))
+                                        onTap: () {
+                                          controller.fileBool.value = false;
+                                          gellarypicker();
+                                        },
+                                        child: Image.file(_file1!))
                                         : const Icon(
-                                            Icons.add_a_photo,
-                                            size: 50,
-                                            color: kWritings,
-                                          ),
+                                      Icons.add_a_photo,
+                                      size: 50,
+                                      color: kWritings,
+                                    ),
                                   );
                                 })),
                           ),
                         ],
                       ),
-                  ),
-                  SizedBox(height: 10,),
-                ],
+                    ),
+                    SizedBox(height: 10,),
+                  ],
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        })
       ),
     );
   }

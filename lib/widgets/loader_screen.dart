@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plane_vite/constants.dart';
 
 class LoaderScreen extends StatefulWidget {
@@ -12,14 +13,16 @@ class LoaderScreen extends StatefulWidget {
 class _LoaderScreenState extends State<LoaderScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kBackGround,
-      body: Center(
-        child :Image.asset(
-            "images/loader.gif"
+    return Obx((){
+      return Scaffold(
+        backgroundColor: kBackGround.value,
+        body: Center(
+          child :Image.asset(
+              "images/loader.gif"
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
 

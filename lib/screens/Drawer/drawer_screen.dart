@@ -15,89 +15,93 @@ class DrawerScreen extends GetView<MyDrawerController> {
   @override
   Widget build(BuildContext context) {
     SkeletonController _skeletonController=Get.find();
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        //width: width*0.5,
-        child: SafeArea(
-          child: NotificationListener<OverscrollIndicatorNotification>(
-            onNotification: (overScroll) {
-              overScroll.disallowIndicator();
-              return true;
-            },
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:  [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children:const [
-                         CircleAvatar(radius:35,backgroundColor: kWritings,child: Text('E',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),),
-                         SizedBox(height: 25,),
-                         Text(
-                          'Ehsan Abourshaed',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: kWritings,
-                            fontWeight: FontWeight.bold,
+    return Obx((){
+      return Scaffold(
+        backgroundColor: kDrawerBackGround.value,
+        body: Container(
+          //width: width*0.5,
+          child: SafeArea(
+            child: NotificationListener<OverscrollIndicatorNotification>(
+              onNotification: (overScroll) {
+                overScroll.disallowIndicator();
+                return true;
+              },
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:  [
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children:const [
+                          CircleAvatar(radius:35,backgroundColor: kWritings,child: Text('E',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),),
+                          SizedBox(height: 25,),
+                          Text(
+                            'Ehsan Abourshaed',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: kWritings,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
                           SizedBox(height: 10,),
-                         Text(
-                          '+963945057206',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: kWritings,
-                          ),
-                        ),],
-                    ),
-                  ),
-
-                  DrawerItem(Icons.home,35, 'Home'.tr, (){
-                    _skeletonController.changeScreen(0);
-
-                  }),
-                  DrawerItem(Icons.task,35, 'Todo Tasks'.tr, (){
-                    Get.toNamed('/todo');
-
-                  }),
-                  const Divider(thickness:1,color: kMainPink,),
-                   Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      'WorkSpaces'.tr,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Colors.black54,
-                        fontWeight: FontWeight.bold,
+                          Text(
+                            '+963945057206',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: kWritings,
+                            ),
+                          ),],
                       ),
                     ),
-                  ),
-                  Column(
-                    children: List.generate(
-                      3, (index) => DrawerItem(FontAwesomeIcons.userGroup,25, 'Sample Project'.tr, (){
-                      _skeletonController.changeScreen(1);
+
+                    DrawerItem(Icons.home,35, 'Home'.tr, (){
+                      _skeletonController.changeScreen(0);
+
+                    }),
+                    DrawerItem(Icons.task,35, 'Todo Tasks'.tr, (){
+                      Get.toNamed('/todo');
+
+                    }),
+                    const Divider(thickness:1,color: kMainPink,),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Text(
+                        'WorkSpaces'.tr,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Column(
+                      children: List.generate(
+                        3, (index) => DrawerItem(FontAwesomeIcons.userGroup,25, 'Sample Project'.tr, (){
+                        _skeletonController.changeScreen(1);
                         //Get.offNamed('/sprint');
 
-                    }),),
-                  ),
-                  DrawerItem(Icons.add,35, 'Add Project'.tr, (){
+                      }),),
+                    ),
+                    DrawerItem(Icons.add,35, 'Add Project'.tr, (){
 
-                  }),
-                  const Divider(thickness:1,color: kMainPink,),
-                  DrawerItem(Icons.notifications,35, 'Notifications'.tr, (){
-                    Get.toNamed('/notifications');
+                    }),
+                    const Divider(thickness:1,color: kMainPink,),
+                    DrawerItem(Icons.notifications,35, 'Notifications'.tr, (){
+                      Get.toNamed('/notifications');
 
-                  }),
-                  DrawerItem(Icons.settings,35, 'Settings'.tr, (){}),
-              ],
-    ),
+                    }),
+                    DrawerItem(Icons.settings,35, 'Settings'.tr, (){
+                      Get.toNamed('/settings');
+                    }),
+                  ],
+                ),
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

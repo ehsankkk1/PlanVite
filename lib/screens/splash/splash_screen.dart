@@ -10,7 +10,7 @@ class SplashScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           decoration: const BoxDecoration(
-            color: kBackGround,
+           // color: kBackGround.value,
           ),
           child: Column(
             children: [

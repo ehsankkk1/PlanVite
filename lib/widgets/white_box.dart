@@ -18,7 +18,7 @@ class WhiteBox extends StatelessWidget {
       decoration: BoxDecoration(
         /*border: Border.all(color: darkSecondaryColor,width: 3),*/
           boxShadow:[kBoxShadow],
-          color: Colors.white,
+          color: kDrawerBackGround.value,
           borderRadius: const BorderRadius.all(Radius.circular(10))
       ),
       child: child,

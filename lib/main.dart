@@ -31,6 +31,7 @@ import 'package:plane_vite/settings/settings_screen.dart';
 import 'package:plane_vite/skeleton/skeleton_controller.dart';
 import 'package:plane_vite/skeleton/skeleton_screen.dart';
 import 'package:plane_vite/widgets/loader_screen.dart';
+import 'screens/bindings/settings_binding.dart';
 import 'translations.dart';
 
 
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/login',
+      initialRoute: '/skeleton',
 
       getPages: [
         GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/todo', page: ()=>ToDoScreen(),binding:ToDoBinding()),
         GetPage(name: '/drawer', page: ()=> DrawerScreen(),binding:DrawerBinding()),
         GetPage(name: '/test', page: ()=>const LoaderScreen()),
+        GetPage(name: '/settings', page: ()=>SettingsScreen(),binding:SettingsBinding()),
 
       ],
       builder: EasyLoading.init(),

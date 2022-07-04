@@ -4,7 +4,8 @@ import 'package:get/get.dart';
 
 
 //pink
-const kBackGround=Color(0xFFFCF8F3);
+var kBackGround=Color(0xFFFCF8F3).obs;
+var kDrawerBackGround=Colors.white.obs;
 const kMainPink=Color(0xFFFFAAA5);
 const kLightPink=Color(0xFFFFDFEC);
 
