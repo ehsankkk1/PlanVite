@@ -6,18 +6,20 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/widgets/custom_text_field.dart';
 import '../../constants.dart';
+import 'package:plane_vite/config/SizeConfig.dart';
 import '../../widgets/custom_check_box.dart';
 import 'log_in_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
   LoginController controller = Get.find();
+
 TextEditingController emailController = new TextEditingController();
 TextEditingController passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-
+    SizeConfig().init(context);
     return Scaffold(
       backgroundColor: kBackGround,
       body: NotificationListener<OverscrollIndicatorNotification>(
@@ -51,16 +53,16 @@ TextEditingController passwordController = new TextEditingController();
                               textDirection: TextDirection.ltr,
                               child: Text(
                                 'Welcome Back'.tr,
-                                style: const TextStyle(
-                                  fontSize: 35,
+                                style:  TextStyle(
+                                  fontSize: 10*SizeConfig.blockSizeHorizontal,
                                   color: kWritings,
                                 ),
                               ),
                             ),
                             Text(
                               'please sign in to your account'.tr,
-                              style: const TextStyle(
-                                fontSize: 20,
+                              style: TextStyle(
+                                fontSize: 5*SizeConfig.blockSizeHorizontal,
                                 color: kWritings,
                               ),
                             ),
@@ -83,7 +85,6 @@ TextEditingController passwordController = new TextEditingController();
                                         }
                                       },
                                       controller2: emailController,
-                                      fontSize: 15,
                                       hintText: 'Email',
                                       icon: Icons.email,
                                       textInputType: TextInputType.emailAddress,
@@ -114,7 +115,7 @@ TextEditingController passwordController = new TextEditingController();
                                   ),
                                 ],),
                               ),
-                              const SizedBox(height: 30,),
+                              SizedBox(height: height*0.05,),
                               GestureDetector(
                                 onTap: (){
 
@@ -137,20 +138,17 @@ TextEditingController passwordController = new TextEditingController();
 
 
                                         }
-
-
-
                                       },
                                       child: Text(
                                         'Login'.tr,
-                                        style: const TextStyle(
+                                        style:  TextStyle(
                                           color: Colors.white,
-                                          fontSize: 18,
+                                          fontSize: 5*SizeConfig.blockSizeHorizontal,
                                         ),
                                       )),
                                 ),
                               ),
-                              const SizedBox(height: 30,),
+                              SizedBox(height: height*0.05,),
                               Padding(
                                padding: EdgeInsets.only(
                                     left: controller.selectedLangBool.value
@@ -168,19 +166,17 @@ TextEditingController passwordController = new TextEditingController();
                                      Text(
                                       'Keep me sign in'.tr,
                                       style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 4.5*SizeConfig.blockSizeHorizontal,
                                         color: kWritings,
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 10,
+                                      width: 20,
                                     ),
                                     Obx((){
                                       return  CustomCheckbox(
                                         onTap: () {
                                           controller.changeCheckBoxStatus();
-
-
                                         },
                                         color: kWritings,
                                         size: 25,
@@ -193,9 +189,9 @@ TextEditingController passwordController = new TextEditingController();
                               ),
                               Text(
                                 'Don\'t have an account?'.tr,
-                                style: const TextStyle(
+                                style:  TextStyle(
                                   color: kGrey,
-                                  fontSize: 18,
+                                  fontSize: 4.5*SizeConfig.blockSizeHorizontal,
                                 ),
                               ),
                               GestureDetector(
@@ -216,16 +212,16 @@ TextEditingController passwordController = new TextEditingController();
                                     children: [
                                       Text(
                                         'Sign up'.tr,
-                                        style: const TextStyle(
+                                        style:  TextStyle(
                                           color: kMainPink,
-                                          fontSize: 18,
+                                          fontSize: 4.5*SizeConfig.blockSizeHorizontal,
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 30,),
+                              SizedBox(height: height*0.03,),
                               Directionality(
                                 textDirection: TextDirection.ltr,
                                 child: Row(
@@ -247,7 +243,7 @@ TextEditingController passwordController = new TextEditingController();
                                                 color: controller.selectedLangBool.value
                                                     ? kMainPink
                                                     : kGrey,
-                                                fontSize: 18,
+                                                fontSize:  4.5*SizeConfig.blockSizeHorizontal,
                                               ),
                                             );
                                           })
@@ -269,7 +265,7 @@ TextEditingController passwordController = new TextEditingController();
                                                 color: controller.selectedLangBool.value
                                                     ? kGrey
                                                     : kMainPink,
-                                                fontSize: 18,
+                                                fontSize:  4.5*SizeConfig.blockSizeHorizontal,
                                               ),
                                             );
                                           })

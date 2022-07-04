@@ -17,7 +17,9 @@ class NotificationsScreen extends StatelessWidget {
           appBar: AppBar(
             iconTheme: const IconThemeData(color: kMainPink),
             backgroundColor: kBackGround,
-            title: Center(
+            title: Padding(
+              padding: EdgeInsets.only(
+                  left: locale == 'en' ? width * 0.18 : width * 0.25),
               child: Text(
                 'Notifications'.tr,
                 style: const TextStyle(
@@ -26,63 +28,60 @@ class NotificationsScreen extends StatelessWidget {
               ),
             ),
           ),
-          body: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: GridView.builder(
-                itemCount: 30,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 1,
-                  childAspectRatio: 4,
-                ),
-                itemBuilder: (context, index) => Padding(
-                      padding: EdgeInsets.only(
-                          left: width * 0.05,
-                          right: width * 0.05,
-                          bottom: height * 0.001,
-                          top: height * 0.001),
-                      child: Container(
-                        color: kBackGround,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: width * 0.02,
+          body: GridView.builder(
+              itemCount: 30,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                childAspectRatio: 4,
+              ),
+              itemBuilder: (context, index) => Padding(
+                    padding: EdgeInsets.only(
+                        left: width * 0.05,
+                        right: width * 0.05,
+                        bottom: height * 0.001,
+                        top: height * 0.001),
+                    child: Container(
+                      color: kBackGround,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: width * 0.02,
+                              ),
+                              const CircleAvatar(
+                                radius: 37,
+                                backgroundColor: kMainPink,
+                                child: CircleAvatar(
+                                  radius: 35,
+                                  backgroundColor: Colors.black12,
+                                  foregroundImage: AssetImage('images/joey.png'),
                                 ),
-                                const CircleAvatar(
-                                  radius: 37,
-                                  backgroundColor: kMainPink,
-                                  child: CircleAvatar(
-                                    radius: 35,
-                                    backgroundColor: Colors.black12,
-                                    foregroundImage: AssetImage('images/joey.png'),
+                              ),
+                              SizedBox(
+                                width: width * 0.02,
+                              ),
+                              const Flexible(
+                                child: Text(
+                                  'Ehsan abourashed mentioned you in a comment',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: kWritings,
                                   ),
                                 ),
-                                SizedBox(
-                                  width: width * 0.02,
-                                ),
-                                const Flexible(
-                                  child: Text(
-                                    'Ehsan abourashed mentioned you in a comment',
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: kWritings,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            Divider(
-                              height: height * 0.02,
-                              endIndent: 1,
-                              thickness: 1.5,
-                              color: kMainPink,
-                            )
-                          ],
-                        ),
+                              )
+                            ],
+                          ),
+                          Divider(
+                            height: height * 0.02,
+                            endIndent: 1,
+                            thickness: 1.5,
+                            color: kMainPink,
+                          )
+                        ],
                       ),
-                    )),
-          )),
+                    ),
+                  ))),
     );
   }
 }

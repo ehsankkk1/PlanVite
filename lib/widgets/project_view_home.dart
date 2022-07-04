@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:plane_vite/widgets/white_box.dart';
 
+import '../config/SizeConfig.dart';
 import '../constants.dart';
 
 class ProjectView extends StatelessWidget {
@@ -11,6 +12,7 @@ class ProjectView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Padding(
       padding: const EdgeInsets.only(left: 5, right: 5, bottom: 20, top: 35),
       child: Container(
@@ -28,14 +30,14 @@ class ProjectView extends StatelessWidget {
                  Text(
                   'Sample Projects'.tr,
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 5*SizeConfig.blockSizeHorizontal,
                       color: kWritings,
                       fontWeight: FontWeight.bold),
                 ),
                  Text(
                   'header'.tr,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: kWritings,
                   ),
                 ),
@@ -49,7 +51,7 @@ class ProjectView extends StatelessWidget {
                  Text(
                   'header'.tr,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: kWritings,
                   ),
                 ),
@@ -63,7 +65,7 @@ class ProjectView extends StatelessWidget {
                  Text(
                   'header'.tr,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: kWritings,
                   ),
                 ),

@@ -32,4 +32,5 @@ const kTextFieldFill=Color(0xFFFFFFFF);
 const kGrey=Color(0xFFC6C6C6);
 double height = Get.height;
 double width = Get.width;
+const int breakPoint=350;
 

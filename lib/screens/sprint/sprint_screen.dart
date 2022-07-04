@@ -20,6 +20,8 @@ class SprintScreen extends GetView<SprintController> {
 
   @override
   Widget build(BuildContext context) {
+    double height = context.height;
+    double width = context.width;
     final SprintController _sprintController =  Get.put(SprintController());
     final MyDrawerController _myDrawerController = Get.find();
     List<BoardList> _lists = [];
@@ -29,27 +31,23 @@ class SprintScreen extends GetView<SprintController> {
     return Scaffold(
       backgroundColor: kBackGround,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // notification and drawer
-            Padding(
-              padding: EdgeInsets.fromLTRB(
-                  width * 0.03, height * 0.025, width * 0.03, 0),
-              child: AppBarWidget(
-                controller: _myDrawerController,
-                head: 'Sample Project'.tr,
-                backLog: true,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // notification and drawer
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    width * 0.03, height * 0.025, width * 0.03, 0),
+                child: AppBarWidget(
+                  controller: _myDrawerController,
+                  head: 'Sample Project'.tr,
+                  backLog: true,
+                ),
               ),
-            ),
-            Container(
-                margin: const EdgeInsets.only(left: 10),
-                height: height * 0.88,
-                child: NotificationListener<OverscrollIndicatorNotification>(
-                  onNotification: (overScroll) {
-                    overScroll.disallowIndicator();
-                    return true;
-                  },
+              Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  height: width > breakPoint?height * 0.875:height * 0.85,
                   child: BoardView(
                     scrollbar: true,
                     width: width * 0.85,
@@ -59,9 +57,9 @@ class SprintScreen extends GetView<SprintController> {
                         thickness: 12),
                     lists: _lists,
                     boardViewController: _sprintController.boardViewController,
-                  ),
-                )),
-          ],
+                  )),
+            ],
+          ),
         ),
       ),
     );
@@ -88,7 +86,7 @@ class SprintScreen extends GetView<SprintController> {
       header: [
         Expanded(
             child: Container(
-          padding: const EdgeInsets.all(5),
+          padding:  EdgeInsets.all(width*0.01),
           child: const ColumnHeader(),
         )),
       ],
