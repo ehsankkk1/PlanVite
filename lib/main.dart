@@ -31,6 +31,7 @@ import 'package:plane_vite/settings/settings_screen.dart';
 import 'package:plane_vite/skeleton/skeleton_controller.dart';
 import 'package:plane_vite/skeleton/skeleton_screen.dart';
 import 'package:plane_vite/widgets/loader_screen.dart';
+import 'constants.dart';
 import 'screens/bindings/settings_binding.dart';
 import 'translations.dart';
 
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      theme: ThemeData( colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
       locale: const Locale('en'),

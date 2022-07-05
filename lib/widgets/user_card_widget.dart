@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../config/SizeConfig.dart';
 import '../constants.dart';
 
 
@@ -12,15 +13,14 @@ class UserCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           /*border: Border.all(color: darkSecondaryColor,width: 3),*/
-            boxShadow:[
-             kBoxShadow ],
             color: kColoredCard,
-            borderRadius: const BorderRadius.all(Radius.circular(10))
+            borderRadius: BorderRadius.all(Radius.circular(8))
         ),
         child: Padding(
           padding:  EdgeInsets.fromLTRB( width * 0.03,height * 0.02,width * 0.03,height * 0.02),
@@ -32,7 +32,7 @@ class UserCardWidget extends StatelessWidget {
                 child: Text(
                   username,
                   style:  TextStyle(
-                    fontSize: 16,
+                    fontSize: SizeConfig.blockSizeHorizontal*4.7,
                     color: kWritings.value,
                   ),),
               ),
