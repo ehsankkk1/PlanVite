@@ -53,7 +53,7 @@ class SprintScreen extends GetView<SprintController> {
                       scrollbar: true,
                       width: width * 0.85,
                       scrollbarStyle: ScrollbarStyle(
-                          color: kMainPink,
+                          color: kMainPink.value,
                           radius: const Radius.circular(5),
                           thickness: 12),
                       lists: _lists,

@@ -23,26 +23,26 @@ class AppBarWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         InkWell(
-          child: const Icon(
+          child:  Icon(
             Icons.menu_rounded,
-            color: kMainPink,
+            color: kMainPink.value,
             size: 40,
           ),
           onTap: controller.toggleDrawer,
         ),
         Text(
           "$head",
-          style: const TextStyle(
+          style:  TextStyle(
             fontSize: 18,
-            color: kWritings,
+            color: kWritings.value,
             fontWeight: FontWeight.bold,
           ),
         ),
         backLog == true
             ? InkWell(
-                child: const Icon(
+                child:  Icon(
                   Icons.airplay,
-                  color: kMainPink,
+                  color: kMainPink.value,
                   size: 30,
                 ),
                 onTap: () {
@@ -50,9 +50,9 @@ class AppBarWidget extends StatelessWidget {
                 },
               )
             : InkWell(
-                child: const Icon(
+                child:  Icon(
                   Icons.notifications,
-                  color: kMainPink,
+                  color: kMainPink.value,
                   size: 40,
                 ),
                 onTap: () {

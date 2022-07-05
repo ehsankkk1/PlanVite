@@ -31,49 +31,49 @@ class ProjectView extends StatelessWidget {
                   'Sample Projects'.tr,
                   style: TextStyle(
                       fontSize: 5*SizeConfig.blockSizeHorizontal,
-                      color: kWritings,
+                      color: kWritings.value,
                       fontWeight: FontWeight.bold),
                 ),
                  Text(
                   'header'.tr,
                   style: TextStyle(
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
-                    color: kWritings,
+                    color: kWritings.value,
                   ),
                 ),
                 LinearPercentIndicator(
                   percent: 0.6,
                   animation: true,
                   backgroundColor: kLightPink,
-                  progressColor: kMainPink,
+                  progressColor: kMainPink.value,
                   lineHeight: height * 0.015,
                 ),
                  Text(
                   'header'.tr,
                   style: TextStyle(
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
-                    color: kWritings,
+                    color: kWritings.value,
                   ),
                 ),
                 LinearPercentIndicator(
                   percent: 0.4,
                   animation: true,
                   backgroundColor: kLightPink,
-                  progressColor: kMainPink,
+                  progressColor: kMainPink.value,
                   lineHeight: height * 0.015,
                 ),
                  Text(
                   'header'.tr,
                   style: TextStyle(
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
-                    color: kWritings,
+                    color: kWritings.value,
                   ),
                 ),
                 LinearPercentIndicator(
                   percent: 0.9,
                   animation: true,
                   backgroundColor: kLightPink,
-                  progressColor: kMainPink,
+                  progressColor: kMainPink.value,
                   lineHeight: height * 0.015,
                 ),
               ],

@@ -22,8 +22,9 @@ class SettingsController extends GetxController{
   }
   changeThemeToDark(){
 
-    kBackGround.value=Color(0xFF0E050F);
-    kDrawerBackGround.value=Colors.black;
+    kBackGround.value=Color(0xFF3F4E4F);
+    kDrawerBackGround.value=Color(0xFF2C3639);
+    kWritings.value=Color(0xFF787A91);
   }
 
 }

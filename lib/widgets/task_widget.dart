@@ -45,7 +45,7 @@ class TaskWidget extends StatelessWidget {
                     name,
                     style:  TextStyle(
                       fontSize: SizeConfig.blockSizeHorizontal*4.7,
-                      color: kWritings,
+                      color: kWritings.value,
                       fontWeight: FontWeight.w600
                     ),
                   ),
@@ -54,13 +54,13 @@ class TaskWidget extends StatelessWidget {
                 priority != null
                     ? Padding(
                   padding: const EdgeInsets.only(bottom: 15),
-                  child: PriorityWidget(name:priority!,colour:kPriortyColor,textColor:kWritings),
+                  child: PriorityWidget(name:priority!,colour:kPriortyColor,textColor:kWritings.value),
                 ):Container(),
                 Row(
                   children: [
                      CircleAvatar(
                       radius: 15,
-                      backgroundColor: kWritings,
+                      backgroundColor: kWritings.value,
                       child: Text(
                         'E',
                         style:
@@ -75,7 +75,7 @@ class TaskWidget extends StatelessWidget {
                           dueDate!,
                           style:  TextStyle(
                             fontSize: SizeConfig.blockSizeHorizontal*3.7,
-                            color: kWritings,
+                            color: kWritings.value,
                           ),
                         ) : Container(),
                   ],

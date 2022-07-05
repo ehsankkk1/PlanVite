@@ -31,18 +31,18 @@ class SprintWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                     Text(
                       "Pending",
                       style: TextStyle(
                         fontSize: 20,
-                        color: kWritings,
+                        color: kWritings.value,
                       ),
                     ),
                     addButton==true?InkWell(
-                      child: const Icon(
+                      child:  Icon(
                         Icons.add,
                         size: 40,
-                        color: kMainPink,
+                        color: kMainPink.value,
                       ),
                       onTap: () {
                         print("tapped");
@@ -53,12 +53,12 @@ class SprintWidget extends StatelessWidget {
                 ),
                 checkBox==true ?Row(
                   children: [
-                    Checkbox(value: true, onChanged: (value){},activeColor: kMainPink,),
-                    const Text(
+                    Checkbox(value: true, onChanged: (value){},activeColor: kMainPink.value,),
+                     Text(
                       'Activate',
                       style:  TextStyle(
                         fontSize: 15,
-                        color: kWritings,
+                        color: kWritings.value,
                       ),)
                   ],
                 ):Container(width: 15,height: 15,),

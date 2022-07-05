@@ -75,16 +75,16 @@ class SignupScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   'Create New Account'.tr,
-                                  style: const TextStyle(
+                                  style:  TextStyle(
                                     fontSize: 30,
-                                    color: kWritings,
+                                    color: kWritings.value,
                                   ),
                                 ),
                                 Text(
                                   'please fill in the form to continue'.tr,
-                                  style: const TextStyle(
+                                  style:  TextStyle(
                                     fontSize: 18,
-                                    color: kWritings,
+                                    color: kWritings.value,
                                   ),
                                 ),
                                 SizedBox(height: height*0.015,),
@@ -92,7 +92,7 @@ class SignupScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     border: Border.all(
-                                      color: kMainPink,
+                                      color: kMainPink.value,
                                     ),
                                     borderRadius: BorderRadius.circular(100),
                                   ),
@@ -112,7 +112,7 @@ class SignupScreen extends StatelessWidget {
                                           : Icon(
                                         Icons.add_a_photo,
                                         size: 50,
-                                        color: kMainPink,
+                                        color: kMainPink.value,
                                       ),
                                     );
                                   }),
@@ -236,7 +236,7 @@ class SignupScreen extends StatelessWidget {
                             Container(
                               width: 120,
                               decoration: BoxDecoration(
-                                color: kMainPink,
+                                color: kMainPink.value,
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
                               child: TextButton(
@@ -286,8 +286,8 @@ class SignupScreen extends StatelessWidget {
                                     children: [
                                       Text(
                                         'Sign in'.tr,
-                                        style: const TextStyle(
-                                          color: kMainPink,
+                                        style:  TextStyle(
+                                          color: kMainPink.value,
                                           fontSize: 18,
                                         ),
                                       ),

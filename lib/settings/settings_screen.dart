@@ -21,7 +21,7 @@ class SettingsScreen extends StatelessWidget {
               child: Text(
                 'Settings',
                 style: TextStyle(
-                  color: kWritings,
+                  color: kWritings.value,
                 ),
               ),
             ),
@@ -48,7 +48,7 @@ class SettingsScreen extends StatelessWidget {
                                     child: Icon(
 
                                       Icons.language_sharp,
-                                      color: kWritings,
+                                      color: kWritings.value,
                                       size: 45,
                                     ),
                                   ),
@@ -58,7 +58,7 @@ class SettingsScreen extends StatelessWidget {
                                     child: Text(
                                       'Language',
                                       style: TextStyle(
-                                        color: kWritings,
+                                        color: kWritings.value,
                                         fontSize: 25,
                                       ),
 
@@ -73,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
                                       },
 
                                       child: Icon(Icons.arrow_forward_ios,
-                                        color: kWritings,
+                                        color: kWritings.value,
                                       ),
                                     ),
                                   ),
@@ -96,7 +96,7 @@ class SettingsScreen extends StatelessWidget {
                                       alignment: Alignment(-0.45,0),
                                       child: Text('English',
                                         style: TextStyle(
-                                          color: kWritings,
+                                          color: kWritings.value,
                                           fontSize: 20,
                                         ),
                                       ),
@@ -104,7 +104,7 @@ class SettingsScreen extends StatelessWidget {
 
                                     Align(
                                         alignment: Alignment.topRight,
-                                        child: CustomCheckbox(onTap: (){}, color: kMainPink,size: 25,)),
+                                        child: CustomCheckbox(onTap: (){}, color: kMainPink.value,size: 25,)),
 
                                   ],),
                                   SizedBox(height: height*0.01,),
@@ -118,7 +118,7 @@ class SettingsScreen extends StatelessWidget {
                                         alignment: Alignment(-0.45,0),
                                         child: Text('العربية',
                                           style: TextStyle(
-                                            color: kWritings,
+                                            color: kWritings.value,
                                             fontSize: 20,
                                           ),
                                         ),
@@ -126,7 +126,7 @@ class SettingsScreen extends StatelessWidget {
                                       //SizedBox(width: width*0.437,),
                                       Align(
                                           alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){}, color: kMainPink,size: 25,)),
+                                          child: CustomCheckbox(onTap: (){}, color: kMainPink.value,size: 25,)),
 
                                     ],),
 
@@ -154,7 +154,7 @@ class SettingsScreen extends StatelessWidget {
                                     child: Icon(
 
                                       Icons.palette_outlined,
-                                      color: kWritings,
+                                      color: kWritings.value,
                                       size: 45,
                                     ),
                                   ),
@@ -164,7 +164,7 @@ class SettingsScreen extends StatelessWidget {
                                     child: Text(
                                       'Theme',
                                       style: TextStyle(
-                                        color: kWritings,
+                                        color: kWritings.value,
                                         fontSize: 25,
                                       ),
 
@@ -179,7 +179,7 @@ class SettingsScreen extends StatelessWidget {
                                       },
 
                                       child: Icon(Icons.arrow_forward_ios,
-                                        color: kWritings,
+                                        color: kWritings.value,
                                       ),
                                     ),
                                   ),
@@ -202,7 +202,7 @@ class SettingsScreen extends StatelessWidget {
                                       alignment: Alignment(-0.45,0),
                                       child: Text('Pink',
                                         style: TextStyle(
-                                          color: kWritings,
+                                          color: kWritings.value,
                                           fontSize: 20,
                                         ),
                                       ),
@@ -215,7 +215,7 @@ class SettingsScreen extends StatelessWidget {
                                           controller.isPink.value=true;
                                           controller.isDark.value=false;
 
-                                        }, color: kMainPink,size: 25,isSelected: controller.isPink.value, )),
+                                        }, color: kMainPink.value,size: 25,isSelected: controller.isPink.value, )),
 
                                   ],),
                                   SizedBox(height: height*0.01,),
@@ -229,7 +229,7 @@ class SettingsScreen extends StatelessWidget {
                                         alignment: Alignment(-0.45,0),
                                         child: Text('Dark',
                                           style: TextStyle(
-                                            color: kWritings,
+                                            color: kWritings.value,
                                             fontSize: 20,
                                           ),
                                         ),
@@ -245,7 +245,7 @@ class SettingsScreen extends StatelessWidget {
                                               controller.changeThemeToDark();
 
 
-                                            }, color: kMainPink,size: 25, isSelected: controller.isDark.value,)),
+                                            }, color: kMainPink.value,size: 25, isSelected: controller.isDark.value,)),
 
 
 
@@ -260,7 +260,7 @@ class SettingsScreen extends StatelessWidget {
                                         alignment: Alignment(-0.42,0),
                                         child: Text('Purple',
                                           style: TextStyle(
-                                            color: kWritings,
+                                            color: kWritings.value,
                                             fontSize: 20,
                                           ),
                                         ),
@@ -268,7 +268,7 @@ class SettingsScreen extends StatelessWidget {
                                       //SizedBox(width: width*0.437,),
                                       Align(
                                           alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){}, color: kMainPink,size: 25,)),
+                                          child: CustomCheckbox(onTap: (){}, color: kMainPink.value,size: 25,)),
 
                                     ],),
                                   SizedBox(height: height*0.01,),
@@ -281,7 +281,7 @@ class SettingsScreen extends StatelessWidget {
                                         alignment: Alignment(-0.45,0),
                                         child: Text('Blue',
                                           style: TextStyle(
-                                            color: kWritings,
+                                            color: kWritings.value,
                                             fontSize: 20,
                                           ),
                                         ),
@@ -289,7 +289,7 @@ class SettingsScreen extends StatelessWidget {
                                       //SizedBox(width: width*0.437,),
                                       Align(
                                           alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){}, color: kMainPink,size: 25,)),
+                                          child: CustomCheckbox(onTap: (){}, color: kMainPink.value,size: 25,)),
 
                                     ],),
 

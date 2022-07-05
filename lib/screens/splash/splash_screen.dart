@@ -9,8 +9,8 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          decoration: const BoxDecoration(
-           // color: kBackGround.value,
+          decoration:  BoxDecoration(
+            color: kBackGround.value,
           ),
           child: Column(
             children: [
@@ -23,12 +23,12 @@ class SplashScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.1,
               ),
-              const Center(
+               Center(
                 child: Text(
                   'Plan Vite',
                   style: TextStyle(
                     fontFamily: 'OleoScriptSwashCaps',
-                    color: kWritings,
+                    color: kWritings.value,
                     fontSize: 40,
                   ),
                 ),

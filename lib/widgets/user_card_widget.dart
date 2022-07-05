@@ -26,14 +26,14 @@ class UserCardWidget extends StatelessWidget {
           padding:  EdgeInsets.fromLTRB( width * 0.03,height * 0.02,width * 0.03,height * 0.02),
           child: Row(
             children:  [
-              const CircleAvatar(radius:25,backgroundColor: kWritings,child: Text('E',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),),
+               CircleAvatar(radius:25,backgroundColor: kWritings.value,child: Text('E',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),),
               SizedBox(width: width * 0.05,),
               Flexible(
                 child: Text(
                   username,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontSize: 16,
-                    color: kWritings,
+                    color: kWritings.value,
                   ),),
               ),
             ],

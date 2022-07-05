@@ -19,7 +19,7 @@ class ColumnHeader extends StatelessWidget {
               "Pending",
               style: TextStyle(
                 fontSize: SizeConfig.blockSizeHorizontal*5.5,
-                color: kWritings,
+                color: kWritings.value,
               ),
             ),
             Container(height: height*0.05,width: width*0.01,)
@@ -37,12 +37,12 @@ class ColumnHeader extends StatelessWidget {
         ),
         Row(
           children: [
-            Checkbox(value: true, onChanged: (value){},activeColor: kMainPink,),
+            Checkbox(value: true, onChanged: (value){},activeColor: kMainPink.value,),
              Text(
               'Only view my tasks',
               style:  TextStyle(
                 fontSize: SizeConfig.blockSizeHorizontal*4,
-                color: kWritings,
+                color: kWritings.value,
               ),)
           ],
         )

@@ -23,13 +23,13 @@ class DrawerItem extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(15,15,0,15),
         child: Row(
           children:  [
-            Icon(icon,color: kMainPink,size: size,),
+            Icon(icon,color: kMainPink.value,size: size,),
             const SizedBox(width: 25,),
             Text(
               name,
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: 15,
-                color: kWritings,
+                color: kWritings.value,
                 fontWeight: FontWeight.bold
               ),
             ),

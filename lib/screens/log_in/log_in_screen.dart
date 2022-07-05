@@ -56,7 +56,7 @@ TextEditingController passwordController = new TextEditingController();
                                   'Welcome Back'.tr,
                                   style:  TextStyle(
                                     fontSize: 10*SizeConfig.blockSizeHorizontal,
-                                    color: kWritings,
+                                    color: kWritings.value,
                                   ),
                                 ),
                               ),
@@ -64,7 +64,7 @@ TextEditingController passwordController = new TextEditingController();
                                 'please sign in to your account'.tr,
                                 style: TextStyle(
                                   fontSize: 5*SizeConfig.blockSizeHorizontal,
-                                  color: kWritings,
+                                  color: kWritings.value,
                                 ),
                               ),
                             ],
@@ -126,7 +126,7 @@ TextEditingController passwordController = new TextEditingController();
                                         ? width * 0.3
                                         : width * 0.33,
                                     decoration: BoxDecoration(
-                                      color: kMainPink,
+                                      color: kMainPink.value,
                                       borderRadius: BorderRadius.circular(20.0),
                                     ),
                                     child: TextButton(
@@ -168,7 +168,7 @@ TextEditingController passwordController = new TextEditingController();
                                         'Keep me sign in'.tr,
                                         style: TextStyle(
                                           fontSize: 4.5*SizeConfig.blockSizeHorizontal,
-                                          color: kWritings,
+                                          color: kWritings.value,
                                         ),
                                       ),
                                       SizedBox(
@@ -179,7 +179,7 @@ TextEditingController passwordController = new TextEditingController();
                                           onTap: () {
                                             controller.changeCheckBoxStatus();
                                           },
-                                          color: kWritings,
+                                          color: kWritings.value,
                                           size: 25,
                                           iconSize: 20,
                                           isSelected: controller.checkBoxStatus.value,
@@ -214,7 +214,7 @@ TextEditingController passwordController = new TextEditingController();
                                         Text(
                                           'Sign up'.tr,
                                           style:  TextStyle(
-                                            color: kMainPink,
+                                            color: kMainPink.value,
                                             fontSize: 4.5*SizeConfig.blockSizeHorizontal,
                                           ),
                                         ),
@@ -242,7 +242,7 @@ TextEditingController passwordController = new TextEditingController();
                                                 'English',
                                                 style: TextStyle(
                                                   color: controller.selectedLangBool.value
-                                                      ? kMainPink
+                                                      ? kMainPink.value
                                                       : kGrey,
                                                   fontSize:  4.5*SizeConfig.blockSizeHorizontal,
                                                 ),
@@ -265,7 +265,7 @@ TextEditingController passwordController = new TextEditingController();
                                                 style: TextStyle(
                                                   color: controller.selectedLangBool.value
                                                       ? kGrey
-                                                      : kMainPink,
+                                                      : kMainPink.value,
                                                   fontSize:  4.5*SizeConfig.blockSizeHorizontal,
                                                 ),
                                               );

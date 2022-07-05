@@ -19,7 +19,7 @@ class CustomCheckbox extends StatelessWidget {
         duration: Duration(milliseconds: 500),
         curve: Curves.fastLinearToSlowEaseIn,
         decoration: BoxDecoration(
-            color: isSelected! ? kMainPink : Colors.transparent,
+            color: isSelected! ? kMainPink.value : Colors.transparent,
             borderRadius: BorderRadius.circular(8.0),
             border: isSelected! ? null : Border.all(
               color: color,

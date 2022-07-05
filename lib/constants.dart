@@ -6,11 +6,11 @@ import 'package:get/get.dart';
 //pink
 var kBackGround=Color(0xFFFCF8F3).obs;
 var kDrawerBackGround=Colors.white.obs;
-const kMainPink=Color(0xFFFFAAA5);
+var kMainPink=Color(0xFFFFAAA5).obs;
 const kLightPink=Color(0xFFFFDFEC);
 
 const kColoredCard=Color(0xFFFDE3E1);
-const kWritings =Color(0xFF698474);
+var kWritings =Color(0xFF698474).obs;
 const kPriortyColor=Color(0xffFFEAF3);
 final BoxShadow kBoxShadow=BoxShadow(
   color: Colors.grey.withOpacity(0.8),

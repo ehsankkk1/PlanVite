@@ -23,7 +23,7 @@ class ToDoScreen extends StatelessWidget {
           child: Text(
             'Add',
             style: TextStyle(
-              color: kWritings,
+              color: kWritings.value,
             ),
           ),
         )
@@ -33,7 +33,7 @@ class ToDoScreen extends StatelessWidget {
           child: Text(
         'Add Task',
         style: TextStyle(
-          color: kWritings,
+          color: kWritings.value,
         ),
       )),
       content: Container(
@@ -50,7 +50,7 @@ class ToDoScreen extends StatelessWidget {
                   controller: taskNameController,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  cursorColor: kMainPink,
+                  cursorColor: kMainPink.value,
                   decoration: InputDecoration(
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide.none,
@@ -70,7 +70,7 @@ class ToDoScreen extends StatelessWidget {
                   controller: taskDescriptionController,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  cursorColor: kMainPink,
+                  cursorColor: kMainPink.value,
                   decoration: InputDecoration(
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide.none,
@@ -103,12 +103,12 @@ class ToDoScreen extends StatelessWidget {
                               lastDate: DateTime(2023),
                               builder: (context, child) => Theme(
                                 data: ThemeData().copyWith(
-                                  colorScheme: const ColorScheme.dark(
-                                    primary: kMainPink,
-                                    onPrimary: kWritings,
-                                    surface: kMainPink,
+                                  colorScheme:  ColorScheme.dark(
+                                    primary: kMainPink.value,
+                                    onPrimary: kWritings.value,
+                                    surface: kMainPink.value,
 
-                                    onSurface: kWritings,
+                                    onSurface: kWritings.value,
                                   ),
                                  // dialogBackgroundColor: Colors.white30,
                                 ),
@@ -127,7 +127,7 @@ class ToDoScreen extends StatelessWidget {
                           child: Icon(
                             Icons.date_range,
                             color:
-                                controller.dateBool.value ? kMainPink : kGrey,
+                                controller.dateBool.value ? kMainPink.value : kGrey,
                           ));
                     }),
                     SizedBox(
@@ -179,7 +179,7 @@ class ToDoScreen extends StatelessWidget {
               )
             ],
             iconTheme: IconThemeData(
-              color: kMainPink,
+              color: kMainPink.value,
               size: 35,
             ),
           ),
@@ -202,7 +202,7 @@ class ToDoScreen extends StatelessWidget {
                     },
                     icon: Icon(
                       Icons.add,
-                      color: kMainPink,
+                      color: kMainPink.value,
                       size: 35,
                     )),
                 // Text('Task',
@@ -236,7 +236,7 @@ class ToDoScreen extends StatelessWidget {
                             animation: true,
                             circularStrokeCap: CircularStrokeCap.round,
                             reverse: true,
-                            progressColor: kMainPink,
+                            progressColor: kMainPink.value,
                             backgroundColor: kLightPink,
                             radius: 45,
                             lineWidth: 4,
@@ -250,7 +250,7 @@ class ToDoScreen extends StatelessWidget {
                                 '${controller.percent.value.toString()}%',
                                 style: TextStyle(
                                     fontSize: 14,
-                                    color: kMainPink,
+                                    color: kMainPink.value,
                                     fontWeight: FontWeight.w900),
                               ),
                             ),
@@ -265,7 +265,7 @@ class ToDoScreen extends StatelessWidget {
                       'My Tasks',
                       style: TextStyle(
                         fontSize: 42,
-                        color: kWritings,
+                        color: kWritings.value,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -357,7 +357,7 @@ class ToDoScreen extends StatelessWidget {
                                           decoration: controller.doing[index].value ?TextDecoration.lineThrough:TextDecoration.none,
 
                                           fontSize: 15,
-                                          color: kWritings,
+                                          color: kWritings.value,
                                         ),
                                       ),
                                     );

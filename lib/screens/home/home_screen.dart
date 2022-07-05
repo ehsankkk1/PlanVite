@@ -60,14 +60,14 @@ class HomeScreen extends StatelessWidget {
                                   'Summary'.tr,
                                   style:  TextStyle(
                                     fontSize: 7*SizeConfig.blockSizeHorizontal,
-                                    color: kWritings,
+                                    color: kWritings.value,
                                   ),
                                 ),
                                 CircularPercentIndicator(
                                   animation: true,
                                   circularStrokeCap: CircularStrokeCap.round,
                                   reverse: true,
-                                  progressColor: kMainPink,
+                                  progressColor: kMainPink.value,
                                   backgroundColor: kLightPink,
                                   radius: width > breakPoint ?130.0:110,
                                   lineWidth: width > breakPoint ?15.0:13,
@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                                     "70%",
                                     style: TextStyle(
                                         fontSize:  6*SizeConfig.blockSizeHorizontal,
-                                        color: kMainPink,
+                                        color: kMainPink.value,
                                         fontWeight: FontWeight.w900),
                                   ),
                                 ),
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                                   'Tasks\nDone'.tr,
                                   style:  TextStyle(
                                     fontSize: 6*SizeConfig.blockSizeHorizontal,
-                                    color: kMainPink,
+                                    color: kMainPink.value,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textAlign: TextAlign.center,
@@ -101,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'My Projects'.tr,
                         style:  TextStyle(
-                          color: kWritings,
+                          color: kWritings.value,
                           fontSize:6*SizeConfig.blockSizeHorizontal,
                         ),
                       ),

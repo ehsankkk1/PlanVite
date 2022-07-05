@@ -21,18 +21,18 @@ class WelcomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                     Text(
                       'Task Management',
                       style: TextStyle(
-                        color: kWritings,
+                        color: kWritings.value,
                         fontSize: 46,
                       ),
                     ),
                     const SizedBox(height: 20,),
-                    const Text(
+                     Text(
                       'Manage your daily task easier like never before. Easy to use',
                       style: TextStyle(
-                        color: kWritings,
+                        color: kWritings.value,
                         fontSize: 20,
                       ),
                     ),
@@ -44,7 +44,7 @@ class WelcomeScreen extends StatelessWidget {
                       child: Container(
                         width: width * 0.5,
                         decoration: BoxDecoration(
-                          color: kMainPink,
+                          color: kMainPink.value,
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                         child: TextButton(
