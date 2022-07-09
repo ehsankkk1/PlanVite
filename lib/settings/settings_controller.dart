@@ -25,6 +25,9 @@ class SettingsController extends GetxController{
     kBackGround.value=Color(0xFF3F4E4F);
     kDrawerBackGround.value=Color(0xFF2C3639);
     kWritings.value=Color(0xFF787A91);
+    kMainPink.value=Color(0xFF506D84);
+    kLightPink.value=Color(0xFF889EAF);
+    kColoredCard.value=Color(0xFF515E63);
   }
 
 }

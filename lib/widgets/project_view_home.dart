@@ -44,7 +44,7 @@ class ProjectView extends StatelessWidget {
                 LinearPercentIndicator(
                   percent: 0.6,
                   animation: true,
-                  backgroundColor: kLightPink,
+                  backgroundColor: kLightPink.value,
                   progressColor: kMainPink.value,
                   lineHeight: height * 0.015,
                 ),
@@ -58,7 +58,7 @@ class ProjectView extends StatelessWidget {
                 LinearPercentIndicator(
                   percent: 0.4,
                   animation: true,
-                  backgroundColor: kLightPink,
+                  backgroundColor: kLightPink.value,
                   progressColor: kMainPink.value,
                   lineHeight: height * 0.015,
                 ),
@@ -72,7 +72,7 @@ class ProjectView extends StatelessWidget {
                 LinearPercentIndicator(
                   percent: 0.9,
                   animation: true,
-                  backgroundColor: kLightPink,
+                  backgroundColor: kLightPink.value,
                   progressColor: kMainPink.value,
                   lineHeight: height * 0.015,
                 ),

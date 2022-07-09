@@ -134,8 +134,8 @@ TextEditingController passwordController = new TextEditingController();
                                           if (_globalKey.currentState!.validate()){
                                             controller.email=emailController.text;
                                             controller.password=passwordController.text;
-                                            Get.offAllNamed('/skeleton');
-                                            // onClickLogin();
+
+                                             onClickLogin();
 
 
                                           }
@@ -299,7 +299,7 @@ TextEditingController passwordController = new TextEditingController();
     if (controller.loginStatus) {
       Get.offNamed('/login');
       EasyLoading.showSuccess(controller.message);
-      Get.offAllNamed('/home');
+      Get.offAllNamed('/skeleton');
     } else {
       EasyLoading.showError(
         controller.message,

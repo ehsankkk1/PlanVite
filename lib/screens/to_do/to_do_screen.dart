@@ -184,7 +184,7 @@ class ToDoScreen extends StatelessWidget {
             ),
           ),
           bottomNavigationBar: BottomAppBar(
-            color: kColoredCard,
+            color: kColoredCard.value,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -237,7 +237,7 @@ class ToDoScreen extends StatelessWidget {
                             circularStrokeCap: CircularStrokeCap.round,
                             reverse: true,
                             progressColor: kMainPink.value,
-                            backgroundColor: kLightPink,
+                            backgroundColor: kLightPink.value,
                             radius: 45,
                             lineWidth: 4,
                             percent:

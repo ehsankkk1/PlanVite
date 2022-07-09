@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/skeleton',
+      initialRoute: '/login',
 
       getPages: [
         GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),

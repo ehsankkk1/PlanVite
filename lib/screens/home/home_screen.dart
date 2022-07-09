@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                                   circularStrokeCap: CircularStrokeCap.round,
                                   reverse: true,
                                   progressColor: kMainPink.value,
-                                  backgroundColor: kLightPink,
+                                  backgroundColor: kLightPink.value,
                                   radius: width > breakPoint ?130.0:110,
                                   lineWidth: width > breakPoint ?15.0:13,
                                   percent: 0.7,

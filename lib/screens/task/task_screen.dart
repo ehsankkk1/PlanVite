@@ -170,7 +170,7 @@ class TaskScreen extends StatelessWidget {
                             //width: 250,
                             //height: 60,
                             decoration: BoxDecoration(
-                              color: kColoredCard,
+                              color: kColoredCard.value,
                               borderRadius: BorderRadius.circular(15),
                               boxShadow: [
                                 kBoxShadow
@@ -215,7 +215,7 @@ class TaskScreen extends StatelessWidget {
                             width: width * 0.9,
                             height: height * 0.065,
                             decoration: BoxDecoration(
-                              color: kColoredCard,
+                              color: kColoredCard.value,
                               borderRadius: BorderRadius.circular(15),
                               boxShadow: [
                                 kBoxShadow
@@ -243,7 +243,7 @@ class TaskScreen extends StatelessWidget {
                                     },
                                     child: PriorityWidget(
                                       name:'Low'.tr,
-                                      colour:controller.low == false ? kLightPink : kMainPink.value,
+                                      colour:controller.low == false ? kLightPink.value : kMainPink.value,
                                       textColor:controller.low == false ? kWritings.value : Colors.white,
                                     ),
                                   );
@@ -258,7 +258,7 @@ class TaskScreen extends StatelessWidget {
                                     },
                                     child: PriorityWidget(
                                       name:'Medium'.tr,
-                                      colour:controller.medium == false ? kLightPink : kMainPink.value,
+                                      colour:controller.medium == false ? kLightPink.value : kMainPink.value,
                                       textColor:controller.medium == false ? kWritings.value : Colors.white,
                                     ),
                                   );
@@ -273,7 +273,7 @@ class TaskScreen extends StatelessWidget {
                                     },
                                     child: PriorityWidget(
                                       name:'High'.tr,
-                                      colour:controller.high == false ? kLightPink : kMainPink.value,
+                                      colour:controller.high == false ? kLightPink.value : kMainPink.value,
                                       textColor:controller.high == false ? kWritings.value : Colors.white,
                                     ),
                                   );
@@ -366,7 +366,7 @@ class TaskScreen extends StatelessWidget {
                                 width: width * 0.5,
                                 height: height * 0.2,
                                 decoration: BoxDecoration(
-                                  color: kLightPink,
+                                  color: kLightPink.value,
                                   borderRadius: BorderRadius.circular(25),
                                   boxShadow: [
                                     kBoxShadow

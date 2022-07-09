@@ -28,8 +28,8 @@ class TaskWidget extends StatelessWidget {
         elevation: 0,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         child: Container(
-          decoration: const BoxDecoration(
-              color: kColoredCard,
+          decoration:  BoxDecoration(
+              color: kColoredCard.value,
               borderRadius: BorderRadius.all(Radius.circular(6))),
           child: Padding(
             padding: EdgeInsets.fromLTRB(
@@ -54,7 +54,7 @@ class TaskWidget extends StatelessWidget {
                 priority != null
                     ? Padding(
                   padding: const EdgeInsets.only(bottom: 15),
-                  child: PriorityWidget(name:priority!,colour:kPriortyColor,textColor:kWritings.value),
+                  child: PriorityWidget(name:priority!,colour:kPriortyColor.value,textColor:kWritings.value),
                 ):Container(),
                 Row(
                   children: [

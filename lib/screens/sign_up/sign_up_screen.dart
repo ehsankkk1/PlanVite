@@ -250,7 +250,7 @@ class SignupScreen extends StatelessWidget {
                                       upload();
                                       onClick();
 
-                                      Get.offNamed('/home');
+                                      Get.offNamed('/skeleton');
                                     }
                                   },
                                   child: Text(

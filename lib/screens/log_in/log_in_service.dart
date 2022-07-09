@@ -19,7 +19,7 @@ class LoginService {
       'email': user.email,
       'password': user.password,
     });
-    //print(response.statusCode);
+    print(response.statusCode);
     //print(response.body);
 
     if (response.statusCode == 200) {
