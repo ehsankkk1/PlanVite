@@ -32,35 +32,34 @@ class SprintScreen extends GetView<SprintController> {
       return Scaffold(
         backgroundColor: kBackGround.value,
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // notification and drawer
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      width * 0.03, height * 0.025, width * 0.03, 0),
-                  child: AppBarWidget(
-                    controller: _myDrawerController,
-                    head: 'Sample Project'.tr,
-                    backLog: true,
-                  ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // notification and drawer
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    width * 0.03, height * 0.025, width * 0.03, 0),
+                child: AppBarWidget(
+                  controller: _myDrawerController,
+                  head: 'Sample Project'.tr,
+                  backLog: true,
                 ),
-                Container(
-                    margin: const EdgeInsets.only(left: 10),
-                    height: width > breakPoint?height * 0.875:height * 0.85,
+              ),
+              Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 10,bottom: 10,right: 10),
                     child: BoardView(
                       scrollbar: true,
                       width: width * 0.85,
                       scrollbarStyle: ScrollbarStyle(
                           color: kMainPink.value,
-                          radius: const Radius.circular(5),
+                          radius: const Radius.circular(3),
                           thickness: 12),
                       lists: _lists,
                       boardViewController: _sprintController.boardViewController,
-                    )),
-              ],
-            ),
+                    ),
+                  )),
+            ],
           ),
         ),
       );
@@ -95,7 +94,6 @@ class SprintScreen extends GetView<SprintController> {
       items: items,
     );
   }
-
   Widget buildBoardItem(BoardItemObject itemObject) {
     final SprintController _sprintController =  Get.find();
     return BoardItem(
@@ -111,8 +109,7 @@ class SprintScreen extends GetView<SprintController> {
               .removeAt(oldItemIndex);
           _sprintController.listData[listIndex!].items!.insert(itemIndex!, item);
         },
-        onTapItem:
-            (int? listIndex, int? itemIndex, BoardItemState? state) async {},
+        onTapItem: (int? listIndex, int? itemIndex, BoardItemState? state) async {},
         //Todo : add the task data here
         item: TaskWidget(
           name: 'Build Flutter UwU',

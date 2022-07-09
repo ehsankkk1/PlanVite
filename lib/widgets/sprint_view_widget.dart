@@ -14,14 +14,14 @@ class SprintWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-      margin:  const EdgeInsets.all(8),
+      margin:  const EdgeInsets.fromLTRB(8,0,8,0),
       child: Material(
         color: Colors.white,
         elevation: 6,
         borderRadius:  const BorderRadius.all(Radius.circular(10)),
         child: Container(
           margin:  const EdgeInsets.all(8),
-          width: width * 0.80,
+          width: width * 0.77,
           decoration: const BoxDecoration(
             /*border: Border.all(color: darkSecondaryColor,width: 3),*/
               color: Colors.white,
@@ -71,7 +71,7 @@ class SprintWidget extends StatelessWidget {
                 ),
               ),
               ConstrainedBox(
-                constraints:  BoxConstraints( maxHeight: height*0.75,),
+                constraints:  BoxConstraints( maxHeight: height*0.72,),
                 child: Padding(
                   padding:  EdgeInsets.only(bottom: height * 0.01),
                   child: SingleChildScrollView(

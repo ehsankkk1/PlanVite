@@ -22,7 +22,6 @@ class SkeletonController extends GetxController{
     Screens = [
       HomeScreen(),
       SprintScreen(),
-      BackLogScreen(),
     ];
     super.onInit();
 

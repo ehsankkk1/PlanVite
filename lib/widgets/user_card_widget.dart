@@ -17,8 +17,6 @@ class UserCardWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           /*border: Border.all(color: darkSecondaryColor,width: 3),*/
-            boxShadow:[
-             kBoxShadow ],
             color: kColoredCard.value,
             borderRadius: const BorderRadius.all(Radius.circular(10))
         ),

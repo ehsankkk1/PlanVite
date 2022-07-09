@@ -5,6 +5,8 @@ import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/to_do/to_do_controller.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 
+import '../../widgets/app_bar_no_drawer.dart';
+
 class ToDoScreen extends StatelessWidget {
   TextEditingController taskDescriptionController = new TextEditingController();
   TextEditingController taskNameController = new TextEditingController();
@@ -168,21 +170,6 @@ class ToDoScreen extends StatelessWidget {
       child: Obx((){
         return Scaffold(
           backgroundColor: kBackGround.value,
-          appBar: AppBar(
-            backgroundColor: kBackGround.value,
-            actions: [
-              IconButton(
-                onPressed: () {
-                  print(controller.newTask);
-                },
-                icon: Icon(Icons.done),
-              )
-            ],
-            iconTheme: IconThemeData(
-              color: kMainPink.value,
-              size: 35,
-            ),
-          ),
           bottomNavigationBar: BottomAppBar(
             color: kColoredCard.value,
             child: Row(
@@ -217,161 +204,166 @@ class ToDoScreen extends StatelessWidget {
               ],
             ),
           ),
-          body: Padding(
-            padding: const EdgeInsets.only(top:30.0),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      width: width * 0.06,
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: height * 0.015,
-                        ),
-                        Obx(() {
-                          return CircularPercentIndicator(
-                            animation: true,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            reverse: true,
-                            progressColor: kMainPink.value,
-                            backgroundColor: kLightPink.value,
-                            radius: 45,
-                            lineWidth: 4,
-                            percent:
-                            controller.count.toInt() / controller.doing.length,
-                            center: GestureDetector(
-                              onTap: () {
-                                //controller.Calc();
-                              },
-                              child: Text(
-                                '${controller.percent.value.toString()}%',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: kMainPink.value,
-                                    fontWeight: FontWeight.w900),
-                              ),
-                            ),
-                          );
-                        }),
-                      ],
-                    ),
-                    SizedBox(
-                      width: width * 0.08,
-                    ),
-                    Text(
-                      'My Tasks',
-                      style: TextStyle(
-                        fontSize: 42,
-                        color: kWritings.value,
-                        fontWeight: FontWeight.w500,
+          body: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    width * 0.03, height * 0.025, width * 0.03, height * 0.025),
+                child: AppBarWidgetNoDrawer(
+                  head: "Personal Task",
+                  save: false,
+                ),
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: width * 0.06,
+                  ),
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: height * 0.015,
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: height * 0.01,
-                ),
-                Obx(() {
-                  return Text(
-                    '${controller.count.value.toString()} of ${controller.doing.length.toString()}',
+                      Obx(() {
+                        return CircularPercentIndicator(
+                          animation: true,
+                          circularStrokeCap: CircularStrokeCap.round,
+                          reverse: true,
+                          progressColor: kMainPink.value,
+                          backgroundColor: kLightPink.value,
+                          radius: 45,
+                          lineWidth: 4,
+                          percent:
+                          controller.count.toInt() / controller.doing.length,
+                          center: GestureDetector(
+                            onTap: () {
+                              //controller.Calc();
+                            },
+                            child: Text(
+                              '${controller.percent.value.toString()}%',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  color: kMainPink.value,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          ),
+                        );
+                      }),
+                    ],
+                  ),
+                  SizedBox(
+                    width: width * 0.08,
+                  ),
+                  Text(
+                    'My Tasks',
                     style: TextStyle(
-                      color: kGrey,
+                      fontSize: 42,
+                      color: kWritings.value,
+                      fontWeight: FontWeight.w500,
                     ),
-                  );
-                }),
-                Padding(
-                  padding: EdgeInsets.only(left: width * 0.22),
-                  child: Divider(
-                    height: height * 0.06,
-                    endIndent: 1,
-                    thickness: 1,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: height * 0.01,
+              ),
+              Obx(() {
+                return Text(
+                  '${controller.count.value.toString()} of ${controller.doing.length.toString()}',
+                  style: TextStyle(
                     color: kGrey,
                   ),
+                );
+              }),
+              Padding(
+                padding: EdgeInsets.only(left: width * 0.22),
+                child: Divider(
+                  height: height * 0.06,
+                  endIndent: 1,
+                  thickness: 1,
+                  color: kGrey,
                 ),
-                Expanded(
-                  child: GridView.builder(
-                      itemCount: 7,
-                      gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 1,
-                        childAspectRatio: 4,
-                      ),
-                      itemBuilder: (context, index) => Padding(
-                        padding: EdgeInsets.only(
-                            left: width * 0.05,
-                            right: width * 0.05,
-                            bottom: height * 0.001,
-                            top: height * 0.01),
-                        child: Container(
-                          color: kBackGround.value,
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: width * 0.02,
-                                  ),
-                                  Obx(() {
-                                    return CustomCheckbox(
-                                      onTap: () {
-                                        //controller.Done();
-                                        controller.Doing(index);
-                                        if (controller.doing[index].value) {
-                                          controller.count.value++;
-                                          controller.percent.value =
-                                              (controller.count.toInt() /
-                                                  controller
-                                                      .doing.length *
-                                                  100)
-                                                  .toInt()
-                                                  .toString();
-                                        } else {
-                                          controller.count.value--;
-                                          controller.percent.value =
-                                              (controller.count.toInt() /
-                                                  controller
-                                                      .doing.length *
-                                                  100)
-                                                  .toInt()
-                                                  .toString();
-                                        }
-                                      },
-                                      size: 30,
-                                      iconSize: 25,
-                                      color: kGrey,
-                                      isSelected:
-                                      controller.doing[index].value,
-                                    );
-                                  }),
-                                  SizedBox(
-                                    width: width * 0.075,
-                                  ),
-                                  Obx((){
-                                    return  Flexible(
-                                      child: Text(
-                                        'Need to study Data Base',
-                                        style: TextStyle(
-                                          decoration: controller.doing[index].value ?TextDecoration.lineThrough:TextDecoration.none,
+              ),
+              Expanded(
+                child: GridView.builder(
+                    itemCount: 7,
+                    gridDelegate:
+                    const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 1,
+                      childAspectRatio: 4,
+                    ),
+                    itemBuilder: (context, index) => Padding(
+                      padding: EdgeInsets.only(
+                          left: width * 0.05,
+                          right: width * 0.05,
+                          bottom: height * 0.001,
+                          top: height * 0.01),
+                      child: Container(
+                        color: kBackGround.value,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: width * 0.02,
+                                ),
+                                Obx(() {
+                                  return CustomCheckbox(
+                                    onTap: () {
+                                      //controller.Done();
+                                      controller.Doing(index);
+                                      if (controller.doing[index].value) {
+                                        controller.count.value++;
+                                        controller.percent.value =
+                                            (controller.count.toInt() /
+                                                controller
+                                                    .doing.length *
+                                                100)
+                                                .toInt()
+                                                .toString();
+                                      } else {
+                                        controller.count.value--;
+                                        controller.percent.value =
+                                            (controller.count.toInt() /
+                                                controller
+                                                    .doing.length *
+                                                100)
+                                                .toInt()
+                                                .toString();
+                                      }
+                                    },
+                                    size: 30,
+                                    iconSize: 25,
+                                    color: kGrey,
+                                    isSelected:
+                                    controller.doing[index].value,
+                                  );
+                                }),
+                                SizedBox(
+                                  width: width * 0.075,
+                                ),
+                                Obx((){
+                                  return  Flexible(
+                                    child: Text(
+                                      'Need to study Data Base',
+                                      style: TextStyle(
+                                        decoration: controller.doing[index].value ?TextDecoration.lineThrough:TextDecoration.none,
 
-                                          fontSize: 15,
-                                          color: kWritings.value,
-                                        ),
+                                        fontSize: 15,
+                                        color: kWritings.value,
                                       ),
-                                    );
-                                  }),
+                                    ),
+                                  );
+                                }),
 
-                                ],
-                              ),
-                            ],
-                          ),
+                              ],
+                            ),
+                          ],
                         ),
-                      )),
-                ),
-              ],
-            ),
+                      ),
+                    )),
+              ),
+            ],
           ),
         );
       })

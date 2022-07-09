@@ -8,12 +8,12 @@ import '../skeleton/skeleton_controller.dart';
 class AppBarWidget extends StatelessWidget {
   AppBarWidget({
     Key? key,
-    required this.controller,
+    this.controller,
     this.head,
     this.backLog,
   }) : super(key: key);
 
-  final MyDrawerController controller;
+  final MyDrawerController? controller;
   String? head;
   bool? backLog = false;
   @override
@@ -22,14 +22,14 @@ class AppBarWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        InkWell(
+        controller != null?InkWell(
           child:  Icon(
             Icons.menu_rounded,
             color: kMainPink.value,
             size: 40,
           ),
-          onTap: controller.toggleDrawer,
-        ),
+          onTap: controller?.toggleDrawer,
+        ):Container(),
         Text(
           "$head",
           style:  TextStyle(
@@ -46,7 +46,7 @@ class AppBarWidget extends StatelessWidget {
                   size: 30,
                 ),
                 onTap: () {
-                  _skeletonController.changeScreen(2);
+                  Get.toNamed('/backlog');
                 },
               )
             : InkWell(
