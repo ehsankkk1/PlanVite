@@ -1,7 +1,6 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/screens/splash/splash_service.dart';
-
 import '../../config/user_information.dart';
 import '../../storage/secure_storage.dart';
 
@@ -18,7 +17,6 @@ class SplashController extends GetxController{
     await checkToken();
     super.onInit();
   }
-
 
   Future<void> checkToken ()async{
 

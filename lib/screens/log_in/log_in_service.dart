@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
-
 import '../../config/server_config.dart';
 import '../../config/user_information.dart';
 import '../../models/user.dart';
@@ -9,7 +7,6 @@ import '../../storage/secure_storage.dart';
 
 class LoginService {
   var message;
-  var token;
   var url = Uri.parse(ServerConfig.domainNameServer + ServerConfig.login);
 
   Future<bool> login(User user, bool checkBox) async {
@@ -25,7 +22,7 @@ class LoginService {
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
       message = jsonResponse['message'];
-      token = jsonResponse['data']['access_token'];
+      String token = jsonResponse['data'];
       UserInformation.User_Token = token;
       if (checkBox == true) {
         //save token to device

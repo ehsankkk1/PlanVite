@@ -3,34 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/constants.dart';
 
-class LoaderScreen extends StatefulWidget {
-  const LoaderScreen({Key? key}) : super(key: key);
 
-  @override
-  State<LoaderScreen> createState() => _LoaderScreenState();
-}
+class LoaderScreen extends StatelessWidget {
+   LoaderScreen({this.error=false,});
 
-class _LoaderScreenState extends State<LoaderScreen> {
+  bool error;
   @override
-  Widget build(BuildContext context) {
-    return Obx((){
-      return Scaffold(
-        backgroundColor: kBackGround.value,
-        body: Center(
-          child :Image.asset(
-              "images/loader.gif"
+Widget build(BuildContext context) {
+      return Container(
+        height: 150,
+        width: 150,
+        child: Scaffold(
+          backgroundColor: kBackGround.value,
+          body: Center(
+            child : error?Image.asset(
+                "images/NO.gif"
+            ):
+            Image.asset(
+                "images/loader.gif"
+            ),
           ),
         ),
       );
-    });
   }
 }
-
-/*class LoaderScreen extends StatelessWidget {
-  const LoaderScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return
-  }
-}*/

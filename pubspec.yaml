@@ -27,7 +27,7 @@ dependencies:
   firebase_messaging: ^11.4.0
   intl: ^0.17.0
   flutter_inset_box_shadow: ^1.0.8
-
+  animations: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -46,4 +46,6 @@ flutter:
   - family: OleoScriptSwashCaps
     fonts:
      - asset: fonts/OleoScriptSwashCaps-Regular.ttf
-
+  - family: HacenN
+    fonts:
+      - asset: fonts/Hacen Algeria Regular.ttf

@@ -5,7 +5,7 @@ import '../../skeleton/skeleton_controller.dart';
 class SkeletonBinding implements Bindings{
   @override
   void dependencies() {
-    Get.put<SkeletonController>(SkeletonController());
+    Get.lazyPut<SkeletonController>(() => SkeletonController());
 
 
   }

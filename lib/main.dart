@@ -28,7 +28,6 @@ import 'package:plane_vite/screens/to_do/to_do_screen.dart';
 import 'package:plane_vite/screens/welcome/welcome_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:plane_vite/settings/settings_screen.dart';
-import 'package:plane_vite/skeleton/skeleton_controller.dart';
 import 'package:plane_vite/skeleton/skeleton_screen.dart';
 import 'package:plane_vite/widgets/loader_screen.dart';
 import 'constants.dart';
@@ -44,6 +43,7 @@ Future<void> main() async{
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
   Get.put(MyDrawerController());
 
   runApp(const MyApp());
@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData( colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
+      theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
       locale: const Locale('en'),
@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
         GetPage(name: '/todo', page: ()=>ToDoScreen(),binding:ToDoBinding()),
         GetPage(name: '/drawer', page: ()=> DrawerScreen(),binding:DrawerBinding()),
-        GetPage(name: '/test', page: ()=>const LoaderScreen()),
+        GetPage(name: '/test', page: ()=> LoaderScreen()),
         GetPage(name: '/settings', page: ()=>SettingsScreen(),binding:SettingsBinding()),
 
       ],

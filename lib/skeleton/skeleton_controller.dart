@@ -10,7 +10,8 @@ class SkeletonController extends GetxController{
 
   var selectedLang;
   var  selectedLangBool ;
-   RxInt screenIndex=0.obs ;
+  RxInt screenIndex=0.obs ;
+  var isReverse=false.obs;
   late final List<Widget> Screens;
   final MyDrawerController _myDrawerController = Get.find();
 
@@ -37,6 +38,12 @@ class SkeletonController extends GetxController{
 
   void changeScreen(int index) {
     print(screenIndex);
+    if(index > screenIndex.value){
+      isReverse.value = false;
+    }
+    else{
+      isReverse.value = true;
+    }
     _myDrawerController.kickDrawer();
     screenIndex.value=index;
     update();
