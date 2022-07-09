@@ -14,10 +14,15 @@ class SprintController extends GetxController{
   final List<BoardListObject> listData = [
     BoardListObject(title: "List title 1",items: [
       BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),
+      BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),
     ],
     ),
-    BoardListObject(title: "List title 2"),
-    BoardListObject(title: "List title 3")
+    BoardListObject(title: "List title 2",items: [
+      BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),
+    ]),
+    BoardListObject(title: "List title 3",items: [
+      BoardItemObject(title: 'dsaffdsa'),
+    ])
   ];
   @override
   void onInit() {

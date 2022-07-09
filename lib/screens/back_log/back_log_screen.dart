@@ -25,23 +25,19 @@ class BackLogScreen extends GetView<BackLogScreen> {
       return Scaffold(
         backgroundColor: kBackGround.value,
         body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-                width * 0.03, height * 0.025, width * 0.03, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // notification and drawer
-                AppBarWidget(
-                  controller: _myDrawerController,
-                  head: 'Sample Project'.tr,
-                ),
-                NotificationListener<OverscrollIndicatorNotification>(
-                  onNotification: (overScroll) {
-                    overScroll.disallowIndicator();
-                    return true;
-                  },
-                  child: Container(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(
+                  width * 0.03, height * 0.025, width * 0.03, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // notification and drawer
+                  AppBarWidget(
+                    controller: _myDrawerController,
+                    head: 'Sample Project'.tr,
+                  ),
+                  Container(
                     height: height * 0.88,
                     child: ListView.builder(
                       clipBehavior: Clip.none,
@@ -53,7 +49,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                             children: [
                               SprintWidget(
                                 addButton: true,
-                                checkBox: false,
+                                checkBox: true,
                                 sprintName: "Pending".tr,
                                 coloredBoxes: List.generate(
                                   index + 4,
@@ -64,8 +60,8 @@ class BackLogScreen extends GetView<BackLogScreen> {
                       },
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

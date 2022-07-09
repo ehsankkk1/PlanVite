@@ -19,7 +19,7 @@ class UserCardWidget extends StatelessWidget {
           /*border: Border.all(color: darkSecondaryColor,width: 3),*/
             boxShadow:[
              kBoxShadow ],
-            color: kColoredCard.value,
+            color: kColoredCard,
             borderRadius: const BorderRadius.all(Radius.circular(10))
         ),
         child: Padding(

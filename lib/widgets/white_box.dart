@@ -12,16 +12,19 @@ class WhiteBox extends StatelessWidget {
   Widget? child;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      width: width ,
-      decoration: BoxDecoration(
-        /*border: Border.all(color: darkSecondaryColor,width: 3),*/
-          boxShadow:[kBoxShadow],
-          color: kDrawerBackGround.value,
-          borderRadius: const BorderRadius.all(Radius.circular(10))
+    return Material(
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      elevation: 6,
+      child: Container(
+        height: height,
+        width: width ,
+        decoration: BoxDecoration(
+          /*border: Border.all(color: darkSecondaryColor,width: 3),*/
+            color: kDrawerBackGround.value,
+            borderRadius: const BorderRadius.all(Radius.circular(10))
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 }
