@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get.dart';
-
+import 'package:plane_vite/config/themes.dart';
+import 'package:plane_vite/storage/secure_storage.dart';
 
 //pink
-var kBackGround=Color(0xFFFCF8F3).obs;
-var kDrawerBackGround=Colors.white.obs;
+var kBackGround=Themes.theme=='pink'?Color(0xFFFCF8F3).obs:Color(0xFF3F4E4F).obs;
+var kDrawerBackGround=Themes.theme=='pink'?Colors.white.obs:;
 var kMainPink=Color(0xFFFFAAA5).obs;
 var kLightPink=Color(0xFFFFDFEC).obs;
 

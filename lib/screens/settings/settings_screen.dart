@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/constants.dart';
-import 'package:plane_vite/settings/settings_controller.dart';
+import 'package:plane_vite/screens/settings/settings_controller.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 
 class SettingsScreen extends StatelessWidget {

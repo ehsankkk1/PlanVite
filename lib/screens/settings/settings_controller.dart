@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:plane_vite/config/themes.dart';
 import 'package:plane_vite/constants.dart';
+
+import '../../storage/secure_storage.dart';
 
 class SettingsController extends GetxController{
 
-
+  SecureStorage storage = SecureStorage();
   var isVisibleLang;
   var isVisibleTheme;
   var isPink;
@@ -16,7 +19,10 @@ class SettingsController extends GetxController{
     isVisibleLang = false.obs;
     isVisibleTheme = false.obs;
     isPink = true.obs;
-    isDark = false.obs;
+    isDark = Themes.theme==''?false.obs:true.obs;
+
+
+
 
     super.onInit();
   }
@@ -28,6 +34,14 @@ class SettingsController extends GetxController{
     kMainPink.value=Color(0xFF506D84);
     kLightPink.value=Color(0xFF889EAF);
     kColoredCard.value=Color(0xFF515E63);
+
+    Themes.theme='dark';
+    saveTheme();
+
+  }
+  saveTheme ()async{
+   await storage.save('theme', Themes.theme);
+    print(storage.read('theme'));
   }
 
 }

@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:plane_vite/config/themes.dart';
+import 'package:plane_vite/storage/secure_storage.dart';
 import '../screens/Drawer/drawer_controller.dart';
 import '../screens/back_log/back_log_screen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/sprint/sprint_screen.dart';
 
 class SkeletonController extends GetxController{
+SecureStorage storage=new SecureStorage();
 
-
-  var selectedLang;
-  var  selectedLangBool ;
+ // var selectedLang;
+ // var  selectedLangBool ;
   RxInt screenIndex=0.obs ;
   var isReverse=false.obs;
   late final List<Widget> Screens;
@@ -17,8 +19,11 @@ class SkeletonController extends GetxController{
 
   @override
   void onInit() {
-    selectedLang='en';
-    selectedLangBool = true.obs;
+    //selectedLang='en';
+   // selectedLangBool = true.obs;
+    getData();
+    print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+    print(Themes.theme);
     Screens = [
       HomeScreen(),
       SprintScreen(),
@@ -26,14 +31,11 @@ class SkeletonController extends GetxController{
     super.onInit();
 
   }
-  void changeSelectedLang()async{
-    if(selectedLang=='ar'){
-      selectedLangBool.value=false;
-    }
-    else{
-      selectedLangBool.value=true;
-    }
+  getData()async{
+     Themes.theme=storage.read('theme').toString();
+
   }
+
 
   void changeScreen(int index) {
     print(screenIndex);
