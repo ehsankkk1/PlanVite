@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plane_vite/config/SizeConfig.dart';
 import 'package:plane_vite/constants.dart';
 
@@ -19,7 +20,7 @@ class ColumnHeader extends StatelessWidget {
               "Pending",
               style: TextStyle(
                 fontSize: SizeConfig.blockSizeHorizontal*5.5,
-                color: kWritings.value,
+                color: context.theme.textTheme.caption!.color,
               ),
             ),
             Container(height: height*0.05,width: width*0.01,)
@@ -42,7 +43,7 @@ class ColumnHeader extends StatelessWidget {
               'Only view my tasks',
               style:  TextStyle(
                 fontSize: SizeConfig.blockSizeHorizontal*4,
-                color: kWritings.value,
+                color: context.theme.textTheme.caption!.color,
               ),)
           ],
         )

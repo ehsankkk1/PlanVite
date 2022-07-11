@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../config/SizeConfig.dart';
 import '../constants.dart';
 
@@ -40,14 +41,14 @@ class SprintWidget extends StatelessWidget {
                           "Pending",
                           style: TextStyle(
                             fontSize: SizeConfig.blockSizeHorizontal*5.5,
-                            color: kWritings.value,
+                            color: context.theme.textTheme.caption!.color,
                           ),
                         ),
                         addButton==true?InkWell(
                           child:  Icon(
                             Icons.add,
                             size: 40,
-                            color: kMainPink.value,
+                            color: context.theme.primaryColor,
                           ),
                           onTap: () {
                             print("tapped");
@@ -58,12 +59,12 @@ class SprintWidget extends StatelessWidget {
                     ),
                     checkBox==true ?Row(
                       children: [
-                        Checkbox(value: true, onChanged: (value){},activeColor: kMainPink.value,),
+                        Checkbox(value: true, onChanged: (value){},activeColor: context.theme.primaryColor,),
                          Text(
                           'Activate',
                           style:  TextStyle(
                             fontSize: 15,
-                            color: kWritings.value,
+                            color: context.theme.textTheme.caption!.color,
                           ),)
                       ],
                     ):Container(width: 15,height: 15,),

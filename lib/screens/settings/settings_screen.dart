@@ -11,17 +11,17 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Obx((){
-        return Scaffold(
+      child:
+         Scaffold(
 
-          backgroundColor: kBackGround.value,
+          backgroundColor: context.theme.backgroundColor,
           appBar: AppBar(
-            backgroundColor: kBackGround.value,
+            backgroundColor: context.theme.backgroundColor,
             title: Center(
               child: Text(
                 'Settings',
                 style: TextStyle(
-                  color: kWritings.value,
+                  color: context.theme.textTheme.caption!.color,
                 ),
               ),
             ),
@@ -48,7 +48,7 @@ class SettingsScreen extends StatelessWidget {
                                     child: Icon(
 
                                       Icons.language_sharp,
-                                      color: kWritings.value,
+                                      color: context.theme.textTheme.caption!.color,
                                       size: 45,
                                     ),
                                   ),
@@ -58,7 +58,7 @@ class SettingsScreen extends StatelessWidget {
                                     child: Text(
                                       'Language',
                                       style: TextStyle(
-                                        color: kWritings.value,
+                                        color: context.theme.textTheme.caption!.color,
                                         fontSize: 25,
                                       ),
 
@@ -73,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
                                       },
 
                                       child: Icon(Icons.arrow_forward_ios,
-                                        color: kWritings.value,
+                                        color: context.theme.textTheme.caption!.color,
                                       ),
                                     ),
                                   ),
@@ -96,7 +96,7 @@ class SettingsScreen extends StatelessWidget {
                                       alignment: Alignment(-0.45,0),
                                       child: Text('English',
                                         style: TextStyle(
-                                          color: kWritings.value,
+                                          color: context.theme.textTheme.caption!.color,
                                           fontSize: 20,
                                         ),
                                       ),
@@ -104,7 +104,7 @@ class SettingsScreen extends StatelessWidget {
 
                                     Align(
                                         alignment: Alignment.topRight,
-                                        child: CustomCheckbox(onTap: (){}, color: kMainPink.value,size: 25,)),
+                                        child: CustomCheckbox(onTap: (){}, color: context.theme.primaryColor,size: 25,)),
 
                                   ],),
                                   SizedBox(height: height*0.01,),
@@ -118,7 +118,7 @@ class SettingsScreen extends StatelessWidget {
                                         alignment: Alignment(-0.45,0),
                                         child: Text('العربية',
                                           style: TextStyle(
-                                            color: kWritings.value,
+                                            color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,
                                           ),
                                         ),
@@ -126,7 +126,7 @@ class SettingsScreen extends StatelessWidget {
                                       //SizedBox(width: width*0.437,),
                                       Align(
                                           alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){}, color: kMainPink.value,size: 25,)),
+                                          child: CustomCheckbox(onTap: (){}, color: context.theme.primaryColor,size: 25,)),
 
                                     ],),
 
@@ -154,7 +154,7 @@ class SettingsScreen extends StatelessWidget {
                                     child: Icon(
 
                                       Icons.palette_outlined,
-                                      color: kWritings.value,
+                                      color: context.theme.textTheme.caption!.color,
                                       size: 45,
                                     ),
                                   ),
@@ -164,7 +164,7 @@ class SettingsScreen extends StatelessWidget {
                                     child: Text(
                                       'Theme',
                                       style: TextStyle(
-                                        color: kWritings.value,
+                                        color: context.theme.textTheme.caption!.color,
                                         fontSize: 25,
                                       ),
 
@@ -179,7 +179,7 @@ class SettingsScreen extends StatelessWidget {
                                       },
 
                                       child: Icon(Icons.arrow_forward_ios,
-                                        color: kWritings.value,
+                                        color: context.theme.textTheme.caption!.color,
                                       ),
                                     ),
                                   ),
@@ -202,7 +202,7 @@ class SettingsScreen extends StatelessWidget {
                                       alignment: Alignment(-0.45,0),
                                       child: Text('Pink',
                                         style: TextStyle(
-                                          color: kWritings.value,
+                                          color: context.theme.textTheme.caption!.color,
                                           fontSize: 20,
                                         ),
                                       ),
@@ -216,7 +216,7 @@ class SettingsScreen extends StatelessWidget {
                                           //controller.isDark.value=false;
                                           Get.changeThemeMode(ThemeMode.light);
 
-                                        }, color: kMainPink.value,size: 25,isSelected: controller.isPink.value, )),
+                                        }, color:context.theme.primaryColor,size: 25,isSelected: controller.isPink.value, )),
 
                                   ],),
                                   SizedBox(height: height*0.01,),
@@ -230,7 +230,7 @@ class SettingsScreen extends StatelessWidget {
                                         alignment: Alignment(-0.45,0),
                                         child: Text('Dark',
                                           style: TextStyle(
-                                            color: kWritings.value,
+                                            color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,
                                           ),
                                         ),
@@ -246,7 +246,7 @@ class SettingsScreen extends StatelessWidget {
                                               Get.changeThemeMode(ThemeMode.dark);
 
 
-                                            }, color: kMainPink.value,size: 25, isSelected: controller.isDark.value,)),
+                                            }, color: context.theme.primaryColor,size: 25, isSelected: controller.isDark.value,)),
 
 
 
@@ -261,7 +261,7 @@ class SettingsScreen extends StatelessWidget {
                                         alignment: Alignment(-0.42,0),
                                         child: Text('Purple',
                                           style: TextStyle(
-                                            color: kWritings.value,
+                                            color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,
                                           ),
                                         ),
@@ -269,7 +269,7 @@ class SettingsScreen extends StatelessWidget {
                                       //SizedBox(width: width*0.437,),
                                       Align(
                                           alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){}, color: kMainPink.value,size: 25,)),
+                                          child: CustomCheckbox(onTap: (){}, color: context.theme.primaryColor,size: 25,)),
 
                                     ],),
                                   SizedBox(height: height*0.01,),
@@ -282,7 +282,7 @@ class SettingsScreen extends StatelessWidget {
                                         alignment: Alignment(-0.45,0),
                                         child: Text('Blue',
                                           style: TextStyle(
-                                            color: kWritings.value,
+                                            color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,
                                           ),
                                         ),
@@ -290,7 +290,7 @@ class SettingsScreen extends StatelessWidget {
                                       //SizedBox(width: width*0.437,),
                                       Align(
                                           alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){}, color: kMainPink.value,size: 25,)),
+                                          child: CustomCheckbox(onTap: (){}, color: context.theme.primaryColor,size: 25,)),
 
                                     ],),
 
@@ -310,8 +310,8 @@ class SettingsScreen extends StatelessWidget {
 
           ),
 
-        );
-      })
+        )
+
     );
   }
 }

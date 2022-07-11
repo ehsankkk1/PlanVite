@@ -24,7 +24,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
 
     return Obx((){
       return Scaffold(
-        backgroundColor: kBackGround.value,
+        backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.fromLTRB(

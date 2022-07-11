@@ -30,7 +30,7 @@ class SprintScreen extends GetView<SprintController> {
     }
     return Obx((){
       return Scaffold(
-        backgroundColor: kBackGround.value,
+        backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

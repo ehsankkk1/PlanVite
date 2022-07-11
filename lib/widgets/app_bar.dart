@@ -25,7 +25,7 @@ class AppBarWidget extends StatelessWidget {
         controller != null?InkWell(
           child:  Icon(
             Icons.menu_rounded,
-            color: kMainPink.value,
+            color: context.theme.primaryColor,
             size: 40,
           ),
           onTap: controller?.toggleDrawer,
@@ -34,7 +34,7 @@ class AppBarWidget extends StatelessWidget {
           "$head",
           style:  TextStyle(
             fontSize: 18,
-            color: kWritings.value,
+            color: context.textTheme.caption!.color,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -42,7 +42,7 @@ class AppBarWidget extends StatelessWidget {
             ? InkWell(
                 child:  Icon(
                   Icons.airplay,
-                  color: kMainPink.value,
+                  color: context.theme.primaryColor,
                   size: 30,
                 ),
                 onTap: () {
@@ -52,7 +52,7 @@ class AppBarWidget extends StatelessWidget {
             : InkWell(
                 child:  Icon(
                   Icons.notifications,
-                  color: kMainPink.value,
+                  color: context.theme.primaryColor,
                   size: 40,
                 ),
                 onTap: () {

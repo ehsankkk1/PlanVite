@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 import '../constants.dart';
 
@@ -29,7 +30,7 @@ class DrawerItem extends StatelessWidget {
               name,
               style:  TextStyle(
                 fontSize: 15,
-                color: kWritings.value,
+                color: context.theme.textTheme.caption!.color,
                 fontWeight: FontWeight.bold
               ),
             ),

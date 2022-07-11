@@ -25,17 +25,17 @@ class ToDoScreen extends StatelessWidget {
           child: Text(
             'Add',
             style: TextStyle(
-              color: kWritings.value,
+              color: context.theme.textTheme.caption!.color!,
             ),
           ),
         )
       ],
-      backgroundColor: kBackGround.value,
+      backgroundColor: context.theme.backgroundColor,
       title: Center(
           child: Text(
         'Add Task',
         style: TextStyle(
-          color: kWritings.value,
+          color: context.theme.textTheme.caption!.color!,
         ),
       )),
       content: Container(
@@ -52,7 +52,7 @@ class ToDoScreen extends StatelessWidget {
                   controller: taskNameController,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  cursorColor: kMainPink.value,
+                  cursorColor: context.theme.primaryColor,
                   decoration: InputDecoration(
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide.none,
@@ -72,7 +72,7 @@ class ToDoScreen extends StatelessWidget {
                   controller: taskDescriptionController,
                   keyboardType: TextInputType.multiline,
                   maxLines: null,
-                  cursorColor: kMainPink.value,
+                  cursorColor: context.theme.primaryColor,
                   decoration: InputDecoration(
                     focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide.none,
@@ -106,11 +106,11 @@ class ToDoScreen extends StatelessWidget {
                               builder: (context, child) => Theme(
                                 data: ThemeData().copyWith(
                                   colorScheme:  ColorScheme.dark(
-                                    primary: kMainPink.value,
-                                    onPrimary: kWritings.value,
-                                    surface: kMainPink.value,
+                                    primary: context.theme.primaryColor,
+                                    onPrimary: context.theme.textTheme.caption!.color!,
+                                    surface:  context.theme.primaryColor,
 
-                                    onSurface: kWritings.value,
+                                    onSurface: context.theme.textTheme.caption!.color!,
                                   ),
                                  // dialogBackgroundColor: Colors.white30,
                                 ),
@@ -129,7 +129,7 @@ class ToDoScreen extends StatelessWidget {
                           child: Icon(
                             Icons.date_range,
                             color:
-                                controller.dateBool.value ? kMainPink.value : kGrey,
+                                controller.dateBool.value ? context.theme.primaryColor : kGrey,
                           ));
                     }),
                     SizedBox(
@@ -169,9 +169,9 @@ class ToDoScreen extends StatelessWidget {
     return SafeArea(
       child: Obx((){
         return Scaffold(
-          backgroundColor: kBackGround.value,
+          backgroundColor:context.theme.backgroundColor,
           bottomNavigationBar: BottomAppBar(
-            color: kColoredCard.value,
+            color: context.theme.cardColor,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -189,7 +189,7 @@ class ToDoScreen extends StatelessWidget {
                     },
                     icon: Icon(
                       Icons.add,
-                      color: kMainPink.value,
+                      color: context.theme.primaryColor,
                       size: 35,
                     )),
                 // Text('Task',
@@ -229,8 +229,8 @@ class ToDoScreen extends StatelessWidget {
                           animation: true,
                           circularStrokeCap: CircularStrokeCap.round,
                           reverse: true,
-                          progressColor: kMainPink.value,
-                          backgroundColor: kLightPink.value,
+                          progressColor: context.theme.primaryColor,
+                          backgroundColor: context.theme.primaryColorLight,
                           radius: 45,
                           lineWidth: 4,
                           percent:
@@ -243,7 +243,7 @@ class ToDoScreen extends StatelessWidget {
                               '${controller.percent.value.toString()}%',
                               style: TextStyle(
                                   fontSize: 14,
-                                  color: kMainPink.value,
+                                  color: context.theme.primaryColor,
                                   fontWeight: FontWeight.w900),
                             ),
                           ),
@@ -258,7 +258,7 @@ class ToDoScreen extends StatelessWidget {
                     'My Tasks',
                     style: TextStyle(
                       fontSize: 42,
-                      color: kWritings.value,
+                      color:context.theme.textTheme.caption!.color,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -299,7 +299,7 @@ class ToDoScreen extends StatelessWidget {
                           bottom: height * 0.001,
                           top: height * 0.01),
                       child: Container(
-                        color: kBackGround.value,
+                        color: context.theme.backgroundColor,
                         child: Column(
                           children: [
                             Row(
@@ -350,7 +350,7 @@ class ToDoScreen extends StatelessWidget {
                                         decoration: controller.doing[index].value ?TextDecoration.lineThrough:TextDecoration.none,
 
                                         fontSize: 15,
-                                        color: kWritings.value,
+                                        color:context.theme.textTheme.caption!.color,
                                       ),
                                     ),
                                   );

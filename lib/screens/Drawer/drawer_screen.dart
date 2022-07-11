@@ -15,9 +15,9 @@ class DrawerScreen extends GetView<MyDrawerController> {
   @override
   Widget build(BuildContext context) {
     SkeletonController _skeletonController=Get.find();
-    return Obx((){
+
       return Scaffold(
-        backgroundColor: kDrawerBackGround.value,
+        backgroundColor: context.theme.hintColor,
         body: Container(
           //width: width*0.5,
           child: SafeArea(
@@ -35,13 +35,13 @@ class DrawerScreen extends GetView<MyDrawerController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CircleAvatar(radius:35,backgroundColor: kWritings.value,child: Text('E',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),),
+                          CircleAvatar(radius:35,backgroundColor: context.theme.textTheme.caption!.color,child: Text('E',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),),
                           SizedBox(height: 25,),
                           Text(
                             'Ehsan Abourshaed',
                             style: TextStyle(
                               fontSize: 18,
-                              color: kWritings.value,
+                              color: context.theme.textTheme.caption!.color,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -50,7 +50,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                             '+963945057206',
                             style: TextStyle(
                               fontSize: 16,
-                              color: kWritings.value,
+                              color: context.theme.textTheme.caption!.color,
                             ),
                           ),],
                       ),
@@ -64,7 +64,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                       Get.toNamed('/todo');
 
                     }),
-                     Divider(thickness:1,color: kMainPink.value,),
+                     Divider(thickness:1,color: context.theme.primaryColor,),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Text(
@@ -87,7 +87,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                     DrawerItem(Icons.add,35, 'Add Project'.tr, (){
 
                     }),
-                     Divider(thickness:1,color: kMainPink.value,),
+                     Divider(thickness:1,color: context.theme.primaryColor,),
                     DrawerItem(Icons.notifications,35, 'Notifications'.tr, (){
                       Get.toNamed('/notifications');
 
@@ -102,6 +102,6 @@ class DrawerScreen extends GetView<MyDrawerController> {
           ),
         ),
       );
-    });
+
   }
 }

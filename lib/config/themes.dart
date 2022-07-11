@@ -7,6 +7,8 @@ class Themes {
     cardColor: Color(0xFFFDE3E1),
     textTheme: TextTheme(caption: TextStyle(color: Color(0xFF698474))),
     primaryColorLight: Color(0xFFFFDFEC),
+    //drawer color
+    hintColor: Colors.white,
 
   );
   static final dark = ThemeData.dark().copyWith(
@@ -15,5 +17,6 @@ class Themes {
       cardColor:Color(0xFF515E63),
       textTheme: TextTheme(caption: TextStyle(color: Color(0xFF787A91))),
       primaryColorLight:Color(0xFF889EAF),
+    hintColor: Colors.black38,
   );
 }

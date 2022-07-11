@@ -28,10 +28,10 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
         obscureText: passwordBool,
         keyboardType: textInputType,
 
-         cursorColor: kMainPink.value,
+         cursorColor: context.theme.primaryColor,
         decoration: InputDecoration(
           hintText: hintText.tr,
-          hintStyle:  TextStyle(color: kWritings.value,),
+          hintStyle:  TextStyle(color: context.theme.textTheme.caption!.color,),
           suffixIcon: GestureDetector(
             onTap: (){
 
@@ -39,31 +39,31 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
             },
             child: Icon(
               icon2,
-              color: kWritings.value,
+              color:context.theme.textTheme.caption!.color,
             ),
           ),
           prefixIcon: Icon(
             icon,
-            color: kWritings.value,
+            color:context.theme.textTheme.caption!.color,
           ),
           filled: true,
           fillColor: kTextFieldFill,
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide:  BorderSide(
-                color: kMainPink.value,
+                color: context.theme.primaryColor,
               )),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
 
               borderSide:  BorderSide(
                  width: 2,
-                color: kMainPink.value,
+                color: context.theme.primaryColor,
               )),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide:  BorderSide(
-                color: kMainPink.value,
+                color: context.theme.primaryColor,
               )),
         ),
       ),

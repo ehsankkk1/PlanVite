@@ -14,9 +14,9 @@ class NotificationsScreen extends StatelessWidget {
 
     return Directionality(
       textDirection: TextDirection.ltr,
-      child: Obx((){
-        return Scaffold(
-            backgroundColor: kBackGround.value,
+      child:
+         Scaffold(
+            backgroundColor: context.theme.backgroundColor,
             body: SafeArea(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -43,7 +43,7 @@ class NotificationsScreen extends StatelessWidget {
                               bottom: height * 0.001,
                               top: height * 0.001),
                           child: Container(
-                            color: kBackGround.value,
+                            color: context.theme.backgroundColor,
                             child: Column(
                               children: [
                                 Row(
@@ -53,7 +53,7 @@ class NotificationsScreen extends StatelessWidget {
                                     ),
                                      CircleAvatar(
                                       radius: 37,
-                                      backgroundColor: kMainPink.value,
+                                      backgroundColor: context.theme.primaryColor,
                                       child: const CircleAvatar(
                                         radius: 35,
                                         backgroundColor: Colors.black12,
@@ -68,7 +68,7 @@ class NotificationsScreen extends StatelessWidget {
                                         'Ehsan abourashed mentioned you in a comment',
                                         style: TextStyle(
                                           fontSize: 15,
-                                          color: kWritings.value,
+                                          color: context.theme.textTheme.caption!.color,
                                         ),
                                       ),
                                     )
@@ -78,7 +78,7 @@ class NotificationsScreen extends StatelessWidget {
                                   height: height * 0.02,
                                   endIndent: 1,
                                   thickness: 1.5,
-                                  color: kMainPink.value,
+                                  color: context.theme.primaryColor,
                                 )
                               ],
                             ),
@@ -87,8 +87,8 @@ class NotificationsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ));
-      })
+            ))
+
     );
   }
 }

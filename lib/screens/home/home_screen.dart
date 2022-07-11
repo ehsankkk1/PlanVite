@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
     SkeletonController _skeletonController =Get.find();
     SizeConfig().init(context);
     HomeController _homeController =   Get.put(HomeController());
-    return Obx((){
+
       return Scaffold(
         backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                                   'Summary'.tr,
                                   style:  TextStyle(
                                     fontSize: 7*SizeConfig.blockSizeHorizontal,
-                                    color: kWritings.value,
+                                    color: context.theme.textTheme.caption!.color,
                                   ),
                                 ),
                                 CircularPercentIndicator(
@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                                   circularStrokeCap: CircularStrokeCap.round,
                                   reverse: true,
                                   progressColor: context.theme.primaryColor,
-                                  backgroundColor: kLightPink.value,
+                                  backgroundColor: context.theme.primaryColorLight,
                                   radius: width > breakPoint ?130.0:110,
                                   lineWidth: width > breakPoint ?15.0:13,
                                   percent: 0.7,
@@ -101,7 +101,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         'My Projects'.tr,
                         style:  TextStyle(
-                          color: kWritings.value,
+                          color: context.theme.textTheme.caption!.color,
                           fontSize:6*SizeConfig.blockSizeHorizontal,
                         ),
                       ),
@@ -131,6 +131,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       );
-    });
+
   }
 }

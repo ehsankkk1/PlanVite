@@ -14,7 +14,7 @@ Widget build(BuildContext context) {
         height: 150,
         width: 150,
         child: Scaffold(
-          backgroundColor: kBackGround.value,
+          backgroundColor: context.theme.backgroundColor,
           body: Center(
             child : error?Image.asset(
                 "images/NO.gif"

@@ -23,7 +23,7 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
           onTap: () {Get.back();},
           child: Icon(
             Icons.arrow_back,
-            color: kMainPink.value,
+            color: context.theme.primaryColor,
             size: 35,
           ),
         ),
@@ -31,7 +31,7 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
           "$head",
           style:  TextStyle(
             fontSize: 18,
-            color: kWritings.value,
+            color: context.theme.textTheme.caption!.color,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -39,7 +39,7 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
           onTap: () {Get.back();},
           child: Icon(
             Icons.check,
-            color: kMainPink.value,
+            color: context.theme.primaryColor,
             size: 35,
           ),
         ):Container(),

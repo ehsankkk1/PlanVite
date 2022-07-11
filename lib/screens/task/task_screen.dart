@@ -28,7 +28,7 @@ class TaskScreen extends StatelessWidget {
       child: SafeArea(
         child: Obx((){
           return Scaffold(
-            backgroundColor: kBackGround.value,
+            backgroundColor: context.theme.backgroundColor,
             body: SingleChildScrollView(
               child: Column(
                 children: [
@@ -46,7 +46,7 @@ class TaskScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Build Your Task'.tr,
-                          style: TextStyle(color: kWritings.value, fontSize: 20),
+                          style: TextStyle(color: context.theme.textTheme.caption!.color, fontSize: 20),
                         ),
                         SizedBox(height: height*0.05,),
                         Row(
@@ -56,7 +56,7 @@ class TaskScreen extends StatelessWidget {
                                 onTap: () {
                                   controller.PickApproved();
                                 },
-                                color: kWritings.value,
+                                color: context.theme.textTheme.caption!.color!,
 
                                 size: 20,
                                 iconSize: 18,
@@ -91,11 +91,11 @@ class TaskScreen extends StatelessWidget {
                                         data: ThemeData().copyWith(
                                           colorScheme:  ColorScheme.dark(
 
-                                            primary: kMainPink.value,
-                                            onPrimary: kWritings.value,
-                                            surface: kMainPink.value,
+                                            primary: context.theme.primaryColor,
+                                            onPrimary: context.theme.textTheme.caption!.color!,
+                                            surface: context.theme.primaryColor,
 
-                                            onSurface: kWritings.value,
+                                            onSurface: context.theme.textTheme.caption!.color!,
 
                                           ),
                                           // dialogBackgroundColor: Colors.white30,
@@ -115,7 +115,7 @@ class TaskScreen extends StatelessWidget {
                                   child: Icon(
                                     Icons.date_range,
                                     color: controller.dateBool.value
-                                        ? kMainPink.value
+                                        ? context.theme.primaryColor
                                         : kGrey,
                                   ));
                             }),
@@ -147,7 +147,7 @@ class TaskScreen extends StatelessWidget {
                           //width: 250,
                           //height: 60,
                           decoration: BoxDecoration(
-                            color: kColoredCard.value,
+                            color: context.theme.cardColor,
                             borderRadius: BorderRadius.circular(15),
                             boxShadow: [
                               kBoxShadow
@@ -160,7 +160,7 @@ class TaskScreen extends StatelessWidget {
                               ),
                                CircleAvatar(
                                 radius: 20,
-                                backgroundColor: kMainPink.value,
+                                backgroundColor:context.theme.primaryColor,
                                 child: CircleAvatar(
                                   radius: 19,
                                   backgroundColor: Colors.black12,
@@ -173,7 +173,7 @@ class TaskScreen extends StatelessWidget {
                                Flexible(
                                 child: Text(
                                   'Ehsan abourshed',
-                                  style: TextStyle(color: kWritings.value, fontSize: 18),
+                                  style: TextStyle(color: context.theme.textTheme.caption!.color, fontSize: 18),
                                 ),
                               )
                             ],
@@ -183,7 +183,7 @@ class TaskScreen extends StatelessWidget {
                         Text(
                           'Fields'.tr,
                           style:  TextStyle(
-                            color: kWritings.value,
+                            color: context.theme.textTheme.caption!.color!,
                             fontSize: 20,
                           ),
                         ),
@@ -192,7 +192,7 @@ class TaskScreen extends StatelessWidget {
                           width: width * 0.9,
                           height: height * 0.065,
                           decoration: BoxDecoration(
-                            color: kColoredCard.value,
+                            color: context.theme.cardColor,
                             borderRadius: BorderRadius.circular(15),
                             boxShadow: [
                               kBoxShadow
@@ -206,7 +206,7 @@ class TaskScreen extends StatelessWidget {
                               Text(
                                 'Priority'.tr,
                                 style:  TextStyle(
-                                  color: kWritings.value,
+                                  color: context.theme.textTheme.caption!.color!,
                                   fontSize: 17,
                                 ),
                               ),
@@ -220,8 +220,8 @@ class TaskScreen extends StatelessWidget {
                                   },
                                   child: PriorityWidget(
                                     name:'Low'.tr,
-                                    colour:controller.low == false ? kLightPink.value : kMainPink.value,
-                                    textColor:controller.low == false ? kWritings.value : Colors.white,
+                                    colour:controller.low == false ? context.theme.primaryColorLight : context.theme.primaryColor,
+                                    textColor:controller.low == false ? context.theme.textTheme.caption!.color! : Colors.white,
                                   ),
                                 );
                               }),
@@ -235,8 +235,8 @@ class TaskScreen extends StatelessWidget {
                                   },
                                   child: PriorityWidget(
                                     name:'Medium'.tr,
-                                    colour:controller.medium == false ? kLightPink.value : kMainPink.value,
-                                    textColor:controller.medium == false ? kWritings.value : Colors.white,
+                                    colour:controller.medium == false ? context.theme.primaryColorLight : context.theme.primaryColor,
+                                    textColor:controller.medium == false ? context.theme.textTheme.caption!.color! : Colors.white,
                                   ),
                                 );
                               }),
@@ -250,8 +250,8 @@ class TaskScreen extends StatelessWidget {
                                   },
                                   child: PriorityWidget(
                                     name:'High'.tr,
-                                    colour:controller.high == false ? kLightPink.value : kMainPink.value,
-                                    textColor:controller.high == false ? kWritings.value : Colors.white,
+                                    colour:controller.high == false ? context.theme.primaryColorLight :context.theme.primaryColor,
+                                    textColor:controller.high == false ? context.theme.textTheme.caption!.color! : Colors.white,
                                   ),
                                 );
                               }),
@@ -262,7 +262,7 @@ class TaskScreen extends StatelessWidget {
                         Text(
                           'Description'.tr,
                           style:  TextStyle(
-                            color: kWritings.value,
+                            color: context.theme.textTheme.caption!.color!,
                             fontSize: 20,
                           ),
                         ),
@@ -291,7 +291,7 @@ class TaskScreen extends StatelessWidget {
                         Text(
                           'Sub Tasks'.tr,
                           style:  TextStyle(
-                            color: kWritings.value,
+                            color: context.theme.textTheme.caption!.color!,
                             fontSize: 17,
                           ),
                         ),
@@ -304,13 +304,13 @@ class TaskScreen extends StatelessWidget {
                                   onPressed: () {},
                                   icon:  Icon(
                                     Icons.add,
-                                    color: kMainPink.value,
+                                    color: context.theme.primaryColor,
                                     size: 30,
                                   ),
                                 ),
                                 Expanded(
                                   child: TextField(
-                                    cursorColor: kMainPink.value,
+                                    cursorColor:context.theme.primaryColor,
                                     decoration: InputDecoration(
                                       focusedBorder: const UnderlineInputBorder(
                                         borderSide: BorderSide.none,
@@ -330,7 +330,7 @@ class TaskScreen extends StatelessWidget {
                         Text(
                           'Image'.tr,
                           style:  TextStyle(
-                            color: kWritings.value,
+                            color: context.theme.textTheme.caption!.color!,
                             fontSize: 20,
                           ),
                         ),
@@ -343,7 +343,7 @@ class TaskScreen extends StatelessWidget {
                               width: width * 0.5,
                               height: height * 0.2,
                               decoration: BoxDecoration(
-                                color: kLightPink.value,
+                                color:context.theme.primaryColorLight,
                                 borderRadius: BorderRadius.circular(25),
                                 boxShadow: [
                                   kBoxShadow
@@ -364,7 +364,7 @@ class TaskScreen extends StatelessWidget {
                                       :  Icon(
                                     Icons.add_a_photo,
                                     size: 50,
-                                    color: kWritings.value,
+                                    color: context.theme.textTheme.caption!.color!,
                                   ),
                                 );
                               })),

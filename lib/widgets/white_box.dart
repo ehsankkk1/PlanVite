@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../constants.dart';
 
@@ -20,7 +21,7 @@ class WhiteBox extends StatelessWidget {
         width: width ,
         decoration: BoxDecoration(
           /*border: Border.all(color: darkSecondaryColor,width: 3),*/
-            color: kDrawerBackGround.value,
+            color: context.theme.hintColor,
             borderRadius: const BorderRadius.all(Radius.circular(10))
         ),
         child: child,
