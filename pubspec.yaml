@@ -28,6 +28,10 @@ dependencies:
   intl: ^0.17.0
   flutter_inset_box_shadow: ^1.0.8
   animations: ^2.0.2
+  get_storage: ^2.0.3
+
+
+
 
 dev_dependencies:
   flutter_test:

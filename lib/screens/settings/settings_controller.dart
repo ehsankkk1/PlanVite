@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:plane_vite/config/theme_service.dart';
 import 'package:plane_vite/config/themes2.dart';
 import 'package:plane_vite/constants.dart';
 
@@ -20,6 +21,8 @@ class SettingsController extends GetxController{
     isVisibleTheme = false.obs;
     isPink = Themes2.theme=='pink'?true.obs:false.obs;
     isDark = Themes2.theme=='dark'?true.obs:false.obs;
+    //String str = ThemeService().theme.toString();
+  //  print(str);
 
 
 

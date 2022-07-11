@@ -32,6 +32,7 @@ import 'package:flutter/services.dart';
 import 'package:plane_vite/skeleton/skeleton_screen.dart';
 import 'package:plane_vite/storage/secure_storage.dart';
 import 'package:plane_vite/widgets/loader_screen.dart';
+import 'config/theme_service.dart';
 import 'config/themes.dart';
 import 'constants.dart';
 import 'screens/bindings/settings_binding.dart';
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: Themes.pink,
      darkTheme: Themes.dark,
+      themeMode: ThemeService().theme,
      // theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
