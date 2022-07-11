@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:plane_vite/config/themes.dart';
+import 'package:plane_vite/config/themes2.dart';
 import 'package:plane_vite/constants.dart';
 
 import '../../storage/secure_storage.dart';
@@ -18,8 +18,8 @@ class SettingsController extends GetxController{
   void onInit() {
     isVisibleLang = false.obs;
     isVisibleTheme = false.obs;
-    isPink = true.obs;
-    isDark = Themes.theme=='pink'?false.obs:true.obs;
+    isPink = Themes2.theme=='pink'?true.obs:false.obs;
+    isDark = Themes2.theme=='dark'?true.obs:false.obs;
 
 
 
@@ -28,20 +28,36 @@ class SettingsController extends GetxController{
   }
   changeThemeToDark(){
 
-    kBackGround.value=Color(0xFF3F4E4F);
-    kDrawerBackGround.value=Color(0xFF2C3639);
-    kWritings.value=Color(0xFF787A91);
-    kMainPink.value=Color(0xFF506D84);
-    kLightPink.value=Color(0xFF889EAF);
-    kColoredCard.value=Color(0xFF515E63);
+    // kBackGround.value=Color(0xFF3F4E4F);
+    // kDrawerBackGround.value=Color(0xFF2C3639);
+    // kWritings.value=Color(0xFF787A91);
+    // kMainPink.value=Color(0xFF506D84);
+    // kLightPink.value=Color(0xFF889EAF);
+    // kColoredCard.value=Color(0xFF515E63);
 
-    Themes.theme='dark';
-    saveTheme();
+    //Themes.theme='dark';
+   // saveTheme();
 
   }
-  saveTheme ()async{
-   await storage.save('theme', Themes.theme);
-    //print(storage.read('theme'));
+  changeThemeToPink(){
+
+    // kBackGround.value=Color(0xFFFCF8F3);
+    // kDrawerBackGround.value=Colors.white;
+    // kWritings.value=Color(0xFF698474);
+    // kMainPink.value=Color(0xFFFFAAA5);
+    // kLightPink.value=Color(0xFFFFDFEC);
+    // kColoredCard.value=Color(0xFFFDE3E1);
+
+    //Themes.theme='pink';
+   // saveTheme();
+
   }
+  //saveTheme (){
+   //  storage.save('theme', Themes.theme);
+   //  storage.read('theme').then((result) {
+   //    Themes.theme=result!;
+   //  } );
+   //  print(Themes.theme);
+  //}
 
 }

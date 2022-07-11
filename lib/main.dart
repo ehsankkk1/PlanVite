@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:plane_vite/config/themes.dart';
+import 'package:plane_vite/config/themes2.dart';
 import 'package:plane_vite/screens/Drawer/drawer_controller.dart';
 import 'package:plane_vite/screens/Drawer/drawer_screen.dart';
 import 'package:plane_vite/screens/back_log/back_log_screen.dart';
@@ -32,14 +32,14 @@ import 'package:flutter/services.dart';
 import 'package:plane_vite/skeleton/skeleton_screen.dart';
 import 'package:plane_vite/storage/secure_storage.dart';
 import 'package:plane_vite/widgets/loader_screen.dart';
+import 'config/themes.dart';
 import 'constants.dart';
 import 'screens/bindings/settings_binding.dart';
 import 'translations.dart';
 
 
 Future<void> main() async{
-  SecureStorage storage=new SecureStorage();
-  Themes.theme=storage.read('theme').toString();
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -60,8 +60,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-
-      theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary:Themes.theme=='pink'? kMainPink.value:Color(0xFF506D84))),
+      theme: Themes.light,
+     darkTheme: Themes.dark,
+     // theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
       locale: const Locale('en'),

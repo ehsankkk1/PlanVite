@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:plane_vite/config/themes.dart';
+import 'package:plane_vite/config/themes2.dart';
 import 'package:plane_vite/storage/secure_storage.dart';
 import '../screens/Drawer/drawer_controller.dart';
 import '../screens/back_log/back_log_screen.dart';
@@ -21,9 +21,9 @@ SecureStorage storage=new SecureStorage();
   void onInit() {
     //selectedLang='en';
    // selectedLangBool = true.obs;
-    getData();
-    print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
-    print(Themes.theme);
+  //  getData();
+   // print('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
+    //print(Themes.theme);
     Screens = [
       HomeScreen(),
       SprintScreen(),
@@ -31,12 +31,14 @@ SecureStorage storage=new SecureStorage();
     super.onInit();
 
   }
-  getData()async{
-    print(Themes.theme);
-      Themes.theme= storage.read('theme').toString();
+  //getData(){
+  //  print(Themes.theme);
+    //   storage.read('theme').then((result) {
+      //   Themes.theme=result!;
+     //  } );
 
 
-  }
+ // }
 
 
   void changeScreen(int index) {

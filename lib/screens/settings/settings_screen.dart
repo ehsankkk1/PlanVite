@@ -212,8 +212,9 @@ class SettingsScreen extends StatelessWidget {
                                         alignment: Alignment.topRight,
                                         child: CustomCheckbox(onTap: (){
 
-                                          controller.isPink.value=true;
-                                          controller.isDark.value=false;
+                                          //controller.isPink.value=true;
+                                          //controller.isDark.value=false;
+                                          Get.changeThemeMode(ThemeMode.light);
 
                                         }, color: kMainPink.value,size: 25,isSelected: controller.isPink.value, )),
 
@@ -240,9 +241,9 @@ class SettingsScreen extends StatelessWidget {
                                             alignment: Alignment.topRight,
                                             child: CustomCheckbox(onTap: (){
 
-                                              controller.isDark.value=true;
-                                              controller.isPink.value=false;
-                                              controller.changeThemeToDark();
+                                             // controller.isDark.value=true;
+                                             // controller.isPink.value=false;
+                                              Get.changeThemeMode(ThemeMode.dark);
 
 
                                             }, color: kMainPink.value,size: 25, isSelected: controller.isDark.value,)),
