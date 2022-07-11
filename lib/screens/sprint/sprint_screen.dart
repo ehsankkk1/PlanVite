@@ -28,7 +28,7 @@ class SprintScreen extends GetView<SprintController> {
     for (int i = 0; i < _sprintController.listData.length; i++) {
       _lists.add(_createBoardList(_sprintController.listData[i]) as BoardList);
     }
-    return Obx((){
+
       return Scaffold(
         backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
@@ -52,7 +52,7 @@ class SprintScreen extends GetView<SprintController> {
                       scrollbar: true,
                       width: width * 0.85,
                       scrollbarStyle: ScrollbarStyle(
-                          color: kMainPink.value,
+                          color: context.theme.primaryColor,
                           radius: const Radius.circular(3),
                           thickness: 12),
                       lists: _lists,
@@ -63,7 +63,7 @@ class SprintScreen extends GetView<SprintController> {
           ),
         ),
       );
-    });
+
   }
 
   Widget _createBoardList(BoardListObject list) {
