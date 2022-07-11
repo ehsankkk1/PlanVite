@@ -32,7 +32,9 @@ SecureStorage storage=new SecureStorage();
 
   }
   getData()async{
-     Themes.theme=storage.read('theme').toString();
+    print(Themes.theme);
+      Themes.theme= storage.read('theme').toString();
+
 
   }
 

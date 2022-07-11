@@ -19,7 +19,7 @@ class SettingsController extends GetxController{
     isVisibleLang = false.obs;
     isVisibleTheme = false.obs;
     isPink = true.obs;
-    isDark = Themes.theme==''?false.obs:true.obs;
+    isDark = Themes.theme=='pink'?false.obs:true.obs;
 
 
 
@@ -41,7 +41,7 @@ class SettingsController extends GetxController{
   }
   saveTheme ()async{
    await storage.save('theme', Themes.theme);
-    print(storage.read('theme'));
+    //print(storage.read('theme'));
   }
 
 }

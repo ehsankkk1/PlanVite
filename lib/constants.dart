@@ -3,16 +3,17 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/config/themes.dart';
 import 'package:plane_vite/storage/secure_storage.dart';
-
+//Color(0xFFFFAAA5)
 //pink
 var kBackGround=Themes.theme=='pink'?Color(0xFFFCF8F3).obs:Color(0xFF3F4E4F).obs;
-var kDrawerBackGround=Themes.theme=='pink'?Colors.white.obs:;
-var kMainPink=Color(0xFFFFAAA5).obs;
-var kLightPink=Color(0xFFFFDFEC).obs;
+var kDrawerBackGround=Themes.theme=='pink'?Colors.white.obs:Color(0xFF2C3639).obs;
+var kMainPink=Themes.theme=='pink'?Color(0xFFFFAAA5).obs:Color(0xFF506D84).obs;
+var kLightPink=Themes.theme=='pink'?Color(0xFFFFDFEC).obs:Color(0xFF889EAF).obs;
 
-var kColoredCard=Color(0xFFFDE3E1).obs;
-var kWritings =Color(0xFF698474).obs;
+var kColoredCard=Themes.theme=='pink'?Color(0xFFFDE3E1).obs:Color(0xFF515E63).obs;
+var kWritings =Themes.theme=='pink'?Color(0xFF698474).obs:Color(0xFF787A91).obs;
 var kPriortyColor=Color(0xffFFEAF3).obs;
+
 final BoxShadow kBoxShadow=BoxShadow(
   color: Colors.grey.withOpacity(0.8),
   spreadRadius: 1,
