@@ -167,8 +167,8 @@ class ToDoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Obx((){
-        return Scaffold(
+      child:
+         Scaffold(
           backgroundColor:context.theme.backgroundColor,
           bottomNavigationBar: BottomAppBar(
             color: context.theme.cardColor,
@@ -365,8 +365,8 @@ class ToDoScreen extends StatelessWidget {
               ),
             ],
           ),
-        );
-      })
+        )
+
     );
   }
 }

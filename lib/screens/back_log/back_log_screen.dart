@@ -22,7 +22,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
   @override
   Widget build(BuildContext context) {
 
-    return Obx((){
+    
       return Scaffold(
         backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
@@ -65,6 +65,6 @@ class BackLogScreen extends GetView<BackLogScreen> {
           ),
         ),
       );
-    });
+
   }
 }
