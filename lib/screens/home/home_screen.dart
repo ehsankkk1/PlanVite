@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
     HomeController _homeController =   Get.put(HomeController());
     return Obx((){
       return Scaffold(
-        backgroundColor: kBackGround.value,
+        backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -67,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                                   animation: true,
                                   circularStrokeCap: CircularStrokeCap.round,
                                   reverse: true,
-                                  progressColor: kMainPink.value,
+                                  progressColor: context.theme.primaryColor,
                                   backgroundColor: kLightPink.value,
                                   radius: width > breakPoint ?130.0:110,
                                   lineWidth: width > breakPoint ?15.0:13,
@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                                     "70%",
                                     style: TextStyle(
                                         fontSize:  6*SizeConfig.blockSizeHorizontal,
-                                        color: kMainPink.value,
+                                        color: context.theme.primaryColor,
                                         fontWeight: FontWeight.w900),
                                   ),
                                 ),
@@ -84,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                                   'Tasks\nDone'.tr,
                                   style:  TextStyle(
                                     fontSize: 6*SizeConfig.blockSizeHorizontal,
-                                    color: kMainPink.value,
+                                    color: context.theme.primaryColor,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textAlign: TextAlign.center,

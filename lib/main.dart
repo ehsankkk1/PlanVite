@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: Themes.light,
+      theme: Themes.pink,
      darkTheme: Themes.dark,
      // theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
       debugShowCheckedModeBanner: false,
