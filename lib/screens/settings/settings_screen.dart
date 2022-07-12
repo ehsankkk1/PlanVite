@@ -4,6 +4,8 @@ import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/settings/settings_controller.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 
+import '../../config/theme_service.dart';
+
 class SettingsScreen extends StatelessWidget {
   SettingsController controller = Get.find();
 
@@ -208,15 +210,19 @@ class SettingsScreen extends StatelessWidget {
                                       ),
                                     ),
 
-                                    Align(
-                                        alignment: Alignment.topRight,
-                                        child: CustomCheckbox(onTap: (){
+                                   Obx((){
+                                     return  Align(
+                                         alignment: Alignment.topRight,
+                                         child: CustomCheckbox(onTap: (){
 
-                                          //controller.isPink.value=true;
-                                          //controller.isDark.value=false;
-                                          Get.changeThemeMode(ThemeMode.light);
+                                           //controller.isPink.value=true;
+                                           //controller.isDark.value=false;
+                                           controller.changeToPink();
+                                           Get.changeThemeMode(ThemeMode.light);
+                                           ThemeService().switchTheme;
 
-                                        }, color:context.theme.primaryColor,size: 25,isSelected: controller.isPink.value, )),
+                                         }, color:context.theme.primaryColor,size: 25,isSelected: controller.isPink.value, ));
+                                   })
 
                                   ],),
                                   SizedBox(height: height*0.01,),
@@ -237,16 +243,20 @@ class SettingsScreen extends StatelessWidget {
                                       ),
                                       //SizedBox(width: width*0.437,),
 
-                                         Align(
-                                            alignment: Alignment.topRight,
-                                            child: CustomCheckbox(onTap: (){
+                                        Obx((){
+                                          return  Align(
+                                              alignment: Alignment.topRight,
+                                              child: CustomCheckbox(onTap: (){
 
-                                             // controller.isDark.value=true;
-                                             // controller.isPink.value=false;
-                                              Get.changeThemeMode(ThemeMode.dark);
+                                                // controller.isDark.value=true;
+                                                // controller.isPink.value=false;
+                                                controller.changeToDark();
+                                                Get.changeThemeMode(ThemeMode.dark);
+                                                ThemeService().switchTheme;
 
 
-                                            }, color: context.theme.primaryColor,size: 25, isSelected: controller.isDark.value,)),
+                                              }, color: context.theme.primaryColor,size: 25, isSelected: controller.isDark.value,));
+                                        })
 
 
 

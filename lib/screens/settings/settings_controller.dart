@@ -19,8 +19,8 @@ class SettingsController extends GetxController{
   void onInit() {
     isVisibleLang = false.obs;
     isVisibleTheme = false.obs;
-    isPink = Get.isDarkMode==true?false.obs:true.obs;
-    isDark = Get.isDarkMode==true?true.obs:false.obs;
+    isPink = true.obs;
+    isDark = false.obs;
     String str = ThemeService().theme.toString();
     print(str);
 
@@ -28,6 +28,16 @@ class SettingsController extends GetxController{
 
 
     super.onInit();
+  }
+  changeToDark(){
+    isPink.value = false;
+    isDark.value = true;
+
+  }
+  changeToPink(){
+    isDark.value = false;
+    isPink.value = true;
+
   }
   changeThemeToDark(){
 
