@@ -9,6 +9,7 @@ class BackLogController extends GetxController{
 
   var selectedLang;
   var  selectedLangBool ;
+  var rating=0.obs;
 
 
 

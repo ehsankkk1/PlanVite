@@ -30,6 +30,7 @@ dependencies:
   animations: ^2.0.2
   get_storage: ^2.0.3
   flutter_rating_bar: ^4.0.1
+  holding_gesture: ^1.1.0
 
 
 

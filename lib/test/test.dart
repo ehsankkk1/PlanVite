@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/test/test_controller.dart';
-
+import 'package:holding_gesture/holding_gesture.dart';
 class Test extends StatelessWidget {
   TestController controller = Get.find();
   Widget buildRating()=> RatingBar.builder(
@@ -37,11 +37,16 @@ mainAxisSize:MainAxisSize.min ,
     return Scaffold(
 
       body: Center(
-        child:TextButton(
-          child: Text('Click Here'),
-          onPressed: (){
-           showRating();
-          },
+        child:HoldDetector(
+          onHold: showRating,
+          holdTimeout: Duration(milliseconds: 200),
+          enableHapticFeedback: true,
+          child: TextButton(
+            child: Text('Click Here'),
+            onPressed: (){
+              showRating;
+            },
+          ),
         )
       ),
     );

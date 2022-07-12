@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:holding_gesture/holding_gesture.dart';
 import 'package:plane_vite/widgets/user_card_widget.dart';
 import '../../constants.dart';
 import '../../skeleton/skeleton_controller.dart';
@@ -16,11 +18,22 @@ import 'back_log_controller.dart';
 class BackLogScreen extends GetView<BackLogScreen> {
 
 
+
   final MyDrawerController _myDrawerController = Get.find();
   final BackLogController _backLogController = Get.put(BackLogController());
 
   @override
+
   Widget build(BuildContext context) {
+    BackLogController controller = Get.find();
+    Widget buildRating(var index)=> RatingBar.builder(
+      minRating: 1,
+      itemBuilder: (context,_)=>Icon(Icons.star,color:context.theme.primaryColor), onRatingUpdate: (rating)  {
+
+      controller.rating.value=rating.toInt();
+    },
+
+    );
 
     
       return Scaffold(
@@ -53,7 +66,33 @@ class BackLogScreen extends GetView<BackLogScreen> {
                               sprintName: "Pending".tr,
                               coloredBoxes: List.generate(
                                 index + 4,
-                                    (index) => UserCardWidget('user $index'),
+                                    (index) => HoldDetector(
+                                      onHold: (){
+                                    showDialog(context: context, builder: (context)=>AlertDialog(
+
+                                    title: Text('Rate this user$index',
+                                    style: TextStyle(color: context.theme.textTheme.caption!.color),
+                                    ),
+                                    content: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisSize:MainAxisSize.min ,
+                                    children: [
+                                    Text('please leave a star rating',),
+                                    SizedBox(height: 30,),
+                                    buildRating(index),
+
+                                    ],
+                                    ),actions: [
+                                    TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Ok'),)
+                                    ],
+                                    ),);
+                                    },
+                                      child: TextButton(
+                                          onPressed: (){
+                                            //showRating(index);
+                                          },
+                                          child: UserCardWidget('user $index')),
+                                    ),
                               ),
                             )
                           ]);
