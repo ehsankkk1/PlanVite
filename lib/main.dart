@@ -16,6 +16,7 @@ import 'package:plane_vite/screens/bindings/sign_up_binding.dart';
 import 'package:plane_vite/screens/bindings/skeleton_binding.dart';
 import 'package:plane_vite/screens/bindings/splash_binding.dart';
 import 'package:plane_vite/screens/bindings/task_binding.dart';
+import 'package:plane_vite/screens/bindings/test_binding.dart';
 import 'package:plane_vite/screens/bindings/to_do_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
 import 'package:plane_vite/screens/settings/settings_screen.dart';
@@ -31,6 +32,7 @@ import 'package:plane_vite/screens/welcome/welcome_screen.dart';
 import 'package:flutter/services.dart';
 import 'package:plane_vite/skeleton/skeleton_screen.dart';
 import 'package:plane_vite/storage/secure_storage.dart';
+import 'package:plane_vite/test/test.dart';
 import 'package:plane_vite/widgets/loader_screen.dart';
 import 'config/theme_service.dart';
 import 'config/themes.dart';
@@ -69,7 +71,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/skeleton',
+      initialRoute: '/test2',
       transitionDuration: const Duration(milliseconds: 500),
       getPages: [
         GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),
@@ -86,7 +88,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/drawer', page: ()=> DrawerScreen(),binding:DrawerBinding()),
         GetPage(name: '/test', page: ()=> LoaderScreen()),
         GetPage(name: '/settings', page: ()=>SettingsScreen(),binding:SettingsBinding()),
-
+        GetPage(name: '/test2', page: ()=>Test(),binding:TestBinding()),
       ],
       builder: EasyLoading.init(),
     );
