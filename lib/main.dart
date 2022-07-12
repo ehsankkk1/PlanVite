@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:plane_vite/config/themes2.dart';
 import 'package:plane_vite/screens/Drawer/drawer_controller.dart';
 import 'package:plane_vite/screens/Drawer/drawer_screen.dart';
 import 'package:plane_vite/screens/back_log/back_log_screen.dart';
@@ -64,14 +63,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: Themes.pink,
-     darkTheme: Themes.dark,
+      darkTheme: Themes.dark,
       themeMode: ThemeService().theme,
      // theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
       debugShowCheckedModeBanner: false,
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/backlog',
+      initialRoute: '/skeleton',
       transitionDuration: const Duration(milliseconds: 500),
       getPages: [
         GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),

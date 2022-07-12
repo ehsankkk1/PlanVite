@@ -17,16 +17,16 @@ class SprintWidget extends StatelessWidget {
     return Container(
       margin:  const EdgeInsets.fromLTRB(8,0,8,0),
       child: Material(
-        color: Colors.white,
+        //color: context.theme.hintColor,
+
         elevation: 6,
         borderRadius:  const BorderRadius.all(Radius.circular(10)),
         child: Container(
-          margin:  const EdgeInsets.all(8),
           width: width * 0.77,
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             /*border: Border.all(color: darkSecondaryColor,width: 3),*/
-              color: Colors.white,
-              borderRadius:  BorderRadius.all(Radius.circular(10)),),
+              color: context.theme.hintColor,
+              borderRadius:  const BorderRadius.all(Radius.circular(10)),),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,28 +34,31 @@ class SprintWidget extends StatelessWidget {
                 margin: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                         Text(
-                          "Pending",
-                          style: TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal*5.5,
-                            color: context.theme.textTheme.caption!.color,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                           Text(
+                            "Pending",
+                            style: TextStyle(
+                              fontSize: SizeConfig.blockSizeHorizontal*5.5,
+                              color: context.theme.textTheme.caption!.color,
+                            ),
                           ),
-                        ),
-                        addButton==true?InkWell(
-                          child:  Icon(
-                            Icons.add,
-                            size: 40,
-                            color: context.theme.primaryColor,
-                          ),
-                          onTap: () {
-                            print("tapped");
-                          },
-                        ):Container(width: 15,height: 15,)
+                          addButton==true?InkWell(
+                            child:  Icon(
+                              Icons.add,
+                              size: 40,
+                              color: context.theme.primaryColor,
+                            ),
+                            onTap: () {
+                              print("tapped");
+                            },
+                          ):Container(width: 15,height: 15,)
 
-                      ],
+                        ],
+                      ),
                     ),
                     checkBox==true ?Row(
                       children: [

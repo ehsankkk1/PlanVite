@@ -22,6 +22,7 @@ final BoxShadow kBoxShadow=BoxShadow(
   offset: const Offset(0, 4), //changes position of shadow
 );
 
+
 //pink2
 //const kBackGround=Color(0xFFfef6e4);
 //const kMainPink=Color(0xFFF582AE);

@@ -12,17 +12,20 @@ class SprintController extends GetxController{
   BoardViewController boardViewController=BoardViewController();
 
   final List<BoardListObject> listData = [
-    BoardListObject(title: "List title 1",items: [
-      BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),
-      BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),
+    BoardListObject(title: "Pending",items: [
+      BoardItemObject(title: 'Optimize Model',dueDate: 'May 22'),
+      BoardItemObject(title: 'Build The app',priority: "High"),
+      BoardItemObject(title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper ac nulla in pretium. Nunc commodo tempor quam ac ullamcorper. Aliquam erat volutpat.',priority: "Low"),
+
     ],
     ),
-    BoardListObject(title: "List title 2",items: [
-      BoardItemObject(title: 'dsaffdsa'),BoardItemObject(title: 'dsaffdsa'),
+    BoardListObject(title: "Doing",items: [
+      BoardItemObject(title: 'Build The app',priority: "High"),
+      BoardItemObject(title: 'Aliquam vestibulum magna massa, a rutrum metus semper id. Aenean elementum lectus ac egestas laoreet. Fusce in odio sed ligula egestas tempor.',dueDate: "June 30"),
     ]),
-    BoardListObject(title: "List title 3",items: [
-      BoardItemObject(title: 'dsaffdsa'),
-    ])
+    BoardListObject(title: "Done",items: [
+      BoardItemObject(title: 'Optimize Model',priority: "Medium",dueDate: 'May 22'),
+    ]),
   ];
   @override
   void onInit() {

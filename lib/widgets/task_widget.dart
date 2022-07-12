@@ -30,64 +30,59 @@ class TaskWidget extends StatelessWidget {
       },
       child: Padding(
         padding:  EdgeInsets.symmetric(vertical :width*0.02),
-        child: Material(
-          elevation: 0,
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
-          child: Container(
-            decoration:  BoxDecoration(
-                color: kColoredCard.value,
-                borderRadius: BorderRadius.all(Radius.circular(6))),
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(
-                  width * 0.03, height * 0.02, width * 0.03, height * 0.02),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //const Image(image: NetworkImage('https://wallpaperaccess.com/full/7794852.jpg')),
-                  //const SizedBox(height: 15,),
-                  Flexible(
-                    child: Text(
-                      name,
-                      style:  TextStyle(
-                        fontSize: SizeConfig.blockSizeHorizontal*4.7,
-                        color: context.theme.textTheme.caption!.color,
-                        fontWeight: FontWeight.w600
-                      ),
+        child: Container(
+          decoration:  BoxDecoration(
+              color: context.theme.cardColor,
+              borderRadius: BorderRadius.all(Radius.circular(6))),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+                width * 0.03, height * 0.02, width * 0.03, height * 0.02),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //const Image(image: NetworkImage('https://wallpaperaccess.com/full/7794852.jpg')),
+                //const SizedBox(height: 15,),
+                Flexible(
+                  child: Text(
+                    name,
+                    style:  TextStyle(
+                      fontSize: SizeConfig.blockSizeHorizontal*4.7,
+                      color: context.theme.textTheme.caption!.color,
+                      fontWeight: FontWeight.w600
                     ),
                   ),
-                  const SizedBox(height: 15,),
-                  priority != null
-                      ? Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
-                    child: PriorityWidget(name:priority!,colour:kPriortyColor.value,textColor:context.theme.textTheme.caption!.color!),
-                  ):Container(),
-                  Row(
-                    children: [
-                       CircleAvatar(
-                        radius: 15,
-                        backgroundColor:context.theme.textTheme.caption!.color,
-                        child: Text(
-                          'E',
-                          style:
-                              TextStyle(fontSize: SizeConfig.blockSizeHorizontal*3.5, fontWeight: FontWeight.bold),
-                        ),
+                ),
+                const SizedBox(height: 15,),
+                priority != null ? Padding(
+                  padding: const EdgeInsets.only(bottom: 15),
+                  child: PriorityWidget(name:priority!,colour:context.theme.primaryColor,textColor:context.theme.textTheme.caption!.color!),
+                ):Container(),
+                Row(
+                  children: [
+                     CircleAvatar(
+                      radius: 15,
+                      backgroundColor:context.theme.textTheme.caption!.color,
+                      child: Text(
+                        'E',
+                        style:
+                            TextStyle(fontSize: SizeConfig.blockSizeHorizontal*3.5, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
-                        width: width * 0.05,
-                      ),
-                      dueDate != null
-                          ? Text(
-                            dueDate!,
-                            style:  TextStyle(
-                              fontSize: SizeConfig.blockSizeHorizontal*3.7,
-                              color: context.theme.textTheme.caption!.color,
-                            ),
-                          ) : Container(),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                    SizedBox(
+                      width: width * 0.05,
+                    ),
+                    dueDate != null
+                        ? Text(
+                          dueDate!,
+                          style:  TextStyle(
+                            fontSize: SizeConfig.blockSizeHorizontal*3.7,
+                            color: context.theme.textTheme.caption!.color,
+                          ),
+                        ) : Container(),
+                  ],
+                ),
+              ],
             ),
           ),
         ),

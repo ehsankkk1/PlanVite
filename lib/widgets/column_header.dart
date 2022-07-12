@@ -5,8 +5,9 @@ import 'package:plane_vite/constants.dart';
 
 
 class ColumnHeader extends StatelessWidget {
-  const ColumnHeader({Key? key}) : super(key: key);
+   ColumnHeader({ this.title});
 
+   String? title;
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -17,7 +18,7 @@ class ColumnHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children:  [
               Text(
-              "Pending",
+                title!,
               style: TextStyle(
                 fontSize: SizeConfig.blockSizeHorizontal*5.5,
                 color: context.theme.textTheme.caption!.color,
