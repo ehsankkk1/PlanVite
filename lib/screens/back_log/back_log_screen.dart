@@ -34,8 +34,6 @@ class BackLogScreen extends GetView<BackLogScreen> {
     },
 
     );
-
-    
       return Scaffold(
         backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
@@ -49,7 +47,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                 AppBarWidgetNoDrawer(
                   head: 'Back Log'.tr,
                 ),
-                SizedBox(height:10),
+                const SizedBox(height:10),
                 Expanded(
                   //height: height * 0.88,
                   child: ListView.builder(

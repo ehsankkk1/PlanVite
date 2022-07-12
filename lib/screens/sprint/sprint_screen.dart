@@ -6,14 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:plane_vite/skeleton/skeleton_controller.dart';
 import 'package:plane_vite/widgets/app_bar.dart';
-import '../../constants.dart';
 import '../../widgets/column_header.dart';
 import '../../widgets/task_widget.dart';
 import '../Drawer/drawer_controller.dart';
 import 'sprint_controller.dart';
-import 'sprint_model.dart';
 
 
 class SprintScreen extends GetView<SprintController> {
@@ -25,10 +22,45 @@ class SprintScreen extends GetView<SprintController> {
     final SprintController _sprintController =  Get.put(SprintController());
     final MyDrawerController _myDrawerController = Get.find();
     List<BoardList> _lists = [];
+    List<BoardItem> items = [];
     for (int i = 0; i < _sprintController.listData.length; i++) {
-      _lists.add(_createBoardList(_sprintController.listData[i]) as BoardList);
-    }
+      for (int j = 0; j < _sprintController.listData[i].items!.length; j++) {
+        items.insert(j, BoardItem(
+            draggable: true,
+            onStartDragItem: (int? listIndex, int? itemIndex, BoardItemState? state) {
+              print('listIndex : $listIndex');
+              print('itemIndex : $itemIndex');
 
+            },
+            onDropItem: (int? listIndex, int? itemIndex, int? oldListIndex, int? oldItemIndex, BoardItemState? state) {
+              var item =
+              _sprintController.listData[oldListIndex!].items![oldItemIndex!];
+              _sprintController.listData[oldListIndex].items!.removeAt(oldItemIndex);
+              _sprintController.listData[listIndex!].items!.insert(itemIndex!, item);
+            },
+            onTapItem: (int? listIndex, int? itemIndex, BoardItemState? state) async {},
+
+            item: TaskWidget(
+              name: _sprintController.listData[i].items![j].title,
+              dueDate:  _sprintController.listData[i].items![j].dueDate,
+              priority:  _sprintController.listData[i].items![j].priority,
+            ),),);
+      }
+      _lists.add(BoardList(
+        headerBackgroundColor: context.theme.hintColor,
+        backgroundColor: context.theme.hintColor,
+        draggable: false,
+        header: [
+          Expanded(
+              child: Container(
+                padding:  EdgeInsets.all(width*0.01),
+                child:  ColumnHeader(title: _sprintController.listData[i]!.title,),
+              )),
+        ],
+        items: items,
+      ));
+      items = [];
+    }
       return Scaffold(
         backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
@@ -66,55 +98,6 @@ class SprintScreen extends GetView<SprintController> {
 
   }
 
-  Widget _createBoardList(BoardListObject list) {
-    final SprintController _sprintController =  Get.find();
-    List<BoardItem> items = [];
-    for (int i = 0; i < list.items!.length; i++) {
-      items.insert(i, buildBoardItem(list.items![i]) as BoardItem);
-    }
-    return BoardList(
-      onStartDragList: (int? listIndex) {},
-      onTapList: (int? listIndex) async {},
-      onDropList: (int? listIndex, int? oldListIndex) {
-        //Update our local list data
-        var list = _sprintController.listData[oldListIndex!];
-        _sprintController.listData.removeAt(oldListIndex);
-        _sprintController.listData.insert(listIndex!, list);
-      },
-      headerBackgroundColor: kDrawerBackGround.value,
-      backgroundColor: kDrawerBackGround.value,
-      draggable: false,
-      header: [
-        Expanded(
-            child: Container(
-          padding:  EdgeInsets.all(width*0.01),
-          child: const ColumnHeader(),
-        )),
-      ],
-      items: items,
-    );
-  }
-  Widget buildBoardItem(BoardItemObject itemObject) {
-    final SprintController _sprintController =  Get.find();
-    return BoardItem(
-        draggable: true,
-        onStartDragItem:
-            (int? listIndex, int? itemIndex, BoardItemState? state) {},
-        onDropItem: (int? listIndex, int? itemIndex, int? oldListIndex,
-            int? oldItemIndex, BoardItemState? state) {
-          //Used to update our local item data
-          var item =
-          _sprintController.listData[oldListIndex!].items![oldItemIndex!];
-          _sprintController.listData[oldListIndex].items!
-              .removeAt(oldItemIndex);
-          _sprintController.listData[listIndex!].items!.insert(itemIndex!, item);
-        },
-        onTapItem: (int? listIndex, int? itemIndex, BoardItemState? state) async {},
-        //Todo : add the task data here
-        item: TaskWidget(
-          name: 'Build Flutter UwU',
-          dueDate: "May 22",
-          priority: "High",
-        ));
-  }
 }
+
+
