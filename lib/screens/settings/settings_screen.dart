@@ -110,15 +110,15 @@ SecureStorage storage = SecureStorage();
                                          return Align(
                                              alignment: Alignment.topRight,
                                              child: CustomCheckbox(onTap: (){
-                                               storage.save('lang', 'en');
-                                               controller.selectedLang='en';
+
+                                               controller.storeLangAr(false);
                                                controller.changeToEn();
 
 
                                                Get.updateLocale(
-                                                   Locale(controller.selectedLang));
+                                                   Locale('en'));
 
-                                             }, color: context.theme.primaryColor,size: 25,isSelected: controller.lang.value=='en'?true:false,));
+                                             }, color: context.theme.primaryColor,size: 25,isSelected: controller.isAr.value==true?false:true,));
                                        })
 
 
@@ -145,13 +145,13 @@ SecureStorage storage = SecureStorage();
                                            return Align(
                                                alignment: Alignment.topRight,
                                                child: CustomCheckbox(onTap: (){
-                                                 storage.save('lang', 'ar');
-                                                 controller.selectedLang='ar';
+
+                                                 controller.storeLangAr(true);
                                                  controller.changeToAr();
                                                  Get.updateLocale(
-                                                     Locale(controller.selectedLang));
+                                                     Locale('ar'));
 
-                                               }, color: context.theme.primaryColor,size: 25,isSelected: controller.lang.value=='ar'?true:false,));
+                                               }, color: context.theme.primaryColor,size: 25,isSelected: controller.isAr.value,));
                                          })
 
 
@@ -302,7 +302,7 @@ SecureStorage storage = SecureStorage();
                                       //SizedBox(width: width*0.2,),
                                       Align(
                                         alignment: Alignment(-0.42,0),
-                                        child: Text('Purple',
+                                        child: Text('Purple'.tr,
                                           style: TextStyle(
                                             color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,
@@ -334,7 +334,7 @@ SecureStorage storage = SecureStorage();
                                       //SizedBox(width: width*0.2,),
                                       Align(
                                         alignment: Alignment(-0.45,0),
-                                        child: Text('Blue',
+                                        child: Text('Blue'.tr,
                                           style: TextStyle(
                                             color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,

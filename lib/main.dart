@@ -81,9 +81,9 @@ class MyApp extends StatelessWidget {
         // theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
         debugShowCheckedModeBanner: false,
         translations:  Translation(),
-        locale: const Locale('en'),
+        locale: controller.isAr==true ?Locale('ar'):Locale('en'),
         fallbackLocale: const Locale('en'),
-        initialRoute: '/settings',
+        initialRoute: '/skeleton',
         transitionDuration: const Duration(milliseconds: 500),
         getPages: [
           GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),

@@ -15,10 +15,12 @@ class SettingsController extends GetxController{
   var isVisibleTheme;
   var isPink;
   var isDark;
-  var lang;
-  var selectedLang;
+  //var lang;
+ // var selectedLang;
   var isBlue;
   var isPurple;
+  var isAr;
+  var isEn;
 
   final box = GetStorage();
   @override
@@ -29,10 +31,11 @@ class SettingsController extends GetxController{
     isDark = box.read('isDark2')==true?true.obs:false.obs;
     isBlue = box.read('isBlue2')==true?true.obs:false.obs;
     isPurple= box.read('isPurple')==true?true.obs:false.obs;
-    selectedLang=Get.locale.toString();
-    lang=Get.locale.toString().obs;
+    isAr=box.read('isAr2')==true?true.obs:false.obs;
+    //selectedLang=Get.locale.toString();
+    //lang=Get.locale.toString().obs;
 
-print(box.read('isDark2'));
+
 
 
 
@@ -41,18 +44,20 @@ print(box.read('isDark2'));
     super.onInit();
 
   }
-
-  void storeThemeSetting1( isDark2) {
-    box.write('isDark2', isDark2);
-  }
   void storeThemeSetting( isPink2) {
     box.write('isPink2', isPink2);
+  }
+  void storeThemeSetting1( isDark2) {
+    box.write('isDark2', isDark2);
   }
   void storeThemeSetting2( isPurple2) {
     box.write('isPurple2', isPurple2);
   }
   void storeThemeSetting3( isBlue2) {
     box.write('isBlue2', isBlue2);
+  }
+  void storeLangAr(isAr2){
+    box.write('isAr2', isAr2);
   }
   changeToDark(){
     isPink.value = false;
@@ -82,44 +87,16 @@ print(box.read('isDark2'));
     isBlue.value = false;
 
   }
-  changeToAr(){
-    lang.value='ar';
-  }
   changeToEn(){
-    lang.value='en';
+    isAr.value=false;
   }
-  changeThemeToDark(){
-
-    // kBackGround.value=Color(0xFF3F4E4F);
-    // kDrawerBackGround.value=Color(0xFF2C3639);
-    // kWritings.value=Color(0xFF787A91);
-    // kMainPink.value=Color(0xFF506D84);
-    // kLightPink.value=Color(0xFF889EAF);
-    // kColoredCard.value=Color(0xFF515E63);
-
-    //Themes.theme='dark';
-   // saveTheme();
-
+  changeToAr(){
+    isAr.value=true;
   }
-  changeThemeToPink(){
 
-    // kBackGround.value=Color(0xFFFCF8F3);
-    // kDrawerBackGround.value=Colors.white;
-    // kWritings.value=Color(0xFF698474);
-    // kMainPink.value=Color(0xFFFFAAA5);
-    // kLightPink.value=Color(0xFFFFDFEC);
-    // kColoredCard.value=Color(0xFFFDE3E1);
 
-    //Themes.theme='pink';
-   // saveTheme();
 
-  }
-  //saveTheme (){
-   //  storage.save('theme', Themes.theme);
-   //  storage.read('theme').then((result) {
-   //    Themes.theme=result!;
-   //  } );
-   //  print(Themes.theme);
-  //}
+
+
 
 }

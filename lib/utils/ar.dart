@@ -53,6 +53,8 @@ Map <String, String> ar={
   'Theme':'السمة',
   'Dark':'مظلم',
   'Pink':'زهري',
+  'Purple':'بنفسجي',
+  'Blue':'أزرق',
 
 
 

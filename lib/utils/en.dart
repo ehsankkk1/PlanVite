@@ -53,5 +53,7 @@ Map <String, String> en={
   'Theme':'Theme',
   'Dark':'Dark',
   'Pink':'Pink',
+  'Purple':'Purple',
+  'Blue':'Blue',
 
 };
