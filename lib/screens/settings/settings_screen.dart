@@ -243,7 +243,10 @@ SecureStorage storage = SecureStorage();
                                            //controller.isPink.value=true;
                                            //controller.isDark.value=false;
                                            controller.changeToPink();
-                                           controller.storeThemeSetting(false);
+                                           controller.storeThemeSetting1(false);
+                                           controller.storeThemeSetting(true);
+                                           controller.storeThemeSetting3(false);
+                                           controller.storeThemeSetting2(false);
                                            Get.changeThemeMode(ThemeMode.light);
                                            ThemeService().switchTheme;
 
@@ -277,7 +280,10 @@ SecureStorage storage = SecureStorage();
                                                 // controller.isDark.value=true;
                                                 // controller.isPink.value=false;
                                                 controller.changeToDark();
-                                                controller.storeThemeSetting(true);
+                                                controller.storeThemeSetting1(true);
+                                                controller.storeThemeSetting(false);
+                                                controller.storeThemeSetting3(false);
+                                                controller.storeThemeSetting2(false);
                                                 Get.changeThemeMode(ThemeMode.dark);
                                                 ThemeService().switchTheme;
 
@@ -306,7 +312,18 @@ SecureStorage storage = SecureStorage();
                                       //SizedBox(width: width*0.437,),
                                       Align(
                                           alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){}, color: context.theme.primaryColor,size: 25,)),
+                                          child: CustomCheckbox(onTap: (){
+                                            controller.changeToPurple();
+
+                                            controller.storeThemeSetting1(false);
+                                            controller.storeThemeSetting(false);
+                                            controller.storeThemeSetting3(false);
+                                            controller.storeThemeSetting2(true);
+                                            Get.changeThemeMode(ThemeMode.dark);
+                                            ThemeService().switchTheme;
+
+
+                                          }, color: context.theme.primaryColor,size: 25,isSelected: controller.isPurple.value,)),
 
                                     ],),
                                   SizedBox(height: height*0.01,),
@@ -327,7 +344,17 @@ SecureStorage storage = SecureStorage();
                                       //SizedBox(width: width*0.437,),
                                       Align(
                                           alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){}, color: context.theme.primaryColor,size: 25,)),
+                                          child: CustomCheckbox(onTap: (){
+
+                                            controller.changeToBlue();
+                                            controller.storeThemeSetting3(true);
+                                            controller.storeThemeSetting1(false);
+                                            controller.storeThemeSetting(false);
+                                            controller.storeThemeSetting2(false);
+                                            Get.changeThemeMode(ThemeMode.dark);
+                                            ThemeService().switchTheme;
+
+                                          }, color: context.theme.primaryColor,size: 25, isSelected: controller.isBlue.value,)),
 
                                     ],),
 

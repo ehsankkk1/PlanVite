@@ -19,4 +19,25 @@ class Themes {
       primaryColorLight:Color(0xFF889EAF),
     hintColor: Colors.black38,
   );
+  static final blue = ThemeData.light().copyWith(
+    backgroundColor: Color(0xFFFCF8F3),
+    primaryColor: Colors.blue,
+    cardColor: Color(0xFFFDE3E1),
+    textTheme: TextTheme(caption: TextStyle(color: Colors.blueGrey)),
+    primaryColorLight: Colors.lightBlueAccent,
+    //drawer color
+    hintColor: Colors.white,
+
+  );
+  static final purple = ThemeData.light().copyWith(
+    backgroundColor: Color(0xFFFCF8F3),
+    primaryColor: Colors.purple,
+    cardColor: Color(0xFFFDE3E1),
+    textTheme: TextTheme(caption: TextStyle(color: Colors.blueGrey)),
+    primaryColorLight: Colors.deepPurple,
+    //drawer color
+    hintColor: Colors.white,
+
+  );
+
 }

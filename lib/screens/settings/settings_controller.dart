@@ -17,14 +17,18 @@ class SettingsController extends GetxController{
   var isDark;
   var lang;
   var selectedLang;
+  var isBlue;
+  var isPurple;
 
   final box = GetStorage();
   @override
   void onInit() async{
     isVisibleLang = false.obs;
     isVisibleTheme = false.obs;
-    isPink = box.read('isDark2')==true?false.obs:true.obs;
+    isPink = box.read('isPink2')==true?true.obs:false.obs;
     isDark = box.read('isDark2')==true?true.obs:false.obs;
+    isBlue = box.read('isBlue2')==true?true.obs:false.obs;
+    isPurple= box.read('isPurple')==true?true.obs:false.obs;
     selectedLang=Get.locale.toString();
     lang=Get.locale.toString().obs;
 
@@ -38,17 +42,44 @@ print(box.read('isDark2'));
 
   }
 
-  void storeThemeSetting( isDark2) {
+  void storeThemeSetting1( isDark2) {
     box.write('isDark2', isDark2);
+  }
+  void storeThemeSetting( isPink2) {
+    box.write('isPink2', isPink2);
+  }
+  void storeThemeSetting2( isPurple2) {
+    box.write('isPurple2', isPurple2);
+  }
+  void storeThemeSetting3( isBlue2) {
+    box.write('isBlue2', isBlue2);
   }
   changeToDark(){
     isPink.value = false;
     isDark.value = true;
+    isBlue.value = false;
+    isPurple.value=false;
 
   }
   changeToPink(){
     isDark.value = false;
     isPink.value = true;
+    isBlue.value = false;
+    isPurple.value=false;
+
+  }
+  changeToBlue(){
+    isDark.value = false;
+    isPink.value = false;
+    isBlue.value = true;
+    isPurple.value=false;
+
+  }
+  changeToPurple(){
+    isPurple.value=true;
+    isDark.value = false;
+    isPink.value = false;
+    isBlue.value = false;
 
   }
   changeToAr(){
