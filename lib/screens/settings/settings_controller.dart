@@ -3,24 +3,30 @@ import 'package:get/get.dart';
 import 'package:plane_vite/config/theme_service.dart';
 import 'package:plane_vite/config/themes2.dart';
 import 'package:plane_vite/constants.dart';
-
+import 'dart:ui';
 import '../../storage/secure_storage.dart';
+import '../../utils/local_storage.dart';
 
 class SettingsController extends GetxController{
 
-  SecureStorage storage = SecureStorage();
+ // SecureStorage storage = SecureStorage();
   var isVisibleLang;
   var isVisibleTheme;
   var isPink;
   var isDark;
-
+  var lang;
+  var selectedLang;
+  var appLocale = 'en';
 
   @override
-  void onInit() {
+  void onInit() async{
     isVisibleLang = false.obs;
     isVisibleTheme = false.obs;
     isPink = true.obs;
     isDark = false.obs;
+    selectedLang=Get.locale.toString();
+    lang=Get.locale.toString().obs;
+    print(lang.value);
     String str = ThemeService().theme.toString();
     print(str);
 
@@ -28,6 +34,7 @@ class SettingsController extends GetxController{
 
 
     super.onInit();
+
   }
   changeToDark(){
     isPink.value = false;
@@ -38,6 +45,12 @@ class SettingsController extends GetxController{
     isDark.value = false;
     isPink.value = true;
 
+  }
+  changeToAr(){
+    lang.value='ar';
+  }
+  changeToEn(){
+    lang.value='en';
   }
   changeThemeToDark(){
 

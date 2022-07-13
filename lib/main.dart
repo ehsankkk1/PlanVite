@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:plane_vite/screens/Drawer/drawer_controller.dart';
 import 'package:plane_vite/screens/Drawer/drawer_screen.dart';
 import 'package:plane_vite/screens/back_log/back_log_screen.dart';
@@ -41,7 +42,7 @@ import 'translations.dart';
 
 
 Future<void> main() async{
-
+  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -70,7 +71,7 @@ class MyApp extends StatelessWidget {
       translations:  Translation(),
       locale: const Locale('en'),
       fallbackLocale: const Locale('en'),
-      initialRoute: '/skeleton',
+      initialRoute: '/login',
       transitionDuration: const Duration(milliseconds: 500),
       getPages: [
         GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),

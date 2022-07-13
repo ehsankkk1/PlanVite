@@ -49,5 +49,9 @@ Map <String, String> en={
   'Sub Task':'Sub Task',
   'Sub Tasks':'Sub Tasks',
   'Add More Details to this Task':'Add More Details to this Task',
+  'Language':'Language',
+  'Theme':'Theme',
+  'Dark':'Dark',
+  'Pink':'Pink',
 
 };

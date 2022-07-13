@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/settings/settings_controller.dart';
+import 'package:plane_vite/storage/secure_storage.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 
 import '../../config/theme_service.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsController controller = Get.find();
-
+SecureStorage storage = SecureStorage();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class SettingsScreen extends StatelessWidget {
             backgroundColor: context.theme.backgroundColor,
             title: Center(
               child: Text(
-                'Settings',
+                'Settings'.tr,
                 style: TextStyle(
                   color: context.theme.textTheme.caption!.color,
                 ),
@@ -58,7 +59,7 @@ class SettingsScreen extends StatelessWidget {
                                   Align(
                                     alignment: Alignment(-0.5,-0.85),
                                     child: Text(
-                                      'Language',
+                                      'Language'.tr,
                                       style: TextStyle(
                                         color: context.theme.textTheme.caption!.color,
                                         fontSize: 25,
@@ -104,9 +105,22 @@ class SettingsScreen extends StatelessWidget {
                                       ),
                                     ),
 
-                                    Align(
-                                        alignment: Alignment.topRight,
-                                        child: CustomCheckbox(onTap: (){}, color: context.theme.primaryColor,size: 25,)),
+
+                                       Obx((){
+                                         return Align(
+                                             alignment: Alignment.topRight,
+                                             child: CustomCheckbox(onTap: (){
+                                               storage.save('lang', 'en');
+                                               controller.selectedLang='en';
+                                               controller.changeToEn();
+
+
+                                               Get.updateLocale(
+                                                   Locale(controller.selectedLang));
+
+                                             }, color: context.theme.primaryColor,size: 25,isSelected: controller.lang.value=='en'?true:false,));
+                                       })
+
 
                                   ],),
                                   SizedBox(height: height*0.01,),
@@ -126,9 +140,20 @@ class SettingsScreen extends StatelessWidget {
                                         ),
                                       ),
                                       //SizedBox(width: width*0.437,),
-                                      Align(
-                                          alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){}, color: context.theme.primaryColor,size: 25,)),
+
+                                         Obx((){
+                                           return Align(
+                                               alignment: Alignment.topRight,
+                                               child: CustomCheckbox(onTap: (){
+                                                 storage.save('lang', 'ar');
+                                                 controller.selectedLang='ar';
+                                                 controller.changeToAr();
+                                                 Get.updateLocale(
+                                                     Locale(controller.selectedLang));
+
+                                               }, color: context.theme.primaryColor,size: 25,isSelected: controller.lang.value=='ar'?true:false,));
+                                         })
+
 
                                     ],),
 
@@ -164,7 +189,7 @@ class SettingsScreen extends StatelessWidget {
                                   Align(
                                     alignment: Alignment(-0.5,-0.85),
                                     child: Text(
-                                      'Theme',
+                                      'Theme'.tr,
                                       style: TextStyle(
                                         color: context.theme.textTheme.caption!.color,
                                         fontSize: 25,
@@ -202,7 +227,7 @@ class SettingsScreen extends StatelessWidget {
 
                                     Align(
                                       alignment: Alignment(-0.45,0),
-                                      child: Text('Pink',
+                                      child: Text('Pink'.tr,
                                         style: TextStyle(
                                           color: context.theme.textTheme.caption!.color,
                                           fontSize: 20,
@@ -234,7 +259,7 @@ class SettingsScreen extends StatelessWidget {
                                       //SizedBox(width: width*0.2,),
                                       Align(
                                         alignment: Alignment(-0.45,0),
-                                        child: Text('Dark',
+                                        child: Text('Dark'.tr,
                                           style: TextStyle(
                                             color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,

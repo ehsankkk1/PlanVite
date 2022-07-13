@@ -22,6 +22,7 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
     return Directionality(
       textDirection: TextDirection.ltr,
       child: TextFormField(
+        style: TextStyle(color:Colors.black ),
 
         validator: validator,
        controller: controller2,

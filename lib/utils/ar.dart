@@ -49,7 +49,10 @@ Map <String, String> ar={
   'Sub Task':'مهمة مرتبطة',
   'Sub Tasks':'مهام مرتبطة',
   'Add More Details to this Task':'اضافة المزيد من التفاصيل على هذه المهمة',
-
+  'Language':'اللغة',
+  'Theme':'السمة',
+  'Dark':'مظلم',
+  'Pink':'زهري',
 
 
 
