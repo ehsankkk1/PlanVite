@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:plane_vite/config/theme_service.dart';
 import 'package:plane_vite/config/themes2.dart';
 import 'package:plane_vite/constants.dart';
@@ -16,25 +17,29 @@ class SettingsController extends GetxController{
   var isDark;
   var lang;
   var selectedLang;
-  var appLocale = 'en';
 
+  final box = GetStorage();
   @override
   void onInit() async{
     isVisibleLang = false.obs;
     isVisibleTheme = false.obs;
-    isPink = true.obs;
-    isDark = false.obs;
+    isPink = box.read('isDark2')==true?false.obs:true.obs;
+    isDark = box.read('isDark2')==true?true.obs:false.obs;
     selectedLang=Get.locale.toString();
     lang=Get.locale.toString().obs;
-    print(lang.value);
-    String str = ThemeService().theme.toString();
-    print(str);
+
+print(box.read('isDark2'));
+
 
 
 
 
     super.onInit();
 
+  }
+
+  void storeThemeSetting( isDark2) {
+    box.write('isDark2', isDark2);
   }
   changeToDark(){
     isPink.value = false;

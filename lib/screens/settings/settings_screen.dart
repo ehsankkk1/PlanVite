@@ -243,6 +243,7 @@ SecureStorage storage = SecureStorage();
                                            //controller.isPink.value=true;
                                            //controller.isDark.value=false;
                                            controller.changeToPink();
+                                           controller.storeThemeSetting(false);
                                            Get.changeThemeMode(ThemeMode.light);
                                            ThemeService().switchTheme;
 
@@ -276,6 +277,7 @@ SecureStorage storage = SecureStorage();
                                                 // controller.isDark.value=true;
                                                 // controller.isPink.value=false;
                                                 controller.changeToDark();
+                                                controller.storeThemeSetting(true);
                                                 Get.changeThemeMode(ThemeMode.dark);
                                                 ThemeService().switchTheme;
 

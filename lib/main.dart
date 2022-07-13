@@ -19,6 +19,7 @@ import 'package:plane_vite/screens/bindings/task_binding.dart';
 import 'package:plane_vite/screens/bindings/test_binding.dart';
 import 'package:plane_vite/screens/bindings/to_do_binding.dart';
 import 'package:plane_vite/screens/bindings/welcome_binding.dart';
+import 'package:plane_vite/screens/settings/settings_controller.dart';
 import 'package:plane_vite/screens/settings/settings_screen.dart';
 import 'package:plane_vite/screens/sprint/sprint_screen.dart';
 import 'package:plane_vite/screens/home/home_screen.dart';
@@ -43,6 +44,8 @@ import 'translations.dart';
 
 Future<void> main() async{
   await GetStorage.init();
+
+  Get.put(SettingsController());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -62,36 +65,46 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      theme: Themes.pink,
-      darkTheme: Themes.dark,
-      themeMode: ThemeService().theme,
-     // theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
-      debugShowCheckedModeBanner: false,
-      translations:  Translation(),
-      locale: const Locale('en'),
-      fallbackLocale: const Locale('en'),
-      initialRoute: '/login',
-      transitionDuration: const Duration(milliseconds: 500),
-      getPages: [
-        GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),
-        GetPage(name: '/skeleton', page: ()=> SkeletonScreen(),binding: SkeletonBinding()),
-        GetPage(name: '/login', page: ()=>LoginScreen(),binding: LoginBinding()),
-        GetPage(name: '/signup', page: ()=> SignupScreen(),binding: SignupBinding()),
-        GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
-        GetPage(name: '/home', page: ()=>HomeScreen(),binding:HomeBinding()),
-        GetPage(name: '/backlog', page: ()=> BackLogScreen(),binding:BackLogBinding()),
-        GetPage(name: '/sprint', page: ()=>SprintScreen(),binding:SprintBinding()),
-        GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
-        GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
-        GetPage(name: '/todo', page: ()=>ToDoScreen(),binding:ToDoBinding()),
-        GetPage(name: '/drawer', page: ()=> DrawerScreen(),binding:DrawerBinding()),
-        GetPage(name: '/test', page: ()=> LoaderScreen()),
-        GetPage(name: '/settings', page: ()=>SettingsScreen(),binding:SettingsBinding()),
-        GetPage(name: '/test2', page: ()=>Test(),binding:TestBinding()),
-      ],
-      builder: EasyLoading.init(),
-    );
+    final box = GetStorage();
+    final controller = Get.find<SettingsController>();
+
+   // ThemeData themeData = controller.isDark.value==true?Themes.dark:Themes.pink;
+
+
+
+    return Obx((){
+     return GetMaterialApp(
+
+        theme: controller.isDark.value==true?Themes.dark:Themes.pink,
+        darkTheme: controller.isDark.value==true?Themes.dark:Themes.pink,
+        //themeMode: ThemeService().theme,
+        // theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
+        debugShowCheckedModeBanner: false,
+        translations:  Translation(),
+        locale: const Locale('en'),
+        fallbackLocale: const Locale('en'),
+        initialRoute: '/settings',
+        transitionDuration: const Duration(milliseconds: 500),
+        getPages: [
+          GetPage(name: '/splash', page: ()=>const SplashScreen(),binding: SplashBinding()),
+          GetPage(name: '/skeleton', page: ()=> SkeletonScreen(),binding: SkeletonBinding()),
+          GetPage(name: '/login', page: ()=>LoginScreen(),binding: LoginBinding()),
+          GetPage(name: '/signup', page: ()=> SignupScreen(),binding: SignupBinding()),
+          GetPage(name: '/welcome', page: ()=>const WelcomeScreen(),binding: WelcomeBinding()),
+          GetPage(name: '/home', page: ()=>HomeScreen(),binding:HomeBinding()),
+          GetPage(name: '/backlog', page: ()=> BackLogScreen(),binding:BackLogBinding()),
+          GetPage(name: '/sprint', page: ()=>SprintScreen(),binding:SprintBinding()),
+          GetPage(name: '/task', page: ()=>TaskScreen(),binding:TaskBinding()),
+          GetPage(name: '/notifications', page: ()=>NotificationsScreen(),binding:NotificationsBinding()),
+          GetPage(name: '/todo', page: ()=>ToDoScreen(),binding:ToDoBinding()),
+          GetPage(name: '/drawer', page: ()=> DrawerScreen(),binding:DrawerBinding()),
+          GetPage(name: '/test', page: ()=> LoaderScreen()),
+          GetPage(name: '/settings', page: ()=>SettingsScreen(),binding:SettingsBinding()),
+          GetPage(name: '/test2', page: ()=>Test(),binding:TestBinding()),
+        ],
+        builder: EasyLoading.init(),
+      );
+    });
 
   }
 }
