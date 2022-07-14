@@ -132,7 +132,7 @@ class TaskScreen extends StatelessWidget {
                               return Text(
                                 controller.dateBool == false
                                     ? 'Due Date'.tr
-                                    :controller.year==null?'Due Date'
+                                    :controller.year==null?'Due Date'.tr
                                     : '${controller.year}/${controller.month}/${controller.day}',
                                 style: const TextStyle(
                                   color: Colors.grey,

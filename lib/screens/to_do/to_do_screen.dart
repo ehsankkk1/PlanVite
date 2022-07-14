@@ -113,6 +113,7 @@ class ToDoScreen extends StatelessWidget {
                                     onSurface: context.theme.textTheme.caption!.color!,
                                   ),
                                  // dialogBackgroundColor: Colors.white30,
+                                  dialogBackgroundColor:context.theme.hintColor,
                                 ),
                                 child: child!,
                               ),
@@ -139,6 +140,7 @@ class ToDoScreen extends StatelessWidget {
                       return Text(
                         controller.dateBool == false
                             ? 'Due Date'.tr
+                            :controller.year==null?'Due Date'.tr
                             : '${controller.year}/${controller.month}/${controller.day}',
                         style: const TextStyle(
                           color: Colors.grey,
