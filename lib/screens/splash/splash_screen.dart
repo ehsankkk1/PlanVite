@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:plane_vite/constants.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -10,7 +11,7 @@ class SplashScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           decoration:  BoxDecoration(
-            color: kBackGround.value,
+            color: context.theme.backgroundColor,
           ),
           child: Column(
             children: [
@@ -28,7 +29,7 @@ class SplashScreen extends StatelessWidget {
                   'Plan Vite',
                   style: TextStyle(
                     fontFamily: 'OleoScriptSwashCaps',
-                    color: kWritings.value,
+                    color: context.theme.textTheme.caption!.color,
                     fontSize: 40,
                   ),
                 ),

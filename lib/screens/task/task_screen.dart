@@ -88,17 +88,23 @@ class TaskScreen extends StatelessWidget {
                                       firstDate: DateTime(2021),
                                       lastDate: DateTime(2023),
                                       builder: (context, child) => Theme(
+
                                         data: ThemeData().copyWith(
                                           colorScheme:  ColorScheme.dark(
+
 
                                             primary: context.theme.primaryColor,
                                             onPrimary: context.theme.textTheme.caption!.color!,
                                             surface: context.theme.primaryColor,
 
+
+
                                             onSurface: context.theme.textTheme.caption!.color!,
+
 
                                           ),
                                           // dialogBackgroundColor: Colors.white30,
+                                          dialogBackgroundColor:context.theme.hintColor,
                                         ),
                                         child: child!,
                                       ),
@@ -126,6 +132,7 @@ class TaskScreen extends StatelessWidget {
                               return Text(
                                 controller.dateBool == false
                                     ? 'Due Date'.tr
+                                    :controller.year==null?'Due Date'
                                     : '${controller.year}/${controller.month}/${controller.day}',
                                 style: const TextStyle(
                                   color: Colors.grey,
