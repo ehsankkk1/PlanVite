@@ -29,6 +29,7 @@ class SignupService {
       log('200');
       var jsonResponse = jsonDecode(response.body);
       message = jsonResponse['message'];
+      print(jsonResponse);
       //String token = jsonResponse['data'];
       //UserInformation.User_Token = token;
       //SecureStorage storage = SecureStorage();
@@ -36,6 +37,7 @@ class SignupService {
       return true;
     } else if (response.statusCode == 422) {
       var jsonResponse = jsonDecode(response.body);
+      print(jsonResponse);
       message = jsonResponse['message'];
       log('422');
       message = 'server error';
@@ -43,6 +45,7 @@ class SignupService {
     }else if (response.statusCode == 401) {
       log('401');
       var jsonResponse = jsonDecode(response.body);
+      print(jsonResponse);
       message = jsonResponse['message'];
       message = 'server error';
       return false;

@@ -98,11 +98,13 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(
                         height: height*0.05,
                       ),
-                      Text(
-                        'My Projects'.tr,
-                        style:  TextStyle(
-                          color: context.theme.textTheme.caption!.color,
-                          fontSize:6*SizeConfig.blockSizeHorizontal,
+                      Center(
+                        child: Text(
+                          'My Projects'.tr,
+                          style:  TextStyle(
+                            color: context.theme.textTheme.caption!.color,
+                            fontSize:6*SizeConfig.blockSizeHorizontal,
+                          ),
                         ),
                       ),
                     ],

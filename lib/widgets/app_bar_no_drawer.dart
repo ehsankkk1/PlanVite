@@ -42,7 +42,7 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
             color: context.theme.primaryColor,
             size: 35,
           ),
-        ):Container(),
+        ):Container(width: 25,height: 25,),
       ],
     );
   }

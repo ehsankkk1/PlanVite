@@ -1,9 +1,9 @@
 class BoardItemObject {
 
-  String title;
+  String? title;
   String? dueDate;
   String? priority;
-  BoardItemObject({required this.title,this.dueDate,this.priority});
+  BoardItemObject({this.title,this.dueDate,this.priority});
 
 }
 

@@ -10,7 +10,8 @@ import '../../widgets/app_bar_no_drawer.dart';
 class ToDoScreen extends StatelessWidget {
   TextEditingController taskDescriptionController = new TextEditingController();
   TextEditingController taskNameController = new TextEditingController();
-  ToDoController controller = Get.find();
+  final ToDoController _todoController = Get.find();
+
   void ShowAlert(BuildContext context) {
     var alertDialog = AlertDialog(
       shape: RoundedRectangleBorder(
@@ -19,7 +20,7 @@ class ToDoScreen extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            controller.newTask = taskDescriptionController.text;
+            _todoController.newTask = taskDescriptionController.text;
             Navigator.pop(context);
           },
           child: Text(
@@ -33,11 +34,11 @@ class ToDoScreen extends StatelessWidget {
       backgroundColor: context.theme.backgroundColor,
       title: Center(
           child: Text(
-        'Add Task',
-        style: TextStyle(
-          color: context.theme.textTheme.caption!.color!,
-        ),
-      )),
+            'Add Task',
+            style: TextStyle(
+              color: context.theme.textTheme.caption!.color!,
+            ),
+          )),
       content: Container(
         width: width * 0.7,
         height: height * 0.3,
@@ -58,7 +59,7 @@ class ToDoScreen extends StatelessWidget {
                       borderSide: BorderSide.none,
                     ),
                     enabledBorder:
-                        const OutlineInputBorder(borderSide: BorderSide.none),
+                    const OutlineInputBorder(borderSide: BorderSide.none),
                     hintText: 'Task Name'.tr,
                     hintStyle: const TextStyle(
                       color: Colors.grey,
@@ -78,7 +79,7 @@ class ToDoScreen extends StatelessWidget {
                       borderSide: BorderSide.none,
                     ),
                     enabledBorder:
-                        const OutlineInputBorder(borderSide: BorderSide.none),
+                    const OutlineInputBorder(borderSide: BorderSide.none),
                     hintText: 'Add More Details to this Task'.tr,
                     hintStyle: const TextStyle(
 
@@ -97,39 +98,43 @@ class ToDoScreen extends StatelessWidget {
                     Obx(() {
                       return GestureDetector(
                           onTap: () {
-                            controller.dateBool.value = false;
+                            _todoController.dateBool.value = false;
                             showDatePicker(
                               context: context,
                               initialDate: DateTime.now(),
                               firstDate: DateTime(2021),
                               lastDate: DateTime(2023),
-                              builder: (context, child) => Theme(
-                                data: ThemeData().copyWith(
-                                  colorScheme:  ColorScheme.dark(
-                                    primary: context.theme.primaryColor,
-                                    onPrimary: context.theme.textTheme.caption!.color!,
-                                    surface:  context.theme.primaryColor,
+                              builder: (context, child) =>
+                                  Theme(
+                                    data: ThemeData().copyWith(
+                                      colorScheme: ColorScheme.dark(
+                                        primary: context.theme.primaryColor,
+                                        onPrimary: context.theme.textTheme
+                                            .caption!.color!,
+                                        surface: context.theme.primaryColor,
 
-                                    onSurface: context.theme.textTheme.caption!.color!,
+                                        onSurface: context.theme.textTheme
+                                            .caption!.color!,
+                                      ),
+                                      // dialogBackgroundColor: Colors.white30,
+                                    ),
+                                    child: child!,
                                   ),
-                                 // dialogBackgroundColor: Colors.white30,
-                                ),
-                                child: child!,
-                              ),
                             ).then((date) {
-                              controller.year = date?.year.toString();
-                              controller.month = date?.month.toString();
-                              controller.day = date?.day.toString();
+                              _todoController.year = date?.year.toString();
+                              _todoController.month = date?.month.toString();
+                              _todoController.day = date?.day.toString();
 
-                              controller.date = date.toString();
+                              _todoController.date = date.toString();
 
-                              controller.PickDate();
+                              _todoController.PickDate();
                             });
                           },
                           child: Icon(
                             Icons.date_range,
                             color:
-                                controller.dateBool.value ? context.theme.primaryColor : kGrey,
+                            _todoController.dateBool.value ? context.theme
+                                .primaryColor : kGrey,
                           ));
                     }),
                     SizedBox(
@@ -137,9 +142,10 @@ class ToDoScreen extends StatelessWidget {
                     ),
                     Obx(() {
                       return Text(
-                        controller.dateBool == false
+                        _todoController.dateBool == false
                             ? 'Due Date'.tr
-                            : '${controller.year}/${controller.month}/${controller.day}',
+                            : '${_todoController.year}/${_todoController
+                            .month}/${_todoController.day}',
                         style: const TextStyle(
                           color: Colors.grey,
                           fontSize: 16,
@@ -167,9 +173,8 @@ class ToDoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child:
-         Scaffold(
-          backgroundColor:context.theme.backgroundColor,
+        child: Scaffold(
+          backgroundColor: context.theme.backgroundColor,
           bottomNavigationBar: BottomAppBar(
             color: context.theme.cardColor,
             child: Row(
@@ -234,13 +239,14 @@ class ToDoScreen extends StatelessWidget {
                           radius: 45,
                           lineWidth: 4,
                           percent:
-                          controller.count.toInt() / controller.doing.length,
+                          _todoController.count.toInt() /
+                              _todoController.doing.length,
                           center: GestureDetector(
                             onTap: () {
                               //controller.Calc();
                             },
                             child: Text(
-                              '${controller.percent.value.toString()}%',
+                              '${_todoController.percent.value.toString()}%',
                               style: TextStyle(
                                   fontSize: 14,
                                   color: context.theme.primaryColor,
@@ -258,7 +264,7 @@ class ToDoScreen extends StatelessWidget {
                     'My Tasks',
                     style: TextStyle(
                       fontSize: 42,
-                      color:context.theme.textTheme.caption!.color,
+                      color: context.theme.textTheme.caption!.color,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -269,104 +275,96 @@ class ToDoScreen extends StatelessWidget {
               ),
               Obx(() {
                 return Text(
-                  '${controller.count.value.toString()} of ${controller.doing.length.toString()}',
-                  style: TextStyle(
+                  '${_todoController.count.value
+                      .toString()} of ${_todoController.doing.length
+                      .toString()}',
+                  style: const TextStyle(
                     color: kGrey,
                   ),
                 );
               }),
-              Padding(
-                padding: EdgeInsets.only(left: width * 0.22),
-                child: Divider(
-                  height: height * 0.06,
-                  endIndent: 1,
-                  thickness: 1,
-                  color: kGrey,
-                ),
+              Divider(
+                height: height * 0.06,
+                endIndent: 1,
+                thickness: 1,
+                color: kGrey,
               ),
               Expanded(
-                child: GridView.builder(
-                    itemCount: 7,
-                    gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 1,
-                      childAspectRatio: 4,
+                child: Obx(() {
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: List.generate(
+                          _todoController.doing.length, (index) =>
+                          _todo_item(index, _todoController.doing[index])),
                     ),
-                    itemBuilder: (context, index) => Padding(
-                      padding: EdgeInsets.only(
-                          left: width * 0.05,
-                          right: width * 0.05,
-                          bottom: height * 0.001,
-                          top: height * 0.01),
-                      child: Container(
-                        color: context.theme.backgroundColor,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: width * 0.02,
-                                ),
-                                Obx(() {
-                                  return CustomCheckbox(
-                                    onTap: () {
-                                      //controller.Done();
-                                      controller.Doing(index);
-                                      if (controller.doing[index].value) {
-                                        controller.count.value++;
-                                        controller.percent.value =
-                                            (controller.count.toInt() /
-                                                controller
-                                                    .doing.length *
-                                                100)
-                                                .toInt()
-                                                .toString();
-                                      } else {
-                                        controller.count.value--;
-                                        controller.percent.value =
-                                            (controller.count.toInt() /
-                                                controller
-                                                    .doing.length *
-                                                100)
-                                                .toInt()
-                                                .toString();
-                                      }
-                                    },
-                                    size: 30,
-                                    iconSize: 25,
-                                    color: kGrey,
-                                    isSelected:
-                                    controller.doing[index].value,
-                                  );
-                                }),
-                                SizedBox(
-                                  width: width * 0.075,
-                                ),
-                                Obx((){
-                                  return  Flexible(
-                                    child: Text(
-                                      'Need to study Data Base',
-                                      style: TextStyle(
-                                        decoration: controller.doing[index].value ?TextDecoration.lineThrough:TextDecoration.none,
-
-                                        fontSize: 15,
-                                        color:context.theme.textTheme.caption!.color,
-                                      ),
-                                    ),
-                                  );
-                                }),
-
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    )),
+                  );
+                }),
               ),
             ],
           ),
         )
 
+    );
+  }
+}
+
+class _todo_item extends StatelessWidget {
+  _todo_item(this.index, this.done);
+
+  int index;
+  bool done;
+
+  @override
+  Widget build(BuildContext context) {
+    final ToDoController _todoController = Get.find();
+    return Padding(
+      padding: EdgeInsets.only(
+          left: width * 0.05,
+          right: width * 0.05,
+          bottom: height * 0.001,
+          top: height * 0.01),
+      child: Container(
+        color: context.theme.backgroundColor,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                SizedBox(
+                  width: width * 0.02,
+                ),
+                CustomCheckbox(
+                  onTap: () {
+                    //controller.Done();
+                    _todoController.onTodoTap(index);
+                  },
+                  size: 30,
+                  iconSize: 25,
+                  color: kGrey,
+                  isSelected: done,
+                ),
+                SizedBox(
+                  width: width * 0.075,
+                ),
+                Flexible(
+                  child: Text(
+                    'Need to study Data Base',
+                    style: TextStyle(
+                      decoration: done
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none,
+
+                      fontSize: 15,
+                      color: context.theme.textTheme.caption!.color,
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
+            const Divider(height: 90,thickness: 1,color: kGrey,),
+          ],
+        ),
+      ),
     );
   }
 }

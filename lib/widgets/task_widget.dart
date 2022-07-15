@@ -8,14 +8,14 @@ import '../constants.dart';
 
 class TaskWidget extends StatelessWidget {
   TaskWidget({
-    required this.name,
+    this.name,
     this.priority,
     this.dueDate,
     this.image,
     this.avatar,
   });
 
-  String name;
+  String? name;
   String? priority;
   String? dueDate;
   Image? image;
@@ -45,7 +45,7 @@ class TaskWidget extends StatelessWidget {
                 //const SizedBox(height: 15,),
                 Flexible(
                   child: Text(
-                    name,
+                    '$name',
                     style:  TextStyle(
                       fontSize: SizeConfig.blockSizeHorizontal*4.7,
                       color: context.theme.textTheme.caption!.color,

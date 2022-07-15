@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class ToDoController extends GetxController{
 var done;
-List<Rx> doing =[false.obs,false.obs,false.obs,false.obs,false.obs,false.obs,false.obs];
+List doing =[false,false,false,false,false,false,false].obs;
 RxInt count=0.obs;
 RxString percent='0'.obs;
 var newTask;
@@ -25,8 +25,24 @@ var date;
   done.value=!done.value;
   }
   void Doing(num){
-  doing[num].value=!doing[num].value;
+  doing[num]=!doing[num];
   print(doing);
+  }
+  void onTodoTap(index){
+    Doing(index);
+    if (doing[index]) {
+      count.value++;
+      percent.value =
+          (count.toInt() /
+              doing.length *
+              100)
+              .toInt()
+              .toString();
+    }
+    else {
+      count.value--;
+      percent.value = (count.toInt() / doing.length * 100).toInt().toString();
+    }
   }
   void Calc(){
    // count=0.obs;

@@ -63,7 +63,7 @@ class SignupController extends GetxController {
     signupStatus = await _service.register(user);
 
 
-/*    message=_service.message;
+/*
     if(message is List){
       String temp ='';
       for(String s in message)temp += s + '\n';
@@ -72,6 +72,7 @@ class SignupController extends GetxController {
   }
 
   void onButtonTap() async {
+
     Get.defaultDialog(
         title: 'Loading...',
         titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
@@ -79,6 +80,7 @@ class SignupController extends GetxController {
         backgroundColor: kBackGround.value
     );
     await registerOnClick();
+    message=_service.message;
     Get.back();
     /*    EasyLoading.show(
       status: 'Loading...',

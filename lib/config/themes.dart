@@ -9,21 +9,23 @@ class Themes {
     primaryColorLight: Color(0xFFFFDFEC),
     //drawer color
     hintColor: Colors.white,
+      colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xFFFFAAA5),),
 
   );
   static final dark = ThemeData.dark().copyWith(
-      backgroundColor: Color(0xFF3F4E4F),
-      primaryColor: Color(0xFF506D84),
-      cardColor:Color(0xFF515E63),
-      textTheme: TextTheme(caption: TextStyle(color: Color(0xFFe8e3e3))),
-      primaryColorLight:Color(0xFF889EAF),
+      backgroundColor: const Color(0xFF3F4E4F),
+      primaryColor: const Color(0xFF506D84),
+      cardColor:const Color(0xFF515E63),
+      textTheme: const TextTheme(caption: TextStyle(color: Color(0xFFe8e3e3))),
+      primaryColorLight:const Color(0xFF889EAF),
+    colorScheme: ColorScheme.fromSwatch().copyWith(secondary:const Color(0xFF506D84),),
     hintColor: Colors.black38,
   );
   static final blue = ThemeData.light().copyWith(
-    backgroundColor: Color(0xFFFCF8F3),
+    backgroundColor:const Color(0xFFFCF8F3),
     primaryColor: Colors.blue,
-    cardColor: Color(0xFFFDE3E1),
-    textTheme: TextTheme(caption: TextStyle(color: Colors.blueGrey)),
+    cardColor:const Color(0xFFFDE3E1),
+    textTheme:const TextTheme(caption: TextStyle(color: Colors.blueGrey)),
     primaryColorLight: Colors.lightBlueAccent,
     //drawer color
     hintColor: Colors.white,

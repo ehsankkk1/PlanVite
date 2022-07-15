@@ -16,6 +16,8 @@ class TaskController extends GetxController{
   var year;
   var month;
   var day;
+  List subTasks=[].obs;
+  TextEditingController subTaskController= TextEditingController();
 
   @override
   void onInit() {
@@ -30,6 +32,13 @@ class TaskController extends GetxController{
 
 
     super.onInit();
+
+  }
+  void addSubTask(){
+    if(subTaskController.text != ''){
+      subTasks.add(subTaskController.text);
+    }
+    print(subTasks);
 
   }
 
