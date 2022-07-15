@@ -55,6 +55,8 @@ Map <String, String> ar={
   'Pink':'زهري',
   'Purple':'بنفسجي',
   'Blue':'أزرق',
+  'rate user ':'قيّم المستخدم ',
+  'Please leave a star rating':'الرجاء التقييم بالنجوم',
 
 
 

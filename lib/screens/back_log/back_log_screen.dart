@@ -27,7 +27,9 @@ class BackLogScreen extends GetView<BackLogScreen> {
   Widget build(BuildContext context) {
     BackLogController controller = Get.find();
     Widget buildRating(var index)=> RatingBar.builder(
-      minRating: 1,
+      minRating: 0.5,
+      allowHalfRating: true,
+
       itemBuilder: (context,_)=>Icon(Icons.star,color:context.theme.primaryColor), onRatingUpdate: (rating)  {
 
       controller.rating.value=rating.toInt();
@@ -68,20 +70,24 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                       onHold: (){
                                     showDialog(context: context, builder: (context)=>AlertDialog(
 
-                                    title: Text('Rate this user$index',
-                                    style: TextStyle(color: context.theme.textTheme.caption!.color),
+                                    title: Center(
+                                      child: Text('Please leave a star rating'.tr,
+                                      style: TextStyle(color: context.theme.textTheme.caption!.color),
+                                      ),
                                     ),
                                     content: Column(
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     mainAxisSize:MainAxisSize.min ,
                                     children: [
-                                    Text('please leave a star rating',),
+                                    Text('rate user '.tr +'$index',),
                                     SizedBox(height: 30,),
                                     buildRating(index),
 
                                     ],
                                     ),actions: [
-                                    TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Ok'),)
+                                    TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Ok',
+                                    style: TextStyle(color: context.theme.textTheme.caption!.color,),
+                                    ),)
                                     ],
                                     ),);
                                     },
