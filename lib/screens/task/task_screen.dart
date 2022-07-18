@@ -357,44 +357,41 @@ class TaskScreen extends StatelessWidget {
                             ),
                           ),
                           // sub task text field
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  left: width * 0.01, top: height * 0.001),
-                              child: Row(
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      _taskController.addSubTask();
-                                      _taskController.subTaskController.clear();
-                                    },
-                                    icon: Icon(
-                                      Icons.add,
-                                      color: context.theme.primaryColor,
-                                      size: 30,
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  _taskController.addSubTask();
+                                  _taskController.subTaskController.clear();
+                                },
+                                icon: Icon(
+                                  Icons.add,
+                                  color: context.theme.primaryColor,
+                                  size: 30,
+                                ),
+                              ),
+                              Expanded(
+                                child: TextField(
+                                  style: const TextStyle(
+                                      color: Colors.black),
+                                  controller: _taskController
+                                      .subTaskController,
+                                  cursorColor: context.theme.primaryColor,
+                                  decoration: InputDecoration(
+                                    focusedBorder: const UnderlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide.none),
+                                    hintText: 'Add Sub Task'.tr,
+                                    hintStyle: const TextStyle(
+                                      color: Colors.grey,
                                     ),
                                   ),
-                                  Expanded(
-                                    child: TextField(
-                                      style: const TextStyle(
-                                          color: Colors.black),
-                                      controller: _taskController
-                                          .subTaskController,
-                                      cursorColor: context.theme.primaryColor,
-                                      decoration: InputDecoration(
-                                        focusedBorder: const UnderlineInputBorder(
-                                          borderSide: BorderSide.none,
-                                        ),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide.none),
-                                        hintText: 'Add Sub Task'.tr,
-                                        hintStyle: const TextStyle(
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              )),
+                                ),
+                              ),
+                            ],
+                          ),
                           Obx(() {
                             return Center(
                               child: Column(
@@ -484,13 +481,11 @@ class _subTaskWidget extends StatelessWidget {
           ),
           child: Padding(
             padding:  EdgeInsets.fromLTRB(width * 0.05,width * 0.05,width * 0.05,width * 0.05),
-            child: Flexible(
-              child: Text(
-                title,
-                style: TextStyle(
-                  color: context.theme.textTheme.caption!.color!,
-                  fontSize: 17,
-                ),
+            child: Text(
+              title,
+              style: TextStyle(
+                color: context.theme.textTheme.caption!.color!,
+                fontSize: 17,
               ),
             ),
           ),
