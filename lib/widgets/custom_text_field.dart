@@ -22,7 +22,8 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
     return Directionality(
       textDirection: TextDirection.ltr,
       child: TextFormField(
-        style: TextStyle(color:Colors.black ),
+
+        style: TextStyle(color:context.theme.canvasColor, ),
 
         validator: validator,
        controller: controller2,
@@ -48,7 +49,7 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
             color:context.theme.textTheme.caption!.color,
           ),
           filled: true,
-          fillColor: kTextFieldFill,
+          fillColor: context.theme.hintColor,
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide:  BorderSide(

@@ -23,7 +23,7 @@ TextEditingController passwordController = new TextEditingController();
     return Obx((){
       return SafeArea(
         child: Scaffold(
-          backgroundColor: kBackGround.value,
+          backgroundColor:context.theme.backgroundColor,
           body: SingleChildScrollView(
             child: Stack(
               alignment: Alignment.topCenter,
@@ -49,7 +49,7 @@ TextEditingController passwordController = new TextEditingController();
                               'Welcome Back'.tr,
                               style:  TextStyle(
                                 fontSize: 10*SizeConfig.blockSizeHorizontal,
-                                color: kWritings.value,
+                                color: context.theme.textTheme.caption!.color,
                               ),
                             ),
                           ),
@@ -57,7 +57,7 @@ TextEditingController passwordController = new TextEditingController();
                             'please sign in to your account'.tr,
                             style: TextStyle(
                               fontSize: 5*SizeConfig.blockSizeHorizontal,
-                              color: kWritings.value,
+                              color:context.theme.textTheme.caption!.color,
                             ),
                           ),
                         ],
@@ -120,7 +120,7 @@ TextEditingController passwordController = new TextEditingController();
                                     ? width * 0.3
                                     : width * 0.33,
                                 decoration: BoxDecoration(
-                                  color: kMainPink.value,
+                                  color: context.theme.primaryColor,
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 child: TextButton(
@@ -138,7 +138,7 @@ TextEditingController passwordController = new TextEditingController();
                                       'Login'.tr,
                                       style:  TextStyle(
                                         color: Colors.white,
-                                        fontSize: 5*SizeConfig.blockSizeHorizontal,
+                                        fontSize: 4*SizeConfig.blockSizeHorizontal,
                                       ),
                                     )),
                               ),
@@ -162,7 +162,7 @@ TextEditingController passwordController = new TextEditingController();
                                     'Keep me sign in'.tr,
                                     style: TextStyle(
                                       fontSize: 4.5*SizeConfig.blockSizeHorizontal,
-                                      color: kWritings.value,
+                                      color: context.theme.textTheme.caption!.color,
                                     ),
                                   ),
                                   SizedBox(
@@ -173,7 +173,7 @@ TextEditingController passwordController = new TextEditingController();
                                       onTap: () {
                                         _logInController.changeCheckBoxStatus();
                                       },
-                                      color: kWritings.value,
+                                      color: context.theme.textTheme.caption!.color!,
                                       size: 25,
                                       iconSize: 20,
                                       isSelected: _logInController.checkBoxStatus.value,
@@ -208,7 +208,7 @@ TextEditingController passwordController = new TextEditingController();
                                     Text(
                                       'Sign up'.tr,
                                       style:  TextStyle(
-                                        color: kMainPink.value,
+                                        color: context.theme.primaryColor,
                                         fontSize: 4.5*SizeConfig.blockSizeHorizontal,
                                       ),
                                     ),
@@ -236,7 +236,7 @@ TextEditingController passwordController = new TextEditingController();
                                             'English',
                                             style: TextStyle(
                                               color: _logInController.selectedLangBool.value
-                                                  ? kMainPink.value
+                                                  ? context.theme.primaryColor
                                                   : kGrey,
                                               fontSize:  4.5*SizeConfig.blockSizeHorizontal,
                                             ),
@@ -259,7 +259,7 @@ TextEditingController passwordController = new TextEditingController();
                                             style: TextStyle(
                                               color: _logInController.selectedLangBool.value
                                                   ? kGrey
-                                                  : kMainPink.value,
+                                                  :context.theme.primaryColor,
                                               fontSize:  4.5*SizeConfig.blockSizeHorizontal,
                                             ),
                                           );

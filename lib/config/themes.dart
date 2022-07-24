@@ -9,6 +9,7 @@ class Themes {
     primaryColorLight: Color(0xFFFFDFEC),
     //drawer color
     hintColor: Colors.white,
+      canvasColor: Colors.black,
       colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xFFFFAAA5),),
 
   );
@@ -19,6 +20,7 @@ class Themes {
       textTheme: const TextTheme(caption: TextStyle(color: Color(0xFFe8e3e3))),
       primaryColorLight:const Color(0xFF889EAF),
     colorScheme: ColorScheme.fromSwatch().copyWith(secondary:const Color(0xFF506D84),),
+    canvasColor: Colors.white,
     hintColor: Colors.black38,
   );
   static final blue = ThemeData.light().copyWith(
