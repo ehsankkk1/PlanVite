@@ -20,7 +20,7 @@ TextEditingController passwordController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Obx((){
+
       return SafeArea(
         child: Scaffold(
           backgroundColor:context.theme.backgroundColor,
@@ -280,7 +280,7 @@ TextEditingController passwordController = new TextEditingController();
           ),
         ),
       );
-    });
+
   }
 
 }

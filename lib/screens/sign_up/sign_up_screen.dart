@@ -38,7 +38,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String locale = Get.locale.toString();
-    return Obx((){
+
       return  Scaffold(
         backgroundColor:context.theme.backgroundColor,
         body: InteractiveViewer(
@@ -317,7 +317,7 @@ class SignupScreen extends StatelessWidget {
               )),
         ),
       );
-    });
+
   }
 
 }
