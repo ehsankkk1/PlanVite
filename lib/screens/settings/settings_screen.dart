@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/settings/settings_controller.dart';
@@ -6,11 +7,100 @@ import 'package:plane_vite/storage/secure_storage.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 
 import '../../config/theme_service.dart';
+import '../../widgets/loader_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsController controller = Get.find();
 SecureStorage storage = SecureStorage();
+  void onClickLogOut() async {
+    /*    EasyLoading.show(
+      status: 'Loading...',
+    );*/
+    Get.defaultDialog(
+        title: 'Loading...',
+        titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
+        content: LoaderScreen(),
+        backgroundColor: kBackGround.value
+    );
+    await controller.logOutOnClick();
+   // Get.back();
+    if (controller.logOutStatus) {
+      Get.offAllNamed('/login');
+      // EasyLoading.dismiss(animation: true);
+      //Get.offNamed('/login');
+      //EasyLoading.showSuccess(message);
+    } else {
+      Get.defaultDialog(
+          title: controller.message,
+          titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
+          content: LoaderScreen(error: true,),
+          backgroundColor: kBackGround.value
+      );
+      /* EasyLoading.showError(
+        message,
+        duration: const Duration(seconds: 10),
+        dismissOnTap: true,
+      );*/
 
+
+    }
+  }
+  void ShowAlert(BuildContext context) {
+    var alertDialog = AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+
+            Navigator.pop(context);
+          },
+          child: Text(
+            'Cancel',
+            style: TextStyle(
+              color: context.theme.textTheme.caption!.color!,
+              fontSize: 18,
+            ),
+          ),
+        ),
+        SizedBox(width: width*0.35,),
+        TextButton(
+          onPressed: () {
+            onClickLogOut();
+
+            Navigator.pop(context);
+          },
+          child: Text(
+            'Yes',
+            style: TextStyle(
+              color: context.theme.textTheme.caption!.color!,
+              fontSize: 18,
+            ),
+          ),
+        ),
+
+      ],
+      backgroundColor: context.theme.backgroundColor,
+      title: Center(
+          child: Text(
+            'are you sure you want to log out ? ',
+            style: TextStyle(
+              color: context.theme.textTheme.caption!.color!,
+            ),
+          )),
+      content: Container(
+        width: width * 0.7,
+        height: height * 0.04,
+
+      ),
+    );
+    showDialog(
+        context: context,
+        builder: (BuildContext) {
+          return alertDialog;
+        });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -42,7 +132,7 @@ SecureStorage storage = SecureStorage();
                           Container(
                             //color: kMainPink,
                             child: Container(
-                              height: 70,
+                              height:height*0.07,
                               child: Stack(
 
                                 children: [
@@ -172,7 +262,7 @@ SecureStorage storage = SecureStorage();
                           Container(
                             //color: kMainPink,
                             child: Container(
-                              height: 70,
+                              height:height*0.07,
                               child: Stack(
 
                                 children: [
@@ -357,6 +447,77 @@ SecureStorage storage = SecureStorage();
                                           }, color: context.theme.primaryColor,size: 25, isSelected: controller.isBlue.value,)),
 
                                     ],),
+
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: height*0.01,),
+                          Container(
+                            height:height*0.07,
+                            child: Stack(
+
+                              children: [
+                                Align(
+                                  alignment: Alignment(-1,-1),
+                                  child: Icon(
+
+                                    Icons.help_outline,
+                                    color: context.theme.textTheme.caption!.color,
+                                    size: 45,
+                                  ),
+                                ),
+                                //SizedBox(width: 15,),
+                                Align(
+                                  alignment: Alignment(-0.5,-0.85),
+                                  child: Text(
+                                    'About'.tr,
+                                    style: TextStyle(
+                                      color: context.theme.textTheme.caption!.color,
+                                      fontSize: 25,
+                                    ),
+
+                                  ),
+                                ),
+                                //SizedBox(width: width*0.4,),
+
+
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: height*0.01,),
+                          GestureDetector(
+                            onTap: (){
+                              ShowAlert(context);
+                            },
+                            child: Container(
+                              height:height*0.07,
+                              child: Stack(
+
+                                children: [
+                                  Align(
+                                    alignment: Alignment(-1,-1),
+                                    child: Icon(
+
+                                      Icons.logout,
+                                      color: context.theme.textTheme.caption!.color,
+                                      size: 45,
+                                    ),
+                                  ),
+                                  //SizedBox(width: 15,),
+                                  Align(
+                                    alignment: Alignment(-0.5,-0.85),
+                                    child: Text(
+                                      'Log out'.tr,
+                                      style: TextStyle(
+                                        color: context.theme.textTheme.caption!.color,
+                                        fontSize: 25,
+                                      ),
+
+                                    ),
+                                  ),
+                                  //SizedBox(width: width*0.4,),
+
 
                                 ],
                               ),

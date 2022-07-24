@@ -30,10 +30,10 @@ class SignupService {
       var jsonResponse = jsonDecode(response.body);
       message = jsonResponse['message'];
       print(jsonResponse);
-      //String token = jsonResponse['data'];
-      //UserInformation.User_Token = token;
-      //SecureStorage storage = SecureStorage();
-      //await storage.save('token', UserInformation.User_Token);
+      String token = jsonResponse['data'];
+      UserInformation.User_Token = token;
+      SecureStorage storage = SecureStorage();
+      await storage.save('token', UserInformation.User_Token);
       return true;
     } else if (response.statusCode == 422) {
       var jsonResponse = jsonDecode(response.body);

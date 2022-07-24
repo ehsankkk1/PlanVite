@@ -4,5 +4,7 @@ class ServerConfig {
 
  static const register='register';
  static const login='login';
+  static const logout='logout';
+
 
 }
