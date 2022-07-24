@@ -11,7 +11,7 @@ class WelcomeScreen extends StatelessWidget {
 
     return Obx((){
       return Scaffold(
-        backgroundColor: kBackGround.value,
+        backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,7 +24,7 @@ class WelcomeScreen extends StatelessWidget {
                      Text(
                       'Task Management',
                       style: TextStyle(
-                        color: kWritings.value,
+                        color: context.theme.textTheme.caption!.color,
                         fontSize: 46,
                       ),
                     ),
@@ -32,7 +32,7 @@ class WelcomeScreen extends StatelessWidget {
                      Text(
                       'Manage your daily task easier like never before. Easy to use',
                       style: TextStyle(
-                        color: kWritings.value,
+                        color: context.theme.textTheme.caption!.color,
                         fontSize: 20,
                       ),
                     ),
@@ -44,7 +44,7 @@ class WelcomeScreen extends StatelessWidget {
                       child: Container(
                         width: width * 0.5,
                         decoration: BoxDecoration(
-                          color: kMainPink.value,
+                          color: context.theme.primaryColor,
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                         child: TextButton(

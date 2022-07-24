@@ -40,7 +40,7 @@ class SignupScreen extends StatelessWidget {
     final String locale = Get.locale.toString();
     return Obx((){
       return  Scaffold(
-        backgroundColor: kBackGround.value,
+        backgroundColor:context.theme.backgroundColor,
         body: InteractiveViewer(
           child: SafeArea(
               child: SingleChildScrollView(
@@ -72,22 +72,22 @@ class SignupScreen extends StatelessWidget {
                                 'Create New Account'.tr,
                                 style:  TextStyle(
                                   fontSize: 30,
-                                  color: kWritings.value,
+                                  color:context.theme.textTheme.caption!.color,
                                 ),
                               ),
                               Text(
                                 'please fill in the form to continue'.tr,
                                 style:  TextStyle(
                                   fontSize: 18,
-                                  color: kWritings.value,
+                                  color: context.theme.textTheme.caption!.color,
                                 ),
                               ),
                               SizedBox(height: height*0.015,),
                               Container(
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: context.theme.cardColor,
                                   border: Border.all(
-                                    color: kMainPink.value,
+                                    color: context.theme.primaryColor,
                                   ),
                                   borderRadius: BorderRadius.circular(100),
                                 ),
@@ -107,7 +107,7 @@ class SignupScreen extends StatelessWidget {
                                         : Icon(
                                       Icons.add_a_photo,
                                       size: 50,
-                                      color: kMainPink.value,
+                                      color: context.theme.primaryColor,
                                     ),
                                   );
                                 }),
@@ -231,7 +231,7 @@ class SignupScreen extends StatelessWidget {
                           Container(
                             width: 120,
                             decoration: BoxDecoration(
-                              color: kMainPink.value,
+                              color: context.theme.primaryColor,
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                             child: TextButton(
@@ -280,7 +280,7 @@ class SignupScreen extends StatelessWidget {
                                     Text(
                                       'Sign in'.tr,
                                       style:  TextStyle(
-                                        color: kMainPink.value,
+                                        color:context.theme.primaryColor,
                                         fontSize: 18,
                                       ),
                                     ),
