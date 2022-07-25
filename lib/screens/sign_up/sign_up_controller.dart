@@ -48,6 +48,7 @@ class SignupController extends GetxController {
   void secureConfirmPassword() {
     confirmPasswordBool.value = !confirmPasswordBool.value;
   }
+
   Future<void> registerOnClick() async {
 
     User user = User(
@@ -57,7 +58,8 @@ class SignupController extends GetxController {
         email: email,
         password: password,
         confirmPassword: confirmPassword,
-        phoneNumber: phoneNumber);
+        phoneNumber: phoneNumber
+    );
 
     //print(encodedImage);
     signupStatus = await _service.register(user);

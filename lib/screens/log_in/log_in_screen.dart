@@ -1,8 +1,6 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/widgets/custom_text_field.dart';
 import '../../constants.dart';
@@ -130,8 +128,6 @@ TextEditingController passwordController = new TextEditingController();
                                         _logInController.password=passwordController.text;
 
                                          _logInController.onButtonLogin();
-
-
                                       }
                                     },
                                     child: Text(
@@ -250,8 +246,7 @@ TextEditingController passwordController = new TextEditingController();
                                           _logInController.selectedLang = 'ar';
                                           _logInController.changeSelectedLang();
 
-                                          Get.updateLocale(
-                                              Locale(_logInController.selectedLang));
+                                          Get.updateLocale(Locale(_logInController.selectedLang));
                                         },
                                         child: Obx((){
                                           return  Text(

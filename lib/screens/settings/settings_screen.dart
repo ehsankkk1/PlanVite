@@ -22,6 +22,7 @@ SecureStorage storage = SecureStorage();
         content: LoaderScreen(),
         backgroundColor: kBackGround.value
     );
+
     await controller.logOutOnClick();
    // Get.back();
     if (controller.logOutStatus) {
@@ -53,7 +54,6 @@ SecureStorage storage = SecureStorage();
       actions: [
         TextButton(
           onPressed: () {
-
             Navigator.pop(context);
           },
           child: Text(
@@ -67,9 +67,8 @@ SecureStorage storage = SecureStorage();
         SizedBox(width: width*0.35,),
         TextButton(
           onPressed: () {
-            onClickLogOut();
-
             Navigator.pop(context);
+            onClickLogOut();
           },
           child: Text(
             'Yes',
