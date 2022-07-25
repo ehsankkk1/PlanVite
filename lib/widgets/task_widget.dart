@@ -13,6 +13,7 @@ class TaskWidget extends StatelessWidget {
     this.dueDate,
     this.image,
     this.avatar,
+    this.loading=false,
   });
 
   String? name;
@@ -20,6 +21,7 @@ class TaskWidget extends StatelessWidget {
   String? dueDate;
   Image? image;
   Image? avatar;
+  bool loading;
   @override
 
   Widget build(BuildContext context) {
@@ -59,27 +61,38 @@ class TaskWidget extends StatelessWidget {
                   child: PriorityWidget(name:priority!,colour:context.theme.primaryColor,textColor:context.theme.textTheme.caption!.color!),
                 ):Container(),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                     CircleAvatar(
-                      radius: 15,
-                      backgroundColor:context.theme.textTheme.caption!.color,
-                      child: Text(
-                        'E',
-                        style:
-                            TextStyle(fontSize: SizeConfig.blockSizeHorizontal*3.5, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      width: width * 0.05,
-                    ),
-                    dueDate != null
-                        ? Text(
-                          dueDate!,
-                          style:  TextStyle(
-                            fontSize: SizeConfig.blockSizeHorizontal*3.7,
-                            color: context.theme.textTheme.caption!.color,
+                    Row(
+                      children: [
+                         CircleAvatar(
+                          radius: 15,
+                          backgroundColor:context.theme.textTheme.caption!.color,
+                          child: Text(
+                            'E',
+                            style:
+                                TextStyle(fontSize: SizeConfig.blockSizeHorizontal*3.5, fontWeight: FontWeight.bold),
                           ),
-                        ) : Container(),
+                        ),
+                        SizedBox(
+                          width: width * 0.05,
+                        ),
+                        dueDate != null ? Text(
+                              dueDate!,
+                              style:  TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal*3.7,
+                                color: context.theme.textTheme.caption!.color,
+                              ),
+                            ) : Container(),
+                      ],
+                    ),
+                    Container(
+                      height: 18,
+                      width: 18,
+                      child:  loading?CircularProgressIndicator(
+                        color: context.theme.textTheme.caption!.color,
+                      ):Container(),
+                    ),
                   ],
                 ),
               ],

@@ -44,6 +44,7 @@ class SprintScreen extends GetView<SprintController> {
               name: _sprintController.listData[i].items![j].title,
               dueDate:  _sprintController.listData[i].items![j].dueDate,
               priority:  _sprintController.listData[i].items![j].priority,
+              loading: true,
             ),),);
       }
       _lists.add(BoardList(
