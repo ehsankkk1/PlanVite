@@ -54,8 +54,6 @@ Future<void> main() async{
     DeviceOrientation.portraitDown,
   ]);
 
-  Get.put(MyDrawerController());
-
   runApp(const MyApp());
 }
 

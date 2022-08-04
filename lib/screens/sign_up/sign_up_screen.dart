@@ -241,7 +241,7 @@ class SignupScreen extends StatelessWidget {
                                     _signUpController.confirmPassword = confirmPasswordController.text;
                                     _signUpController.phoneNumber = phonelController.text;
                                     upload();
-                                    _signUpController.onButtonTap();
+                                    _signUpController.onButtonTap(context);
                                   }
                                 },
                                 child: Text(

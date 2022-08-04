@@ -7,6 +7,8 @@ import '../../models/user.dart';
 import '../../widgets/loader_screen.dart';
 import 'dart:developer';
 
+import '../Drawer/drawer_controller.dart';
+
 class SignupController extends GetxController {
   var name;
   var email;
@@ -37,6 +39,7 @@ class SignupController extends GetxController {
     _service=SignupService();
     super.onInit();
   }
+
   void PickFile(){
     fileBool.value=true;
   }
@@ -61,7 +64,6 @@ class SignupController extends GetxController {
         phoneNumber: phoneNumber
     );
 
-    //print(encodedImage);
     signupStatus = await _service.register(user);
 
 
@@ -73,39 +75,21 @@ class SignupController extends GetxController {
     }*/
   }
 
-  void onButtonTap() async {
+  void onButtonTap(BuildContext context) async {
 
-    Get.defaultDialog(
-        title: 'Loading...',
-        titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
-        content: LoaderScreen(),
-        backgroundColor: kBackGround.value
-    );
+    loaderBoxGet(context);
     await registerOnClick();
-    message=_service.message;
+    message = _service.message;
     Get.back();
-    /*    EasyLoading.show(
-      status: 'Loading...',
-      dismissOnTap: true,
 
-    );*/
     if (signupStatus) {
+      Get.lazyPut(() => MyDrawerController());
       Get.offAllNamed('/skeleton');
       //EasyLoading.showSuccess(message);
-    } else {
-      Get.defaultDialog(
-          title: message,
-          titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
-          content: LoaderScreen(error: true,),
-          backgroundColor: kBackGround.value
-      );
+    }
+    else {
+      errorMessageBoxGet(message,context);
       log('error here');
-      /*      EasyLoading.showError(
-        message,
-        duration: const Duration(seconds: 10),
-        dismissOnTap: true,
-      );*/
-
     }
   }
 }

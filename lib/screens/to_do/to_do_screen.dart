@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -39,128 +40,121 @@ class ToDoScreen extends StatelessWidget {
               color: context.theme.textTheme.caption!.color!,
             ),
           )),
-      content: Container(
-        width: width * 0.7,
-        height: height * 0.3,
-        child: ListView(
-          children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: height * 0.01,
-                ),
-                TextField(
-                  controller: taskNameController,
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  cursorColor: context.theme.primaryColor,
-                  decoration: InputDecoration(
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide.none,
-                    ),
-                    enabledBorder:
-                    const OutlineInputBorder(borderSide: BorderSide.none),
-                    hintText: 'Task Name'.tr,
-                    hintStyle: const TextStyle(
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: height * 0.01,
-                ),
-                TextField(
-                  controller: taskDescriptionController,
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  cursorColor: context.theme.primaryColor,
-                  decoration: InputDecoration(
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide.none,
-                    ),
-                    enabledBorder:
-                    const OutlineInputBorder(borderSide: BorderSide.none),
-                    hintText: 'Add More Details to this Task'.tr,
-                    hintStyle: const TextStyle(
-
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: height * 0.01,
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width: width * 0.02,
-                    ),
-                    Obx(() {
-                      return GestureDetector(
-                          onTap: () {
-                            _todoController.dateBool.value = false;
-                            showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(2021),
-                              lastDate: DateTime(2023),
-                              builder: (context, child) =>
-                                  Theme(
-                                    data: ThemeData().copyWith(
-                                      colorScheme: ColorScheme.dark(
-                                        primary: context.theme.primaryColor,
-                                        onPrimary: context.theme.textTheme
-                                            .caption!.color!,
-                                        surface: context.theme.primaryColor,
-
-                                        onSurface: context.theme.textTheme
-                                            .caption!.color!,
-                                      ),
-                                      // dialogBackgroundColor: Colors.white30,
-                                    ),
-                                    child: child!,
-                                  ),
-                            ).then((date) {
-                              _todoController.year = date?.year.toString();
-                              _todoController.month = date?.month.toString();
-                              _todoController.day = date?.day.toString();
-
-                              _todoController.date = date.toString();
-
-                              _todoController.PickDate();
-                            });
-                          },
-                          child: Icon(
-                            Icons.date_range,
-                            color:
-                            _todoController.dateBool.value ? context.theme
-                                .primaryColor : kGrey,
-                          ));
-                    }),
-                    SizedBox(
-                      width: width * 0.05,
-                    ),
-                    Obx(() {
-                      return Text(
-                        _todoController.dateBool == false
-                            ? 'Due Date'.tr
-                            : '${_todoController.year}/${_todoController
-                            .month}/${_todoController.day}',
-                        style: const TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                        ),
-                      );
-                    }),
-                  ],
-                ),
-                SizedBox(
-                  height: height * 0.1,
-                ),
-              ],
+      content: Wrap(
+        alignment: WrapAlignment.center,
+        children: [
+          SizedBox(
+            height: height * 0.01,
+          ),
+          TextField(
+            controller: taskNameController,
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
+            cursorColor: context.theme.primaryColor,
+            decoration: InputDecoration(
+              focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder:
+              const OutlineInputBorder(borderSide: BorderSide.none),
+              hintText: 'Task Name'.tr,
+              hintStyle: const TextStyle(
+                color: Colors.grey,
+              ),
             ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: height * 0.01,
+          ),
+          TextField(
+            controller: taskDescriptionController,
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
+            cursorColor: context.theme.primaryColor,
+            decoration: InputDecoration(
+              focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder:
+              const OutlineInputBorder(borderSide: BorderSide.none),
+              hintText: 'Add More Details to this Task'.tr,
+              hintStyle: const TextStyle(
+
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: height * 0.01,
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: width * 0.02,
+              ),
+              Obx(() {
+                return GestureDetector(
+                    onTap: () {
+                      _todoController.dateBool.value = false;
+                      showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2021),
+                        lastDate: DateTime(2023),
+                        builder: (context, child) =>
+                            Theme(
+                              data: ThemeData().copyWith(
+                                colorScheme: ColorScheme.dark(
+                                  primary: context.theme.primaryColor,
+                                  onPrimary: context.theme.textTheme
+                                      .caption!.color!,
+                                  surface: context.theme.primaryColor,
+
+                                  onSurface: context.theme.textTheme
+                                      .caption!.color!,
+                                ),
+                                // dialogBackgroundColor: Colors.white30,
+                              ),
+                              child: child!,
+                            ),
+                      ).then((date) {
+                        _todoController.year = date?.year.toString();
+                        _todoController.month = date?.month.toString();
+                        _todoController.day = date?.day.toString();
+
+                        _todoController.date = date.toString();
+
+                        _todoController.PickDate();
+                      });
+                    },
+                    child: Icon(
+                      Icons.date_range,
+                      color:
+                      _todoController.dateBool.value ? context.theme
+                          .primaryColor : kGrey,
+                    ));
+              }),
+              SizedBox(
+                width: width * 0.05,
+              ),
+              Obx(() {
+                return Text(
+                  _todoController.dateBool == false
+                      ? 'Due Date'.tr
+                      : '${_todoController.year}/${_todoController
+                      .month}/${_todoController.day}',
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 16,
+                  ),
+                );
+              }),
+            ],
+          ),
+          SizedBox(
+            height: height * 0.1,
+          ),
+        ],
       ),
     );
     showDialog(

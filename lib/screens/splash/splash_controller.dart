@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:plane_vite/screens/splash/splash_service.dart';
 import '../../config/user_information.dart';
 import '../../storage/secure_storage.dart';
+import '../Drawer/drawer_controller.dart';
 
 
 class SplashController extends GetxController{
@@ -41,6 +42,7 @@ class SplashController extends GetxController{
 
         UserInformation.User_Token = token;
         log("User_Token"+UserInformation.User_Token.toString());
+        Get.lazyPut(() => MyDrawerController());
         Get.offAllNamed('/skeleton');
       }
       else {

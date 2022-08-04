@@ -3,6 +3,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/config/themes2.dart';
 import 'package:plane_vite/storage/secure_storage.dart';
+import 'package:plane_vite/widgets/loader_screen.dart';
 //Color(0xFFFFAAA5)
 //pink
 
@@ -39,3 +40,37 @@ double height = Get.height;
 double width = Get.width;
 const int breakPoint=350;
 
+
+void loaderBoxGet(BuildContext context){
+  Get.defaultDialog(
+    barrierDismissible: false,
+    title: 'Loading...',
+    titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
+    content: LoaderScreen(),
+    backgroundColor: context.theme.backgroundColor,
+  );
+}
+void errorBoxGet(BuildContext context){
+  Get.defaultDialog(
+    title: 'No Internet Connection',
+    titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
+    content: LoaderScreen(error: true,),
+    backgroundColor: context.theme.backgroundColor,
+  );
+}
+void errorMessageBoxGet(String message,BuildContext context){
+  Get.defaultDialog(
+    title: message,
+    titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
+    content: LoaderScreen(error: true,),
+    backgroundColor: context.theme.backgroundColor,
+  );
+}
+void successMessageBoxGet(String message,BuildContext context){
+  Get.defaultDialog(
+    title: message,
+    titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
+    content: LoaderScreen(),
+    backgroundColor: context.theme.backgroundColor,
+  );
+}

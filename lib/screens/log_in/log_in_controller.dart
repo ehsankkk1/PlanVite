@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:plane_vite/constants.dart';
 import '../../models/user.dart';
 import '../../widgets/loader_screen.dart';
+import '../Drawer/drawer_controller.dart';
 import 'log_in_service.dart';
 import 'dart:developer';
 
@@ -69,35 +70,16 @@ class LoginController extends GetxController{
     }
   }
 
-  void onButtonLogin(Color color) async {
-/*    EasyLoading.show(
-      status: 'Loading...',
-    );*/
-    Get.defaultDialog(
-        title: 'Loading...',
-        titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
-        content: LoaderScreen(),
-        backgroundColor: color,
-    );
+  void onButtonLogin(BuildContext context) async {
+
+    loaderBoxGet (context);
     await loginOnClick();
     Get.back();
     if (loginStatus) {
+      Get.lazyPut(() => MyDrawerController());
       Get.offAllNamed('/skeleton');
-     // EasyLoading.dismiss(animation: true);
-      //Get.offNamed('/login');
-      //EasyLoading.showSuccess(message);
     } else {
-      Get.defaultDialog(
-          title: message,
-          titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
-          content: LoaderScreen(error: true,),
-          backgroundColor: color
-      );
-     /* EasyLoading.showError(
-        message,
-        duration: const Duration(seconds: 10),
-        dismissOnTap: true,
-      );*/
+      errorMessageBoxGet(message,context);
       log('error here');
 
     }

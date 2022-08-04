@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:plane_vite/widgets/drawer_item.dart';
-import '../../constants.dart';
 import '../../skeleton/skeleton_controller.dart';
 import 'drawer_controller.dart';
 

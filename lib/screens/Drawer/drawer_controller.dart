@@ -16,10 +16,8 @@ class MyDrawerController extends GetxController {
   var isLoading=false.obs;
   List<Projects> allProjects=[];
   @override
-   void onInit()  {
-
-
-
+   Future<void> onInit()  async {
+    allProjects = await _drawerServices.getProjects(UserInformation.User_Token);
     isLoading.value = true;
     super.onInit();
   }
@@ -29,7 +27,6 @@ class MyDrawerController extends GetxController {
   void toggleDrawer() async{
     print("Toggle drawer");
 
-    allProjects = await _drawerServices.getProjects(UserInformation.User_Token);
     zoomDrawerController.toggle?.call();
   }
   void kickDrawer(){
