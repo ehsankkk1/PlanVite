@@ -4,18 +4,19 @@ import '../config/SizeConfig.dart';
 import '../constants.dart';
 
 class SprintWidget extends StatelessWidget {
-  SprintWidget({required this.sprintName, required this.coloredBoxes,  this.addButton,this.checkBox});
+  SprintWidget({required this.sprintName,this.onTap, required this.coloredBoxes,  this.addButton,this.checkBox});
 
   List<Widget> coloredBoxes;
   String sprintName;
   bool? addButton=false;
+  Function()? onTap;
   bool? checkBox=false;
   EdgeInsets edges=EdgeInsets.fromLTRB(width * 0.03, 10, width * 0.03, 0);
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Container(
-      margin:  const EdgeInsets.fromLTRB(8,0,8,0),
+      margin:  const EdgeInsets.fromLTRB(8,8,8,0),
       child: Material(
         //color: context.theme.hintColor,
 
@@ -40,7 +41,7 @@ class SprintWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                            Text(
-                            "Pending",
+                            "$sprintName",
                             style: TextStyle(
                               fontSize: SizeConfig.blockSizeHorizontal*5.5,
                               color: context.theme.textTheme.caption!.color,
@@ -52,9 +53,7 @@ class SprintWidget extends StatelessWidget {
                               size: 40,
                               color: context.theme.primaryColor,
                             ),
-                            onTap: () {
-                              print("tapped");
-                            },
+                            onTap: onTap,
                           ):Container(width: 15,height: 15,)
 
                         ],
@@ -75,7 +74,7 @@ class SprintWidget extends StatelessWidget {
                 ),
               ),
               ConstrainedBox(
-                constraints:  BoxConstraints( maxHeight: height*0.72,),
+                constraints:  BoxConstraints( maxHeight: height*0.70,),
                 child: Padding(
                   padding:  EdgeInsets.only(bottom: height * 0.01),
                   child: SingleChildScrollView(

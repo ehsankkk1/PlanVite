@@ -25,6 +25,7 @@ class SettingsController extends GetxController{
   var isAr;
   var isEn;
   var logOutStatus ;
+
   final box = GetStorage();
   late SettingsService service=SettingsService();
   @override
@@ -40,12 +41,6 @@ class SettingsController extends GetxController{
     message='';
     //selectedLang=Get.locale.toString();
     //lang=Get.locale.toString().obs;
-
-
-
-
-
-
 
     super.onInit();
 

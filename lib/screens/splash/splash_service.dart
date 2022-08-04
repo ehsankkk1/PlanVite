@@ -11,14 +11,10 @@ class SplashService {
     var response = await http.post(url, headers: {
       'Accept': 'application/json',
       'Authorization':'Bearer '+token,
-
-
     },
         body: {
           'fcm_token':fcm_token,
           'language':lang,
-
-
         }
     );
     print(response.statusCode);

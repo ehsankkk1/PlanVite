@@ -35,9 +35,9 @@ class DrawerScreen extends GetView<MyDrawerController> {
                         CircleAvatar(radius: 35,
                           backgroundColor: context.theme.textTheme.caption!
                               .color,
-                          child: Text('E', style: TextStyle(
+                          child: const Text('E', style: TextStyle(
                               fontSize: 30, fontWeight: FontWeight.bold),),),
-                        SizedBox(height: 25,),
+                        const SizedBox(height: 25,),
                         Text(
                           'Ehsan Abourshaed',
                           style: TextStyle(
@@ -90,7 +90,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                               }),),
                   ),
                   DrawerItem(Icons.add, 35, 'Add Project'.tr, () {
-
+                    Get.toNamed('/backlog');
                   }),
                   Divider(thickness: 1, color: context.theme.primaryColor,),
                   DrawerItem(Icons.notifications, 35, 'Notifications'.tr, () {

@@ -1,19 +1,17 @@
+import 'dart:developer';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_zoom_drawer/config.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:holding_gesture/holding_gesture.dart';
 import 'package:plane_vite/widgets/user_card_widget.dart';
 import '../../constants.dart';
-import '../../skeleton/skeleton_controller.dart';
-import '../../widgets/app_bar.dart';
 import '../../widgets/app_bar_no_drawer.dart';
 import '../../widgets/sprint_view_widget.dart';
 import '../Drawer/drawer_controller.dart';
-import '../Drawer/drawer_screen.dart';
 import 'back_log_controller.dart';
+
 
 class BackLogScreen extends GetView<BackLogScreen> {
 
@@ -49,22 +47,80 @@ class BackLogScreen extends GetView<BackLogScreen> {
                 AppBarWidgetNoDrawer(
                   head: 'Back Log'.tr,
                 ),
-                const SizedBox(height:10),
+                const SizedBox(height:0),
                 Expanded(
                   //height: height * 0.88,
-                  child: ListView.builder(
-                    clipBehavior: Clip.none,
-                    itemCount: 4,
+                  child:SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return Wrap(
-                          alignment: WrapAlignment.center,
-                          children: [
-                            SprintWidget(
-                              addButton: true,
-                              checkBox: true,
-                              sprintName: "Pending".tr,
-                              coloredBoxes: List.generate(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Wrap(
+                            alignment: WrapAlignment.center,
+                            children: [
+                              SprintWidget(
+                                  addButton: true,
+                                  checkBox: true,
+                                  sprintName: "Users",
+                                  onTap: (){
+                                    log('tapped');
+                                  },
+                                  coloredBoxes:List.generate(
+                                    20 ,(index) => UserCardWidget('user $index'),
+                                  )
+                              )
+                            ]),
+                        Wrap(
+                            alignment: WrapAlignment.center,
+                            children: [
+                              SprintWidget(
+                                  addButton: true,
+                                  checkBox: true,
+                                  sprintName: "Statues",
+                                  coloredBoxes:List.generate(
+                                    4 ,(index) => UserCardWidget('user $index'),
+                                  )
+                              )
+                            ]),
+                        Wrap(
+                            alignment: WrapAlignment.center,
+                            children: [
+                              SprintWidget(
+                                  addButton: true,
+                                  checkBox: true,
+                                  sprintName: "Sprint 1",
+                                  coloredBoxes:List.generate(
+                                    4 ,(index) => UserCardWidget('user $index'),
+                                  )
+                              )
+                            ]),
+                        Wrap(
+                            alignment: WrapAlignment.center,
+                            children: [
+                              SprintWidget(
+                                  addButton: true,
+                                  checkBox: true,
+                                  sprintName: "Sprint 2",
+                                  coloredBoxes:List.generate(
+                                    4 ,(index) => UserCardWidget('user $index'),
+                                  )
+                              )
+                            ]),
+                      ],
+                    ),
+                  )
+
+
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+
+  }
+}
+/*List.generate(
                                 index + 4,
                                     (index) => HoldDetector(
                                       onHold: (){
@@ -97,17 +153,4 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                           },
                                           child: UserCardWidget('user $index')),
                                     ),
-                              ),
-                            )
-                          ]);
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-
-  }
-}
+                              ),*/

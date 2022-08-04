@@ -14,7 +14,7 @@ class UserCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.all(7),
       child: Container(
         decoration: BoxDecoration(
           /*border: Border.all(color: darkSecondaryColor,width: 3),*/

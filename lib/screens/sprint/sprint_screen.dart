@@ -55,7 +55,7 @@ class SprintScreen extends GetView<SprintController> {
           Expanded(
               child: Container(
                 padding:  EdgeInsets.all(width*0.01),
-                child:  ColumnHeader(title: _sprintController.listData[i]!.title,),
+                child:  ColumnHeader(title: _sprintController.listData[i].title,),
               )),
         ],
         items: items,

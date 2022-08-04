@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import '../../config/server_config.dart';
 import '../../config/user_information.dart';
@@ -21,22 +22,23 @@ class LoginService {
 
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body);
-      message = jsonResponse['message'];
-      String token = jsonResponse['data'];
+      message = jsonResponse["message"];
+      String token = jsonResponse["data"];
       UserInformation.User_Token = token;
+      log("User Token "+ UserInformation.User_Token);
       if (checkBox == true) {
         //save token to device
         SecureStorage storage = SecureStorage();
-        await storage.save('token', UserInformation.User_Token);
+        await storage.save("token", UserInformation.User_Token);
       }
       return true;
     } else if (response.statusCode == 422) {
       var jsonResponse = jsonDecode(response.body);
-      message = jsonResponse['message'];
+      message = jsonResponse["message"];
       return false;
     } else if (response.statusCode == 401) {
       var jsonResponse = jsonDecode(response.body);
-      message = jsonResponse['message'];
+      message = jsonResponse["message"];
       return false;
     } else {
       message = 'server error';
