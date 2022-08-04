@@ -7,6 +7,7 @@ class ServerConfig {
  static const login='login';
   static const logout='logout';
   static const notifications='notifications';
+  static const personal_tasks='personal_tasks';
 
 
 }

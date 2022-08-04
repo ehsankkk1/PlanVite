@@ -30,7 +30,7 @@ class NotificationsScreen extends StatelessWidget {
                     ),
                   ),
                   Obx((){
-                    if(_notificationsController.isLoading.isTrue){
+                    if(_notificationsController.isLoading.isFalse){
                       return Center(
                         child: CircularProgressIndicator(
                           color: context.theme.primaryColor,
