@@ -1,32 +1,26 @@
 import 'package:get/get.dart';
+import 'package:plane_vite/config/user_information.dart';
 
 
 
 class HomeController extends GetxController{
 
 
-  var selectedLang;
-  var  selectedLangBool ;
+
 
 
 
   @override
   void onInit() {
-    selectedLang='en';
-    selectedLangBool = true.obs;
+    print('jjjjjjjjjjjjjjjjjjjjjjjjjj');
+    print(UserInformation.User_Token);
+
 
     super.onInit();
 
   }
 
-  void changeSelectedLang()async{
-    if(selectedLang=='ar'){
-      selectedLangBool.value=false;
-    }
-    else{
-      selectedLangBool.value=true;
-    }
-  }
+
 
 
 }

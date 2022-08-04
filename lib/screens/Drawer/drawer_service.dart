@@ -11,11 +11,11 @@ import 'drawer_model.dart';
 class DrawerServices{
 
 
-  Future<List<Projects>> getProjects() async {
+  Future<List<Projects>> getProjects(String token) async {
     try{
-      print("User Token "+ UserInformation.User_Token);
+
       var headers = {
-        'Authorization': 'Bearer '+'37|AKkusDegeyKJ56kCw6Tghj4R1emP4NQSe0zEVSF2'
+        'Authorization': 'Bearer '+token
       };
       var request = http.Request('GET', Uri.parse(ServerConfig.domainNameServer + ServerConfig.projects));
       request.headers.addAll(headers);
