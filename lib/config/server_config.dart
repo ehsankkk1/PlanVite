@@ -6,6 +6,7 @@ class ServerConfig {
  static const projects='projects';
  static const login='login';
   static const logout='logout';
+  static const notifications='notifications';
 
 
 }

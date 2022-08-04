@@ -69,7 +69,7 @@ class LoginController extends GetxController{
     }
   }
 
-  void onButtonLogin() async {
+  void onButtonLogin(Color color) async {
 /*    EasyLoading.show(
       status: 'Loading...',
     );*/
@@ -77,7 +77,7 @@ class LoginController extends GetxController{
         title: 'Loading...',
         titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
         content: LoaderScreen(),
-        backgroundColor: kBackGround.value
+        backgroundColor: color,
     );
     await loginOnClick();
     Get.back();
@@ -91,7 +91,7 @@ class LoginController extends GetxController{
           title: message,
           titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
           content: LoaderScreen(error: true,),
-          backgroundColor: kBackGround.value
+          backgroundColor: color
       );
      /* EasyLoading.showError(
         message,

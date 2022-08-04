@@ -127,7 +127,7 @@ TextEditingController passwordController = new TextEditingController();
                                         _logInController.email=emailController.text;
                                         _logInController.password=passwordController.text;
 
-                                         _logInController.onButtonLogin();
+                                         _logInController.onButtonLogin(context.theme.backgroundColor);
                                       }
                                     },
                                     child: Text(
