@@ -76,34 +76,34 @@ class TaskScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: height * 0.05,),
-                          Row(
-                            children: [
-                              Obx(() {
-                                return CustomCheckbox(
-                                  onTap: () {
-                                    controller.PickApproved();
-                                  },
-                                  color: context.theme.textTheme.caption!
-                                      .color!,
-
-                                  size: 20,
-                                  iconSize: 18,
-                                  isSelected: controller.approved.value,
-                                );
-                              }),
-                              SizedBox(
-                                width: width * 0.03,
-                              ),
-                              Text(
-                                'Approved'.tr,
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 18,
-                                ),
-                              )
-                            ],
-                          ),
+                          // SizedBox(height: height * 0.05,),
+                          // Row(
+                          //   children: [
+                          //     Obx(() {
+                          //       return CustomCheckbox(
+                          //         onTap: () {
+                          //           controller.PickApproved();
+                          //         },
+                          //         color: context.theme.textTheme.caption!
+                          //             .color!,
+                          //
+                          //         size: 20,
+                          //         iconSize: 18,
+                          //         isSelected: controller.approved.value,
+                          //       );
+                          //     }),
+                          //     SizedBox(
+                          //       width: width * 0.03,
+                          //     ),
+                          //     Text(
+                          //       'Approved'.tr,
+                          //       style: TextStyle(
+                          //         color: Colors.grey,
+                          //         fontSize: 18,
+                          //       ),
+                          //     )
+                          //   ],
+                          // ),
                           SizedBox(height: height * 0.03,),
                           Row(
                             children: [

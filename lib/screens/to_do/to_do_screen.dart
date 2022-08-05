@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:plane_vite/constants.dart';
@@ -12,6 +13,25 @@ class ToDoScreen extends StatelessWidget {
   TextEditingController taskDescriptionController = new TextEditingController();
   TextEditingController taskNameController = new TextEditingController();
   final ToDoController _todoController = Get.find();
+  void onClickAdd() async {
+    EasyLoading.show(
+      status: 'Loading...',
+    );
+
+    await _todoController.addTaskOnClick();
+    if (_todoController.addTaskStatus) {
+
+      EasyLoading.showSuccess(_todoController.message);
+    } else {
+      EasyLoading.showError(
+        _todoController.message,
+        duration: Duration(seconds: 10),
+        dismissOnTap: true,
+      );
+
+      print('error here');
+    }
+  }
 
   void ShowAlert(BuildContext context) {
     var alertDialog = AlertDialog(
@@ -21,7 +41,10 @@ class ToDoScreen extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            _todoController.newTask = taskDescriptionController.text;
+            _todoController.description = taskDescriptionController.text;
+            _todoController.name = taskNameController.text;
+            onClickAdd();
+
             Navigator.pop(context);
           },
           child: Text(
@@ -283,17 +306,28 @@ class ToDoScreen extends StatelessWidget {
                 thickness: 1,
                 color: kGrey,
               ),
-              Expanded(
-                child: Obx(() {
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: List.generate(
-                          _todoController.doing.length, (index) =>
-                          _todo_item(index, _todoController.doing[index])),
+              Obx((){
+                if(_todoController.isLoading.isTrue){
+                  return Center(
+                    child: CircularProgressIndicator(
+                     backgroundColor: context.theme.primaryColor,
+                      color: context.theme.cardColor,
                     ),
                   );
-                }),
-              ),
+                }
+                return Expanded(
+                  child: //Obx(() {
+                  SingleChildScrollView(
+                    child: Column(
+                      children: List.generate(
+                          _todoController.personalList.length, (index) =>
+                          _todo_item(index, _todoController.personalList[index].completed)),
+                    ),
+                  ),
+                  // }),
+                );
+              })
+
             ],
           ),
         )
@@ -341,7 +375,7 @@ class _todo_item extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    'Need to study Data Base',
+                    _todoController.personalList[index].name,
                     style: TextStyle(
                       decoration: done
                           ? TextDecoration.lineThrough
