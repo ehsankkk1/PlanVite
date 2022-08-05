@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../models/drop_down_model_all_users.dart';
+
 
 class TaskController extends GetxController{
 
@@ -17,6 +19,17 @@ class TaskController extends GetxController{
   var month;
   var day;
   List subTasks=[].obs;
+
+  List<DropDownUser> allUsersDropDown = [
+    DropDownUser(name: 'Ehsan',id: 1),
+    DropDownUser(name: 'Johny',id: 2),
+    DropDownUser(name: 'Rita',id: 3),
+    DropDownUser(name: 'Ehsan1',id: 4),
+    DropDownUser(name: 'Johny1',id: 5),
+    DropDownUser(name: 'Rita1',id: 6),
+  ];
+  int? allUserDropDownValue ;
+
   TextEditingController subTaskController= TextEditingController();
 
   @override
@@ -69,8 +82,10 @@ class TaskController extends GetxController{
   void PickDate(){
 
     dateBool.value=true;
-
-
+  }
+  void setAllUserDropDownValue(int value) {
+    allUserDropDownValue = value;
+    update();
   }
 
 
