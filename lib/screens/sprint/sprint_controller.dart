@@ -1,12 +1,19 @@
 import 'package:boardview/boardview_controller.dart';
 import 'package:get/get.dart';
+import 'package:plane_vite/config/project_info.dart';
+import 'package:plane_vite/config/user_information.dart';
+import 'package:plane_vite/screens/sprint/sprint_service.dart';
+import 'package:plane_vite/screens/sprint/sprint_service.dart';
+import '../../models/project_users.dart';
 import '../Drawer/drawer_controller.dart';
 import 'sprint_model.dart';
 
 
 class SprintController extends GetxController{
 
+  List<Users> usersList=[];
 
+  SprintService _service = new SprintService();
 
 
   BoardViewController boardViewController=BoardViewController();
@@ -29,11 +36,18 @@ class SprintController extends GetxController{
   ];
   @override
   void onInit() {
-
-
+    print('project idddddddddddddddddddddd');
+    print(ProjectInformation.project_id);
     super.onInit();
   }
+
 @override
+void onReady() async{
+
+  usersList=await _service.getProjectUsers(int.parse(ProjectInformation.project_id));
+  print(usersList);
+    super.onReady();
+  }
   void onClose() {
     // TODO: implement onClose
 
