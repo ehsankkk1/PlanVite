@@ -12,7 +12,7 @@ var isLoading=true.obs;
 List<Personal2> personalList=[];
 TodoService service=new TodoService();
 List doing =[false,false,false,false,false,false,false].obs;
-RxInt count=0.obs;
+var count=0.obs;
 RxString percent='0'.obs;
 var message;
 var addTaskStatus=false;
@@ -70,9 +70,22 @@ void PickDate(){
 
 
 }
+void PutFalse(String status,int id)async{
+  isLoading(true);
+  personalList=await service.EditStatus(UserInformation.User_Token,status,id.toString());
+  isLoading(false);
+}
+
+void PutTrue(String status,int id)async{
+  isLoading(true);
+  personalList=await service.EditStatus(UserInformation.User_Token,status,id.toString());
+  isLoading(false);
+}
 @override
   void onReady() async{
+  print('johny1');
     personalList=await service.getPersonal(UserInformation.User_Token);
+  print('johny2');
   //  print(personalList[0].name);
     isLoading(false);
 
@@ -82,10 +95,10 @@ void PickDate(){
 Future<void> addTaskOnClick() async {
   PersonalTask task = PersonalTask(
 
-    name: name,
-    deadline: date,
-    priority: 'low',
-    description: description,
+    name:name,
+    deadline:date,
+    priority:'low',
+    description:description,
 
 
   );

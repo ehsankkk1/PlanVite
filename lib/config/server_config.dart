@@ -8,7 +8,9 @@ class ServerConfig {
   static const logout='logout';
   static const notifications='notifications';
   static const personal_tasks='personal_tasks';
+  static const personal_tasks2='personal_tasks/';
   static const getProjectUsers='projects';
+
 
 
 }

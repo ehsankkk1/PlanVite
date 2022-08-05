@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:plane_vite/config/user_information.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/to_do/to_do_controller.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
@@ -309,9 +310,14 @@ class ToDoScreen extends StatelessWidget {
               Obx((){
                 if(_todoController.isLoading.isTrue){
                   return Center(
-                    child: CircularProgressIndicator(
-                     backgroundColor: context.theme.primaryColor,
-                      color: context.theme.cardColor,
+                    child: Column(
+                      children: [
+                        SizedBox(height: height*0.3,),
+                        CircularProgressIndicator(
+                         backgroundColor: context.theme.primaryColor,
+                          color: context.theme.cardColor,
+                        ),
+                      ],
                     ),
                   );
                 }
@@ -363,7 +369,14 @@ class _todo_item extends StatelessWidget {
                 CustomCheckbox(
                   onTap: () {
                     //controller.Done();
-                    _todoController.onTodoTap(index);
+                   // _todoController.onTodoTap(index);
+                    if(_todoController.personalList[index].completed){
+                      _todoController.PutFalse('0',_todoController.personalList[index].id);
+
+                    }
+                    else{
+                      _todoController.PutTrue('1',_todoController.personalList[index].id);
+                    }
                   },
                   size: 30,
                   iconSize: 25,
@@ -396,3 +409,4 @@ class _todo_item extends StatelessWidget {
     );
   }
 }
+

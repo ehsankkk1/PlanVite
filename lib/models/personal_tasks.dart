@@ -34,7 +34,7 @@ class Personal2{
     required this.name,
     required this.description,
     required this.deadline,
-    required this.priority,
+  //  required this.priority,
     required this.userId,
     required this.completed,
   });
@@ -43,7 +43,7 @@ class Personal2{
   String name;
   String description;
   DateTime deadline;
-  String priority;
+  //String priority;
   int userId;
   bool completed;
 
@@ -52,7 +52,7 @@ class Personal2{
     name: json["name"],
     description: json["description"],
     deadline: DateTime.parse(json["deadline"]),
-    priority: json["priority"],
+//    priority: json["priority"],
     userId: json["user_id"],
     completed: json["completed"],
   );
@@ -62,7 +62,7 @@ class Personal2{
     "name": name,
     "description": description,
     "deadline": "${deadline.year.toString().padLeft(4, '0')}-${deadline.month.toString().padLeft(2, '0')}-${deadline.day.toString().padLeft(2, '0')}",
-    "priority": priority,
+    //"priority": priority,
     "user_id": userId,
     "completed": completed,
   };

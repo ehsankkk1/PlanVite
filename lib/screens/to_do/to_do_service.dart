@@ -11,27 +11,28 @@ class TodoService{
 
 
   var message;
-  var url = Uri.parse(ServerConfig.domainNameServer + ServerConfig.personal_tasks);
+  var url1 = Uri.parse(ServerConfig.domainNameServer + ServerConfig.personal_tasks);
 
 
 
   Future<List<Personal2>>getPersonal(String token)async{
-    var response = await http.get(url,
+    var response = await http.get(url1,
         headers: {
           'Accept': 'application/json',
           'Authorization':'Bearer '+token,
         }
 
     );
-    //print(response.statusCode);
-   // print(response.body);
+    print(response.statusCode);
+    print(response.body);
 
 
     if(response.statusCode==200){
+      print('tryyyyy');
 
-      var personal = personalFromJson(response.body);
-      print(personal.data.length);
-      return personal.data;
+      var personal1 = personalFromJson(response.body);
+      print(personal1.data.length);
+      return personal1.data;
     }else {
       return [];
     }
@@ -42,7 +43,7 @@ class TodoService{
 
     var response = await http.post(
 
-        url,
+        url1,
 
         headers: {
 
@@ -69,7 +70,9 @@ class TodoService{
 
 
     if(response.statusCode==200){
+
       var jsonResponse = jsonDecode(response.body);
+
       message=jsonResponse['message'];
       return true;
     }
@@ -83,6 +86,41 @@ class TodoService{
     }
 
   }
+
+  Future<List<Personal2>> EditStatus(String token, String status, id) async {
+    var url = Uri.parse(
+        ServerConfig.domainNameServer + ServerConfig.personal_tasks2 +id+'/change-status');
+    var response = await http.put(url,
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+      body: {
+
+        "completed":status,
+      }
+
+
+    );
+
+
+    if(response.statusCode==200){
+      var jsonResponse = jsonDecode(response.body);
+      var personal = personalFromJson(response.body);
+      message=jsonResponse['message'];
+      return personal.data;
+    }
+    else if(response.statusCode==401){
+      var jsonResponse = jsonDecode(response.body);
+      message=jsonResponse['message'];
+      return [];
+    }
+    else{
+      return [];
+    }
+
+  }
+
 
 
 
