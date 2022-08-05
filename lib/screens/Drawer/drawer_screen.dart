@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:plane_vite/config/project_info.dart';
 import 'package:plane_vite/widgets/drawer_item.dart';
 import '../../skeleton/skeleton_controller.dart';
 import 'drawer_controller.dart';
@@ -85,6 +86,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                               _myDrawerController.allProjects[index].name!,
                                   () {
                                 _skeletonController.changeScreen(1);
+                                ProjectInformation.project_id=_myDrawerController.allProjects[index].id.toString();
                                 //Get.offNamed('/sprint');
                               }),),
                   ),

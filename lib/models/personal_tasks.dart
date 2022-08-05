@@ -14,11 +14,11 @@ class Personal {
     required this.message,
   });
 
-  List<Personal> data;
+  List<Personal2> data;
   String message;
 
   factory Personal.fromJson(Map<String, dynamic> json) => Personal(
-    data: List<Personal>.from(json["data"].map((x) => Datum.fromJson(x))),
+    data: List<Personal2>.from(json["data"].map((x) => Personal2.fromJson(x))),
     message: json["message"],
   );
 
@@ -28,8 +28,8 @@ class Personal {
   };
 }
 
-class Datum {
-  Datum({
+class Personal2{
+  Personal2({
     required this.id,
     required this.name,
     required this.description,
@@ -47,7 +47,7 @@ class Datum {
   int userId;
   bool completed;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Personal2.fromJson(Map<String, dynamic> json) => Personal2(
     id: json["id"],
     name: json["name"],
     description: json["description"],

@@ -7,8 +7,8 @@ import 'sprint_model.dart';
 class SprintController extends GetxController{
 
 
-  var selectedLang;
-  var  selectedLangBool ;
+
+
   BoardViewController boardViewController=BoardViewController();
 
   final List<BoardListObject> listData = [
@@ -29,8 +29,8 @@ class SprintController extends GetxController{
   ];
   @override
   void onInit() {
-    selectedLang='en';
-    selectedLangBool = true.obs;
+
+
     super.onInit();
   }
 @override
@@ -40,13 +40,6 @@ class SprintController extends GetxController{
     super.onClose();
   }
 
-  void changeSelectedLang()async{
-    if(selectedLang=='en'){
-      selectedLangBool.value=false;
-    }
-    else{
-      selectedLangBool.value=true;
-    }
-  }
+
 }
 

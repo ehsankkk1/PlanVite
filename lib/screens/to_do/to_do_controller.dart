@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/config/user_information.dart';
+import 'package:plane_vite/models/personal_task_send.dart';
 import 'package:plane_vite/models/personal_tasks.dart';
 import 'package:plane_vite/screens/to_do/to_do_service.dart';
 
@@ -8,12 +9,15 @@ import 'package:plane_vite/screens/to_do/to_do_service.dart';
 class ToDoController extends GetxController{
 var done;
 var isLoading=true.obs;
-List<Personal> personalList=[];
+List<Personal2> personalList=[];
 TodoService service=new TodoService();
 List doing =[false,false,false,false,false,false,false].obs;
 RxInt count=0.obs;
 RxString percent='0'.obs;
-var newTask;
+var message;
+var addTaskStatus=false;
+var description;
+var name;
 var dateBool;
 var year;
 var month;
@@ -67,11 +71,36 @@ void PickDate(){
 
 }
 @override
-  void onReady() {
-    service.getPersonal(UserInformation.User_Token);
+  void onReady() async{
+    personalList=await service.getPersonal(UserInformation.User_Token);
+  //  print(personalList[0].name);
+    isLoading(false);
+
     super.onReady();
   }
 
+Future<void> addTaskOnClick() async {
+  PersonalTask task = PersonalTask(
+
+    name: name,
+    deadline: date,
+    priority: 'low',
+    description: description,
+
+
+  );
+
+  addTaskStatus = await service.addTask(task,UserInformation.User_Token);
+  message=service.message;
+
+  if(message is List){
+    String temp ='';
+    for(String s in message)temp += s + '\n';
+    message=temp;
+
+
+  }
+}
 
 
 }
