@@ -2,6 +2,7 @@ import 'dart:convert';
 
 
 import 'package:http/http.dart' as http;
+import 'package:plane_vite/models/personal_task.dart';
 import 'package:plane_vite/models/personal_task_send.dart';
 import 'package:plane_vite/models/personal_tasks.dart';
 
@@ -38,7 +39,7 @@ class TodoService{
     }
   }
 
-  Future<bool> addTask(PersonalTask task,String token) async{
+  Future<bool> addTask(PersonalTaskSend task,String token) async{
 
 
     var response = await http.post(
@@ -87,7 +88,7 @@ class TodoService{
 
   }
 
-  Future<List<Personal2>> EditStatus(String token, String status, id) async {
+  Future EditStatus(String token, String status, id) async {
     var url = Uri.parse(
         ServerConfig.domainNameServer + ServerConfig.personal_tasks2 +id+'/change-status');
     var response = await http.put(url,
@@ -106,17 +107,17 @@ class TodoService{
 
     if(response.statusCode==200){
       var jsonResponse = jsonDecode(response.body);
-      var personal = personalFromJson(response.body);
+      var personal = personalTaskFromJson(response.body);
       message=jsonResponse['message'];
       return personal.data;
     }
     else if(response.statusCode==401){
       var jsonResponse = jsonDecode(response.body);
       message=jsonResponse['message'];
-      return [];
+      return message;
     }
     else{
-      return [];
+      return message;
     }
 
   }

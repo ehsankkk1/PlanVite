@@ -5,11 +5,15 @@ import 'package:plane_vite/models/personal_task_send.dart';
 import 'package:plane_vite/models/personal_tasks.dart';
 import 'package:plane_vite/screens/to_do/to_do_service.dart';
 
+import '../../models/personal_task.dart';
+
 
 class ToDoController extends GetxController{
 var done;
 var isLoading=true.obs;
+var isLoading2=false.obs;
 List<Personal2> personalList=[];
+List<Data> personalTask=[];
 TodoService service=new TodoService();
 List doing =[false,false,false,false,false,false,false].obs;
 var count=0.obs;
@@ -72,13 +76,15 @@ void PickDate(){
 }
 void PutFalse(String status,int id)async{
   isLoading(true);
-  personalList=await service.EditStatus(UserInformation.User_Token,status,id.toString());
+  service.EditStatus(UserInformation.User_Token,status,id.toString());
+  personalList=await service.getPersonal(UserInformation.User_Token);
   isLoading(false);
 }
 
 void PutTrue(String status,int id)async{
   isLoading(true);
-  personalList=await service.EditStatus(UserInformation.User_Token,status,id.toString());
+   service.EditStatus(UserInformation.User_Token,status,id.toString());
+  personalList=await service.getPersonal(UserInformation.User_Token);
   isLoading(false);
 }
 @override
@@ -93,7 +99,7 @@ void PutTrue(String status,int id)async{
   }
 
 Future<void> addTaskOnClick() async {
-  PersonalTask task = PersonalTask(
+  PersonalTaskSend task = PersonalTaskSend(
 
     name:name,
     deadline:date,

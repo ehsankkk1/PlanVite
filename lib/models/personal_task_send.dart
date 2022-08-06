@@ -1,4 +1,4 @@
-class PersonalTask{
+class PersonalTaskSend{
   String? name;
   String? description;
   String? deadline;
@@ -8,7 +8,7 @@ class PersonalTask{
 
 
 
-  PersonalTask({
+  PersonalTaskSend({
 
     this.name,
     this.deadline,

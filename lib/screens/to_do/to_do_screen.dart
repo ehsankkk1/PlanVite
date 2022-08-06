@@ -367,14 +367,16 @@ class _todo_item extends StatelessWidget {
                   width: width * 0.02,
                 ),
                 CustomCheckbox(
+
                   onTap: () {
+
                     //controller.Done();
                    // _todoController.onTodoTap(index);
                     if(_todoController.personalList[index].completed){
                       _todoController.PutFalse('0',_todoController.personalList[index].id);
 
                     }
-                    else{
+                    else if(_todoController.personalList[index].completed==false){
                       _todoController.PutTrue('1',_todoController.personalList[index].id);
                     }
                   },
