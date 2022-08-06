@@ -1,5 +1,8 @@
 class ServerConfig {
-  static const domainNameServer='https://planvite.herokuapp.com/api/';
+ // https://planvite.herokuapp.com/api/
+ // http://192.168.1.106/api/
+
+  static const domainNameServer='http://192.168.1.106:8000/api/';
   static  const checkValid='settings';
 
  static const register='register';

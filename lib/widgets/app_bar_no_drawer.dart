@@ -10,10 +10,12 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
     Key? key,
     this.head,
     this.save=true,
+    this.visible=true,
   }) : super(key: key);
 
   String? head;
   bool save;
+  bool visible;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -37,10 +39,13 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
         ),
         save?InkWell(
           onTap: () {Get.back();},
-          child: Icon(
-            Icons.check,
-            color: context.theme.primaryColor,
-            size: 35,
+          child: Visibility(
+            visible: visible,
+            child: Icon(
+              Icons.check,
+              color: context.theme.primaryColor,
+              size: 35,
+            ),
           ),
         ):Container(width: 25,height: 25,),
       ],

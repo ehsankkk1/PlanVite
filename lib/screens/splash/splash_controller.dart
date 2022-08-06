@@ -35,8 +35,9 @@ class SplashController extends GetxController{
     String? token=await storage.read('token');
     print('jjjjjjjjjjj');
     print(token);
+
     print('ddddddddddd');
-    print(UserInformation.Fcm_Token);
+    //print(UserInformation.Fcm_Token);
     //await Future.delayed(const Duration(seconds: 3));
     if(token != null){
 
