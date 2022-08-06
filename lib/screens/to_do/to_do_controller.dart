@@ -76,14 +76,14 @@ void PickDate(){
 }
 void PutFalse(String status,int id)async{
   isLoading(true);
-  service.EditStatus(UserInformation.User_Token,status,id.toString());
+  await service.EditStatus(UserInformation.User_Token,status,id.toString());
   personalList=await service.getPersonal(UserInformation.User_Token);
   isLoading(false);
 }
 
 void PutTrue(String status,int id)async{
   isLoading(true);
-   service.EditStatus(UserInformation.User_Token,status,id.toString());
+  await  service.EditStatus(UserInformation.User_Token,status,id.toString());
   personalList=await service.getPersonal(UserInformation.User_Token);
   isLoading(false);
 }
@@ -110,6 +110,9 @@ Future<void> addTaskOnClick() async {
   );
 
   addTaskStatus = await service.addTask(task,UserInformation.User_Token);
+  isLoading(true);
+  personalList=await service.getPersonal(UserInformation.User_Token);
+  isLoading(false);
   message=service.message;
 
   if(message is List){
