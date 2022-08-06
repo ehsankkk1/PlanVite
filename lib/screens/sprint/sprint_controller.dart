@@ -12,7 +12,7 @@ import 'sprint_model.dart';
 class SprintController extends GetxController{
 
   List<Users> usersList=[];
-
+  int projectId = 0;
   SprintService _service = new SprintService();
 
 
@@ -48,10 +48,16 @@ void onReady() async{
   print(usersList);
     super.onReady();
   }
+
   void onClose() {
     // TODO: implement onClose
 
     super.onClose();
+  }
+
+  void onChangeIndex(int index){
+    projectId = index ;
+    print('get new data here '+ projectId.toString());
   }
 
 

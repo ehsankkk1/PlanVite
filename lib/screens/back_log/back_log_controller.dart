@@ -10,6 +10,7 @@ class BackLogController extends GetxController{
   var selectedLang;
   var  selectedLangBool ;
   var rating=0.obs;
+  int projectId = Get.arguments;
   List allProjectUsers =[].obs;
   List<Sprint>? allSprints =[];
   late DateTime addTaskEndTime;
@@ -24,9 +25,9 @@ class BackLogController extends GetxController{
 
     selectedLang='en';
     selectedLangBool = true.obs;
-    allSprints = await _backLogService.getAllSprints(3);
+    allSprints = await _backLogService.getAllSprints(projectId);
     print(allSprints);
-    if(allSprints != null){
+    if(allSprints != []){
       isLoading.value = true;
     }
     super.onInit();

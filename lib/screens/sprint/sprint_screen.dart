@@ -76,6 +76,9 @@ class SprintScreen extends GetView<SprintController> {
                   controller: _myDrawerController,
                   head: 'Sample Project'.tr,
                   backLog: true,
+                  onBacklogPressed: (){
+                    Get.toNamed('/backlog',arguments: _sprintController.projectId,);
+                  },
                 ),
               ),
               Expanded(

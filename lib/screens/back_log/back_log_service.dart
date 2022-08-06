@@ -64,7 +64,7 @@ class BackLogService{
 
   }
 
-  Future<List<Sprint>?> getAllSprints(int projectID) async {
+  Future<List<Sprint>> getAllSprints(int projectID) async {
 
     try{
       var headers = {
@@ -85,20 +85,16 @@ class BackLogService{
         //successMessageBoxGet('$email Added',context);
         return projectUser;
       }
-      if (response.statusCode == 404) {
-
-        return [];
-      }
 
     else {
    // errorMessageBoxGet('error',context);
     print(response.reasonPhrase);
-    return null;
+    return [];
     }
     } on SocketException catch(e){
    // errorMessageBoxGet('error',context);
     print(e);
-    return null;
+    return [];
     }
 
   }
