@@ -76,15 +76,22 @@ void PickDate(){
 }
 void PutFalse(String status,int id)async{
   isLoading(true);
+  print("johny1");
   await service.EditStatus(UserInformation.User_Token,status,id.toString());
+  print("edit done");
   personalList=await service.getPersonal(UserInformation.User_Token);
+
+  print("get done");
   isLoading(false);
 }
 
 void PutTrue(String status,int id)async{
   isLoading(true);
+  print("johny1");
   await  service.EditStatus(UserInformation.User_Token,status,id.toString());
+  print("edit done");
   personalList=await service.getPersonal(UserInformation.User_Token);
+  print("get done");
   isLoading(false);
 }
 @override

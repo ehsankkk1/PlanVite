@@ -1,6 +1,7 @@
 class ServerConfig {
  // https://planvite.herokuapp.com/api/
  // http://192.168.1.106/api/
+  //'http://192.168.1.106:8000/api/'
 
   static const domainNameServer='https://planvite.herokuapp.com/api/';
   static  const checkValid='settings';
@@ -9,7 +10,7 @@ class ServerConfig {
  static const projects='projects';
  static const login='login';
   static const logout='logout';
-  static const notifications='notifications';
+  static const notifications='user/notifications';
   static const personal_tasks='personal_tasks';
   static const personal_tasks2='personal_tasks/';
   static const getProjectUsers='projects';

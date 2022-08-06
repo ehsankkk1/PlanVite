@@ -32,8 +32,8 @@ class Personal2{
   Personal2({
     required this.id,
     required this.name,
-    required this.description,
-    required this.deadline,
+     this.description,
+     this.deadline,
   //  required this.priority,
     required this.userId,
     required this.completed,
@@ -41,8 +41,8 @@ class Personal2{
 
   int id;
   String name;
-  String description;
-  DateTime deadline;
+  String? description;
+  DateTime? deadline;
   //String priority;
   int userId;
   bool completed;
@@ -61,7 +61,7 @@ class Personal2{
     "id": id,
     "name": name,
     "description": description,
-    "deadline": "${deadline.year.toString().padLeft(4, '0')}-${deadline.month.toString().padLeft(2, '0')}-${deadline.day.toString().padLeft(2, '0')}",
+    "deadline": "${deadline!.year.toString().padLeft(4, '0')}-${deadline!.month.toString().padLeft(2, '0')}-${deadline!.day.toString().padLeft(2, '0')}",
     //"priority": priority,
     "user_id": userId,
     "completed": completed,

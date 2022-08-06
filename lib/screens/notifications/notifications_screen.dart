@@ -30,7 +30,7 @@ class NotificationsScreen extends StatelessWidget {
                     ),
                   ),
                   Obx((){
-                    if(_notificationsController.isLoading.isFalse){
+                    if(_notificationsController.isLoading.isTrue){
                       return Center(
                         child: CircularProgressIndicator(
                           color: context.theme.primaryColor,
@@ -40,7 +40,7 @@ class NotificationsScreen extends StatelessWidget {
                     }
                     return  Expanded(
                       child: GridView.builder(
-                          itemCount: 30,
+                          itemCount: _notificationsController.notificationsList.length,
                           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 1,
                             childAspectRatio: 4,
@@ -74,7 +74,7 @@ class NotificationsScreen extends StatelessWidget {
                                       ),
                                       Flexible(
                                         child: Text(
-                                          'Ehsan abourashed mentioned you in a comment',
+                                          _notificationsController.notificationsList[index].body,
                                           style: TextStyle(
                                             fontSize: 15,
                                             color: context.theme.textTheme.caption!.color,

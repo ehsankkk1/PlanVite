@@ -369,7 +369,10 @@ class _todo_item extends StatelessWidget {
                     style: TextStyle(color: context.theme.textTheme.caption!.color),
                   ),
                   SizedBox(height: height*0.05,),
-                  Text(_todoController.personalList[index].description,
+                  Text(
+
+
+                    _todoController.personalList[index].description==null?'tt':_todoController.personalList[index].description.toString(),
                     style: TextStyle(color: context.theme.textTheme.caption!.color),
                   ),
                   SizedBox(height: height*0.06,),
