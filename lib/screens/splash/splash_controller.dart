@@ -22,7 +22,6 @@ class SplashController extends GetxController{
 
     });
     storage=SecureStorage();
-
     validityToken=false;
     _service=SplashService();
     await checkToken();
@@ -35,9 +34,6 @@ class SplashController extends GetxController{
     String? token=await storage.read('token');
     print('jjjjjjjjjjj');
     print(token);
-
-    print('ddddddddddd');
-    //print(UserInformation.Fcm_Token);
     //await Future.delayed(const Duration(seconds: 3));
     if(token != null){
 
@@ -51,13 +47,13 @@ class SplashController extends GetxController{
       }
       else {
         EasyLoading.showError(_service.message);
-       // Get.offAllNamed('/login');
+        // Get.offAllNamed('/login');
         Get.offAllNamed('welcome');
 
       }
     }
     else{
-     // Get.offNamed('/login');
+      // Get.offNamed('/login');
       Get.offAllNamed('welcome');
 
     }

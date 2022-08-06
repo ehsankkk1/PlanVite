@@ -14,11 +14,15 @@ class MyDrawerController extends GetxController {
   DrawerServices _drawerServices=DrawerServices();
 
   var isLoading=false.obs;
-  List<Projects> allProjects=[];
+  List<Projects>? allProjects=[];
   @override
    Future<void> onInit()  async {
     allProjects = await _drawerServices.getProjects(UserInformation.User_Token);
-    isLoading.value = true;
+
+    if(allProjects != null){
+      isLoading.value = true;
+    }
+
     super.onInit();
   }
   @override

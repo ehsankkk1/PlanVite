@@ -37,14 +37,14 @@ class SprintController extends GetxController{
   @override
   void onInit() {
     print('project idddddddddddddddddddddd');
-    print(ProjectInformation.project_id);
+    //print(ProjectInformation.project_id);
     super.onInit();
   }
 
 @override
 void onReady() async{
 
-  usersList=await _service.getProjectUsers(int.parse(ProjectInformation.project_id));
+  //usersList=await _service.getProjectUsers(int.parse(ProjectInformation.project_id));
   print(usersList);
     super.onReady();
   }

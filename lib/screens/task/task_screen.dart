@@ -93,7 +93,7 @@ class TaskScreen extends StatelessWidget {
                           ),
                           Text(
                             'Approved'.tr,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 18,
                             ),

@@ -6,12 +6,11 @@ import 'package:http/http.dart' as http;
 import '../../config/server_config.dart';
 import '../../config/user_information.dart';
 import '../../constants.dart';
-import '../../widgets/loader_screen.dart';
+import '../../models/sprint_model.dart';
 import 'back_log_model.dart';
 import 'package:flutter/material.dart';
 
 class BackLogService{
-
 
 
   Future<ProjectUser?> addNewUser(int projectID,String email,BuildContext context) async {
@@ -62,6 +61,45 @@ class BackLogService{
       return null;
     }
 
+
+  }
+
+  Future<List<Sprint>?> getAllSprints(int projectID) async {
+
+    try{
+      var headers = {
+        'Authorization': 'Bearer '+UserInformation.User_Token
+      };
+      var request = http.Request('GET', Uri.parse(ServerConfig.domainNameServer + 'projects/$projectID/sprints'));
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse response = await request.send();
+      print(response.statusCode);
+
+      if (response.statusCode == 200) {
+        String response1 = await response.stream.bytesToString();
+        final body = jsonDecode(response1)["data"];
+        var jsonEncode=   json.encode(body);
+        List<Sprint> projectUser = sprintFromJson(jsonEncode.toString());
+        //successMessageBoxGet('$email Added',context);
+        return projectUser;
+      }
+      if (response.statusCode == 404) {
+
+        return [];
+      }
+
+    else {
+   // errorMessageBoxGet('error',context);
+    print(response.reasonPhrase);
+    return null;
+    }
+    } on SocketException catch(e){
+   // errorMessageBoxGet('error',context);
+    print(e);
+    return null;
+    }
 
   }
 }

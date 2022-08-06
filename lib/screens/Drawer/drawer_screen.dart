@@ -78,15 +78,15 @@ class DrawerScreen extends GetView<MyDrawerController> {
                   ),
                   Column(
                     children: List.generate(
-                      _myDrawerController.allProjects.length,
+                      _myDrawerController.allProjects!.length,
                           (index) =>
                           DrawerItem(
                               FontAwesomeIcons.userGroup,
                               25,
-                              _myDrawerController.allProjects[index].name!,
+                              _myDrawerController.allProjects![index].name!,
                                   () {
                                 _skeletonController.changeScreen(1);
-                                ProjectInformation.project_id=_myDrawerController.allProjects[index].id.toString();
+                               // ProjectInformation.project_id=_myDrawerController.allProjects[index].id.toString();
                                 //Get.offNamed('/sprint');
                               }),),
                   ),

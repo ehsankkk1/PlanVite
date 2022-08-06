@@ -22,10 +22,12 @@ class SplashService {
 
     if(response.statusCode==200){
       return true;
-    }else if (response.statusCode==401){
+    }
+    else if (response.statusCode==401) {
       message ='Login Please';
       return false;
-    }else{
+    }
+    else{
       message = 'Server Error';
       return false;
     }

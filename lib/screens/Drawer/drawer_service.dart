@@ -11,7 +11,7 @@ import 'drawer_model.dart';
 class DrawerServices{
 
 
-  Future<List<Projects>> getProjects(String token) async {
+  Future<List<Projects>?> getProjects(String token) async {
     try{
 
       var headers = {
@@ -22,6 +22,7 @@ class DrawerServices{
 
       http.StreamedResponse response = await request.send();
 
+      print(response.statusCode);
       if (response.statusCode == 200) {
         String response1 = await response.stream.bytesToString();
         final body = jsonDecode(response1)["data"];
@@ -31,12 +32,12 @@ class DrawerServices{
     }
       else {
     log(response.reasonPhrase.toString());
-    return[];
+    return null;
     }
 
     }on SocketException catch(e){
       print(e);
-      return [];
+      return null;
     }
   }
 
