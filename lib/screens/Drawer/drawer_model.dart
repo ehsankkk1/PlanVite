@@ -14,18 +14,21 @@ class Projects {
     this.name,
     this.description,
     this.deadline,
+    this.isAdmin,
   });
 
   int? id;
   String? name;
   String? description;
   DateTime? deadline;
+  bool? isAdmin;
 
   factory Projects.fromJson(Map<String, dynamic> json) => Projects(
     id: json["id"],
     name: json["name"],
     description: json["description"],
     deadline: DateTime.parse(json["deadline"]),
+    isAdmin: json['isAdmin'],
   );
 
   Map<String, dynamic> toJson() => {

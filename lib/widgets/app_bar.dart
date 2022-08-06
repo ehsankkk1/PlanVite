@@ -11,11 +11,13 @@ class AppBarWidget extends StatelessWidget {
     this.controller,
     this.head,
     this.backLog,
+    this.onBacklogPressed,
   }) : super(key: key);
 
   final MyDrawerController? controller;
   String? head;
   bool? backLog = false;
+    Function()? onBacklogPressed;
   @override
   Widget build(BuildContext context) {
     SkeletonController _skeletonController=Get.find();
@@ -45,9 +47,7 @@ class AppBarWidget extends StatelessWidget {
                   color: context.theme.primaryColor,
                   size: 30,
                 ),
-                onTap: () {
-                  Get.toNamed('/backlog');
-                },
+                onTap: onBacklogPressed,
               )
             : InkWell(
                 child:  Icon(
