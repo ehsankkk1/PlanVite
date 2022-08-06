@@ -10,6 +10,10 @@ List<Sprint> sprintFromJson(String str) => List<Sprint>.from(json.decode(str).ma
 
 String sprintToJson(List<Sprint> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+Sprint oneSprintFromJson(String str) => Sprint.fromJson(json.decode(str));
+
+String oneSprintToJson(Sprint data) => json.encode(data.toJson());
+
 class Sprint {
   Sprint({
     this.id,

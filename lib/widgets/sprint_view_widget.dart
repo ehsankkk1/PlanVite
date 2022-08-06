@@ -44,13 +44,15 @@ class SprintWidget extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                               Text(
-                                "$sprintName",
-                                style: TextStyle(
-                                  fontSize: SizeConfig.blockSizeHorizontal*5.5,
-                                  color: context.theme.textTheme.caption!.color,
-                                ),
+                               Flexible(
+                                 child: Text(
+                                  "$sprintName",
+                                  style: TextStyle(
+                                    fontSize: SizeConfig.blockSizeHorizontal*5.5,
+                                    color: context.theme.textTheme.caption!.color,
+                                  ),
                               ),
+                               ),
                               addButton==true?InkWell(
                                 child:  Icon(
                                   Icons.add,

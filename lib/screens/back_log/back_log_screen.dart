@@ -83,31 +83,57 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                 4, (index) => UserCardWidget('user $index'),
                               )
                           ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: List.generate(
-                                _backLogController.allSprints!.length,
-                                    (index) => SprintWidget(
-                                        onTap: (){
-                                          
-                                        },
-                                        addButton: true,
-                                        checkBox: true,
-                                        sprintName: _backLogController.allSprints![index].name!,
-                                        coloredBoxes: List.generate(
-                                          _backLogController.allSprints![index].tasks!.length,
-                                              (index2) => Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                                child: TaskWidget(
-                                                  name: _backLogController.allSprints![index].tasks![index2].name,
-                                                  dueDate: _backLogController.allSprints![index].tasks![index2].deadline.toString(),
-                                                  priority: _backLogController.allSprints![index].tasks![index2].priority,
-                                                  loading: false,
-                                                ),
-                                              )
-                                        )
-                                    ),
-                            ),
+                          GetBuilder<BackLogController>(
+                            assignId: true,
+                            builder: (_backLogController) {
+                              return Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: List.generate(
+                                  _backLogController.allSprints!.length,
+                                      (index) =>
+                                      SprintWidget(
+                                          onTap: () {
+                                            _backLogController.showAddTaskField(
+                                                context);
+                                          },
+                                          addButton: true,
+                                          checkBox: true,
+                                          sprintName: _backLogController
+                                              .allSprints![index].name!,
+                                          coloredBoxes: List.generate(
+                                              _backLogController
+                                                  .allSprints![index].tasks!
+                                                  .length,
+                                                  (index2) =>
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 8.0),
+                                                    child: TaskWidget(
+                                                      name: _backLogController
+                                                          .allSprints![index]
+                                                          .tasks![index2].name,
+                                                      dueDate: _backLogController
+                                                          .allSprints![index]
+                                                          .tasks![index2]
+                                                          .deadline.toString(),
+                                                      priority: _backLogController
+                                                          .allSprints![index]
+                                                          .tasks![index2]
+                                                          .priority,
+                                                      loading: false,
+                                                    ),
+                                                  )
+                                          )
+                                      ),
+                                ),
+                              );
+                            },
+                          ),
+                          _addButtonSprint(
+                            onTap: () {
+                              _backLogController.showAddSprintField(context);
+                            },
                           ),
                         ],
                       ),
@@ -116,13 +142,13 @@ class BackLogScreen extends GetView<BackLogScreen> {
 
                 )
                     : Expanded(
-                      child: Center(
-                  child: CircularProgressIndicator(
-                    backgroundColor: context.theme.primaryColor,
-                    color: context.theme.cardColor,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: context.theme.primaryColor,
+                      color: context.theme.cardColor,
+                    ),
                   ),
                 ),
-                    ),
               ],
             );
           }),
@@ -131,6 +157,38 @@ class BackLogScreen extends GetView<BackLogScreen> {
     );
   }
 
+}
+
+class _addButtonSprint extends StatelessWidget {
+  _addButtonSprint({
+    required this.onTap,
+  });
+
+  Function() onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+        child: Material(
+          elevation: 6,
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          child: Container(
+            width: width * 0.77,
+            height: height * 0.3,
+            decoration: BoxDecoration(
+              /*border: Border.all(color: darkSecondaryColor,width: 3),*/
+              color: context.theme.hintColor,
+              borderRadius: const BorderRadius.all(Radius.circular(10)),),
+            child: Icon(
+              Icons.add, size: 100, color: context.theme.primaryColor,),
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 
