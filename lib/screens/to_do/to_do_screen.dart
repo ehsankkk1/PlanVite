@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:holding_gesture/holding_gesture.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:plane_vite/config/user_information.dart';
 import 'package:plane_vite/constants.dart';
@@ -357,55 +358,139 @@ class _todo_item extends StatelessWidget {
           right: width * 0.05,
           bottom: height * 0.001,
           top: height * 0.01),
-      child: Container(
-        color: context.theme.backgroundColor,
-        child: Column(
-          children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: width * 0.02,
-                ),
-                CustomCheckbox(
+      child: HoldDetector(
+        onHold: (){
+          showDialog(context: context, builder: (context)=>AlertDialog(
+            title: Center(
+              child: Column(
 
-                  onTap: () {
-
-                    //controller.Done();
-                   // _todoController.onTodoTap(index);
-                    if(_todoController.personalList[index].completed){
-                      _todoController.PutFalse('0',_todoController.personalList[index].id);
-
-                    }
-                    else if(_todoController.personalList[index].completed==false){
-                      _todoController.PutTrue('1',_todoController.personalList[index].id);
-                    }
-                  },
-                  size: 30,
-                  iconSize: 25,
-                  color: kGrey,
-                  isSelected: done,
-                ),
-                SizedBox(
-                  width: width * 0.075,
-                ),
-                Flexible(
-                  child: Text(
-                    _todoController.personalList[index].name,
-                    style: TextStyle(
-                      decoration: done
-                          ? TextDecoration.lineThrough
-                          : TextDecoration.none,
-
-                      fontSize: 15,
-                      color: context.theme.textTheme.caption!.color,
-                    ),
+                children: [
+                  Text('Task Details : '.tr,
+                    style: TextStyle(color: context.theme.textTheme.caption!.color),
                   ),
-                ),
+                  SizedBox(height: height*0.05,),
+                  Text(_todoController.personalList[index].description,
+                    style: TextStyle(color: context.theme.textTheme.caption!.color),
+                  ),
+                  SizedBox(height: height*0.06,),
+                  Text('Task Deadline : '.tr,
+                    style: TextStyle(color: context.theme.textTheme.caption!.color),
+                  ),
+                  SizedBox(height: height*0.05,),
+                  Text(_todoController.personalList[index].deadline.toString(),
+                    style: TextStyle(color: context.theme.textTheme.caption!.color),
+                  ),
+                ],
+              ),
+            ),
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize:MainAxisSize.min ,
+              children: [
+                Text('rate user '.tr +'$index',),
+                SizedBox(height: 30,),
+
 
               ],
-            ),
-            const Divider(height: 90,thickness: 1,color: kGrey,),
+            ),actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Cancel'.tr,
+                  style: TextStyle(color: Colors.grey,
+                    fontSize: 18,
+                  ),
+                ),),
+                TextButton(onPressed: (){Navigator.pop(context);
+                  showDialog(context: context,builder: (context)=>AlertDialog(
+                    title: Center(
+                      child: Text('Are you sure you ant to delete this task ? '.tr,
+                      style: TextStyle(color: context.theme.textTheme.caption!.color),
+                      ),
+                    ),
+                    actions: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(onPressed: (){Navigator.pop(context);}, child: Text('No'.tr,
+                            style: TextStyle(color: Colors.grey,
+                              fontSize: 18,
+                            ),
+                          ),),
+                          TextButton(onPressed: (){
+                            _todoController.DeleteTask(_todoController.personalList[index].id);
+                           Navigator.pop(context);
+
+                          }, child: Text('Yes'.tr,
+                            style: TextStyle(color: context.theme.primaryColor,
+                              fontSize: 18,
+                            ),
+                          ),),
+
+                        ],
+                      )
+                    ],
+                  ));
+                  }, child: Text('Delete Task'.tr,
+                  style: TextStyle(color:  context.theme.primaryColor,
+                  fontSize: 18,
+                  ),
+                ),),
+              ],
+            )
           ],
+          ),);
+        },
+        child: Container(
+          color: context.theme.backgroundColor,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  SizedBox(
+                    width: width * 0.02,
+                  ),
+                  CustomCheckbox(
+
+                    onTap: () {
+
+                      //controller.Done();
+                     // _todoController.onTodoTap(index);
+                      if(_todoController.personalList[index].completed){
+                        _todoController.PutFalse('0',_todoController.personalList[index].id);
+
+                      }
+                      else if(_todoController.personalList[index].completed==false){
+                        _todoController.PutTrue('1',_todoController.personalList[index].id);
+                      }
+                    },
+                    size: 30,
+                    iconSize: 25,
+                    color: kGrey,
+                    isSelected: done,
+                  ),
+                  SizedBox(
+                    width: width * 0.075,
+                  ),
+                  Flexible(
+                    child: Text(
+                      _todoController.personalList[index].name,
+                      style: TextStyle(
+                        decoration: done
+                            ? TextDecoration.lineThrough
+                            : TextDecoration.none,
+
+                        fontSize: 15,
+                        color: context.theme.textTheme.caption!.color,
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+              const Divider(height: 90,thickness: 1,color: kGrey,),
+            ],
+          ),
         ),
       ),
     );

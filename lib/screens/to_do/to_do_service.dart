@@ -121,7 +121,21 @@ class TodoService{
     }
 
   }
+Future DeleteTask(String token,id)async{
+  var url = Uri.parse(
+      ServerConfig.domainNameServer + ServerConfig.personal_tasks2 +id);
+  var response = await http.delete(url,
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
 
+
+
+  );
+
+
+}
 
 
 

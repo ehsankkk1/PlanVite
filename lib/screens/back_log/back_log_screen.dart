@@ -110,36 +110,36 @@ class BackLogScreen extends GetView<BackLogScreen> {
 }
 
 
-/*List.generate(
- index + 4,
-(index) => HoldDetector(
-  onHold: (){
-showDialog(context: context, builder: (context)=>AlertDialog(
- title: Center(
- child: Text('Please leave a star rating'.tr,
-    style: TextStyle(color: context.theme.textTheme.caption!.color),
-    ),
-    ),
-content: Column(
- crossAxisAlignment: CrossAxisAlignment.center,
-   mainAxisSize:MainAxisSize.min ,
- children: [
-Text('rate user '.tr +'$index',),
-SizedBox(height: 30,),
- buildRating(index),
-
-],
-),actions: [
-TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Ok',
-style: TextStyle(color: context.theme.textTheme.caption!.color,),
- ),)
- ],
- ),);
- },
-  child: TextButton(
-  onPressed: (){
-  //showRating(index);
-},
-child: UserCardWidget('user $index')),
- ),
- ),*/
+// List.generate(
+//  index + 4,
+// (index) => HoldDetector(
+//   onHold: (){
+// showDialog(context: context, builder: (context)=>AlertDialog(
+//  title: Center(
+//  child: Text('Please leave a star rating'.tr,
+//     style: TextStyle(color: context.theme.textTheme.caption!.color),
+//     ),
+//     ),
+// content: Column(
+//  crossAxisAlignment: CrossAxisAlignment.center,
+//    mainAxisSize:MainAxisSize.min ,
+//  children: [
+// Text('rate user '.tr +'$index',),
+// SizedBox(height: 30,),
+//  buildRating(index),
+//
+// ],
+// ),actions: [
+// TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Ok',
+// style: TextStyle(color: context.theme.textTheme.caption!.color,),
+//  ),)
+//  ],
+//  ),);
+//  },
+//   child: TextButton(
+//   onPressed: (){
+//   //showRating(index);
+// },
+// child: UserCardWidget('user $index')),
+//  ),
+//  ),
