@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/screens/back_log/back_log_service.dart';
@@ -30,7 +32,10 @@ class BackLogController extends GetxController{
     selectedLang='en';
     selectedLangBool = true.obs;
     allSprints = await _backLogService.getAllSprints(projectId);
-    print(allSprints);
+    for(int i=0;i<allSprints!.length;i++){
+      log(allSprints![i].isActive.toString());
+    }
+
     if(allSprints != []){
       isLoading.value = true;
     }
@@ -397,11 +402,11 @@ class BackLogController extends GetxController{
     if(addUserTextController.text != ''){
       print( addUserTextController.text);
       var newUser =await _backLogService.addNewUser(projectId, addUserTextController.text,context);
-      addUserTextController.clear();
-      if(newUser != null){
-        allProjectUsers.add('johny@k');
-      }
 
+      if(newUser != null){
+        allProjectUsers.add(addUserTextController.text);
+      }
+      addUserTextController.clear();
     }
   }
 
@@ -431,14 +436,13 @@ class BackLogController extends GetxController{
         Task(
             name: addTaskTextController.text,
             deadline: addTaskEndTime.value,
-            userId: 1,
         ),
         sprintId,
         context,
       );
       addTaskTextController.clear();
       if(newTask != null){
-        allSprints![1].tasks!.add(newTask);
+        allSprints![index].tasks!.add(newTask);
         update();
       }
 
@@ -446,6 +450,16 @@ class BackLogController extends GetxController{
   }
 
 
+  Future<void> toggleSprintValue(int index,BuildContext context) async {
+    bool? newValue= await _backLogService.toggleActiveSprint(
+        allSprints![index].id!,
+        context,
+    );
+    if(newValue != null){
+      allSprints![index].isActive = newValue;
+    }
+   update();
+  }
 
 
 }

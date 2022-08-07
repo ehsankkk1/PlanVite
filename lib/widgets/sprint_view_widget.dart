@@ -5,13 +5,15 @@ import '../config/SizeConfig.dart';
 import '../constants.dart';
 
 class SprintWidget extends StatelessWidget {
-  SprintWidget({required this.sprintName,this.onTap, required this.coloredBoxes,  this.addButton,this.checkBox});
+  SprintWidget({required this.sprintName,this.onTap, required this.coloredBoxes,  this.addButton,this.checkBox,this.checkBoxValue,this.onChangedBoxValue});
 
   List<Widget> coloredBoxes;
   String sprintName;
   bool? addButton=false;
   Function()? onTap;
   bool? checkBox=false;
+  bool? checkBoxValue=false;
+  Function(bool?)? onChangedBoxValue;
   EdgeInsets edges=EdgeInsets.fromLTRB(width * 0.03, 10, width * 0.03, 0);
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class SprintWidget extends StatelessWidget {
                         ),
                         checkBox==true ?Row(
                           children: [
-                            Checkbox(value: true, onChanged: (value){},activeColor: context.theme.primaryColor,),
+                            Checkbox(value: checkBoxValue, onChanged: onChangedBoxValue,activeColor: context.theme.primaryColor,),
                              Text(
                               'Activate',
                               style:  TextStyle(

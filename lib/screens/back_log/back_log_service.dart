@@ -20,16 +20,19 @@ class BackLogService {
       var headers = {
         'Authorization': 'Bearer ' + UserInformation.User_Token
       };
-      var request = http.Request('POST', Uri.parse(
-          ServerConfig.domainNameServer +
-              'projects/$projectID/addParticipant?email=$email'));
+      var request = http.MultipartRequest('POST',
+          Uri.parse(ServerConfig.domainNameServer+'projects/$projectID/addParticipant'));
+      request.fields.addAll({
+        'email': email
+      });
 
       request.headers.addAll(headers);
 
       http.StreamedResponse response = await request.send();
+      String response1 = await response.stream.bytesToString();
       print(response.statusCode);
       if (response.statusCode == 200) {
-        String response1 = await response.stream.bytesToString();
+
         final body = jsonDecode(response1)["data"];
         var jsonEncode = json.encode(body);
         ProjectUser projectUser = projectUserFromJson(jsonEncode.toString());
@@ -38,9 +41,10 @@ class BackLogService {
         return projectUser;
       }
 
-      if (response.statusCode == 201) {
+      if (response.statusCode == 422) {
+        final body = jsonDecode(response1)["message"];
         Get.back();
-        print(await response.stream.bytesToString());
+        errorMessageBoxGet(body, context);
         return null;
       }
       if (response.statusCode == 404) {
@@ -118,8 +122,8 @@ class BackLogService {
       http.StreamedResponse response = await request.send();
 
       print(response.statusCode);
+      String response1 = await response.stream.bytesToString();
       if (response.statusCode == 201) {
-        String response1 = await response.stream.bytesToString();
         final body = jsonDecode(response1)["data"];
         var jsonEncode = json.encode(body);
         Sprint oneSprintAdd = oneSprintFromJson(jsonEncode.toString());
@@ -152,7 +156,6 @@ class BackLogService {
 
         "name": newTask.name!,
         "deadline": newTask.deadline.toString(),
-        "user_id":  newTask.userId.toString(),
 
       });
 
@@ -181,5 +184,39 @@ class BackLogService {
       errorMessageBoxGet('Network Error', context);
       return null;
     }
+  }
+
+  Future<bool?> toggleActiveSprint(int sprintID,BuildContext context) async{
+    loaderBoxGet(context);
+    try{
+      var headers = {
+        'Authorization': 'Bearer ' + UserInformation.User_Token
+      };
+      var request = http.MultipartRequest('POST',
+          Uri.parse(ServerConfig.domainNameServer +'sprints/$sprintID/toggleSprint'));
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse response = await request.send();
+      String response1 = await response.stream.bytesToString();
+      if (response.statusCode == 200) {
+        final body = jsonDecode(response1)["data"];
+        var jsonEncode = json.encode(body);
+        Sprint oneSprintAdd = oneSprintFromJson(jsonEncode.toString());
+        Get.back();
+        return oneSprintAdd.isActive;
+      }
+      else {
+        Get.back();
+        print(response.reasonPhrase);
+        errorMessageBoxGet('Error', context);
+        print(response.reasonPhrase);
+        return null;
+      }
+    }on SocketException catch(e){
+      errorMessageBoxGet('Network Error', context);
+      return null;
+    }
+
   }
 }

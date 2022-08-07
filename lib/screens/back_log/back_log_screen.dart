@@ -62,7 +62,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                           Obx(() {
                             return SprintWidget(
                                 addButton: true,
-                                checkBox: true,
+                                checkBox: false,
                                 sprintName: "Users",
                                 onTap: () {
                                   _backLogController.showAddUserField(context);
@@ -77,7 +77,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                           }),
                           SprintWidget(
                               addButton: true,
-                              checkBox: true,
+                              checkBox: false,
                               sprintName: "Statues",
                               coloredBoxes: List.generate(
                                 4, (index) => UserCardWidget('user $index'),
@@ -99,6 +99,10 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                                 .allSprints![index].id!,context);
                                           },
                                           addButton: true,
+                                          checkBoxValue: _backLogController.allSprints![index].isActive!,
+                                          onChangedBoxValue:  (value){
+                                            _backLogController.toggleSprintValue(index, context);
+                                          },
                                           checkBox: true,
                                           sprintName: _backLogController
                                               .allSprints![index].name!,

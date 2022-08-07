@@ -22,6 +22,7 @@ class Sprint {
     this.deadline,
     this.projectId,
     this.tasks,
+    this.isActive,
   });
 
   int? id;
@@ -30,6 +31,7 @@ class Sprint {
   DateTime? deadline;
   int? projectId;
   List<Task>? tasks;
+  bool? isActive;
 
   factory Sprint.fromJson(Map<String, dynamic> json) => Sprint(
     id: json["id"],
@@ -38,6 +40,7 @@ class Sprint {
     deadline: DateTime.parse(json["deadline"]),
     projectId: json["project_id"],
     tasks: List<Task>.from(json["tasks"].map((x) => Task.fromJson(x))),
+    isActive : json["isActive"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -47,6 +50,7 @@ class Sprint {
     //"deadline": "${deadline.year.toString().padLeft(4, '0')}-${deadline.month.toString().padLeft(2, '0')}-${deadline.day.toString().padLeft(2, '0')}",
     "project_id": projectId,
     "tasks": List<dynamic>.from(tasks!.map((x) => x.toJson())),
+    "isActive" : isActive,
   };
 }
 
