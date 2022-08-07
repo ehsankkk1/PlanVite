@@ -1,3 +1,12 @@
+
+
+import 'dart:convert';
+
+
+Task oneTaskFromJson(String str) => Task.fromJson(json.decode(str));
+
+String oneTaskToJson(Task data) => json.encode(data.toJson());
+
 class Task {
   Task({
     this.id,

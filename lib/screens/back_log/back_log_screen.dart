@@ -94,7 +94,9 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                       SprintWidget(
                                           onTap: () {
                                             _backLogController.showAddTaskField(
-                                                context);
+                                                index,
+                                                _backLogController
+                                                .allSprints![index].id!,context);
                                           },
                                           addButton: true,
                                           checkBox: true,

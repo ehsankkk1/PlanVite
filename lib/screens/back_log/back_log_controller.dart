@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:plane_vite/screens/back_log/back_log_service.dart';
 import '../../constants.dart';
 import '../../models/sprint_model.dart';
+import '../../models/task_model.dart';
 import 'back_log_model.dart';
 
 class BackLogController extends GetxController{
@@ -122,7 +123,7 @@ class BackLogController extends GetxController{
         });
   }
 
-  void showAddTaskField(BuildContext context) {
+  void showAddTaskField(int index,int sprintId,BuildContext context) {
     var alertDialog = AlertDialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
@@ -143,7 +144,7 @@ class BackLogController extends GetxController{
         TextButton(
           onPressed: () async {
             Navigator.pop(context);
-            await addNewUserTap(context);
+            await addNewTaskTap(index,sprintId,context);
           },
           child: Text(
             'Add',
@@ -417,6 +418,27 @@ class BackLogController extends GetxController{
       addSprintTextController.clear();
       if(newSprint != null){
         allSprints!.add(newSprint);
+        update();
+      }
+
+    }
+  }
+
+
+  Future addNewTaskTap(int index,int sprintId,BuildContext context) async {
+    if(addTaskTextController.text != '' && addTaskEndTime.value != null){
+      var newTask =await _backLogService.addNewTask(
+        Task(
+            name: addTaskTextController.text,
+            deadline: addTaskEndTime.value,
+            userId: 1,
+        ),
+        sprintId,
+        context,
+      );
+      addTaskTextController.clear();
+      if(newTask != null){
+        allSprints![1].tasks!.add(newTask);
         update();
       }
 

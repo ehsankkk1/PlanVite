@@ -7,6 +7,7 @@ import '../../config/server_config.dart';
 import '../../config/user_information.dart';
 import '../../constants.dart';
 import '../../models/sprint_model.dart';
+import '../../models/task_model.dart';
 import 'back_log_model.dart';
 import 'package:flutter/material.dart';
 
@@ -126,6 +127,49 @@ class BackLogService {
         successMessageBoxGet('${oneSprintAdd.name} \n Added to Sprints', context);
         //successMessageBoxGet('$email Added',context);
         return oneSprintAdd;
+      }
+      else {
+        Get.back();
+        errorMessageBoxGet('Error', context);
+        print(response.reasonPhrase);
+        return null;
+      }
+    } on SocketException catch (e) {
+      errorMessageBoxGet('Network Error', context);
+      return null;
+    }
+  }
+
+  Future<Task?> addNewTask(Task newTask, int sprintID,BuildContext context) async {
+    loaderBoxGet(context);
+    try {
+      var headers = {
+        'Authorization': 'Bearer ' + UserInformation.User_Token
+      };
+      var request = http.MultipartRequest('POST', Uri.parse(
+          ServerConfig.domainNameServer + 'sprints/$sprintID/tasks'));
+      request.fields.addAll({
+
+        "name": newTask.name!,
+        "deadline": newTask.deadline.toString(),
+        "user_id":  newTask.userId.toString(),
+
+      });
+
+      request.headers.addAll(headers);
+
+      http.StreamedResponse response = await request.send();
+
+      print(response.statusCode);
+      if (response.statusCode == 201) {
+        String response1 = await response.stream.bytesToString();
+        final body = jsonDecode(response1)["data"];
+        var jsonEncode = json.encode(body);
+        Task oneTaskAdd = oneTaskFromJson(jsonEncode.toString());
+        Get.back();
+        successMessageBoxGet('${oneTaskAdd.name} \n Added to Tasks', context);
+        //successMessageBoxGet('$email Added',context);
+        return oneTaskAdd;
       }
       else {
         Get.back();
