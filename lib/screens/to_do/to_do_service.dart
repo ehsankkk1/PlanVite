@@ -13,6 +13,7 @@ class TodoService{
 
   var message;
   var url1 = Uri.parse(ServerConfig.domainNameServer + ServerConfig.personal_tasks);
+  var url2 = Uri.parse(ServerConfig.domainNameServer + ServerConfig.getCompletedTasks);
 
 
 
@@ -136,6 +137,28 @@ Future DeleteTask(String token,id)async{
 
 
 }
+  // Future<double>getTasks(String token)async{
+  //   var response = await http.get(url2,
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Authorization':'Bearer '+token,
+  //       }
+  //
+  //   );
+  //   print(response.statusCode);
+  //   print(response.body);
+  //
+  //
+  //   if(response.statusCode==200){
+  //     print('tryyyyy');
+  //
+  //     var tasks = personalFromJson(response.body);
+  //
+  //     return tasks.data;
+  //   }else {
+  //     return 0;
+  //   }
+  // }
 
 
 

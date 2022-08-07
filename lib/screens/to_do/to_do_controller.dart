@@ -134,6 +134,7 @@ void DeleteTask(int id)async{
   isLoading(true);
   await service.DeleteTask(UserInformation.User_Token,id.toString());
   personalList=await service.getPersonal(UserInformation.User_Token);
+  //tasksList=await service.getCompletedTasks(UserInformation.User_Token);
   isLoading(false);
 
 }
