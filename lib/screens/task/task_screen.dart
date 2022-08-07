@@ -124,7 +124,7 @@ class TaskScreen extends StatelessWidget {
                                           onSurface: context
                                               .theme.textTheme.caption!.color!,
                                         ),
-                                        // dialogBackgroundColor: Colors.white30,
+                                        dialogBackgroundColor:context.theme.hintColor,
                                       ),
                                       child: child!,
                                     ),
@@ -152,7 +152,9 @@ class TaskScreen extends StatelessWidget {
                             return Text(
                               controller.dateBool == false
                                   ? 'Due Date'.tr
-                                  : '${controller.year}/${controller.month}/${controller.day}',
+                                  :controller.year==null?'Due Date'.tr
+                                  : '${controller.year}/${controller
+                                  .month}/${controller.day}',
                               style: const TextStyle(
                                 color: Colors.grey,
                                 fontSize: 18,

@@ -72,6 +72,9 @@ class ToDoScreen extends StatelessWidget {
             height: height * 0.01,
           ),
           TextField(
+            style: TextStyle(
+              color: context.theme.canvasColor,
+            ),
             controller: taskNameController,
             keyboardType: TextInputType.multiline,
             maxLines: null,
@@ -92,6 +95,9 @@ class ToDoScreen extends StatelessWidget {
             height: height * 0.01,
           ),
           TextField(
+            style: TextStyle(
+              color: context.theme.canvasColor,
+            ),
             controller: taskDescriptionController,
             keyboardType: TextInputType.multiline,
             maxLines: null,
@@ -129,6 +135,7 @@ class ToDoScreen extends StatelessWidget {
                         builder: (context, child) =>
                             Theme(
                               data: ThemeData().copyWith(
+
                                 colorScheme: ColorScheme.dark(
                                   primary: context.theme.primaryColor,
                                   onPrimary: context.theme.textTheme
@@ -137,8 +144,10 @@ class ToDoScreen extends StatelessWidget {
 
                                   onSurface: context.theme.textTheme
                                       .caption!.color!,
+
                                 ),
-                                // dialogBackgroundColor: Colors.white30,
+                                 dialogBackgroundColor:context.theme.hintColor,
+
                               ),
                               child: child!,
                             ),
@@ -166,6 +175,7 @@ class ToDoScreen extends StatelessWidget {
                 return Text(
                   _todoController.dateBool == false
                       ? 'Due Date'.tr
+                      :_todoController.year==null?'Due Date'.tr
                       : '${_todoController.year}/${_todoController
                       .month}/${_todoController.day}',
                   style: const TextStyle(
@@ -234,7 +244,7 @@ class ToDoScreen extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(
                     width * 0.03, height * 0.025, width * 0.03, height * 0.025),
                 child: AppBarWidgetNoDrawer(
-                  head: "Personal Task",
+                  head: "Personal Tasks",
                   save: false,
                 ),
               ),
@@ -264,13 +274,24 @@ class ToDoScreen extends StatelessWidget {
                             onTap: () {
                               //controller.Calc();
                             },
-                            child: Text(
-                              '${_todoController.percent.value.toString()}%',
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  color: context.theme.primaryColor,
-                                  fontWeight: FontWeight.w900),
-                            ),
+
+
+
+                            child: Obx((){
+                              if(_todoController.isLoading.isTrue){
+                                return CircularProgressIndicator(
+                                  backgroundColor: context.theme.primaryColor,
+                                  color: context.theme.cardColor,
+                                );
+                              }
+                              return Text(
+                                '${(double.parse(_todoController.completedTasksToAll)*100).round().toString()}%',
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: context.theme.primaryColor,
+                                    fontWeight: FontWeight.w900),
+                              );
+                            })
                           ),
                         );
                       }),
@@ -292,11 +313,19 @@ class ToDoScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.01,
               ),
+              // '${_todoController.count.value
+              //     .toString()} of ${_todoController.doing.length
+              //     .toString()}'
               Obx(() {
+                if(_todoController.isLoading.isTrue){
+                  return Text(
+                    ''
+
+                  );
+                }
                 return Text(
-                  '${_todoController.count.value
-                      .toString()} of ${_todoController.doing.length
-                      .toString()}',
+                 '${ _todoController.completedTasksInt.toString()} of ${_todoController.personalList.length.toString()}'.tr,
+
                   style: const TextStyle(
                     color: kGrey,
                   ),
@@ -372,7 +401,7 @@ class _todo_item extends StatelessWidget {
                   Text(
 
 
-                    _todoController.personalList[index].description==null?'tt':_todoController.personalList[index].description.toString(),
+                    _todoController.personalList[index].description==null?'there is no description':_todoController.personalList[index].description.toString(),
                     style: TextStyle(color: context.theme.textTheme.caption!.color),
                   ),
                   SizedBox(height: height*0.06,),

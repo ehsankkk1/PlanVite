@@ -2,6 +2,7 @@ import 'dart:convert';
 
 
 import 'package:http/http.dart' as http;
+import 'package:plane_vite/models/completed_personal_tasks_model.dart';
 import 'package:plane_vite/models/personal_task.dart';
 import 'package:plane_vite/models/personal_task_send.dart';
 import 'package:plane_vite/models/personal_tasks.dart';
@@ -137,28 +138,29 @@ Future DeleteTask(String token,id)async{
 
 
 }
-  // Future<double>getTasks(String token)async{
-  //   var response = await http.get(url2,
-  //       headers: {
-  //         'Accept': 'application/json',
-  //         'Authorization':'Bearer '+token,
-  //       }
-  //
-  //   );
-  //   print(response.statusCode);
-  //   print(response.body);
-  //
-  //
-  //   if(response.statusCode==200){
-  //     print('tryyyyy');
-  //
-  //     var tasks = personalFromJson(response.body);
-  //
-  //     return tasks.data;
-  //   }else {
-  //     return 0;
-  //   }
-  // }
+  Future<String>getCompleted(String token)async{
+    var response = await http.get(url2,
+        headers: {
+          'Accept': 'application/json',
+          'Authorization':'Bearer '+token,
+        }
+
+    );
+    print(response.statusCode);
+    print(response.body);
+
+
+    if(response.statusCode==200){
+      print('tryyyyy');
+
+      var completed = response.body;
+      print('completeeeeeeeeeeeed');
+      print(completed);
+      return completed;
+    }else {
+      return completedFromJson(response.body).message;
+    }
+  }
 
 
 
