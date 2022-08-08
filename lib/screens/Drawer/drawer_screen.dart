@@ -49,7 +49,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                         ),
                         SizedBox(height: 10,),
                         Text(
-                          _myDrawerController.userInfo?.phoneNumber==null?'':_myDrawerController.userInfo?.phoneNumber,
+                          _myDrawerController.userInfo?.phoneNumber==null?_myDrawerController.userInfo!.email:_myDrawerController.userInfo?.phoneNumber,
                           style: TextStyle(
                             fontSize: 16,
                             color: context.theme.textTheme.caption!.color,
