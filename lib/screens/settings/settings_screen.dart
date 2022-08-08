@@ -506,13 +506,18 @@ SecureStorage storage = SecureStorage();
                                   //SizedBox(width: 15,),
                                   Align(
                                     alignment: Alignment(-0.5,-0.85),
-                                    child: Text(
-                                      'Log out'.tr,
-                                      style: TextStyle(
-                                        color: context.theme.textTheme.caption!.color,
-                                        fontSize: 25,
-                                      ),
+                                    child: GestureDetector(
+                                      onTap: (){
+                                        ShowAlert(context);
+                                      },
+                                      child: Text(
+                                        'Log out'.tr,
+                                        style: TextStyle(
+                                          color: context.theme.textTheme.caption!.color,
+                                          fontSize: 25,
+                                        ),
 
+                                      ),
                                     ),
                                   ),
                                   //SizedBox(width: width*0.4,),
