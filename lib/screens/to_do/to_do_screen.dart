@@ -8,6 +8,7 @@ import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/to_do/to_do_controller.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 import '../../widgets/app_bar_no_drawer.dart';
+import 'package:plane_vite/config/user_information.dart';
 
 class ToDoScreen extends StatelessWidget {
   TextEditingController taskDescriptionController = new TextEditingController();
@@ -316,16 +317,14 @@ class ToDoScreen extends StatelessWidget {
                                     color: context.theme.cardColor,
                                   );
                                 }
-                                return Text(
-                                  '${(double.parse(
-                                      _todoController.completedTasksToAll.value
-                                  ) *
-                                      100).round().toString()}%',
+                                return  Text(
+                                  '${(double.parse(_todoController.completedTasksToAll)*100).round().toString()}%',
                                   style: TextStyle(
                                       fontSize: 14,
                                       color: context.theme.primaryColor,
                                       fontWeight: FontWeight.w900),
                                 );
+
                               })
                           ),
                         );
@@ -358,9 +357,7 @@ class ToDoScreen extends StatelessWidget {
                   );
                 }
                 return Text(
-                  '${ _todoController.completedTasksInt
-                      .toString()} of ${_todoController.personalList.length
-                      .toString()}'.tr,
+                  '${ _todoController.completedTasksInt.toString()} of ${_todoController.personalList.length.toString()}'.tr,
 
                   style: const TextStyle(
                     color: kGrey,
@@ -390,28 +387,12 @@ class ToDoScreen extends StatelessWidget {
                 return Expanded(
                   child: //Obx(() {
                   SingleChildScrollView(
-                    child: GetBuilder<ToDoController>(builder: (_todoController) {
-                      return Column(
-                        children: List.generate(
-                            _todoController.personalList.length, (index) =>
-                            _todo_item(
-                              index: index,
-                              checkBoxValue: _todoController.personalList[index]
-                                  .completed,
-                              onTapCheck: (value) {
-                                if (_todoController.personalList[index].completed) {
-                                  _todoController.PutFalse('0',
-                                      _todoController.personalList[index].id);
-                                }
-                                else if (_todoController.personalList[index].completed == false) {
-                                  _todoController.PutTrue('1',
-                                      _todoController.personalList[index].id);
-                                }
-                              },
-                            )
-                        ),
-                      );
-                    }),
+                    child: Column(
+                      children: List.generate(
+                          _todoController.personalList.length, (index) =>
+                          _todo_item(index, _todoController.personalList[index].completed)),
+                    ),
+
                   ),
                   // }),
                 );
@@ -426,16 +407,14 @@ class ToDoScreen extends StatelessWidget {
 }
 
 class _todo_item extends StatelessWidget {
-  _todo_item(
-      {required this.index, this.checkBoxValue, this.onTapCheck});
+  _todo_item(this.index, this.done);
 
   int index;
-  bool? checkBoxValue=false;
-  Function(bool?)? onTapCheck;
+  bool done;
 
   @override
   Widget build(BuildContext context) {
-    ToDoController _todoController = Get.find();
+    final ToDoController _todoController = Get.find();
 
     return Padding(
       padding: EdgeInsets.only(
@@ -559,13 +538,8 @@ class _todo_item extends StatelessWidget {
                   SizedBox(
                     width: width * 0.02,
                   ),
-                  Checkbox(
-                    materialTapTargetSize : MaterialTapTargetSize.values[1],
-                    value: checkBoxValue,
-                    onChanged: onTapCheck,
-                    activeColor: context.theme.primaryColor,
-                  ),
-                  /*CustomCheckbox(
+
+                 CustomCheckbox(
 
                     onTap: () {
                      // _todoController.isLoading2.value=true;
@@ -584,7 +558,7 @@ class _todo_item extends StatelessWidget {
                     color: kGrey,
                     isSelected: done,
                    // isLoading: false,
-                  ),*/
+                  ),
                   SizedBox(
                     width: width * 0.075,
                   ),
@@ -592,7 +566,7 @@ class _todo_item extends StatelessWidget {
                     child: Text(
                       _todoController.personalList[index].name,
                       style: TextStyle(
-                        decoration: checkBoxValue == true
+                        decoration: done
                             ? TextDecoration.lineThrough
                             : TextDecoration.none,
 
