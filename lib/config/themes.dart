@@ -9,7 +9,7 @@ class Themes {
     primaryColorLight: Color(0xFFFFDFEC),
     //drawer color
     hintColor: Colors.white,
-      canvasColor: Colors.black,
+      canvasColor: Colors.black54,
       colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xFFFFAAA5),),
 
   );

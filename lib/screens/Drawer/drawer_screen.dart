@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
@@ -12,7 +13,7 @@ import 'drawer_controller.dart';
 class DrawerScreen extends GetView<MyDrawerController> {
 
   DrawerScreen({Key? key}) : super(key: key);
-
+double rating=0;
   @override
   Widget build(BuildContext context) {
     SkeletonController _skeletonController = Get.find();
@@ -47,6 +48,25 @@ class DrawerScreen extends GetView<MyDrawerController> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RatingBar.builder(
+                          minRating: 0.5,
+                          allowHalfRating: true,
+                          itemSize: 25,
+                          updateOnDrag: false,
+                          initialRating: 1.1,
+                          glow: true,
+                          ignoreGestures: true,
+
+                          itemBuilder: (context, _) =>
+                              Icon(Icons.star, color: Color(0xFFFFAAA5),),
+                          onRatingUpdate: (rat) {
+                           // controller.rating.value = rating.toInt();
+
+                          },),
+                        
                         SizedBox(height: 10,),
                         Text(
                           _myDrawerController.userInfo?.phoneNumber==null?_myDrawerController.userInfo!.email:_myDrawerController.userInfo?.phoneNumber,
@@ -70,9 +90,9 @@ class DrawerScreen extends GetView<MyDrawerController> {
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
                       'WorkSpaces'.tr,
-                      style: const TextStyle(
+                      style:  TextStyle(
                         fontSize: 15,
-                        color: Colors.black54,
+                        color: context.theme.canvasColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

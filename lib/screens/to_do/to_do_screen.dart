@@ -170,15 +170,53 @@ class ToDoScreen extends StatelessWidget {
                 width: width * 0.05,
               ),
               Obx(() {
-                return Text(
-                  _todoController.dateBool == false
-                      ? 'Due Date'.tr
-                      : _todoController.year == null ? 'Due Date'.tr
-                      : '${_todoController.year}/${_todoController
-                      .month}/${_todoController.day}',
-                  style: const TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16,
+                return GestureDetector(
+                  onTap: (){
+                    _todoController.dateBool.value = false;
+                    showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2021),
+                      lastDate: DateTime(2023),
+                      builder: (context, child) =>
+                          Theme(
+                            data: ThemeData().copyWith(
+
+                              colorScheme: ColorScheme.dark(
+                                primary: context.theme.primaryColor,
+                                onPrimary: context.theme.textTheme
+                                    .caption!.color!,
+                                surface: context.theme.primaryColor,
+
+                                onSurface: context.theme.textTheme
+                                    .caption!.color!,
+
+                              ),
+                              dialogBackgroundColor: context.theme.hintColor,
+
+                            ),
+                            child: child!,
+                          ),
+                    ).then((date) {
+                      _todoController.year = date?.year.toString();
+                      _todoController.month = date?.month.toString();
+                      _todoController.day = date?.day.toString();
+
+                      _todoController.date = date.toString();
+
+                      _todoController.PickDate();
+                    });
+                  },
+                  child: Text(
+                    _todoController.dateBool == false
+                        ? 'Due Date'.tr
+                        : _todoController.year == null ? 'Due Date'.tr
+                        : '${_todoController.year}/${_todoController
+                        .month}/${_todoController.day}',
+                    style: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                    ),
                   ),
                 );
               }),
@@ -314,7 +352,7 @@ class ToDoScreen extends StatelessWidget {
               //     .toString()} of ${_todoController.doing.length
               //     .toString()}'
               Obx(() {
-                if (_todoController.isLoading.isTrue) {
+                if (_todoController.isLoading2.isTrue) {
                   return const Text(
                       ''
                   );
@@ -446,8 +484,8 @@ class _todo_item extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text('rate user '.tr + '$index',),
-                    SizedBox(height: 30,),
+                    // Text('rate user '.tr + '$index',),
+                    // SizedBox(height: 30,),
 
 
                   ],
