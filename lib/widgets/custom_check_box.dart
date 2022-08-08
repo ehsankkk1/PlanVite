@@ -9,9 +9,9 @@ class CustomCheckbox extends StatelessWidget {
   late  bool? isSelected;
   final Function() onTap;
   final Color color;
- // late bool? isLoading=false;
+  late bool? isLoading=false;
 
-  CustomCheckbox({ this.size, this.iconSize,this.isSelected=false ,  required this.onTap,required this.color});
+  CustomCheckbox({ this.size, this.iconSize,this.isSelected=false ,  required this.onTap,required this.color,this.isLoading});
 
   @override
   Widget build(BuildContext context) {

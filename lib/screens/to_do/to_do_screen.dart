@@ -485,6 +485,7 @@ class _todo_item extends StatelessWidget {
                   CustomCheckbox(
 
                     onTap: () {
+                     // _todoController.isLoading2.value=true;
 
                       //controller.Done();
                      // _todoController.onTodoTap(index);
@@ -500,6 +501,7 @@ class _todo_item extends StatelessWidget {
                     iconSize: 25,
                     color: kGrey,
                     isSelected: done,
+                   // isLoading: false,
                   ),
                   SizedBox(
                     width: width * 0.075,

@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:plane_vite/config/server_config.dart';
 import 'package:plane_vite/config/user_information.dart';
+
+import '../../models/user_info_model.dart';
 import 'drawer_model.dart';
 
 
@@ -40,5 +42,31 @@ class DrawerServices{
       return null;
     }
   }
+  var url2 = Uri.parse(ServerConfig.domainNameServer + ServerConfig.userInfo);
+  Future<Data?>getUserInfo(String token)async{
+    var response = await http.get(url2,
+        headers: {
+          'Accept': 'application/json',
+          'Authorization':'Bearer '+token,
+        }
+
+    );
+    print(response.statusCode);
+    print(response.body);
+
+    if(response.statusCode==200){
+
+      var userInfo = userInfoFromJson(response.body);
+      return userInfo.data;
+    }else {
+      return null;
+    }
+  }
+
+
+
+
+
+
 
 }

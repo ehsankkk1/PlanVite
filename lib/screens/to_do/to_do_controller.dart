@@ -80,7 +80,7 @@ void PickDate(){
 
 }
 void PutFalse(String status,int id) async{
-  isLoading(true);
+  isLoading2(true);
   print("johny1");
   await service.EditStatus(UserInformation.User_Token,status,id.toString());
   print("edit done");
@@ -89,11 +89,11 @@ void PutFalse(String status,int id) async{
   completedTasks=double.parse(completedTasksToAll)*personalList.length;
   completedTasksInt=completedTasks.round();
   print("get done");
-  isLoading(false);
+  isLoading2(false);
 }
 
 void PutTrue(String status,int id) async{
-  isLoading(true);
+  isLoading2(true);
   print("johny1");
   await  service.EditStatus(UserInformation.User_Token,status,id.toString());
   print("edit done");
@@ -102,7 +102,7 @@ void PutTrue(String status,int id) async{
   completedTasks=double.parse(completedTasksToAll)*personalList.length;
   completedTasksInt=completedTasks.round();
   print("get done");
-  isLoading(false);
+  isLoading2(false);
 }
 @override
   void onReady() async{

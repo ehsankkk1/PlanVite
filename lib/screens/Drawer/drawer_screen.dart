@@ -40,7 +40,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                               fontSize: 30, fontWeight: FontWeight.bold),),),
                         const SizedBox(height: 25,),
                         Text(
-                          'Ehsan Abourshaed',
+                          _myDrawerController.userInfo!.name,
                           style: TextStyle(
                             fontSize: 18,
                             color: context.theme.textTheme.caption!.color,
@@ -49,7 +49,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                         ),
                         SizedBox(height: 10,),
                         Text(
-                          '+963945057206',
+                          _myDrawerController.userInfo?.phoneNumber==null?'':_myDrawerController.userInfo?.phoneNumber,
                           style: TextStyle(
                             fontSize: 16,
                             color: context.theme.textTheme.caption!.color,

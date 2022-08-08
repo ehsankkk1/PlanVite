@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:plane_vite/config/user_information.dart';
+
 import 'package:plane_vite/screens/Drawer/drawer_model.dart';
 
+import '../../models/user_info_model.dart';
 import '../sprint/sprint_controller.dart';
 import 'drawer_service.dart';
 
@@ -15,9 +17,11 @@ class MyDrawerController extends GetxController {
 
   var isLoading=false.obs;
   List<Projects>? allProjects=[];
+  Data? userInfo=Data(id: 0, email: '', name: '');
   @override
    Future<void> onInit()  async {
     allProjects = await _drawerServices.getProjects(UserInformation.User_Token);
+    userInfo = await _drawerServices.getUserInfo(UserInformation.User_Token);
 
     if(allProjects != null){
       isLoading.value = true;
