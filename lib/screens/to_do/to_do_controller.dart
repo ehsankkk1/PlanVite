@@ -14,8 +14,8 @@ var done;
 var isLoading=true.obs;
 var isLoading2=false.obs;
 List<Personal2> personalList=[];
-List<Data> personalTask=[];
-String completedTasksToAll='';
+List<Data> personalTask = [];
+var completedTasksToAll=''.obs;
 late double completedTasks;
 late int completedTasksInt;
 
@@ -85,11 +85,12 @@ void PutFalse(String status,int id) async{
   await service.EditStatus(UserInformation.User_Token,status,id.toString());
   print("edit done");
   personalList=await service.getPersonal(UserInformation.User_Token);
-  completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
+  completedTasksToAll.value =await service.getCompleted(UserInformation.User_Token);
+  completedTasks=double.parse(completedTasksToAll.value)*personalList.length;
   completedTasksInt=completedTasks.round();
   print("get done");
   isLoading2(false);
+  update();
 }
 
 void PutTrue(String status,int id) async{
@@ -98,18 +99,19 @@ void PutTrue(String status,int id) async{
   await  service.EditStatus(UserInformation.User_Token,status,id.toString());
   print("edit done");
   personalList=await service.getPersonal(UserInformation.User_Token);
-  completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
-  completedTasksInt=completedTasks.round();
+  completedTasksToAll.value=await service.getCompleted(UserInformation.User_Token);
+  completedTasks = double.parse(completedTasksToAll.value)*personalList.length;
+  completedTasksInt = completedTasks.round();
   print("get done");
   isLoading2(false);
+  update();
 }
 @override
   void onReady() async{
   print('johny1');
     personalList=await service.getPersonal(UserInformation.User_Token);
-  completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
+  completedTasksToAll.value=await service.getCompleted(UserInformation.User_Token);
+  completedTasks=double.parse(completedTasksToAll.value)*personalList.length;
   completedTasksInt=completedTasks.round();
 
   print('johny2');
@@ -133,8 +135,8 @@ Future<void> addTaskOnClick() async {
   addTaskStatus = await service.addTask(task,UserInformation.User_Token);
   isLoading(true);
   personalList = await service.getPersonal(UserInformation.User_Token);
-  completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
+  completedTasksToAll.value=await service.getCompleted(UserInformation.User_Token);
+  completedTasks=double.parse(completedTasksToAll.value)*personalList.length;
   completedTasksInt=completedTasks.round();
   isLoading(false);
   message=service.message;
@@ -151,8 +153,8 @@ void DeleteTask(int id)async{
   isLoading(true);
   await service.DeleteTask(UserInformation.User_Token,id.toString());
   personalList=await service.getPersonal(UserInformation.User_Token);
-  completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
+  completedTasksToAll.value=await service.getCompleted(UserInformation.User_Token);
+  completedTasks=double.parse(completedTasksToAll.value)*personalList.length;
   completedTasksInt=completedTasks.round();
 
   isLoading(false);

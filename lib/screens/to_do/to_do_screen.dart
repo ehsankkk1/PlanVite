@@ -4,17 +4,16 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:plane_vite/config/user_information.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/to_do/to_do_controller.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
-
 import '../../widgets/app_bar_no_drawer.dart';
 
 class ToDoScreen extends StatelessWidget {
   TextEditingController taskDescriptionController = new TextEditingController();
   TextEditingController taskNameController = new TextEditingController();
   final ToDoController _todoController = Get.find();
+
   void onClickAdd() async {
     EasyLoading.show(
       status: 'Loading...',
@@ -22,7 +21,6 @@ class ToDoScreen extends StatelessWidget {
 
     await _todoController.addTaskOnClick();
     if (_todoController.addTaskStatus) {
-
       EasyLoading.showSuccess(_todoController.message);
     } else {
       EasyLoading.showError(
@@ -146,7 +144,7 @@ class ToDoScreen extends StatelessWidget {
                                       .caption!.color!,
 
                                 ),
-                                 dialogBackgroundColor:context.theme.hintColor,
+                                dialogBackgroundColor: context.theme.hintColor,
 
                               ),
                               child: child!,
@@ -175,7 +173,7 @@ class ToDoScreen extends StatelessWidget {
                 return Text(
                   _todoController.dateBool == false
                       ? 'Due Date'.tr
-                      :_todoController.year==null?'Due Date'.tr
+                      : _todoController.year == null ? 'Due Date'.tr
                       : '${_todoController.year}/${_todoController
                       .month}/${_todoController.day}',
                   style: const TextStyle(
@@ -268,30 +266,29 @@ class ToDoScreen extends StatelessWidget {
                           radius: 45,
                           lineWidth: 4,
                           percent:
-                          _todoController.count.toInt() /
-                              _todoController.doing.length,
+                          _todoController.count.toInt() / _todoController.doing.length,
                           center: GestureDetector(
-                            onTap: () {
-                              //controller.Calc();
-                            },
-
-
-
-                            child: Obx((){
-                              if(_todoController.isLoading.isTrue){
-                                return CircularProgressIndicator(
-                                  backgroundColor: context.theme.primaryColor,
-                                  color: context.theme.cardColor,
+                              onTap: () {
+                                //controller.Calc();
+                              },
+                              child: Obx(() {
+                                if (_todoController.isLoading.isTrue) {
+                                  return CircularProgressIndicator(
+                                    backgroundColor: context.theme.primaryColor,
+                                    color: context.theme.cardColor,
+                                  );
+                                }
+                                return Text(
+                                  '${(double.parse(
+                                      _todoController.completedTasksToAll.value
+                                  ) *
+                                      100).round().toString()}%',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: context.theme.primaryColor,
+                                      fontWeight: FontWeight.w900),
                                 );
-                              }
-                              return Text(
-                                '${(double.parse(_todoController.completedTasksToAll)*100).round().toString()}%',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: context.theme.primaryColor,
-                                    fontWeight: FontWeight.w900),
-                              );
-                            })
+                              })
                           ),
                         );
                       }),
@@ -317,14 +314,15 @@ class ToDoScreen extends StatelessWidget {
               //     .toString()} of ${_todoController.doing.length
               //     .toString()}'
               Obx(() {
-                if(_todoController.isLoading.isTrue){
-                  return Text(
-                    ''
-
+                if (_todoController.isLoading.isTrue) {
+                  return const Text(
+                      ''
                   );
                 }
                 return Text(
-                 '${ _todoController.completedTasksInt.toString()} of ${_todoController.personalList.length.toString()}'.tr,
+                  '${ _todoController.completedTasksInt
+                      .toString()} of ${_todoController.personalList.length
+                      .toString()}'.tr,
 
                   style: const TextStyle(
                     color: kGrey,
@@ -337,14 +335,14 @@ class ToDoScreen extends StatelessWidget {
                 thickness: 1,
                 color: kGrey,
               ),
-              Obx((){
-                if(_todoController.isLoading.isTrue){
+              Obx(() {
+                if (_todoController.isLoading.isTrue) {
                   return Center(
                     child: Column(
                       children: [
-                        SizedBox(height: height*0.3,),
+                        SizedBox(height: height * 0.3,),
                         CircularProgressIndicator(
-                         backgroundColor: context.theme.primaryColor,
+                          backgroundColor: context.theme.primaryColor,
                           color: context.theme.cardColor,
                         ),
                       ],
@@ -354,11 +352,28 @@ class ToDoScreen extends StatelessWidget {
                 return Expanded(
                   child: //Obx(() {
                   SingleChildScrollView(
-                    child: Column(
-                      children: List.generate(
-                          _todoController.personalList.length, (index) =>
-                          _todo_item(index, _todoController.personalList[index].completed)),
-                    ),
+                    child: GetBuilder<ToDoController>(builder: (_todoController) {
+                      return Column(
+                        children: List.generate(
+                            _todoController.personalList.length, (index) =>
+                            _todo_item(
+                              index: index,
+                              checkBoxValue: _todoController.personalList[index]
+                                  .completed,
+                              onTapCheck: (value) {
+                                if (_todoController.personalList[index].completed) {
+                                  _todoController.PutFalse('0',
+                                      _todoController.personalList[index].id);
+                                }
+                                else if (_todoController.personalList[index].completed == false) {
+                                  _todoController.PutTrue('1',
+                                      _todoController.personalList[index].id);
+                                }
+                              },
+                            )
+                        ),
+                      );
+                    }),
                   ),
                   // }),
                 );
@@ -373,14 +388,17 @@ class ToDoScreen extends StatelessWidget {
 }
 
 class _todo_item extends StatelessWidget {
-  _todo_item(this.index, this.done);
+  _todo_item(
+      {required this.index, this.checkBoxValue, this.onTapCheck});
 
   int index;
-  bool done;
+  bool? checkBoxValue=false;
+  Function(bool?)? onTapCheck;
 
   @override
   Widget build(BuildContext context) {
-    final ToDoController _todoController = Get.find();
+    ToDoController _todoController = Get.find();
+
     return Padding(
       padding: EdgeInsets.only(
           left: width * 0.05,
@@ -388,90 +406,111 @@ class _todo_item extends StatelessWidget {
           bottom: height * 0.001,
           top: height * 0.01),
       child: HoldDetector(
-        onHold: (){
-          showDialog(context: context, builder: (context)=>AlertDialog(
-            title: Center(
-              child: Column(
+        onHold: () {
+          showDialog(context: context, builder: (context) =>
+              AlertDialog(
+                title: Center(
+                  child: Column(
 
-                children: [
-                  Text('Task Details : '.tr,
-                    style: TextStyle(color: context.theme.textTheme.caption!.color),
-                  ),
-                  SizedBox(height: height*0.05,),
-                  Text(
-
-
-                    _todoController.personalList[index].description==null?'there is no description':_todoController.personalList[index].description.toString(),
-                    style: TextStyle(color: context.theme.textTheme.caption!.color),
-                  ),
-                  SizedBox(height: height*0.06,),
-                  Text('Task Deadline : '.tr,
-                    style: TextStyle(color: context.theme.textTheme.caption!.color),
-                  ),
-                  SizedBox(height: height*0.05,),
-                  Text(_todoController.personalList[index].deadline.toString(),
-                    style: TextStyle(color: context.theme.textTheme.caption!.color),
-                  ),
-                ],
-              ),
-            ),
-            content: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize:MainAxisSize.min ,
-              children: [
-                Text('rate user '.tr +'$index',),
-                SizedBox(height: 30,),
-
-
-              ],
-            ),actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                TextButton(onPressed: (){Navigator.pop(context);}, child: Text('Cancel'.tr,
-                  style: TextStyle(color: Colors.grey,
-                    fontSize: 18,
-                  ),
-                ),),
-                TextButton(onPressed: (){Navigator.pop(context);
-                  showDialog(context: context,builder: (context)=>AlertDialog(
-                    title: Center(
-                      child: Text('Are you sure you ant to delete this task ? '.tr,
-                      style: TextStyle(color: context.theme.textTheme.caption!.color),
+                    children: [
+                      Text('Task Details : '.tr,
+                        style: TextStyle(color: context.theme.textTheme.caption!
+                            .color),
                       ),
-                    ),
-                    actions: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextButton(onPressed: (){Navigator.pop(context);}, child: Text('No'.tr,
-                            style: TextStyle(color: Colors.grey,
-                              fontSize: 18,
-                            ),
-                          ),),
-                          TextButton(onPressed: (){
-                            _todoController.DeleteTask(_todoController.personalList[index].id);
-                           Navigator.pop(context);
+                      SizedBox(height: height * 0.05,),
+                      Text(
 
-                          }, child: Text('Yes'.tr,
-                            style: TextStyle(color: context.theme.primaryColor,
-                              fontSize: 18,
-                            ),
-                          ),),
 
-                        ],
-                      )
+                        _todoController.personalList[index].description == null
+                            ? 'there is no description'
+                            : _todoController.personalList[index].description
+                            .toString(),
+                        style: TextStyle(color: context.theme.textTheme.caption!
+                            .color),
+                      ),
+                      SizedBox(height: height * 0.06,),
+                      Text('Task Deadline : '.tr,
+                        style: TextStyle(color: context.theme.textTheme.caption!
+                            .color),
+                      ),
+                      SizedBox(height: height * 0.05,),
+                      Text(
+                        _todoController.personalList[index].deadline.toString(),
+                        style: TextStyle(color: context.theme.textTheme.caption!
+                            .color),
+                      ),
                     ],
-                  ));
-                  }, child: Text('Delete Task'.tr,
-                  style: TextStyle(color:  context.theme.primaryColor,
-                  fontSize: 18,
                   ),
-                ),),
+                ),
+                content: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('rate user '.tr + '$index',),
+                    SizedBox(height: 30,),
+
+
+                  ],
+                ), actions: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(onPressed: () {
+                      Navigator.pop(context);
+                    }, child: Text('Cancel'.tr,
+                      style: TextStyle(color: Colors.grey,
+                        fontSize: 18,
+                      ),
+                    ),),
+                    TextButton(onPressed: () {
+                      Navigator.pop(context);
+                      showDialog(context: context, builder: (context) =>
+                          AlertDialog(
+                            title: Center(
+                              child: Text(
+                                'Are you sure you ant to delete this task ? '
+                                    .tr,
+                                style: TextStyle(
+                                    color: context.theme.textTheme.caption!
+                                        .color),
+                              ),
+                            ),
+                            actions: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment
+                                    .spaceBetween,
+                                children: [
+                                  TextButton(onPressed: () {
+                                    Navigator.pop(context);
+                                  }, child: Text('No'.tr,
+                                    style: TextStyle(color: Colors.grey,
+                                      fontSize: 18,
+                                    ),
+                                  ),),
+                                  TextButton(onPressed: () {
+                                    _todoController.DeleteTask(
+                                        _todoController.personalList[index].id);
+                                    Navigator.pop(context);
+                                  }, child: Text('Yes'.tr,
+                                    style: TextStyle(
+                                      color: context.theme.primaryColor,
+                                      fontSize: 18,
+                                    ),
+                                  ),),
+
+                                ],
+                              )
+                            ],
+                          ));
+                    }, child: Text('Delete Task'.tr,
+                      style: TextStyle(color: context.theme.primaryColor,
+                        fontSize: 18,
+                      ),
+                    ),),
+                  ],
+                )
               ],
-            )
-          ],
-          ),);
+              ),);
         },
         child: Container(
           color: context.theme.backgroundColor,
@@ -482,7 +521,13 @@ class _todo_item extends StatelessWidget {
                   SizedBox(
                     width: width * 0.02,
                   ),
-                  CustomCheckbox(
+                  Checkbox(
+                    materialTapTargetSize : MaterialTapTargetSize.values[1],
+                    value: checkBoxValue,
+                    onChanged: onTapCheck,
+                    activeColor: context.theme.primaryColor,
+                  ),
+                  /*CustomCheckbox(
 
                     onTap: () {
                      // _todoController.isLoading2.value=true;
@@ -491,7 +536,6 @@ class _todo_item extends StatelessWidget {
                      // _todoController.onTodoTap(index);
                       if(_todoController.personalList[index].completed){
                         _todoController.PutFalse('0',_todoController.personalList[index].id);
-
                       }
                       else if(_todoController.personalList[index].completed==false){
                         _todoController.PutTrue('1',_todoController.personalList[index].id);
@@ -502,7 +546,7 @@ class _todo_item extends StatelessWidget {
                     color: kGrey,
                     isSelected: done,
                    // isLoading: false,
-                  ),
+                  ),*/
                   SizedBox(
                     width: width * 0.075,
                   ),
@@ -510,7 +554,7 @@ class _todo_item extends StatelessWidget {
                     child: Text(
                       _todoController.personalList[index].name,
                       style: TextStyle(
-                        decoration: done
+                        decoration: checkBoxValue == true
                             ? TextDecoration.lineThrough
                             : TextDecoration.none,
 
@@ -522,7 +566,7 @@ class _todo_item extends StatelessWidget {
 
                 ],
               ),
-              const Divider(height: 90,thickness: 1,color: kGrey,),
+              const Divider(height: 90, thickness: 1, color: kGrey,),
             ],
           ),
         ),

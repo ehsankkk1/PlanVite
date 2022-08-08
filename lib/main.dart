@@ -76,7 +76,7 @@ class MyApp extends StatelessWidget {
        theme: controller.isPink.value==true?Themes.pink:controller.isDark.value==true?Themes.dark:controller.isBlue==true?Themes.blue:Themes.purple,
        darkTheme: controller.isPink.value==true?Themes.pink:controller.isDark.value==true?Themes.dark:controller.isBlue==true?Themes.blue:Themes.purple,
         //themeMode: ThemeService().theme,
-        // theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
+        //theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
         debugShowCheckedModeBanner: false,
         translations:  Translation(),
         locale: controller.isAr==true ?Locale('ar'):Locale('en'),
