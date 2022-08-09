@@ -113,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                 // Page view
                 GestureDetector(
                   onTap: (){
-                    _skeletonController.changeScreen(1);
+                    //_skeletonController.changeScreen(1);
                   },
                   child: Container(
                     height: width * 0.9,

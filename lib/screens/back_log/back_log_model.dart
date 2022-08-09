@@ -4,30 +4,35 @@
 
 import 'dart:convert';
 
-ProjectUser projectUserFromJson(String str) => ProjectUser.fromJson(json.decode(str));
+ProjectUser oneProjectUserFromJson(String str) => ProjectUser.fromJson(json.decode(str));
 
-String projectUserToJson(ProjectUser data) => json.encode(data.toJson());
+List<ProjectUser> projectUserFromJson(String str) => List<ProjectUser>.from(json.decode(str).map((x) => ProjectUser.fromJson(x)));
+
 
 class ProjectUser {
   ProjectUser({
     this.id,
+    this.email,
     this.name,
-    this.description,
+    this.rating,
+    this.phoneNumber,
+    this.image,
   });
 
   int? id;
+  String? email;
   String? name;
-  String? description;
+  num? rating;
+  num? phoneNumber;
+  String? image;
 
   factory ProjectUser.fromJson(Map<String, dynamic> json) => ProjectUser(
     id: json["id"],
+    email: json["email"],
     name: json["name"],
-    description: json["description"],
+    rating: json["rating"],
+    phoneNumber: json["phone_number"],
+    image: json["image"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "description": description,
-  };
 }

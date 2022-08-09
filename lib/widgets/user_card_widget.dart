@@ -7,10 +7,10 @@ import '../constants.dart';
 
 
 class UserCardWidget extends StatelessWidget {
-   UserCardWidget(this.username);
+   UserCardWidget(this.username,this.showImage);
 
   String username;
-
+  bool showImage;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +25,9 @@ class UserCardWidget extends StatelessWidget {
           padding:  EdgeInsets.fromLTRB( width * 0.03,height * 0.02,width * 0.03,height * 0.02),
           child: Row(
             children:  [
-               CircleAvatar(radius:25,backgroundColor: context.theme.textTheme.caption!.color,child: Text('E',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),),
+              showImage
+              ?CircleAvatar(radius:25,backgroundColor: context.theme.textTheme.caption!.color,child: Text('E',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),)
+              :Container(),
               SizedBox(width: width * 0.05,),
               Flexible(
                 child: Text(

@@ -59,7 +59,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Obx(() {
+                          GetBuilder<BackLogController>(builder: (_backLogController) {
                             return SprintWidget(
                                 addButton: true,
                                 checkBox: false,
@@ -70,19 +70,35 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                 coloredBoxes: List.generate(
                                   _backLogController.allProjectUsers.length,
                                       (index) =>
-                                      UserCardWidget(_backLogController
-                                          .allProjectUsers[index]),
+                                      UserCardWidget(
+                                          _backLogController
+                                              .allProjectUsers[index].email!
+                                          , true
+                                      ),
                                 )
                             );
                           }),
-                          SprintWidget(
-                              addButton: true,
-                              checkBox: false,
-                              sprintName: "Statues",
-                              coloredBoxes: List.generate(
-                                4, (index) => UserCardWidget('user $index'),
-                              )
-                          ),
+                          GetBuilder<BackLogController>(
+                              builder: (_backLogController) {
+                                return SprintWidget(
+                                  addButton: true,
+                                  checkBox: false,
+                                  sprintName: "Statues",
+                                  onTap: () {
+                                    _backLogController.showAddStatues(context);
+                                  },
+                                  coloredBoxes: List.generate(
+                                    _backLogController.allStatues!.length,
+                                        (index) =>
+                                        UserCardWidget(
+                                            _backLogController
+                                                .allStatues![index]
+                                                .name ?? '',
+                                            false
+                                        ),
+                                  ),
+                                );
+                              }),
                           GetBuilder<BackLogController>(
                             assignId: true,
                             builder: (_backLogController) {
@@ -96,12 +112,16 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                             _backLogController.showAddTaskField(
                                                 index,
                                                 _backLogController
-                                                .allSprints![index].id!,context);
+                                                    .allSprints![index].id!,
+                                                context);
                                           },
                                           addButton: true,
-                                          checkBoxValue: _backLogController.allSprints![index].isActive!,
-                                          onChangedBoxValue:  (value){
-                                            _backLogController.toggleSprintValue(index, context);
+                                          checkBoxValue: _backLogController
+                                              .allSprints![index].isActive!,
+                                          onChangedBoxValue: (value) {
+                                            _backLogController
+                                                .toggleSprintValue(
+                                                index, context);
                                           },
                                           checkBox: true,
                                           sprintName: _backLogController

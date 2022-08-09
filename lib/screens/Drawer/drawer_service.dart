@@ -108,13 +108,11 @@ class DrawerServices{
         return null;
       }
     } on SocketException catch (e) {
+      Get.back();
       errorMessageBoxGet('Network Error', context);
       return null;
     }
   }
-
-
-
 
 
 }
