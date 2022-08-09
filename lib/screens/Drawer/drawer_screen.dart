@@ -113,7 +113,7 @@ double rating=0;
                               }),),
                   ),
                   DrawerItem(Icons.add, 35, 'Add Project'.tr, () {
-                    Get.toNamed('/backlog');
+                    _myDrawerController.showAddProjectField(context);
                   }),
                   Divider(thickness: 1, color: context.theme.primaryColor,),
                   DrawerItem(Icons.notifications, 35, 'Notifications'.tr, () {

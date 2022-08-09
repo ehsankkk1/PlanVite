@@ -5,7 +5,7 @@
 import 'dart:convert';
 
 List<Projects> projectsFromJson(String str) => List<Projects>.from(json.decode(str).map((x) => Projects.fromJson(x)));
-
+Projects oneProjectsFromJson(String str) => Projects.fromJson(json.decode(str));
 String projectsToJson(List<Projects> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Projects {
