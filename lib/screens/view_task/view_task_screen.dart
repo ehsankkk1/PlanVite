@@ -466,7 +466,7 @@ class ViewTaskScreen extends StatelessWidget {
                     ),
 
                     Text(
-                      controller.viewTask?.subtasksList!=[]?'':'Image'.tr,
+                      controller.viewTask?.subtasksList!=[]?'':'Image '.tr,
                       style: TextStyle(
                         color: context.theme.textTheme.caption!.color!,
                         fontSize: 20,
