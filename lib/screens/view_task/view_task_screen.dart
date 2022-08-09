@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
 import 'package:plane_vite/constants.dart';
@@ -10,7 +11,122 @@ import '../../widgets/app_bar_no_drawer.dart';
 import '../../widgets/priorty_widget.dart';
 
 class ViewTaskScreen extends StatelessWidget {
+  TextEditingController subTaskDescriptionController = new TextEditingController();
+  TextEditingController subTaskNameController = new TextEditingController();
   ViewTaskController controller = Get.find();
+  void ShowAlert(BuildContext context) {
+    var alertDialog = AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            controller.subTaskdescription = subTaskDescriptionController.text;
+            controller.subTaskName = subTaskNameController.text;
+            onClickAdd();
+
+            Navigator.pop(context);
+          },
+          child: Text(
+            'Add',
+            style: TextStyle(
+              color: context.theme.textTheme.caption!.color!,
+            ),
+          ),
+        )
+      ],
+      backgroundColor: context.theme.backgroundColor,
+      title: Center(
+          child: Text(
+            'Add Subtask',
+            style: TextStyle(
+              color: context.theme.textTheme.caption!.color!,
+            ),
+          )),
+      content: Wrap(
+        alignment: WrapAlignment.center,
+        children: [
+          SizedBox(
+            height: height * 0.01,
+          ),
+          TextField(
+            style: TextStyle(
+              color: context.theme.canvasColor,
+            ),
+             controller: subTaskNameController,
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
+            cursorColor: context.theme.primaryColor,
+            decoration: InputDecoration(
+              focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder:
+              const OutlineInputBorder(borderSide: BorderSide.none),
+              hintText: 'Task Name'.tr,
+              hintStyle: const TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: height * 0.01,
+          ),
+          TextField(
+            style: TextStyle(
+              color: context.theme.canvasColor,
+            ),
+            controller: subTaskDescriptionController,
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
+            cursorColor: context.theme.primaryColor,
+            decoration: InputDecoration(
+              focusedBorder: const UnderlineInputBorder(
+                borderSide: BorderSide.none,
+              ),
+              enabledBorder:
+              const OutlineInputBorder(borderSide: BorderSide.none),
+              hintText: 'Add More Details to this Task'.tr,
+              hintStyle: const TextStyle(
+
+                color: Colors.grey,
+              ),
+            ),
+          ),
+
+
+          SizedBox(
+            height: height * 0.1,
+          ),
+        ],
+      ),
+    );
+    showDialog(
+        context: context,
+        builder: (BuildContext) {
+          return alertDialog;
+        });
+  }
+  void onClickAdd() async {
+    EasyLoading.show(
+      status: 'Loading...',
+    );
+
+    await controller.addSubTaskOnClick();
+    if (controller.addSubTaskStatus) {
+      EasyLoading.showSuccess(controller.message);
+    } else {
+      EasyLoading.showError(
+        controller.message,
+        duration: Duration(seconds: 10),
+        dismissOnTap: true,
+      );
+
+      print('error here');
+    }
+  }
+
   File? _file1;
 
   @override
@@ -442,20 +558,36 @@ class ViewTaskScreen extends StatelessWidget {
                     SizedBox(
                       height: height * 0.03,
                     ),
-                    Text(
-                      controller.viewTask?.subtasksList !=[]? 'Subtasks'.tr:'',
-                      style: TextStyle(
-                        color: context.theme.textTheme.caption!.color!,
-                        fontSize: 20,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          controller.viewTask?.subtasksList !=[]? 'Subtasks'.tr:'',
+                          style: TextStyle(
+                            color: context.theme.textTheme.caption!.color!,
+                            fontSize: 20,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: (){
+                            ShowAlert(context);
+                          },
+                          child: Icon(Icons.add,
+                            size: 35,
+
+                          ),
+                        ),
+                      ],
                     ),
                     // sub task text field
 
                     Center(
                       child: Column(
                         children: List.generate(
-                            controller.viewTask?.subtasksList !=[]?controller.viewTask!.subtasksList.length:1,
+
+                           controller.viewTask!.subtasksList.length,
                                 (index) => _subTaskWidget(
+
                               title: controller.viewTask?.subtasksList !=null?controller.viewTask!.subtasksList[index].name:'there is no subtasks to this task'.tr,
                             )),
                       ),

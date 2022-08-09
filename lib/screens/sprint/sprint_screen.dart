@@ -41,6 +41,7 @@ class SprintScreen extends GetView<SprintController> {
             onTapItem: (int? listIndex, int? itemIndex, BoardItemState? state) async {},
 
             item: TaskWidget(
+
               name: _sprintController.listData[i].items![j].title,
               dueDate:  _sprintController.listData[i].items![j].dueDate,
               priority:  _sprintController.listData[i].items![j].priority,

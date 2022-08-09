@@ -57,5 +57,6 @@ Map <String, String> en={
   'Blue':'Blue',
   'rate user ':'rate user ',
   'Please leave a star rating':'Please leave a star rating',
+  'Task Title':'Task Title',
 
 };
