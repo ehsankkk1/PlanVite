@@ -7,7 +7,7 @@ class ViewTaskController extends GetxController{
  var isLoading=true.obs;
 Data? viewTask;
 ViewTaskService service=new ViewTaskService();
- List subTasks=['johny','johny'];
+ List subTasks=['johny','johny '];
  @override
   void onReady()async {
     viewTask=await service.getViewTask(UserInformation.User_Token,1);

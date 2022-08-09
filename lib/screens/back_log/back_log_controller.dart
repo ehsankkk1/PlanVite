@@ -344,11 +344,24 @@ class BackLogController extends GetxController{
                         firstDate: DateTime(1900),
                         lastDate: DateTime(2100),
                         builder: (BuildContext context, Widget? child) {
-                          return Theme(
-                            data: ThemeData.light().copyWith(
-                              colorScheme: const ColorScheme.light(),
-                            ),
-                            child: child!,
+                          return
+                          Theme(
+                          data: ThemeData().copyWith(
+
+                          colorScheme: ColorScheme.dark(
+                          primary: context.theme.primaryColor,
+                          onPrimary: context.theme.textTheme
+                              .caption!.color!,
+                          surface: context.theme.primaryColor,
+
+                          onSurface: context.theme.textTheme
+                              .caption!.color!,
+
+                          ),
+                          dialogBackgroundColor: context.theme.hintColor,
+
+                          ),
+                          child: child!,
                           );
                         },
                       );
