@@ -215,17 +215,22 @@ class TaskScreen extends StatelessWidget {
                         builder: (_taskController) {
                           return Container(
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: context.theme.primaryColorLight,
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: DropdownButton(
                               hint: const Center(
                                   child: Text('Select User to Assign', style: TextStyle(fontSize: 16),)),
-                              underline: Container(),
+
+                              underline: Container(
+
+                              ),
                               menuMaxHeight: 225,
                               isExpanded: true,
                               borderRadius: BorderRadius.circular(10),
+
                               style: TextStyle(
+
                                   color: context.theme.textTheme.caption!.color,
                                   fontSize: 16),
                               value: _taskController.allUserDropDownValue,
