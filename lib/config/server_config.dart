@@ -16,6 +16,7 @@ class ServerConfig {
   static const getProjectUsers='projects';
   static const getCompletedTasks='personal_tasks/completed';
   static const userInfo='user/info';
+  static const viewTask='tasks';
 
 
 

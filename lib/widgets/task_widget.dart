@@ -28,7 +28,7 @@ class TaskWidget extends StatelessWidget {
     SizeConfig().init(context);
     return InkWell(
       onTap: (){
-        Get.toNamed('/task');
+        Get.toNamed('/view_task');
       },
       child: Padding(
         padding:  EdgeInsets.symmetric(vertical :width*0.02),
