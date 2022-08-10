@@ -56,9 +56,10 @@ class HomeScreen extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text(
+                                 Text(
                                   'Summary'.tr,
                                   style:  TextStyle(
+                                    fontFamily: 'HacenN',
                                     fontSize: 7*SizeConfig.blockSizeHorizontal,
                                     color: context.theme.textTheme.caption!.color,
                                   ),
@@ -75,6 +76,7 @@ class HomeScreen extends StatelessWidget {
                                   center:  Text(
                                     "70%",
                                     style: TextStyle(
+                                        fontFamily: 'HacenN',
                                         fontSize:  6*SizeConfig.blockSizeHorizontal,
                                         color: context.theme.primaryColor,
                                         fontWeight: FontWeight.w900),
@@ -83,6 +85,7 @@ class HomeScreen extends StatelessWidget {
                                 Text(
                                   'Tasks\nDone'.tr,
                                   style:  TextStyle(
+                                    fontFamily: 'HacenN',
                                     fontSize: 6*SizeConfig.blockSizeHorizontal,
                                     color: context.theme.primaryColor,
                                     fontWeight: FontWeight.bold,
@@ -101,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                       Center(
                         child: Text(
                           'My Projects'.tr,
-                          style:  TextStyle(
+                          style:  TextStyle(fontFamily: 'HacenN',
                             color: context.theme.textTheme.caption!.color,
                             fontSize:6*SizeConfig.blockSizeHorizontal,
                           ),

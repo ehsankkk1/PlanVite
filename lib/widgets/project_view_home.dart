@@ -29,14 +29,14 @@ class ProjectView extends StatelessWidget {
               children: [
                  Text(
                   'Sample Projects'.tr,
-                  style: TextStyle(
+                  style: TextStyle(fontFamily: 'HacenN',
                       fontSize: 5*SizeConfig.blockSizeHorizontal,
                       color: context.theme.textTheme.caption!.color,
                       fontWeight: FontWeight.bold),
                 ),
                  Text(
                   'header'.tr,
-                  style: TextStyle(
+                  style: TextStyle(fontFamily: 'HacenN',
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: context.theme.textTheme.caption!.color,
                   ),
@@ -50,7 +50,7 @@ class ProjectView extends StatelessWidget {
                 ),
                  Text(
                   'header'.tr,
-                  style: TextStyle(
+                  style: TextStyle(fontFamily: 'HacenN',
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: context.theme.textTheme.caption!.color,
                   ),
@@ -64,7 +64,7 @@ class ProjectView extends StatelessWidget {
                 ),
                  Text(
                   'header'.tr,
-                  style: TextStyle(
+                  style: TextStyle(fontFamily: 'HacenN',
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: context.theme.textTheme.caption!.color,
                   ),
