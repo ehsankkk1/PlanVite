@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:plane_vite/widgets/priorty_widget.dart';
 import '../config/SizeConfig.dart';
 import '../constants.dart';
+import '../models/task_model.dart';
 
 
 class TaskWidget extends StatelessWidget {
@@ -14,21 +15,23 @@ class TaskWidget extends StatelessWidget {
     this.image,
     this.avatar,
     this.loading=false,
+    this.task,
   });
 
   String? name;
   String? priority;
-  String? dueDate;
+  DateTime? dueDate;
   Image? image;
   Image? avatar;
-  bool loading;
+  bool? loading;
+  Task? task;
   @override
 
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return InkWell(
       onTap: (){
-        Get.toNamed('/view_task');
+        Get.toNamed('/view_task',arguments: task);
       },
       child: Padding(
         padding:  EdgeInsets.symmetric(vertical :width*0.02),
@@ -43,8 +46,6 @@ class TaskWidget extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //const Image(image: NetworkImage('https://wallpaperaccess.com/full/7794852.jpg')),
-                //const SizedBox(height: 15,),
                 Flexible(
                   child: Text(
                     '$name',
@@ -78,7 +79,7 @@ class TaskWidget extends StatelessWidget {
                           width: width * 0.05,
                         ),
                         dueDate != null ? Text(
-                              dueDate!,
+                              dueDate.toString(),
                               style:  TextStyle(
                                 fontSize: SizeConfig.blockSizeHorizontal*3.7,
                                 color: context.theme.textTheme.caption!.color,
@@ -89,7 +90,7 @@ class TaskWidget extends StatelessWidget {
                     Container(
                       height: 18,
                       width: 18,
-                      child:  loading?CircularProgressIndicator(
+                      child:  loading == true?CircularProgressIndicator(
                         color: context.theme.textTheme.caption!.color,
                       ):Container(),
                     ),

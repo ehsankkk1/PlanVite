@@ -31,7 +31,7 @@ class DrawerServices{
       print(response.statusCode);
       if (response.statusCode == 200) {
         String response1 = await response.stream.bytesToString();
-        final body = jsonDecode(response1)["data"];
+        final body = jsonDecode(response1)["data"]["projects"];
         var jsonEncode=   json.encode(body);
         var projects = projectsFromJson(jsonEncode.toString());
         return projects;

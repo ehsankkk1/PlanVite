@@ -26,7 +26,7 @@ SecureStorage storage=new SecureStorage();
     //print(Themes.theme);
     Screens = [
       HomeScreen(),
-      SprintScreen(),
+      SuperSprintScreen(),
     ];
     super.onInit();
 

@@ -1,86 +1,54 @@
 
-
 import 'dart:convert';
+import 'dart:io';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-import 'package:plane_vite/models/sub_task_model.dart';
-import 'package:plane_vite/models/sub_task_send.dart';
-
-import '../../config/server_config.dart';
-import '../../models/view_task_model.dart';
+import '../../config/user_information.dart';
 import 'package:http/http.dart' as http;
 
+import '../../constants.dart';
+import '../../models/task_model.dart';
+
+
 class ViewTaskService{
-var message;
-  Future<Data?>getViewTask(String token,id)async{
-    var url=Uri.parse(ServerConfig.domainNameServer + ServerConfig.viewTask +'/'+id.toString() );
-    var response = await http.get(url,
-        headers: {
-          'Accept': 'application/json',
-          'Authorization':'Bearer '+token,
-        }
 
-    );
-    print(response.statusCode);
-    print(response.body);
+Future <SubtasksList?> addSubTask(String name,String description,int id,BuildContext context) async{
+  loaderBoxGet(context);
+    try{
+      var headers = {
+        'Authorization': 'Bearer ' + UserInformation.User_Token
+      };
+      var request = http.MultipartRequest('POST',
+          Uri.parse('https://planvite.herokuapp.com/api/tasks/$id/subtasks'));
 
+      request.fields.addAll({
+        'name': name,
+        'description': description,
+      });
 
-    if(response.statusCode==200){
-      print('tryyyyy');
+      request.headers.addAll(headers);
 
-      var viewTask = viewTaskFromJson(response.body);
-      print(viewTask.data);
-      return viewTask.data;
-    }else {
-      return null;
-    }
-  }
-Future <bool> addSubTask(SubTaskSend task,String token,id) async{
+      http.StreamedResponse response = await request.send();
 
-  var url1=Uri.parse(ServerConfig.domainNameServer + ServerConfig.sendSubTask +'/'+id.toString() );
-  var response = await http.put(
-
-      url1,
-
-      headers: {
-
-        'Accept' : 'application/json',
-        'Authorization':'Bearer '+token,
-
-
-      },
-
-      body: {
-
-        'name':task.name,
-        'description':task.description,
-
-
-
-
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        String response1 = await response.stream.bytesToString();
+        final body = jsonDecode(response1)["data"];
+        var jsonEncode = json.encode(body);
+        SubtasksList oneTaskAdd = subtasksListFromJson(jsonEncode.toString());
+        Get.back();
+        successMessageBoxGet('${oneTaskAdd.name} \n Added to sub tasks', context);
+        return oneTaskAdd;
       }
 
-
-  );
-  print(response.statusCode);
-  print(response.body);
-
-
-  if(response.statusCode==200){
-
-    var jsonResponse = jsonDecode(response.body);
-   // var subTask = viewTaskFromJson(response.body);
-
-    message=jsonResponse['message'];
-    return true;
-  }
-  else if(response.statusCode==401){
-    var jsonResponse = jsonDecode(response.body);
-    message=jsonResponse['message'];
-    return false;
-  }
-  else{
-    return false;
-  }
+      else {
+        return null;
+      }
+    }on SocketException catch(e){
+      return null;
+    }
 
 }
 

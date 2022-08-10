@@ -142,7 +142,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                                       dueDate: _backLogController
                                                           .allSprints![index]
                                                           .tasks![index2]
-                                                          .deadline.toString(),
+                                                          .deadline,
                                                       priority: _backLogController
                                                           .allSprints![index]
                                                           .tasks![index2]

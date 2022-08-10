@@ -1,42 +1,26 @@
 import 'package:boardview/boardview_controller.dart';
 import 'package:get/get.dart';
-import 'package:plane_vite/config/project_info.dart';
-import 'package:plane_vite/config/user_information.dart';
-import 'package:plane_vite/screens/sprint/sprint_service.dart';
+import 'package:plane_vite/models/active_sprint_model.dart';
 import 'package:plane_vite/screens/sprint/sprint_service.dart';
 import '../../models/project_users.dart';
-import '../Drawer/drawer_controller.dart';
 import 'sprint_model.dart';
 
 
 class SprintController extends GetxController{
 
   List<Users> usersList=[];
-  int projectId = 0;
-  SprintService _service = new SprintService();
+  int projectId = 2;
+  final SprintService sprintService = new SprintService();
 
 
   BoardViewController boardViewController=BoardViewController();
 
-  final List<BoardListObject> listData = [
-    BoardListObject(title: "Pending",items: [
-      BoardItemObject(title: 'Optimize Model',dueDate: 'May 22'),
-      BoardItemObject(title: 'Build The app',priority: "High"),
-      BoardItemObject(title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper ac nulla in pretium. Nunc commodo tempor quam ac ullamcorper. Aliquam erat volutpat.',priority: "Low"),
+  List<ActiveSprint> listData = [];
 
-    ],
-    ),
-    BoardListObject(title: "Doing",items: [
-      BoardItemObject(title: 'Build The app',priority: "High"),
-      BoardItemObject(title: 'Aliquam vestibulum magna massa, a rutrum metus semper id. Aenean elementum lectus ac egestas laoreet. Fusce in odio sed ligula egestas tempor.',dueDate: "June 30"),
-    ]),
-    BoardListObject(title: "Done",items: [
-      BoardItemObject(title: 'Optimize Model',priority: "Medium",dueDate: 'May 22'),
-    ]),
-  ];
+  var isLoading = false.obs;
   @override
-  void onInit() {
-    print('project idddddddddddddddddddddd');
+  Future<void> onInit() async {
+
     //print(ProjectInformation.project_id);
     super.onInit();
   }
@@ -55,9 +39,24 @@ void onReady() async{
     super.onClose();
   }
 
-  void onChangeIndex(int index){
+  Future<void> onChangeIndex(int index) async {
+    isLoading.value = false;
+    update();
     projectId = index ;
-    print('get new data here '+ projectId.toString());
+    listData = await sprintService.getAllColumnsInActiveSprint(projectId);
+    print(listData);
+    if(listData.isNotEmpty){
+      isLoading.value = true;
+      update();
+    }
+  }
+  void changeToTrue(int? oldListIndex,int? oldItemIndex){
+    listData[oldListIndex!].tasks![oldItemIndex!].isloading = true;
+    update();
+  }
+  void changeToFalse(int? oldListIndex,int? oldItemIndex){
+    listData[oldListIndex!].tasks![oldItemIndex!].isloading = false;
+    update();
   }
 
 
