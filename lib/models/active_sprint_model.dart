@@ -9,15 +9,18 @@ String activeSprintToJson(List<ActiveSprint> data) => json.encode(List<dynamic>.
 
 class ActiveSprint {
   ActiveSprint({
+    this.status_id,
     this.statusName,
     this.tasks,
   });
 
   String? statusName;
+  int? status_id;
   List<Task>? tasks;
 
   factory ActiveSprint.fromJson(Map<String, dynamic> json) => ActiveSprint(
     statusName: json["status_name"],
+      status_id: json["status_id"],
     tasks: List<Task>.from(json["tasks"].map((x) => Task.fromJson(x))),
   );
 

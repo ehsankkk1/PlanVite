@@ -71,8 +71,11 @@ class SprintScreen extends GetView<SprintController> {
     List<BoardItem> items = [];
     for (int i = 0; i < _sprintController.listData.length; i++) {
       for (int j = 0; j < _sprintController.listData[i].tasks!.length; j++) {
-        items.insert(j, BoardItem(
-          draggable: true,
+        items.insert(
+          j,
+          BoardItem(
+          draggable: (_sprintController.listData[i].tasks![j].isMyTask!
+              || _sprintController.listData[i].tasks![j].isAdmin!),
           onStartDragItem: (int? listIndex, int? itemIndex,
               BoardItemState? state) {
 
@@ -93,7 +96,8 @@ class SprintScreen extends GetView<SprintController> {
 
             if(listIndex != oldListIndex){
               bool success = await _sprintController.sprintService.updateTaskStatues(
-                  2, _sprintController.listData[listIndex].tasks![itemIndex].id!);
+                  _sprintController.listData[listIndex].status_id!,
+                  _sprintController.listData[listIndex].tasks![itemIndex].id!);
               if (success) {
                 _sprintController.changeToFalse(listIndex,itemIndex);
               }

@@ -341,7 +341,6 @@ class ViewTaskScreen extends StatelessWidget {
                     return Center(
                       child: Column(
                         children: List.generate(
-
                             controller.viewTask!.subtasksList!.length,
                                 (index) =>
                                 _subTaskWidget(

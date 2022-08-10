@@ -526,7 +526,7 @@ class BackLogController extends GetxController{
           context
       );
       addSprintTextController.clear();
-      if(newStatues != []){
+      if(newStatues.isNotEmpty){
         allStatues = newStatues;
         update();
       }

@@ -36,6 +36,7 @@ class DrawerServices{
         var projects = projectsFromJson(jsonEncode.toString());
         return projects;
     }
+
       else {
     log(response.reasonPhrase.toString());
     return null;
@@ -100,6 +101,13 @@ class DrawerServices{
         successMessageBoxGet('${oneProjectAdd.name} \n Added to Projects', context);
         //successMessageBoxGet('$email Added',context);
         return oneProjectAdd;
+      }
+      else if(response.statusCode == 422){
+        Get.back();
+        String message = jsonDecode(response1)["errors"]["deadline"][0];
+        errorMessageBoxGet(message, context);
+        print(response.reasonPhrase);
+        return null;
       }
       else {
         Get.back();

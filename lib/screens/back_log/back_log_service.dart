@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -86,7 +87,7 @@ class BackLogService {
       http.StreamedResponse response = await request.send();
       String response1 = await response.stream.bytesToString();
       print(response.statusCode);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
 
         final body = jsonDecode(response1)["data"];
         var jsonEncode = json.encode(body);
@@ -128,8 +129,9 @@ class BackLogService {
 
       http.StreamedResponse response = await request.send();
 
-      print(response.statusCode);
+      log(response.statusCode.toString());
       String response1 = await response.stream.bytesToString();
+      log(response1);
       if (response.statusCode == 201) {
         final body = jsonDecode(response1)["data"];
         var jsonEncode = json.encode(body);
@@ -139,9 +141,16 @@ class BackLogService {
         //successMessageBoxGet('$email Added',context);
         return oneSprintAdd;
       }
+      else if(response.statusCode == 422){
+        Get.back();
+        String message = jsonDecode(response1)["errors"]["deadline"][0];
+        errorMessageBoxGet(message, context);
+        print(response.reasonPhrase);
+        return null;
+      }
       else {
         Get.back();
-        errorMessageBoxGet('Error', context);
+        errorMessageBoxGet("error", context);
         print(response.reasonPhrase);
         return null;
       }
@@ -170,10 +179,10 @@ class BackLogService {
       request.headers.addAll(headers);
 
       http.StreamedResponse response = await request.send();
-
       print(response.statusCode);
+      String response1 = await response.stream.bytesToString();
       if (response.statusCode == 201) {
-        String response1 = await response.stream.bytesToString();
+
         final body = jsonDecode(response1)["data"];
         var jsonEncode = json.encode(body);
         Task oneTaskAdd = oneTaskFromJson(jsonEncode.toString());
@@ -182,9 +191,16 @@ class BackLogService {
         //successMessageBoxGet('$email Added',context);
         return oneTaskAdd;
       }
+      else if(response.statusCode == 422){
+        Get.back();
+        String message = jsonDecode(response1)["errors"]["deadline"][0];
+        errorMessageBoxGet(message, context);
+        print(response.reasonPhrase);
+        return null;
+      }
       else {
         Get.back();
-        errorMessageBoxGet('Error', context);
+        errorMessageBoxGet("error", context);
         print(response.reasonPhrase);
         return null;
       }
@@ -228,7 +244,6 @@ class BackLogService {
       return [];
     }
   }
-
 
   Future<List<Statues>> getAllStatues(int projectID) async {
     try {

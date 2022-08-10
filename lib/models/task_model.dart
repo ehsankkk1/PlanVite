@@ -22,6 +22,8 @@ class Task {
     this.isloading,
     this.assigneeInfo,
     this.subtasksList,
+    this.isAdmin,
+    this.isMyTask,
   });
 
   int? id;
@@ -34,6 +36,8 @@ class Task {
   bool? deadlineNotified;
   bool? almostDeadlineNotified;
   int? userId;
+  bool? isAdmin;
+  bool? isMyTask;
   bool? isloading = false;
   AssigneeInfo? assigneeInfo;
   List<SubtasksList>? subtasksList;
@@ -49,6 +53,8 @@ class Task {
     deadlineNotified: json["deadline_notified"],
     almostDeadlineNotified: json["almost_deadline_notified"],
     userId: json["user_id"],
+    isAdmin: json["isAdmin"],
+    isMyTask: json["isMyTask"],
     assigneeInfo: json["assignee info"] != null?AssigneeInfo.fromJson(json["assignee info"]):null,
     subtasksList: List<SubtasksList>.from(json["subtasks list"].map((x) => SubtasksList.fromJson(x))),
   );
