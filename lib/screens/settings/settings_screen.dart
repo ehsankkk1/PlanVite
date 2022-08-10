@@ -58,7 +58,7 @@ SecureStorage storage = SecureStorage();
           },
           child: Text(
             'Cancel',
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
               fontSize: 18,
             ),
@@ -72,7 +72,7 @@ SecureStorage storage = SecureStorage();
           },
           child: Text(
             'Yes',
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
               fontSize: 18,
             ),
@@ -84,7 +84,7 @@ SecureStorage storage = SecureStorage();
       title: Center(
           child: Text(
             'are you sure you want to log out ? ',
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
             ),
           )),
@@ -112,7 +112,7 @@ SecureStorage storage = SecureStorage();
             title: Center(
               child: Text(
                 'Settings'.tr,
-                style: TextStyle(
+                style: TextStyle(fontFamily: 'HacenN',
                   color: context.theme.textTheme.caption!.color,
                 ),
               ),
@@ -149,7 +149,7 @@ SecureStorage storage = SecureStorage();
                                     alignment: Alignment(-0.5,-0.85),
                                     child: Text(
                                       'Language'.tr,
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'HacenN',
                                         color: context.theme.textTheme.caption!.color,
                                         fontSize: 25,
                                       ),
@@ -187,7 +187,7 @@ SecureStorage storage = SecureStorage();
                                     Align(
                                       alignment: Alignment(-0.45,0),
                                       child: Text('English',
-                                        style: TextStyle(
+                                        style: TextStyle(fontFamily: 'HacenN',
                                           color: context.theme.textTheme.caption!.color,
                                           fontSize: 20,
                                         ),
@@ -222,7 +222,7 @@ SecureStorage storage = SecureStorage();
                                       Align(
                                         alignment: Alignment(-0.45,0),
                                         child: Text('العربية',
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'HacenN',
                                             color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,
                                           ),
@@ -279,7 +279,7 @@ SecureStorage storage = SecureStorage();
                                     alignment: Alignment(-0.5,-0.85),
                                     child: Text(
                                       'Theme'.tr,
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'HacenN',
                                         color: context.theme.textTheme.caption!.color,
                                         fontSize: 25,
                                       ),
@@ -317,7 +317,7 @@ SecureStorage storage = SecureStorage();
                                     Align(
                                       alignment: Alignment(-0.45,0),
                                       child: Text('Pink'.tr,
-                                        style: TextStyle(
+                                        style: TextStyle(fontFamily: 'HacenN',
                                           color: context.theme.textTheme.caption!.color,
                                           fontSize: 20,
                                         ),
@@ -353,7 +353,7 @@ SecureStorage storage = SecureStorage();
                                       Align(
                                         alignment: Alignment(-0.45,0),
                                         child: Text('Dark'.tr,
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'HacenN',
                                             color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,
                                           ),
@@ -392,7 +392,7 @@ SecureStorage storage = SecureStorage();
                                       Align(
                                         alignment: Alignment(-0.42,0),
                                         child: Text('Purple'.tr,
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'HacenN',
                                             color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,
                                           ),
@@ -424,7 +424,7 @@ SecureStorage storage = SecureStorage();
                                       Align(
                                         alignment: Alignment(-0.45,0),
                                         child: Text('Blue'.tr,
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'HacenN',
                                             color: context.theme.textTheme.caption!.color,
                                             fontSize: 20,
                                           ),
@@ -471,7 +471,7 @@ SecureStorage storage = SecureStorage();
                                   alignment: Alignment(-0.5,-0.85),
                                   child: Text(
                                     'About'.tr,
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'HacenN',
                                       color: context.theme.textTheme.caption!.color,
                                       fontSize: 25,
                                     ),
@@ -512,7 +512,7 @@ SecureStorage storage = SecureStorage();
                                       },
                                       child: Text(
                                         'Log out'.tr,
-                                        style: TextStyle(
+                                        style: TextStyle(fontFamily: 'HacenN',
                                           color: context.theme.textTheme.caption!.color,
                                           fontSize: 25,
                                         ),

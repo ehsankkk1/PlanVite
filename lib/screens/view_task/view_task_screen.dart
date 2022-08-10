@@ -30,7 +30,7 @@ class ViewTaskScreen extends StatelessWidget {
           },
           child: Text(
             'Add',
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
             ),
           ),
@@ -40,7 +40,7 @@ class ViewTaskScreen extends StatelessWidget {
       title: Center(
           child: Text(
             'Add Subtask',
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
             ),
           )),
@@ -51,7 +51,7 @@ class ViewTaskScreen extends StatelessWidget {
             height: height * 0.01,
           ),
           TextField(
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.canvasColor,
             ),
             controller: subTaskNameController,
@@ -65,7 +65,7 @@ class ViewTaskScreen extends StatelessWidget {
               enabledBorder:
               const OutlineInputBorder(borderSide: BorderSide.none),
               hintText: 'Task Name'.tr,
-              hintStyle: const TextStyle(
+              hintStyle: const TextStyle(fontFamily: 'HacenN',
                 color: Colors.grey,
               ),
             ),
@@ -74,7 +74,7 @@ class ViewTaskScreen extends StatelessWidget {
             height: height * 0.01,
           ),
           TextField(
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.canvasColor,
             ),
             controller: subTaskDescriptionController,
@@ -88,7 +88,7 @@ class ViewTaskScreen extends StatelessWidget {
               enabledBorder:
               const OutlineInputBorder(borderSide: BorderSide.none),
               hintText: 'Add More Details to this Task'.tr,
-              hintStyle: const TextStyle(
+              hintStyle: const TextStyle(fontFamily: 'HacenN',
 
                 color: Colors.grey,
               ),
@@ -245,7 +245,7 @@ class ViewTaskScreen extends StatelessWidget {
                             // controller.dateBool == false
                             // ? 'Due Date'.tr
                             // : '${controller.year}/${controller.month}/${controller.day}',
-                            style: const TextStyle(
+                            style: const TextStyle(fontFamily: 'HacenN',
                               color: Colors.grey,
                               fontSize: 18,
                             ),
@@ -354,7 +354,7 @@ class ViewTaskScreen extends StatelessWidget {
                       // ),
                       Text(
                         'The task is assigned to : '.tr,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'HacenN',
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 20,
                         ),
@@ -391,7 +391,7 @@ class ViewTaskScreen extends StatelessWidget {
                                   ),
                                   Text(
                                     controller.viewTask!.assigneeInfo.name,
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'HacenN',
                                       color: context.theme.textTheme.caption!.color,
                                       fontSize: 22,
                                     ),
@@ -407,7 +407,7 @@ class ViewTaskScreen extends StatelessWidget {
                       ),
                       Text(
                         'Fields'.tr,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'HacenN',
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 20,
                         ),
@@ -434,7 +434,7 @@ class ViewTaskScreen extends StatelessWidget {
                                   ),
                                   Text(
                                     'Priority'.tr,
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'HacenN',
                                       color:
                                       context.theme.textTheme.caption!.color!,
                                       fontSize: 17,
@@ -511,7 +511,7 @@ class ViewTaskScreen extends StatelessWidget {
                       ),
                       Text(
                         'Description'.tr,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'HacenN',
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 20,
                         ),
@@ -542,7 +542,7 @@ class ViewTaskScreen extends StatelessWidget {
                                       'there is no description to this task'.tr,
                                       maxLines: 5,
                                       overflow: TextOverflow.ellipsis,
-                                      style: TextStyle(
+                                      style: TextStyle(fontFamily: 'HacenN',
                                         color:
                                         context.theme.textTheme.caption!.color!,
                                         fontSize: 17,
@@ -563,7 +563,7 @@ class ViewTaskScreen extends StatelessWidget {
                         children: [
                           Text(
                             controller.viewTask?.subtasksList !=[]? 'Subtasks'.tr:'',
-                            style: TextStyle(
+                            style: TextStyle(fontFamily: 'HacenN',
                               color: context.theme.textTheme.caption!.color!,
                               fontSize: 20,
                             ),
@@ -600,7 +600,7 @@ class ViewTaskScreen extends StatelessWidget {
 
                       Text(
                         controller.viewTask?.subtasksList!=[]?'':'Image '.tr,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'HacenN',
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 20,
                         ),
@@ -664,7 +664,7 @@ class _subTaskWidget extends StatelessWidget {
         child: Container(
           width: width * 0.5,
           decoration: BoxDecoration(
-            color: context.theme.primaryColorLight,
+            color: context.theme.cardColor,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Padding(
@@ -672,7 +672,7 @@ class _subTaskWidget extends StatelessWidget {
                 width * 0.05, width * 0.05, width * 0.05, width * 0.05),
             child: Text(
               title,
-              style: TextStyle(
+              style: TextStyle(fontFamily: 'HacenN',
                 color: context.theme.textTheme.caption!.color!,
                 fontSize: 17,
               ),

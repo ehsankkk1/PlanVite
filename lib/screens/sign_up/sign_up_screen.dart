@@ -68,14 +68,14 @@ class SignupScreen extends StatelessWidget {
                             children: [
                               Text(
                                 'Create New Account'.tr,
-                                style:  TextStyle(
+                                style:  TextStyle(fontFamily: 'HacenN',
                                   fontSize: 30,
                                   color:context.theme.textTheme.caption!.color,
                                 ),
                               ),
                               Text(
                                 'please fill in the form to continue'.tr,
-                                style:  TextStyle(
+                                style:  TextStyle(fontFamily: 'HacenN',
                                   fontSize: 18,
                                   color: context.theme.textTheme.caption!.color,
                                 ),
@@ -246,7 +246,7 @@ class SignupScreen extends StatelessWidget {
                                 },
                                 child: Text(
                                   'Register'.tr,
-                                  style: const TextStyle(
+                                  style: const TextStyle(fontFamily: 'HacenN',
                                     color: Colors.white,
                                     fontSize: 18,
                                   ),
@@ -261,7 +261,7 @@ class SignupScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     'Already have an account?'.tr,
-                                    style: const TextStyle(
+                                    style: const TextStyle(fontFamily: 'HacenN',
                                       color: kGrey,
                                       fontSize: 18,
                                     ),
@@ -277,7 +277,7 @@ class SignupScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Sign in'.tr,
-                                      style:  TextStyle(
+                                      style:  TextStyle(fontFamily: 'HacenN',
                                         color:context.theme.primaryColor,
                                         fontSize: 18,
                                       ),

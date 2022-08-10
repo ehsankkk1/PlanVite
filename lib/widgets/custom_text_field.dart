@@ -30,10 +30,13 @@ CustomTextField({required this.hintText,required this.icon,this.textInputType, t
         obscureText: passwordBool,
         keyboardType: textInputType,
 
+
          cursorColor: context.theme.primaryColor,
         decoration: InputDecoration(
           hintText: hintText.tr,
-          hintStyle:  TextStyle(color: context.theme.textTheme.caption!.color,),
+          hintStyle:  TextStyle(
+            fontFamily: 'HacenN',
+            color: context.theme.textTheme.caption!.color,),
           suffixIcon: GestureDetector(
             onTap: (){
 

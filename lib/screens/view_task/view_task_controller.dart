@@ -31,7 +31,7 @@ ViewTaskService service=new ViewTaskService();
 
    );
 
-  subTaskList2 = await service.addSubTask(subTask,UserInformation.User_Token,viewTask!.id);
+  addSubTaskStatus = await service.addSubTask(subTask,UserInformation.User_Token,viewTask!.id);
   viewTask?.subtasksList.add(subTaskList2.first);
   addSubTaskStatus=true;
 

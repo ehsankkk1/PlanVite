@@ -49,7 +49,7 @@ class SprintWidget extends StatelessWidget {
                                Flexible(
                                  child: Text(
                                   "$sprintName",
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'HacenN',
                                     fontSize: SizeConfig.blockSizeHorizontal*5.5,
                                     color: context.theme.textTheme.caption!.color,
                                   ),
@@ -72,7 +72,7 @@ class SprintWidget extends StatelessWidget {
                             Checkbox(value: checkBoxValue, onChanged: onChangedBoxValue,activeColor: context.theme.primaryColor,),
                              Text(
                               'Activate',
-                              style:  TextStyle(
+                              style:  TextStyle(fontFamily: 'HacenN',
                                 fontSize: 15,
                                 color: context.theme.textTheme.caption!.color,
                               ),)

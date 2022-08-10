@@ -34,7 +34,7 @@ var message;
       return null;
     }
   }
-Future<List<SubtasksList>> addSubTask(SubTaskSend task,String token,id) async{
+Future <bool> addSubTask(SubTaskSend task,String token,id) async{
 
   var url1=Uri.parse(ServerConfig.domainNameServer + ServerConfig.sendSubTask +'/'+id.toString() );
   var response = await http.put(
@@ -68,18 +68,18 @@ Future<List<SubtasksList>> addSubTask(SubTaskSend task,String token,id) async{
   if(response.statusCode==200){
 
     var jsonResponse = jsonDecode(response.body);
-    var subTask = viewTaskFromJson(response.body);
+   // var subTask = viewTaskFromJson(response.body);
 
     message=jsonResponse['message'];
-    return subTask.data.subtasksList;
+    return true;
   }
   else if(response.statusCode==401){
     var jsonResponse = jsonDecode(response.body);
     message=jsonResponse['message'];
-    return [];
+    return false;
   }
   else{
-    return [];
+    return false;
   }
 
 }

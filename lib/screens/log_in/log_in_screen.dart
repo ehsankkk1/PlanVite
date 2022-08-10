@@ -45,7 +45,7 @@ TextEditingController passwordController = new TextEditingController();
                             textDirection: TextDirection.ltr,
                             child: Text(
                               'Welcome Back'.tr,
-                              style:  TextStyle(
+                              style:  TextStyle(fontFamily: 'HacenN',
                                 fontSize: 10*SizeConfig.blockSizeHorizontal,
                                 color: context.theme.textTheme.caption!.color,
                               ),
@@ -53,7 +53,7 @@ TextEditingController passwordController = new TextEditingController();
                           ),
                           Text(
                             'please sign in to your account'.tr,
-                            style: TextStyle(
+                            style: TextStyle(fontFamily: 'HacenN',
                               fontSize: 5*SizeConfig.blockSizeHorizontal,
                               color:context.theme.textTheme.caption!.color,
                             ),
@@ -100,6 +100,7 @@ TextEditingController passwordController = new TextEditingController();
                                         },
                                         controller2: passwordController,
                                         hintText: 'Password',
+
                                         icon2: _logInController.passwordBool.value==true ? Icons.visibility_off:Icons.visibility,
                                         icon: Icons.lock,
                                       );
@@ -132,7 +133,7 @@ TextEditingController passwordController = new TextEditingController();
                                     },
                                     child: Text(
                                       'Login'.tr,
-                                      style:  TextStyle(
+                                      style:  TextStyle(fontFamily: 'HacenN',
                                         color: Colors.white,
                                         fontSize: 4*SizeConfig.blockSizeHorizontal,
                                       ),
@@ -156,7 +157,7 @@ TextEditingController passwordController = new TextEditingController();
                                 children: [
                                   Text(
                                     'Keep me sign in'.tr,
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'HacenN',
                                       fontSize: 4.5*SizeConfig.blockSizeHorizontal,
                                       color: context.theme.textTheme.caption!.color,
                                     ),
@@ -203,7 +204,7 @@ TextEditingController passwordController = new TextEditingController();
                                   children: [
                                     Text(
                                       'Sign up'.tr,
-                                      style:  TextStyle(
+                                      style:  TextStyle(fontFamily: 'HacenN',
                                         color: context.theme.primaryColor,
                                         fontSize: 4.5*SizeConfig.blockSizeHorizontal,
                                       ),
@@ -230,7 +231,7 @@ TextEditingController passwordController = new TextEditingController();
                                         child: Obx((){
                                           return Text(
                                             'English',
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'HacenN',
                                               color: _logInController.selectedLangBool.value
                                                   ? context.theme.primaryColor
                                                   : kGrey,
@@ -251,7 +252,7 @@ TextEditingController passwordController = new TextEditingController();
                                         child: Obx((){
                                           return  Text(
                                             'العربية',
-                                            style: TextStyle(
+                                            style: TextStyle(fontFamily: 'HacenN',
                                               color: _logInController.selectedLangBool.value
                                                   ? kGrey
                                                   :context.theme.primaryColor,

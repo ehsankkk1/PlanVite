@@ -37,12 +37,12 @@ double rating=0;
                         CircleAvatar(radius: 35,
                           backgroundColor: context.theme.textTheme.caption!
                               .color,
-                          child: const Text('E', style: TextStyle(
+                          child: const Text('E', style: TextStyle(fontFamily: 'HacenN',
                               fontSize: 30, fontWeight: FontWeight.bold),),),
                         const SizedBox(height: 25,),
                         Text(
                           _myDrawerController.userInfo!.name,
-                          style: TextStyle(
+                          style: TextStyle(fontFamily: 'HacenN',
                             fontSize: 18,
                             color: context.theme.textTheme.caption!.color,
                             fontWeight: FontWeight.bold,
@@ -70,7 +70,7 @@ double rating=0;
                         SizedBox(height: 10,),
                         Text(
                           _myDrawerController.userInfo?.phoneNumber==null?_myDrawerController.userInfo!.email:_myDrawerController.userInfo?.phoneNumber,
-                          style: TextStyle(
+                          style: TextStyle(fontFamily: 'HacenN',
                             fontSize: 16,
                             color: context.theme.textTheme.caption!.color,
                           ),
@@ -90,7 +90,7 @@ double rating=0;
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
                       'WorkSpaces'.tr,
-                      style:  TextStyle(
+                      style:  TextStyle(fontFamily: 'HacenN',
                         fontSize: 15,
                         color: context.theme.canvasColor,
                         fontWeight: FontWeight.bold,

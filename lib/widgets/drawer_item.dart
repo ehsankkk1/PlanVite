@@ -28,7 +28,7 @@ class DrawerItem extends StatelessWidget {
             const SizedBox(width: 25,),
             Text(
               name,
-              style:  TextStyle(
+              style:  TextStyle(fontFamily: 'HacenN',
                 fontSize: 15,
                 color: context.theme.textTheme.caption!.color,
                 fontWeight: FontWeight.bold

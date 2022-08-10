@@ -26,13 +26,13 @@ class UserCardWidget extends StatelessWidget {
           child: Row(
             children:  [
               showImage
-              ?CircleAvatar(radius:25,backgroundColor: context.theme.textTheme.caption!.color,child: Text('E',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),)
+              ?CircleAvatar(radius:25,backgroundColor: context.theme.textTheme.caption!.color,child: Text('E',style: TextStyle(fontFamily: 'HacenN',fontSize: 25,fontWeight: FontWeight.bold),),)
               :Container(),
               SizedBox(width: width * 0.05,),
               Flexible(
                 child: Text(
                   username,
-                  style:  TextStyle(
+                  style:  TextStyle(fontFamily: 'HacenN',
                     fontSize: 16,
                     color: context.theme.textTheme.caption!.color,
                   ),),

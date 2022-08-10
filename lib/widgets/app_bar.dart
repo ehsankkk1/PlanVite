@@ -34,7 +34,7 @@ class AppBarWidget extends StatelessWidget {
         ):Container(),
         Text(
           "$head",
-          style:  TextStyle(
+          style:  TextStyle(fontFamily: 'HacenN',
             fontSize: 18,
             color: context.textTheme.caption!.color,
             fontWeight: FontWeight.bold,

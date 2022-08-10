@@ -46,7 +46,7 @@ class TaskScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Title'.tr,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'HacenN',
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 20,
                         ),
@@ -55,7 +55,7 @@ class TaskScreen extends StatelessWidget {
                         padding: EdgeInsets.only(
                             left: 0, top: 0, right: width * 0.05),
                         child: TextField(
-                          style: const TextStyle(color: Colors.black),
+                          style: const TextStyle(fontFamily: 'HacenN',color: Colors.black),
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                           cursorColor: kMainPink.value,
@@ -93,7 +93,7 @@ class TaskScreen extends StatelessWidget {
                           ),
                           Text(
                             'Approved'.tr,
-                            style: const TextStyle(
+                            style: const TextStyle(fontFamily: 'HacenN',
                               color: Colors.grey,
                               fontSize: 18,
                             ),
@@ -155,7 +155,7 @@ class TaskScreen extends StatelessWidget {
                                   :controller.year==null?'Due Date'.tr
                                   : '${controller.year}/${controller
                                   .month}/${controller.day}',
-                              style: const TextStyle(
+                              style: const TextStyle(fontFamily: 'HacenN',
                                 color: Colors.grey,
                                 fontSize: 18,
                               ),
@@ -220,7 +220,7 @@ class TaskScreen extends StatelessWidget {
                             ),
                             child: DropdownButton(
                               hint: const Center(
-                                  child: Text('Select User to Assign', style: TextStyle(fontSize: 16),)),
+                                  child: Text('Select User to Assign', style: TextStyle(fontFamily: 'HacenN',fontSize: 16),)),
 
                               underline: Container(
 
@@ -229,7 +229,7 @@ class TaskScreen extends StatelessWidget {
                               isExpanded: true,
                               borderRadius: BorderRadius.circular(10),
 
-                              style: TextStyle(
+                              style: TextStyle(fontFamily: 'HacenN',
 
                                   color: context.theme.textTheme.caption!.color,
                                   fontSize: 16),
@@ -273,7 +273,8 @@ class TaskScreen extends StatelessWidget {
                       ),
                       Text(
                         'Fields'.tr,
-                        style: TextStyle(
+                        style: TextStyle(                            fontFamily: 'HacenN',
+
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 20,
                         ),
@@ -298,7 +299,7 @@ class TaskScreen extends StatelessWidget {
                                 ),
                                 Text(
                                   'Priority'.tr,
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'HacenN',
                                     color:
                                         context.theme.textTheme.caption!.color!,
                                     fontSize: 17,
@@ -374,7 +375,7 @@ class TaskScreen extends StatelessWidget {
                       ),
                       Text(
                         'Description'.tr,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'HacenN',
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 20,
                         ),
@@ -383,7 +384,7 @@ class TaskScreen extends StatelessWidget {
                         padding: EdgeInsets.only(
                             left: width * 0.05, top: 0, right: width * 0.05),
                         child: TextField(
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(fontFamily: 'HacenN',color: Colors.black),
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
                           cursorColor: kMainPink.value,
@@ -394,7 +395,7 @@ class TaskScreen extends StatelessWidget {
                             enabledBorder: const OutlineInputBorder(
                                 borderSide: BorderSide.none),
                             hintText: 'Add More Details to this Task'.tr,
-                            hintStyle: const TextStyle(
+                            hintStyle: const TextStyle(fontFamily: 'HacenN',
                               color: Colors.grey,
                             ),
                           ),
@@ -405,7 +406,7 @@ class TaskScreen extends StatelessWidget {
                       ),
                       Text(
                         'Sub Tasks'.tr,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'HacenN',
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 17,
                         ),
@@ -426,7 +427,7 @@ class TaskScreen extends StatelessWidget {
                           ),
                           Expanded(
                             child: TextField(
-                              style: const TextStyle(color: Colors.black),
+                              style: const TextStyle(fontFamily: 'HacenN',color: Colors.black),
                               controller: _taskController.subTaskController,
                               cursorColor: context.theme.primaryColor,
                               decoration: InputDecoration(
@@ -436,7 +437,7 @@ class TaskScreen extends StatelessWidget {
                                 enabledBorder: const OutlineInputBorder(
                                     borderSide: BorderSide.none),
                                 hintText: 'Add Sub Task'.tr,
-                                hintStyle: const TextStyle(
+                                hintStyle: const TextStyle(fontFamily: 'HacenN',
                                   color: Colors.grey,
                                 ),
                               ),
@@ -460,7 +461,7 @@ class TaskScreen extends StatelessWidget {
                       ),
                       Text(
                         'Image'.tr,
-                        style: TextStyle(
+                        style: TextStyle(fontFamily: 'HacenN',
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 20,
                         ),
@@ -539,7 +540,7 @@ class _subTaskWidget extends StatelessWidget {
                 width * 0.05, width * 0.05, width * 0.05, width * 0.05),
             child: Text(
               title,
-              style: TextStyle(
+              style: TextStyle(fontFamily: 'HacenN',
                 color: context.theme.textTheme.caption!.color!,
                 fontSize: 17,
               ),

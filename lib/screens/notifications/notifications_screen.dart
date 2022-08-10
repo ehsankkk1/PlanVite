@@ -75,7 +75,7 @@ class NotificationsScreen extends StatelessWidget {
                                       Flexible(
                                         child: Text(
                                           _notificationsController.notificationsList[index].body,
-                                          style: TextStyle(
+                                          style: TextStyle(fontFamily: 'HacenN',
                                             fontSize: 15,
                                             color: context.theme.textTheme.caption!.color,
                                           ),

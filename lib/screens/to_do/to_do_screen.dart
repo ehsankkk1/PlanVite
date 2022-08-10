@@ -50,7 +50,7 @@ class ToDoScreen extends StatelessWidget {
           },
           child: Text(
             'Add',
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
             ),
           ),
@@ -60,7 +60,7 @@ class ToDoScreen extends StatelessWidget {
       title: Center(
           child: Text(
             'Add Task',
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
             ),
           )),
@@ -71,7 +71,7 @@ class ToDoScreen extends StatelessWidget {
             height: height * 0.01,
           ),
           TextField(
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.canvasColor,
             ),
             controller: taskNameController,
@@ -85,7 +85,7 @@ class ToDoScreen extends StatelessWidget {
               enabledBorder:
               const OutlineInputBorder(borderSide: BorderSide.none),
               hintText: 'Task Name'.tr,
-              hintStyle: const TextStyle(
+              hintStyle: const TextStyle(fontFamily: 'HacenN',
                 color: Colors.grey,
               ),
             ),
@@ -94,7 +94,7 @@ class ToDoScreen extends StatelessWidget {
             height: height * 0.01,
           ),
           TextField(
-            style: TextStyle(
+            style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.canvasColor,
             ),
             controller: taskDescriptionController,
@@ -108,7 +108,7 @@ class ToDoScreen extends StatelessWidget {
               enabledBorder:
               const OutlineInputBorder(borderSide: BorderSide.none),
               hintText: 'Add More Details to this Task'.tr,
-              hintStyle: const TextStyle(
+              hintStyle: const TextStyle(fontFamily: 'HacenN',
 
                 color: Colors.grey,
               ),
@@ -214,7 +214,7 @@ class ToDoScreen extends StatelessWidget {
                         : _todoController.year == null ? 'Due Date'.tr
                         : '${_todoController.year}/${_todoController
                         .month}/${_todoController.day}',
-                    style: const TextStyle(
+                    style: const TextStyle(fontFamily: 'HacenN',
                       color: Colors.grey,
                       fontSize: 16,
                     ),
@@ -319,7 +319,7 @@ class ToDoScreen extends StatelessWidget {
                                 }
                                 return  Text(
                                   '${(double.parse(_todoController.completedTasksToAll)*100).round().toString()}%',
-                                  style: TextStyle(
+                                  style: TextStyle(fontFamily: 'HacenN',
                                       fontSize: 14,
                                       color: context.theme.primaryColor,
                                       fontWeight: FontWeight.w900),
@@ -336,7 +336,7 @@ class ToDoScreen extends StatelessWidget {
                   ),
                   Text(
                     'My Tasks',
-                    style: TextStyle(
+                    style: TextStyle(fontFamily: 'HacenN',
                       fontSize: 42,
                       color: context.theme.textTheme.caption!.color,
                       fontWeight: FontWeight.w500,
@@ -359,7 +359,7 @@ class ToDoScreen extends StatelessWidget {
                 return Text(
                   '${ _todoController.completedTasksInt.toString()} of ${_todoController.personalList.length.toString()}'.tr,
 
-                  style: const TextStyle(
+                  style: const TextStyle(fontFamily: 'HacenN',
                     color: kGrey,
                   ),
                 );
@@ -431,7 +431,7 @@ class _todo_item extends StatelessWidget {
 
                     children: [
                       Text('Task Details : '.tr,
-                        style: TextStyle(color: context.theme.textTheme.caption!
+                        style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                             .color),
                       ),
                       SizedBox(height: height * 0.05,),
@@ -442,18 +442,18 @@ class _todo_item extends StatelessWidget {
                             ? 'there is no description'
                             : _todoController.personalList[index].description
                             .toString(),
-                        style: TextStyle(color: context.theme.textTheme.caption!
+                        style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                             .color),
                       ),
                       SizedBox(height: height * 0.06,),
                       Text('Task Deadline : '.tr,
-                        style: TextStyle(color: context.theme.textTheme.caption!
+                        style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                             .color),
                       ),
                       SizedBox(height: height * 0.05,),
                       Text(
                         _todoController.personalList[index].deadline.toString(),
-                        style: TextStyle(color: context.theme.textTheme.caption!
+                        style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                             .color),
                       ),
                     ],
@@ -475,7 +475,7 @@ class _todo_item extends StatelessWidget {
                     TextButton(onPressed: () {
                       Navigator.pop(context);
                     }, child: Text('Cancel'.tr,
-                      style: TextStyle(color: Colors.grey,
+                      style: TextStyle(fontFamily: 'HacenN',color: Colors.grey,
                         fontSize: 18,
                       ),
                     ),),
@@ -487,7 +487,7 @@ class _todo_item extends StatelessWidget {
                               child: Text(
                                 'Are you sure you ant to delete this task ? '
                                     .tr,
-                                style: TextStyle(
+                                style: TextStyle(fontFamily: 'HacenN',
                                     color: context.theme.textTheme.caption!
                                         .color),
                               ),
@@ -500,7 +500,7 @@ class _todo_item extends StatelessWidget {
                                   TextButton(onPressed: () {
                                     Navigator.pop(context);
                                   }, child: Text('No'.tr,
-                                    style: TextStyle(color: Colors.grey,
+                                    style: TextStyle(fontFamily: 'HacenN',color: Colors.grey,
                                       fontSize: 18,
                                     ),
                                   ),),
@@ -509,7 +509,7 @@ class _todo_item extends StatelessWidget {
                                         _todoController.personalList[index].id);
                                     Navigator.pop(context);
                                   }, child: Text('Yes'.tr,
-                                    style: TextStyle(
+                                    style: TextStyle(fontFamily: 'HacenN',
                                       color: context.theme.primaryColor,
                                       fontSize: 18,
                                     ),
@@ -520,7 +520,7 @@ class _todo_item extends StatelessWidget {
                             ],
                           ));
                     }, child: Text('Delete Task'.tr,
-                      style: TextStyle(color: context.theme.primaryColor,
+                      style: TextStyle(fontFamily: 'HacenN',color: context.theme.primaryColor,
                         fontSize: 18,
                       ),
                     ),),
@@ -565,7 +565,7 @@ class _todo_item extends StatelessWidget {
                   Flexible(
                     child: Text(
                       _todoController.personalList[index].name,
-                      style: TextStyle(
+                      style: TextStyle(fontFamily: 'HacenN',
                         decoration: done
                             ? TextDecoration.lineThrough
                             : TextDecoration.none,
