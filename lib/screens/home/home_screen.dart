@@ -78,9 +78,9 @@ class HomeScreen extends StatelessWidget {
                                           backgroundColor: context.theme.primaryColorLight,
                                           radius: width > breakPoint ?130.0:110,
                                           lineWidth: width > breakPoint ?15.0:13,
-                                          percent: 0.7,
+                                          percent: double.parse(_homeController.home!.tasksDoneInAllProject),
                                           center:  Text(
-                                            "70%",
+                                              (double.parse(_homeController.home!.tasksDoneInAllProject).round()).toString()+'%',
                                             style: TextStyle(
                                                 fontFamily: 'HacenN',
                                                 fontSize:  6*SizeConfig.blockSizeHorizontal,
@@ -154,6 +154,8 @@ class HomeScreen extends StatelessWidget {
 
                                   daysGone: _homeController.home!.projects[index].daysGone,
                                   totalDays: _homeController.home!.projects[index].totalDays,
+                                      completedTasks: double.parse(_homeController.home!.projects[index].tasksDoneInProject),
+                                      projectToOthers: double.parse(_homeController.home!.projects[index].tasksDoneInProject)/double.parse(_homeController.home!.tasksDoneInAllProject)==0?1:double.parse(_homeController.home!.tasksDoneInAllProject),
 
 
 

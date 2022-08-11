@@ -18,7 +18,7 @@ Map <String, String> ar={
   'Password Is Empty ! ':'! كلمة المرور فارغة',
   'Confirm Password Is Empty ! ':'! تأكيد كلمة المرور فارغ',
   'Summary':'الملخص',
-  'Tasks\nDone':'انتهت المهام',
+  'Tasks\nDone':'مهام\n منتهية',
   'My Projects':'مشاريعي',
   'Sample Project':'مشروع معين',
   "Pending":"معلق",
@@ -79,11 +79,13 @@ Map <String, String> ar={
   'Loading...':'يحمل...',
   'are you sure you want to log out ? ':'هل أنت متأكد أنك تريد تسجيل الخروج ؟ ',
   'Only view my tasks':'فقط أظهر مهامي',
-  'Days left :':'الأيام المتبقية :',
+  'Days Left :':'الأيام المتبقية :',
   'Activate':'تفعيل',
   "Personal Task":"مهمة شخصية",
   "Personal Tasks":"مهام شخصية",
 ' of ': ' من ',
+  'Completed Tasks :':' المهام المنتهية :',
+  'This Project Progress to Others :':'تقدم هذا المشروع نسبة لباقي المشاريع :',
 
 
 

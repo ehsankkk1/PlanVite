@@ -13,12 +13,16 @@ class ProjectView extends StatelessWidget {
     this.head,
     this.daysGone,
     this.totalDays,
+    this.completedTasks,
+    this.projectToOthers,
 
   }) : super(key: key);
 
   String? head;
   int? daysGone;
   int? totalDays;
+  double? completedTasks;
+  double? projectToOthers;
 
 
   @override
@@ -46,7 +50,7 @@ class ProjectView extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                  Text(
-                  'Days left :'.tr,
+                  'Days Left :'.tr,
                   style: TextStyle(fontFamily: 'HacenN',
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: context.theme.textTheme.caption!.color,
@@ -60,28 +64,28 @@ class ProjectView extends StatelessWidget {
                   lineHeight: height * 0.015,
                 ),
                  Text(
-                  'header'.tr,
+                  'Completed Tasks :'.tr,
                   style: TextStyle(fontFamily: 'HacenN',
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: context.theme.textTheme.caption!.color,
                   ),
                 ),
                 LinearPercentIndicator(
-                  percent: 0.4,
+                  percent: completedTasks!,
                   animation: true,
                   backgroundColor: context.theme.primaryColorLight,
                   progressColor: context.theme.primaryColor,
                   lineHeight: height * 0.015,
                 ),
                  Text(
-                  'header'.tr,
+                  'This Project Progress to Others :'.tr,
                   style: TextStyle(fontFamily: 'HacenN',
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: context.theme.textTheme.caption!.color,
                   ),
                 ),
                 LinearPercentIndicator(
-                  percent: 0.9,
+                  percent: projectToOthers!,
                   animation: true,
                   backgroundColor: context.theme.primaryColorLight,
                   progressColor: context.theme.primaryColor,

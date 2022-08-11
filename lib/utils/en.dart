@@ -84,6 +84,8 @@ Map <String, String> en={
   "Personal Task":"Personal Task",
   "Personal Tasks":"Personal Tasks",
   ' of ': ' of ',
+  'Completed Tasks :':'Completed Tasks :',
+  'This Project Progress to Others :':'This Project Progress to Others :',
 
 
 
