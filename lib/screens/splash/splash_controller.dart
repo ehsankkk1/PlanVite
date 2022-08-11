@@ -17,10 +17,10 @@ class SplashController extends GetxController{
   @override
   void onInit() async{
 
-  // await FirebaseMessaging.instance.getToken().then((newToken){
-    //  UserInformation.Fcm_Token=newToken!;
+  await FirebaseMessaging.instance.getToken().then((newToken){
+     UserInformation.Fcm_Token=newToken!;
 
-  //  });
+   });
     storage=SecureStorage();
     validityToken=false;
     _service=SplashService();
@@ -59,9 +59,9 @@ class SplashController extends GetxController{
     }
   }
   Future<void> validToken(String token)async{
-    validityToken = await _service.checkValid(token,'f9zbyt03QNaQrULKJrsU6D:APA91bEX7lVRiLa-OY0BU-OQR1IwE6QrT4KywAm2RBdHGnO3rrkrudLs1B2U4UKwP_bVrdxnyuTIFVzG12kkaT-CasQE5GSudnPy9PWskod3to2YV78Pz4Ml8RfQf0zj8n3lPsIw4mhM',Get.locale.toString());
+    validityToken = await _service.checkValid(token,UserInformation.Fcm_Token,Get.locale.toString());
   }
 
-
+//'f9zbyt03QNaQrULKJrsU6D:APA91bEX7lVRiLa-OY0BU-OQR1IwE6QrT4KywAm2RBdHGnO3rrkrudLs1B2U4UKwP_bVrdxnyuTIFVzG12kkaT-CasQE5GSudnPy9PWskod3to2YV78Pz4Ml8RfQf0zj8n3lPsIw4mhM'
 
 }

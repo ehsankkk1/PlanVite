@@ -19,7 +19,7 @@ class SprintService {
       'Authorization':'Bearer '+UserInformation.User_Token,
     };
     var request = http.Request('GET',
-        Uri.parse('https://planvite.herokuapp.com/api/projects/1/users'));
+        Uri.parse('https://esraa.yaakoot.com.au/public/api/projects/1/users'));
 
     request.headers.addAll(headers);
 

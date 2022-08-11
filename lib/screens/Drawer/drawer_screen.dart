@@ -127,6 +127,10 @@ double rating=0;
                   DrawerItem(Icons.notifications, 35, 'Notifications'.tr, () {
                     Get.toNamed('/notifications');
                   }),
+
+                  DrawerItem(Icons.article, 35, 'Agenda'.tr, () {
+                    Get.toNamed('/agenda');
+                  }),
                   DrawerItem(Icons.settings, 35, 'Settings'.tr, () {
                     Get.toNamed('/settings');
                   }),

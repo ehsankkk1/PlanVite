@@ -5,7 +5,9 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:plane_vite/screens/Drawer/drawer_controller.dart';
 import 'package:plane_vite/screens/Drawer/drawer_screen.dart';
+import 'package:plane_vite/screens/agenda/agenda_screen.dart';
 import 'package:plane_vite/screens/back_log/back_log_screen.dart';
+import 'package:plane_vite/screens/bindings/agenda_binding.dart';
 import 'package:plane_vite/screens/bindings/backlog_binding.dart';
 import 'package:plane_vite/screens/bindings/sprint_binding.dart';
 import 'package:plane_vite/screens/bindings/drawer_binding.dart';
@@ -100,6 +102,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/settings', page: ()=>SettingsScreen(),binding:SettingsBinding()),
           GetPage(name: '/test2', page: ()=>Test(),binding:TestBinding()),
           GetPage(name: '/view_task', page: ()=>ViewTaskScreen(),binding: ViewTaskBinding()),
+          GetPage(name: '/agenda', page: ()=>AgendaScreen(),binding: AgendaBinding()),
         ],
         builder: EasyLoading.init(),
       );
