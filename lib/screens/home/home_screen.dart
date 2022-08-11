@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                                           lineWidth: width > breakPoint ?15.0:13,
                                           percent: double.parse(_homeController.home!.tasksDoneInAllProject),
                                           center:  Text(
-                                              (double.parse(_homeController.home!.tasksDoneInAllProject).round()).toString()+'%',
+                                              (double.parse(_homeController.home!.tasksDoneInAllProject)*100).round().toString()+'%',
                                             style: TextStyle(
                                                 fontFamily: 'HacenN',
                                                 fontSize:  6*SizeConfig.blockSizeHorizontal,
