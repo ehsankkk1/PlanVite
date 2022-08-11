@@ -18,121 +18,151 @@ import 'home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   final MyDrawerController _myDrawerController = Get.find();
+  HomeController _homeController =   Get.put(HomeController());
+  //HomeController _homeController=Get.find();
 
   @override
   Widget build(BuildContext context) {
     SkeletonController _skeletonController =Get.find();
     SizeConfig().init(context);
-    HomeController _homeController =   Get.put(HomeController());
+
 
       return Scaffold(
         backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      width * 0.05, height * 0.025, width * 0.05, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // notification and drawer
-                      AppBarWidget(
-                        controller: _myDrawerController,
-                        head: 'Home'.tr,
-                      ),
-                      SizedBox(
-                        height: height*0.02,
-                      ),
-                      // circular indicator widget
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: width * 0.05),
-                        child: Container(
-                          height: width * 0.8,
-                          child: WhiteBox(
-                            width: double.infinity,
-                            height: double.infinity,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                 Text(
-                                  'Summary'.tr,
-                                  style:  TextStyle(
-                                    fontFamily: 'HacenN',
-                                    fontSize: 7*SizeConfig.blockSizeHorizontal,
-                                    color: context.theme.textTheme.caption!.color,
-                                  ),
-                                ),
-                                CircularPercentIndicator(
-                                  animation: true,
-                                  circularStrokeCap: CircularStrokeCap.round,
-                                  reverse: true,
-                                  progressColor: context.theme.primaryColor,
-                                  backgroundColor: context.theme.primaryColorLight,
-                                  radius: width > breakPoint ?130.0:110,
-                                  lineWidth: width > breakPoint ?15.0:13,
-                                  percent: 0.7,
-                                  center:  Text(
-                                    "70%",
-                                    style: TextStyle(
+            child: Obx((){
+              if(_homeController.isLoading.isFalse){
+                return Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          width * 0.05, height * 0.025, width * 0.05, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // notification and drawer
+                          AppBarWidget(
+                            controller: _myDrawerController,
+                            head: 'Home'.tr,
+                          ),
+                          SizedBox(
+                            height: height*0.02,
+                          ),
+                          // circular indicator widget
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                            child: Container(
+                              height: width * 0.8,
+                              child: WhiteBox(
+                                width: double.infinity,
+                                height: double.infinity,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      'Summary'.tr,
+                                      style:  TextStyle(
                                         fontFamily: 'HacenN',
-                                        fontSize:  6*SizeConfig.blockSizeHorizontal,
+                                        fontSize: 7*SizeConfig.blockSizeHorizontal,
+                                        color: context.theme.textTheme.caption!.color,
+                                      ),
+                                    ),
+                                    CircularPercentIndicator(
+                                      animation: true,
+                                      circularStrokeCap: CircularStrokeCap.round,
+                                      reverse: true,
+                                      progressColor: context.theme.primaryColor,
+                                      backgroundColor: context.theme.primaryColorLight,
+                                      radius: width > breakPoint ?130.0:110,
+                                      lineWidth: width > breakPoint ?15.0:13,
+                                      percent: 0.7,
+                                      center:  Text(
+                                        "70%",
+                                        style: TextStyle(
+                                            fontFamily: 'HacenN',
+                                            fontSize:  6*SizeConfig.blockSizeHorizontal,
+                                            color: context.theme.primaryColor,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    ),
+                                    Text(
+                                      'Tasks\nDone'.tr,
+                                      style:  TextStyle(
+                                        fontFamily: 'HacenN',
+                                        fontSize: 6*SizeConfig.blockSizeHorizontal,
                                         color: context.theme.primaryColor,
-                                        fontWeight: FontWeight.w900),
-                                  ),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  'Tasks\nDone'.tr,
-                                  style:  TextStyle(
-                                    fontFamily: 'HacenN',
-                                    fontSize: 6*SizeConfig.blockSizeHorizontal,
-                                    color: context.theme.primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                      ),
 
-                      SizedBox(
-                        height: height*0.05,
-                      ),
-                      Center(
-                        child: Text(
-                          'My Projects'.tr,
-                          style:  TextStyle(fontFamily: 'HacenN',
-                            color: context.theme.textTheme.caption!.color,
-                            fontSize:6*SizeConfig.blockSizeHorizontal,
+                          SizedBox(
+                            height: height*0.05,
                           ),
+                          Center(
+                            child: Text(
+                              'My Projects'.tr,
+                              style:  TextStyle(fontFamily: 'HacenN',
+                                color: context.theme.textTheme.caption!.color,
+                                fontSize:6*SizeConfig.blockSizeHorizontal,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    // Page view
+                    GestureDetector(
+                      onTap: (){
+                        //_skeletonController.changeScreen(1);
+                      },
+                      child: Container(
+                        height: width * 0.9,
+                        child: PageView(
+                          controller:  PageController(viewportFraction: 0.80),
+                          scrollDirection: Axis.horizontal,
+                          children: List.generate(
+                            _homeController.home?.projects==null?0:_homeController.home!.projects.length,
+                            //_homeController.projects!.projects==[]?0:_homeController.projects!.projects.length,
+                                (index) => ProjectView(head: _homeController.home!.projects[index].name,
+
+                                  daysGone: _homeController.home!.projects[index].daysGone,
+                                  totalDays: _homeController.home!.projects[index].totalDays,
+
+
+
+
+                                ),
+                          ),
+
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                // Page view
-                GestureDetector(
-                  onTap: (){
-                    //_skeletonController.changeScreen(1);
-                  },
-                  child: Container(
-                    height: width * 0.9,
-                    child: PageView(
-                      controller:  PageController(viewportFraction: 0.80),
-                      scrollDirection: Axis.horizontal,
-                      children: List.generate(
-                        3,
-                            (index) => ProjectView(),
-                      ),
-
+                    )
+                  ],
+                );
+              }
+              return Center(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: height*0.3,
                     ),
-                  ),
-                )
-              ],
-            ),
+                    CircularProgressIndicator(
+
+                      color: context.theme.primaryColor,
+                      backgroundColor: context.theme.primaryColorLight,
+                    ),
+                  ],
+                ),
+              );
+
+            })
           ),
         ),
       );

@@ -34,11 +34,15 @@ double rating=0;
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(radius: 35,
-                          backgroundColor: context.theme.textTheme.caption!
-                              .color,
-                          child: const Text('E', style: TextStyle(fontFamily: 'HacenN',
-                              fontSize: 30, fontWeight: FontWeight.bold),),),
+                        CircleAvatar(
+                          radius: 37,
+                          backgroundColor: context.theme.primaryColor,
+                          child:  CircleAvatar(
+                            radius: 35,
+                            backgroundColor: Colors.black12,
+                            foregroundImage: AssetImage('images/user.jpg'),
+                          ),
+                        ),
                         const SizedBox(height: 25,),
                         Text(
                           _myDrawerController.userInfo!.name,
