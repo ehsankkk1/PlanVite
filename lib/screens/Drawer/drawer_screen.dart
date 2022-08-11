@@ -6,6 +6,7 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:plane_vite/config/project_info.dart';
 import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 import 'package:plane_vite/widgets/drawer_item.dart';
+import '../../constants.dart';
 import '../../skeleton/skeleton_controller.dart';
 import '../home/home_controller.dart';
 import 'drawer_controller.dart';
@@ -57,21 +58,37 @@ double rating=0;
                         SizedBox(
                           height: 10,
                         ),
-                        RatingBar.builder(
-                          minRating: 0.5,
-                          allowHalfRating: true,
-                          itemSize: 25,
-                          updateOnDrag: false,
-                          initialRating: _myDrawerController.userInfo!.rating!.toDouble(),
-                          glow: true,
-                          ignoreGestures: true,
+                        Row(
+                          children: [
+                            RatingBar.builder(
+                              minRating: 0.5,
+                              allowHalfRating: true,
+                              itemSize: 25,
+                              updateOnDrag: false,
+                              initialRating: _myDrawerController.userInfo!.rating!.toDouble(),
+                              glow: true,
+                              ignoreGestures: true,
 
-                          itemBuilder: (context, _) =>
-                              Icon(Icons.star, color: Color(0xFFFFAAA5),),
-                          onRatingUpdate: (rat) {
-                           // controller.rating.value = rating.toInt();
+                              itemBuilder: (context, _) =>
+                                  Icon(Icons.star, color: Color(0xFFFFAAA5),),
+                              onRatingUpdate: (rat) {
+                               // controller.rating.value = rating.toInt();
 
-                          },),
+                              },),
+                            SizedBox(width: width*0.02,),
+                            Column(
+                              children: [
+                                SizedBox(height: 6,),
+                                Text('rated by  '+_myDrawerController.userInfo!.userRatingCount.toString()+'  users',
+                                 style: TextStyle(fontFamily: 'HacenN',
+                                    fontSize: 16,
+                                    color: context.theme.textTheme.caption!.color,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                         
                         SizedBox(height: 10,),
                         Text(
