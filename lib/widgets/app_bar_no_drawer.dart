@@ -11,10 +11,12 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
     this.head,
     this.save=true,
     this.visible=true,
+    this.onSaveTap,
   }) : super(key: key);
 
   String? head;
   bool save;
+  Function()? onSaveTap;
   bool visible;
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
           ),
         ),
         save?InkWell(
-          onTap: () {Get.back();},
+          onTap: onSaveTap,
           child: Visibility(
             visible: visible,
             child: Icon(

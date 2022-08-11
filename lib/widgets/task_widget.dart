@@ -17,6 +17,9 @@ class TaskWidget extends StatelessWidget {
     this.avatar,
     this.loading=false,
     this.task,
+    this.backLog=false,
+    this.sprintIndex,
+    this.taskIndex,
   });
 
   String? name;
@@ -26,6 +29,9 @@ class TaskWidget extends StatelessWidget {
   Image? avatar;
   bool? loading;
   Task? task;
+  bool? backLog;
+  int? sprintIndex;
+  int? taskIndex;
   @override
 
   Widget build(BuildContext context) {
@@ -103,13 +109,13 @@ class TaskWidget extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    task!.isAdmin!
+                    task!.isAdmin! && backLog!
                         ?IconButton(icon:  const Icon(Icons.add,color: Colors.blueAccent,),
                       onPressed: () {
-                          Get.toNamed('/task',arguments: task);
+                          Get.toNamed('/task',arguments: [task,taskIndex,sprintIndex]);
                           },)
                         :Container(),
-                    task!.isAdmin!
+                    task!.isAdmin!  && backLog!
                         ?IconButton(icon:  const Icon(Icons.delete,color: Colors.red,),
                       onPressed: () {
                           print('delete');

@@ -23,6 +23,7 @@ class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TaskController _taskController = Get.find();
+
     return Directionality(
       textDirection: TextDirection.ltr,
       child: SafeArea(child: Obx(() {
@@ -35,6 +36,9 @@ class TaskScreen extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(width * 0.03, height * 0.025,
                       width * 0.03, height * 0.025),
                   child: AppBarWidgetNoDrawer(
+                    onSaveTap: (){
+                      _taskController.editTaskTap(context);
+                    },
                     head: "Task".tr,
                   ),
                 ),
@@ -193,52 +197,58 @@ class TaskScreen extends StatelessWidget {
                               color: context.theme.primaryColorLight,
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            child: DropdownButton(
-                              hint:  Center(
-                                  child: Text('Select User to Assign'.tr, style: TextStyle(fontFamily: 'HacenN',fontSize: 16),)),
-
-                              underline: Container(
-
+                            child: Theme(
+                              data: Theme.of(context).copyWith(
+                                canvasColor: context.theme.primaryColorLight,
                               ),
-                              menuMaxHeight: 225,
-                              isExpanded: true,
-                              borderRadius: BorderRadius.circular(10),
+                              child: DropdownButton(
+                                hint:  Center(
+                                    child: Text('Select User to Assign'.tr,
+                                      style: TextStyle(color:context.theme.textTheme.caption!.color,fontFamily: 'HacenN',fontSize: 16),)),
 
-                              style: TextStyle(fontFamily: 'HacenN',
+                                underline: Container(
 
-                                  color: context.theme.textTheme.caption!.color,
-                                  fontSize: 16),
-                              value: _taskController.allUserDropDownValue,
-                              onChanged: (newValue) {
-                                print(newValue.toString());
+                                ),
+                                menuMaxHeight: 225,
+                                isExpanded: true,
+                                borderRadius: BorderRadius.circular(10),
 
-                                _taskController.setAllUserDropDownValue(int.parse(newValue.toString()));
-                              },
-                              items: _taskController.allUsersDropDown.map((user) {
-                                return DropdownMenuItem(
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 8),
-                                    child: Row(
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 20,
-                                          backgroundColor: context.theme
-                                              .primaryColor,
-                                          child: const CircleAvatar(
+                                style: TextStyle(
+                                    fontFamily: 'HacenN',
+                                    color: context.theme.textTheme.caption!.color,
+                                    fontSize: 16),
+                                value: _taskController.allUserDropDownValue,
+                                onChanged: (newValue) {
+                                  print(newValue.toString());
+
+                                  _taskController.setAllUserDropDownValue(int.parse(newValue.toString()));
+                                },
+                                items: _taskController.allUsersDropDown.map((user) {
+                                  return DropdownMenuItem(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(vertical: 8),
+                                      child: Row(
+                                        children: [
+                                          CircleAvatar(
                                             radius: 20,
-                                            backgroundColor: Colors.black12,
-                                            foregroundImage: AssetImage(
-                                                'images/joey.png'),
+                                            backgroundColor: context.theme
+                                                .primaryColor,
+                                            child: const CircleAvatar(
+                                              radius: 20,
+                                              backgroundColor: Colors.black12,
+                                              foregroundImage: AssetImage(
+                                                  'images/joey.png'),
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(width: width*0.05,),
-                                        Center(child: Text(user.name!)),
-                                      ],
+                                          SizedBox(width: width*0.05,),
+                                          Center(child: Text(user.name!)),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  value: user.id,
-                                );
-                              }).toList(),
+                                    value: user.id,
+                                  );
+                                }).toList(),
+                              ),
                             ),
                           );
                         },
@@ -248,8 +258,8 @@ class TaskScreen extends StatelessWidget {
                       ),
                       Text(
                         'Fields'.tr,
-                        style: TextStyle(                            fontFamily: 'HacenN',
-
+                        style: TextStyle(
+                          fontFamily: 'HacenN',
                           color: context.theme.textTheme.caption!.color!,
                           fontSize: 20,
                         ),
@@ -362,6 +372,7 @@ class TaskScreen extends StatelessWidget {
                           style: TextStyle(fontFamily: 'HacenN',color: Colors.black),
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
+                          controller: _taskController.taskDescriptionTextFieldController,
                           cursorColor: kMainPink.value,
                           decoration: InputDecoration(
                             focusedBorder: const UnderlineInputBorder(
