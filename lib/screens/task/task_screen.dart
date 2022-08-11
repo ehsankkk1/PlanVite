@@ -146,49 +146,6 @@ class TaskScreen extends StatelessWidget {
                       SizedBox(
                         height: height * 0.03,
                       ),
-                      /*Material(
-                            elevation: 6,
-                            borderRadius: BorderRadius.circular(15),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: context.theme.cardColor,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 15),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: width * 0.03,
-                                    ),
-                                    CircleAvatar(
-                                      radius: 30,
-                                      backgroundColor: context.theme
-                                          .primaryColor,
-                                      child: const CircleAvatar(
-                                        radius: 29,
-                                        backgroundColor: Colors.black12,
-                                        foregroundImage: AssetImage(
-                                            'images/joey.png'),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.05,
-                                    ),
-                                    Flexible(
-                                      child: Text(
-                                        'Ehsan abourshed',
-                                        style: TextStyle(
-                                            color: context.theme.textTheme
-                                                .caption!.color, fontSize: 18),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),*/
                       GetBuilder<TaskController>(
                         assignId: true,
                         builder: (_taskController) {
@@ -223,7 +180,7 @@ class TaskScreen extends StatelessWidget {
 
                                   _taskController.setAllUserDropDownValue(int.parse(newValue.toString()));
                                 },
-                                items: _taskController.allUsersDropDown.map((user) {
+                                items: _taskController.allProjectUsers.map((user) {
                                   return DropdownMenuItem(
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(vertical: 8),

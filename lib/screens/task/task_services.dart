@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../config/server_config.dart';
 import '../../config/user_information.dart';
-
 import '../../constants.dart';
 import '../../models/task_model.dart';
 import 'package:http/http.dart' as http;
@@ -27,12 +26,13 @@ class TaskService{
         "name":newTask.name!,
         "priority":newTask.priority!,
         "description":newTask.description!,
-        "userId":newTask.userId.toString(),
+        "user_id": newTask.userId.toString(),
         "deadline":newTask.deadline.toString(),
       };
       request.headers.addAll(headers);
       http.StreamedResponse response = await request.send();
       String response1 = await response.stream.bytesToString();
+      print(response.statusCode);
       if (response.statusCode == 200) {
         print(response1);
         Get.back();

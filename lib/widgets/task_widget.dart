@@ -69,7 +69,7 @@ class TaskWidget extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 15,),
-                          priority != null ? Padding(
+                          priority != '' || priority != null ? Padding(
                             padding: const EdgeInsets.only(bottom: 15),
                             child: PriorityWidget(name:priority!,colour:context.theme.primaryColor,textColor:context.theme.textTheme.caption!.color!),
                           ):Container(),

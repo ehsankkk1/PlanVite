@@ -23,7 +23,7 @@ class ProjectUser {
   String? email;
   String? name;
   num? rating;
-  num? phoneNumber;
+  String? phoneNumber;
   String? image;
 
   factory ProjectUser.fromJson(Map<String, dynamic> json) => ProjectUser(

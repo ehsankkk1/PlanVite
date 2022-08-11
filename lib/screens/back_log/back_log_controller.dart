@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/models/statues.dart';
-import 'package:plane_vite/screens/back_log/back_log_model.dart';
+import 'package:plane_vite/models/project_user_model.dart';
 import 'package:plane_vite/screens/back_log/back_log_service.dart';
 import '../../constants.dart';
 import '../../models/sprint_model.dart';

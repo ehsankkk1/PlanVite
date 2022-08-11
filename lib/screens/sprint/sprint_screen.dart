@@ -148,7 +148,7 @@ class SprintScreen extends GetView<SprintController> {
                   width * 0.03, height * 0.025, width * 0.03, 0),
               child: AppBarWidget(
                 controller: _myDrawerController,
-                head: 'Sample Project'.tr,
+                head: 'ِActive Sprint'.tr,
                 backLog: true,
                 onBacklogPressed: () {
                   Get.toNamed(

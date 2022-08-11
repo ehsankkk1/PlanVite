@@ -10,7 +10,7 @@ import '../../constants.dart';
 import '../../models/sprint_model.dart';
 import '../../models/statues.dart';
 import '../../models/task_model.dart';
-import 'back_log_model.dart';
+import '../../models/project_user_model.dart';
 import 'package:flutter/material.dart';
 
 class BackLogService {
@@ -222,10 +222,12 @@ class BackLogService {
       request.headers.addAll(headers);
 
       http.StreamedResponse response = await request.send();
+
       print(response.statusCode);
 
       if (response.statusCode == 200) {
         String response1 = await response.stream.bytesToString();
+        log(response1);
         final body = jsonDecode(response1)["data"];
         var jsonEncode = json.encode(body);
         List<Sprint> projectUser = sprintFromJson(jsonEncode.toString());

@@ -102,7 +102,7 @@ class MyApp extends StatelessWidget {
           GetPage(name: '/settings', page: ()=>SettingsScreen(),binding:SettingsBinding()),
           GetPage(name: '/test2', page: ()=>Test(),binding:TestBinding()),
           GetPage(name: '/view_task', page: ()=>ViewTaskScreen(),binding: ViewTaskBinding()),
-          GetPage(name: '/agenda', page: ()=>AgendaScreen(),binding: AgendaBinding()),
+          //GetPage(name: '/agenda', page: ()=>AgendaScreen(),binding: AgendaBinding()),
         ],
         builder: EasyLoading.init(),
       );

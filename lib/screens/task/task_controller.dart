@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:plane_vite/models/project_user_model.dart';
 import 'package:plane_vite/screens/task/task_services.dart';
-
-import '../../models/drop_down_model_all_users.dart';
 import '../../models/task_model.dart';
 import '../back_log/back_log_controller.dart';
+import '../sprint/sprint_controller.dart';
 
 
 class TaskController extends GetxController{
@@ -22,15 +22,10 @@ class TaskController extends GetxController{
   int? taskIndex=Get.arguments[1];
   int? sprintIndex=Get.arguments[2];
 
-  List<DropDownUser> allUsersDropDown = [
-    DropDownUser(name: 'Ehsan',id: 1),
-    DropDownUser(name: 'Johny',id: 2),
-    DropDownUser(name: 'Rita',id: 3),
-    DropDownUser(name: 'Ehsan1',id: 4),
-    DropDownUser(name: 'Johny1',id: 5),
-    DropDownUser(name: 'Rita1',id: 6),
-  ];
-  int? allUserDropDownValue ;
+  List<ProjectUser> allProjectUsers=[];
+  int? allUserDropDownValue;
+
+
   late TextEditingController taskTitleTextFieldController;
   late TextEditingController taskDescriptionTextFieldController;
   TextEditingController subTaskController= TextEditingController();
@@ -42,9 +37,19 @@ class TaskController extends GetxController{
     high=false.obs;
     approved=false.obs;
     fileBool=false.obs;
+    allProjectUsers= _backLogController.allProjectUsers;
+    SprintController _sprintController= Get.find();
     taskTitleTextFieldController = TextEditingController(text: oneTask!.name);
     taskDescriptionTextFieldController  = TextEditingController(text: oneTask!.description);
+
     addTaskEndTime.value = oneTask!.deadline;
+    if(oneTask!.userId == 0){
+      allUserDropDownValue = null;
+    }else{
+      allUserDropDownValue = oneTask!.userId;
+    }
+
+
 
     if(oneTask!.priority == "low"){
       PickLow();
@@ -65,6 +70,7 @@ class TaskController extends GetxController{
       oneTask!.name = taskTitleTextFieldController.text;
       oneTask!.description = taskDescriptionTextFieldController.text;
       oneTask!.deadline = addTaskEndTime.value;
+      oneTask!.userId = allUserDropDownValue;
       bool success =await _taskService
           .editTask(
           oneTask!,
@@ -73,6 +79,13 @@ class TaskController extends GetxController{
       );
       if(success){
         _backLogController.allSprints![sprintIndex!].tasks![taskIndex!] = oneTask!;
+
+        for(int i=0;i<allProjectUsers.length;i++){
+          if(allProjectUsers[i].id == oneTask!.userId){
+            _backLogController.allSprints![sprintIndex!].tasks![taskIndex!].assigneeInfo
+            = allProjectUsers[i];
+          }
+        }
         _backLogController.update();
         Get.back();
       }

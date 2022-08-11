@@ -2,6 +2,9 @@
 
 import 'dart:convert';
 
+import 'package:plane_vite/models/project_user_model.dart';
+import 'package:plane_vite/models/project_user_model.dart';
+
 
 Task oneTaskFromJson(String str) => Task.fromJson(json.decode(str));
 
@@ -39,7 +42,7 @@ class Task {
   bool? isAdmin;
   bool? isMyTask;
   bool? isloading = false;
-  AssigneeInfo? assigneeInfo;
+  ProjectUser? assigneeInfo;
   List<SubtasksList>? subtasksList;
 
   factory Task.fromJson(Map<String, dynamic> json) => Task(
@@ -55,7 +58,7 @@ class Task {
     userId: json["user_id"],
     isAdmin: json["isAdmin"],
     isMyTask: json["isMyTask"],
-    assigneeInfo: json["assignee info"] != null?AssigneeInfo.fromJson(json["assignee info"]):null,
+    assigneeInfo: json["assignee info"] != null?ProjectUser.fromJson(json["assignee info"]):null,
     subtasksList: List<SubtasksList>.from(json["subtasks list"].map((x) => SubtasksList.fromJson(x))),
   );
 
@@ -71,41 +74,6 @@ class Task {
   };
 }
 
-class AssigneeInfo {
-  AssigneeInfo({
-    this.id,
-    this.email,
-    this.name,
-    this.rating,
-    this.phoneNumber,
-    this.image,
-  });
-
-  int? id;
-  String? email;
-  String? name;
-  num? rating;
-  num? phoneNumber;
-  String? image;
-
-  factory AssigneeInfo.fromJson(Map<String, dynamic> json) => AssigneeInfo(
-    id: json["id"],
-    email: json["email"],
-    name: json["name"],
-    rating: json["rating"],
-    phoneNumber: json["phone_number"],
-    image: json["image"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "email": email,
-    "name": name,
-    "rating": rating,
-    "phone_number": phoneNumber,
-    "image": image,
-  };
-}
 SubtasksList subtasksListFromJson(String str) => SubtasksList.fromJson(json.decode(str));
 class SubtasksList {
   SubtasksList({
