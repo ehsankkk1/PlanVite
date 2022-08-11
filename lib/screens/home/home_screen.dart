@@ -31,9 +31,9 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: context.theme.backgroundColor,
         body: SafeArea(
           child: SingleChildScrollView(
-            child: Obx((){
-              if(_homeController.isLoading.isFalse){
-                return Column(
+            child:
+
+                 Column(
                   children: [
                     Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -68,24 +68,42 @@ class HomeScreen extends StatelessWidget {
                                         color: context.theme.textTheme.caption!.color,
                                       ),
                                     ),
-                                    CircularPercentIndicator(
-                                      animation: true,
-                                      circularStrokeCap: CircularStrokeCap.round,
-                                      reverse: true,
-                                      progressColor: context.theme.primaryColor,
-                                      backgroundColor: context.theme.primaryColorLight,
-                                      radius: width > breakPoint ?130.0:110,
-                                      lineWidth: width > breakPoint ?15.0:13,
-                                      percent: 0.7,
-                                      center:  Text(
-                                        "70%",
-                                        style: TextStyle(
-                                            fontFamily: 'HacenN',
-                                            fontSize:  6*SizeConfig.blockSizeHorizontal,
+                                    Obx((){
+                                      if(_homeController.isLoading.isFalse){
+                                        return  CircularPercentIndicator(
+                                          animation: true,
+                                          circularStrokeCap: CircularStrokeCap.round,
+                                          reverse: true,
+                                          progressColor: context.theme.primaryColor,
+                                          backgroundColor: context.theme.primaryColorLight,
+                                          radius: width > breakPoint ?130.0:110,
+                                          lineWidth: width > breakPoint ?15.0:13,
+                                          percent: 0.7,
+                                          center:  Text(
+                                            "70%",
+                                            style: TextStyle(
+                                                fontFamily: 'HacenN',
+                                                fontSize:  6*SizeConfig.blockSizeHorizontal,
+                                                color: context.theme.primaryColor,
+                                                fontWeight: FontWeight.w900),
+                                          ),
+                                        );
+                                      }
+                                      return Center(
+                                        child: SizedBox(
+                                          height: 100,
+                                          width:  100,
+                                          child: CircularProgressIndicator(
+
+                                            strokeWidth: 12,
                                             color: context.theme.primaryColor,
-                                            fontWeight: FontWeight.w900),
-                                      ),
-                                    ),
+                                                     backgroundColor: context.theme.primaryColorLight,
+                                          ),
+                                        ),
+                                      );
+
+                                    }),
+
                                     Text(
                                       'Tasks\nDone'.tr,
                                       style:  TextStyle(
@@ -122,15 +140,17 @@ class HomeScreen extends StatelessWidget {
                       onTap: (){
                         //_skeletonController.changeScreen(1);
                       },
-                      child: Container(
-                        height: width * 0.9,
-                        child: PageView(
-                          controller:  PageController(viewportFraction: 0.80),
-                          scrollDirection: Axis.horizontal,
-                          children: List.generate(
-                            _homeController.home?.projects==null?0:_homeController.home!.projects.length,
-                            //_homeController.projects!.projects==[]?0:_homeController.projects!.projects.length,
-                                (index) => ProjectView(head: _homeController.home!.projects[index].name,
+                      child: Obx((){
+                        if(_homeController.isLoading.isFalse){
+                          return Container(
+                            height: width * 0.9,
+                            child: PageView(
+                              controller:  PageController(viewportFraction: 0.80),
+                              scrollDirection: Axis.horizontal,
+                              children: List.generate(
+                                _homeController.home?.projects==null?0:_homeController.home!.projects.length,
+                                //_homeController.projects!.projects==[]?0:_homeController.projects!.projects.length,
+                                    (index) => ProjectView(head: _homeController.home!.projects[index].name,
 
                                   daysGone: _homeController.home!.projects[index].daysGone,
                                   totalDays: _homeController.home!.projects[index].totalDays,
@@ -139,30 +159,35 @@ class HomeScreen extends StatelessWidget {
 
 
                                 ),
-                          ),
+                              ),
 
-                        ),
-                      ),
+                            ),
+                          );
+
+                        }
+                        else return Text('');
+
+                      }),
                     )
                   ],
-                );
-              }
-              return Center(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: height*0.3,
-                    ),
-                    CircularProgressIndicator(
-
-                      color: context.theme.primaryColor,
-                      backgroundColor: context.theme.primaryColorLight,
-                    ),
-                  ],
                 ),
-              );
 
-            })
+              // return Center(
+              //   child: Column(
+              //     children: [
+              //       SizedBox(
+              //         height: height*0.3,
+              //       ),
+              //       CircularProgressIndicator(
+              //
+              //         color: context.theme.primaryColor,
+              //         backgroundColor: context.theme.primaryColorLight,
+              //       ),
+              //     ],
+              //   ),
+              // );
+
+
           ),
         ),
       );
