@@ -85,7 +85,7 @@ class AssigneeInfo {
   String? email;
   String? name;
   num? rating;
-  num? phoneNumber;
+  String? phoneNumber;
   String? image;
 
   factory AssigneeInfo.fromJson(Map<String, dynamic> json) => AssigneeInfo(
