@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:intl/intl.dart' as Time;
 import 'package:plane_vite/widgets/priorty_widget.dart';
 import '../config/SizeConfig.dart';
 import '../constants.dart';
@@ -79,7 +80,7 @@ class TaskWidget extends StatelessWidget {
                           width: width * 0.05,
                         ),
                         dueDate != null ? Text(
-                              dueDate.toString(),
+                          Time.DateFormat.yMEd().format(dueDate!),
                               style:  TextStyle(
                                 fontSize: SizeConfig.blockSizeHorizontal*3.7,
                                 color: context.theme.textTheme.caption!.color,

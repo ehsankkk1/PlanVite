@@ -6,7 +6,7 @@ import 'package:plane_vite/screens/back_log/back_log_service.dart';
 import '../../constants.dart';
 import '../../models/sprint_model.dart';
 import '../../models/task_model.dart';
-
+import 'package:intl/intl.dart' as Time;
 
 class BackLogController extends GetxController{
 
@@ -314,7 +314,7 @@ class BackLogController extends GetxController{
                           ),
                         )
                             :Text(
-                          addTaskEndTime.value.toString(),
+                          Time.DateFormat.yMEd().format(addTaskEndTime.value!),
                           style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 16,
@@ -461,7 +461,7 @@ class BackLogController extends GetxController{
                           ),
                         )
                             :Text(
-                          addSprintEndTime.value.toString(),
+                          Time.DateFormat.yMEd().format(addSprintEndTime.value!),
                           style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 16,

@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart' as Time;
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/view_task/view_task_controller.dart';
-
 import '../../widgets/app_bar_no_drawer.dart';
 import '../../widgets/priorty_widget.dart';
 
@@ -30,6 +30,7 @@ class ViewTaskScreen extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(width * 0.03, height * 0.025,
                         width * 0.03, height * 0.025),
                     child: AppBarWidgetNoDrawer(
+                      save: false,
                       visible: true,
                       head: controller.viewTask!.name,
                     ),
@@ -44,7 +45,8 @@ class ViewTaskScreen extends StatelessWidget {
                     children: [
 
                       Text(
-                        'Deadline : ${controller.viewTask!.deadline}',
+
+                        'Deadline : ${Time.DateFormat.yMEd().format(controller.viewTask!.deadline!)}',
                         style: const TextStyle(fontFamily: 'HacenN',
                           color: Colors.grey,
                           fontSize: 18,
@@ -56,49 +58,7 @@ class ViewTaskScreen extends StatelessWidget {
                   SizedBox(
                     height: height * 0.03,
                   ),
-                  Material(
-                    elevation: 6,
-                    borderRadius: BorderRadius.circular(15),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: context.theme.cardColor,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: width * 0.03,
-                            ),
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundColor: context.theme
-                                  .primaryColor,
-                              child: const CircleAvatar(
-                                radius: 29,
-                                backgroundColor: Colors.black12,
-                                foregroundImage: AssetImage(
-                                    'images/joey.png'),
-                              ),
-                            ),
-                            SizedBox(
-                              width: width * 0.05,
-                            ),
-                            Flexible(
-                              child: Text(
-                                'Ehsan abourshed',
-                                style: TextStyle(
-                                    color: context.theme.textTheme
-                                        .caption!.color, fontSize: 18),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
+
 
                   Text(
                     'The task is assigned to : '.tr,
