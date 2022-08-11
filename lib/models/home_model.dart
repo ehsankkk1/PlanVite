@@ -60,10 +60,10 @@ class Project {
   dynamic name;
   dynamic deadline;
   dynamic isAdmin;
-  dynamic totalDays;
-  dynamic daysGone;
-  dynamic tasksDoneInProject;
-  dynamic tasksDoneInSprint;
+  int? totalDays;
+  int? daysGone;
+  double? tasksDoneInProject;
+  double? tasksDoneInSprint;
 
   factory Project.fromJson(Map<String, dynamic> json) => Project(
     id: json["id"],

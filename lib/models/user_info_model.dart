@@ -36,6 +36,8 @@ class Data {
     this.rating,
     this.phoneNumber,
     this.image,
+    this.userRatingCount,
+
   });
 
   int id;
@@ -44,6 +46,7 @@ class Data {
   dynamic rating;
   dynamic phoneNumber;
   dynamic image;
+  int? userRatingCount;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
     id: json["id"],
@@ -52,6 +55,7 @@ class Data {
     rating: json["rating"],
     phoneNumber: json["phone_number"],
     image: json["image"],
+    userRatingCount: json["UserRatingCount"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -61,5 +65,6 @@ class Data {
     "rating": rating,
     "phone_number": phoneNumber,
     "image": image,
+    "UserRatingCount":userRatingCount,
   };
 }

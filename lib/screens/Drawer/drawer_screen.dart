@@ -62,7 +62,7 @@ double rating=0;
                           allowHalfRating: true,
                           itemSize: 25,
                           updateOnDrag: false,
-                          initialRating: 1.1,
+                          initialRating: _myDrawerController.userInfo?.rating,
                           glow: true,
                           ignoreGestures: true,
 
@@ -75,7 +75,8 @@ double rating=0;
                         
                         SizedBox(height: 10,),
                         Text(
-                          _myDrawerController.userInfo?.phoneNumber==null?_myDrawerController.userInfo!.email:_myDrawerController.userInfo?.phoneNumber,
+
+                          _myDrawerController.userInfo?.phoneNumber==""?_myDrawerController.userInfo!.email:_myDrawerController.userInfo?.phoneNumber,
                           style: TextStyle(fontFamily: 'HacenN',
                             fontSize: 16,
                             color: context.theme.textTheme.caption!.color,

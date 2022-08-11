@@ -80,12 +80,11 @@ class AgendaScreen extends StatelessWidget {
 
 
                  Text(
-                  _agendaController.completedTasksInt.toString()+' of '.tr+_agendaController.personalList.length.toString(),
-
+                 'tasks',
                   style: const TextStyle(fontFamily: 'HacenN',
                     color: kGrey,
                   ),
-                );
+                ),
 
               Divider(
                 height: height * 0.06,
@@ -93,33 +92,59 @@ class AgendaScreen extends StatelessWidget {
                 thickness: 1,
                 color: kGrey,
               ),
-              Obx(() {
-                if (_agendaController.isLoading.isTrue) {
-                  return Center(
-                    child: Column(
-                      children: [
-                        SizedBox(height: height * 0.3,),
-                        CircularProgressIndicator(
-                          backgroundColor: context.theme.primaryColor,
-                          color: context.theme.cardColor,
-                        ),
-                      ],
-                    ),
-                  );
-                }
-                return Expanded(
-                  child: //Obx(() {
-                  SingleChildScrollView(
-                    child: Column(
-                      children: List.generate(
-                          _agendaController.personalList.length, (index) =>
-                          _todo_item(index, _agendaController.personalList[index].completed)),
-                    ),
 
-                  ),
+
+
+
+                 Expanded(
+                  child: Obx((){
+                    if(_agendaController.isLoading.isFalse){
+
+                      return  GridView.builder(
+                          itemCount: 2,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 1,
+                            childAspectRatio: 4,
+                          ),
+                          itemBuilder: (context, index) => Padding(
+                            padding: EdgeInsets.only(
+                                left: width * 0.05,
+                                right: width * 0.05,
+                                bottom: height * 0.001,
+                                top: height * 0.001),
+                            child: Container(
+                              color: context.theme.backgroundColor,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: width * 0.02,
+                                      ),
+
+                                      SizedBox(
+                                        width: width * 0.02,
+                                      ),
+
+                                    ],
+                                  ),
+                                  Divider(
+                                    height: height * 0.02,
+                                    endIndent: 1,
+                                    thickness: 1.5,
+                                    color: context.theme.primaryColor,
+                                  )
+                                ],
+                              ),
+                            ),
+                          ));
+                    }
+                    return CircularProgressIndicator();
+                  })
+
                   // }),
-                );
-              })
+                ),
+
 
             ],
           ),
@@ -129,15 +154,15 @@ class AgendaScreen extends StatelessWidget {
   }
 }
 
-class _todo_item extends StatelessWidget {
-  _todo_item(this.index, this.done);
+class _agenda_item extends StatelessWidget {
+  _agenda_item(this.index, this.pinned);
 
   int index;
-  bool done;
+  bool pinned;
 
   @override
   Widget build(BuildContext context) {
-    final ToDoController _todoController = Get.find();
+    final AgendaController _agendaController = Get.find();
 
     return Padding(
       padding: EdgeInsets.only(
@@ -161,10 +186,10 @@ class _todo_item extends StatelessWidget {
                       Text(
 
 
-                        _todoController.personalList[index].description == null
-                            ? 'there is no description'.tr
-                            : _todoController.personalList[index].description
-                            .toString(),
+                       // _agendaController.personalList[index].description == null
+                             'there is no description'.tr,
+                           // : _agendaController.personalList[index].description
+                           // .toString(),
                         style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                             .color),
                       ),
@@ -175,7 +200,8 @@ class _todo_item extends StatelessWidget {
                       ),
                       SizedBox(height: height * 0.05,),
                       Text(
-                        _todoController.personalList[index].deadline.toString(),
+                       // _agendaController.personalList[index].deadline.toString(),
+                        'deadline',
                         style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                             .color),
                       ),
@@ -227,16 +253,7 @@ class _todo_item extends StatelessWidget {
                                       fontSize: 18,
                                     ),
                                   ),),
-                                  TextButton(onPressed: () {
-                                    _todoController.DeleteTask(
-                                        _todoController.personalList[index].id);
-                                    Navigator.pop(context);
-                                  }, child: Text('Yes'.tr,
-                                    style: TextStyle(fontFamily: 'HacenN',
-                                      color: context.theme.primaryColor,
-                                      fontSize: 18,
-                                    ),
-                                  ),),
+
 
                                 ],
                               )
@@ -262,42 +279,11 @@ class _todo_item extends StatelessWidget {
                     width: width * 0.02,
                   ),
 
-                  CustomCheckbox(
 
-                    onTap: () {
-                      // _todoController.isLoading2.value=true;
-
-                      //controller.Done();
-                      // _todoController.onTodoTap(index);
-                      if(_todoController.personalList[index].completed){
-                        _todoController.PutFalse('0',_todoController.personalList[index].id);
-                      }
-                      else if(_todoController.personalList[index].completed==false){
-                        _todoController.PutTrue('1',_todoController.personalList[index].id);
-                      }
-                    },
-                    size: 30,
-                    iconSize: 25,
-                    color: kGrey,
-                    isSelected: done,
-                    // isLoading: false,
-                  ),
                   SizedBox(
                     width: width * 0.075,
                   ),
-                  Flexible(
-                    child: Text(
-                      _todoController.personalList[index].name,
-                      style: TextStyle(fontFamily: 'HacenN',
-                        decoration: done
-                            ? TextDecoration.lineThrough
-                            : TextDecoration.none,
 
-                        fontSize: 15,
-                        color: context.theme.textTheme.caption!.color,
-                      ),
-                    ),
-                  ),
 
                 ],
               ),
