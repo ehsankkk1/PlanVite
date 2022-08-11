@@ -63,12 +63,10 @@ class Task {
     "id": id,
     "name": name,
     "description": description,
-    //"deadline": "${deadline.year.toString().padLeft(4, '0')}-${deadline.month.toString().padLeft(2, '0')}-${deadline.day.toString().padLeft(2, '0')}",
+    "deadline": "${deadline!.year.toString().padLeft(4, '0')}-${deadline!.month.toString().padLeft(2, '0')}-${deadline!.day.toString().padLeft(2, '0')}",
     "status_id": statusId,
     "sprint_id": sprintId,
     "priority": priority,
-    "deadline_notified": deadlineNotified,
-    "almost_deadline_notified": almostDeadlineNotified,
     "user_id": userId,
   };
 }

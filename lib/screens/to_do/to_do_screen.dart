@@ -500,7 +500,8 @@ class _todo_item extends StatelessWidget {
                                   TextButton(onPressed: () {
                                     Navigator.pop(context);
                                   }, child: Text('No'.tr,
-                                    style: TextStyle(fontFamily: 'HacenN',color: Colors.grey,
+                                    style: const
+                                    TextStyle(fontFamily: 'HacenN',color: Colors.grey,
                                       fontSize: 18,
                                     ),
                                   ),),

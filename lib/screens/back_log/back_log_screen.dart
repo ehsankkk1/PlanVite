@@ -136,6 +136,8 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                                         .symmetric(
                                                         horizontal: 8.0),
                                                     child: TaskWidget(
+
+                                                      backLog: true,
                                                       name: _backLogController
                                                           .allSprints![index]
                                                           .tasks![index2].name,
@@ -150,6 +152,8 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                                       task: _backLogController
                                                           .allSprints![index]
                                                           .tasks![index2],
+                                                      taskIndex: index2,
+                                                      sprintIndex: index,
                                                       loading: false,
                                                     ),
                                                   )
