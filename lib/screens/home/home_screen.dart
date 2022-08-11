@@ -155,7 +155,7 @@ class HomeScreen extends StatelessWidget {
                                   daysGone: _homeController.home!.projects[index].daysGone,
                                   totalDays: _homeController.home!.projects[index].totalDays,
                                       completedTasks: double.parse(_homeController.home!.projects[index].tasksDoneInProject),
-                                      projectToOthers: double.parse(_homeController.home!.projects[index].tasksDoneInProject)/double.parse(_homeController.home!.tasksDoneInAllProject)==0?1:double.parse(_homeController.home!.tasksDoneInAllProject),
+                                      allProjectsTasksDone: double.parse(_homeController.home!.tasksDoneInAllProject),
 
 
 

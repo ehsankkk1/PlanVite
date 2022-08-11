@@ -14,7 +14,7 @@ class ProjectView extends StatelessWidget {
     this.daysGone,
     this.totalDays,
     this.completedTasks,
-    this.projectToOthers,
+   this.allProjectsTasksDone,
 
   }) : super(key: key);
 
@@ -22,7 +22,7 @@ class ProjectView extends StatelessWidget {
   int? daysGone;
   int? totalDays;
   double? completedTasks;
-  double? projectToOthers;
+  double? allProjectsTasksDone;
 
 
   @override
@@ -78,14 +78,15 @@ class ProjectView extends StatelessWidget {
                   lineHeight: height * 0.015,
                 ),
                  Text(
-                  'This Project Progress to Others :'.tr,
+                  'Work Rate :'.tr,
                   style: TextStyle(fontFamily: 'HacenN',
                     fontSize:4.2*SizeConfig.blockSizeHorizontal,
                     color: context.theme.textTheme.caption!.color,
                   ),
                 ),
+                //(allProjectsTasksDone!-completedTasks!)<0?1:(allProjectsTasksDone!-completedTasks!),
                 LinearPercentIndicator(
-                  percent: projectToOthers!,
+                  percent: completedTasks!/(daysGone==0?1:daysGone!),
                   animation: true,
                   backgroundColor: context.theme.primaryColorLight,
                   progressColor: context.theme.primaryColor,

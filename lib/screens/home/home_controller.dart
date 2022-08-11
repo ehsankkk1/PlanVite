@@ -22,6 +22,12 @@ isLoading(false);
     super.onInit();
 
   }
+  void load()async{
+    isLoading(true);
+    home=await service.getProjects(UserInformation.User_Token);
+    isLoading(false);
+
+  }
 
 
 

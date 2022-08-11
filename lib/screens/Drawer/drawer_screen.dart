@@ -7,11 +7,12 @@ import 'package:plane_vite/config/project_info.dart';
 import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 import 'package:plane_vite/widgets/drawer_item.dart';
 import '../../skeleton/skeleton_controller.dart';
+import '../home/home_controller.dart';
 import 'drawer_controller.dart';
 
 
 class DrawerScreen extends GetView<MyDrawerController> {
-
+  HomeController _homeController =   Get.put(HomeController());
   DrawerScreen({Key? key}) : super(key: key);
 double rating=0;
   @override
@@ -85,7 +86,9 @@ double rating=0;
                   ),
 
                   DrawerItem(Icons.home, 35, 'Home'.tr, () {
+
                     _skeletonController.changeScreen(0);
+                    _homeController.load();
                   }),
                   DrawerItem(Icons.task, 35, 'Todo Tasks'.tr, () {
                     Get.toNamed('/todo');
