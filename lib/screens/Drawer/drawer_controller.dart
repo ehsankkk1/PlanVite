@@ -18,7 +18,7 @@ class MyDrawerController extends GetxController {
 
   var isLoading=false.obs;
   List<Projects>? allProjects=[];
-  Data? userInfo=Data(id: 0, email: '', name: '');
+  Data? userInfo=Data(id: 0, email: '', name: '',rating: 0.0);
   @override
 
    Future<void> onInit()  async {

@@ -62,7 +62,7 @@ double rating=0;
                           allowHalfRating: true,
                           itemSize: 25,
                           updateOnDrag: false,
-                          initialRating: _myDrawerController.userInfo?.rating,
+                          initialRating: _myDrawerController.userInfo!.rating!.toDouble(),
                           glow: true,
                           ignoreGestures: true,
 

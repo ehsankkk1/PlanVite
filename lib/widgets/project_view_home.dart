@@ -19,10 +19,10 @@ class ProjectView extends StatelessWidget {
   }) : super(key: key);
 
   String? head;
-  int? daysGone;
-  int? totalDays;
-  double? completedTasks;
-  double? allProjectsTasksDone;
+  num? daysGone;
+  num? totalDays;
+  num? completedTasks;
+  num? allProjectsTasksDone;
 
 
   @override
@@ -71,7 +71,7 @@ class ProjectView extends StatelessWidget {
                   ),
                 ),
                 LinearPercentIndicator(
-                  percent: completedTasks!,
+                  percent: completedTasks!.toDouble(),
                   animation: true,
                   backgroundColor: context.theme.primaryColorLight,
                   progressColor: context.theme.primaryColor,

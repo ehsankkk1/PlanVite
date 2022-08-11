@@ -33,7 +33,7 @@ class Data {
     required this.id,
     required this.email,
     required this.name,
-    this.rating,
+    required this.rating,
     this.phoneNumber,
     this.image,
     this.userRatingCount,
@@ -43,7 +43,7 @@ class Data {
   int id;
   String email;
   String name;
-  dynamic rating;
+  num? rating;
   dynamic phoneNumber;
   dynamic image;
   int? userRatingCount;

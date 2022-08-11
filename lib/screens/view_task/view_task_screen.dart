@@ -298,19 +298,19 @@ class ViewTaskScreen extends StatelessWidget {
 
                   GetBuilder<ViewTaskController>(
                       builder: (logic) {
-                    return Center(
-                      child: Column(
-                        children: List.generate(
-                            controller.viewTask!.subtasksList!.length,
-                                (index) =>
-                                _subTaskWidget(
-                                  title: controller.viewTask!
-                                      .subtasksList![index].name
-                                      ?? 'there is no subtasks to this task'.tr,
-                                )),
-                      ),
-                    );
-                  }),
+                        return Center(
+                          child: Column(
+                            children: List.generate(
+                                controller.viewTask!.subtasksList!.length,
+                                    (index) =>
+                                    _subTaskWidget(
+                                      title: controller.viewTask!
+                                          .subtasksList![index].name
+                                          ?? 'there is no subtasks to this task'.tr,
+                                    )),
+                          ),
+                        );
+                      }),
 
                   SizedBox(
                     height: height * 0.03,
