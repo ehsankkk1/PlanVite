@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../models/drop_down_model_all_users.dart';
+import '../../models/task_model.dart';
 
 
 class TaskController extends GetxController{
@@ -11,14 +12,10 @@ class TaskController extends GetxController{
   var medium;
   var high;
   var approved;
-  var dueDate;
+  Rxn<DateTime> addTaskEndTime = Rxn<DateTime>();
   var fileBool;
-  var date;
-  var dateBool;
-  var year;
-  var month;
-  var day;
-  List subTasks=[].obs;
+
+  Task? oneTask=Get.arguments;
 
   List<DropDownUser> allUsersDropDown = [
     DropDownUser(name: 'Ehsan',id: 1),
@@ -29,7 +26,7 @@ class TaskController extends GetxController{
     DropDownUser(name: 'Rita1',id: 6),
   ];
   int? allUserDropDownValue ;
-
+  late TextEditingController taskTitleTextFieldController;
   TextEditingController subTaskController= TextEditingController();
 
   @override
@@ -38,22 +35,13 @@ class TaskController extends GetxController{
     medium=false.obs;
     high=false.obs;
     approved=false.obs;
-    dueDate=false.obs;
     fileBool=false.obs;
-    date='';
-    dateBool=false.obs;
-
-
+    taskTitleTextFieldController = TextEditingController(text: oneTask!.name);
+    addTaskEndTime.value = oneTask!.deadline;
     super.onInit();
 
   }
-  void addSubTask(){
-    if(subTaskController.text != ''){
-      subTasks.add(subTaskController.text);
-    }
-    print(subTasks);
 
-  }
 
   void PickLow(){
     low.value=!low.value;
@@ -73,16 +61,13 @@ class TaskController extends GetxController{
   void PickApproved(){
     approved.value=!approved.value;
   }
-  void PickDueDate(){
-    dueDate.value=!dueDate.value;
-  }
+
   void PickFile(){
     fileBool.value=true;
   }
-  void PickDate(){
 
-    dateBool.value=true;
-  }
+
+
   void setAllUserDropDownValue(int value) {
     allUserDropDownValue = value;
     update();

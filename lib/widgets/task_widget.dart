@@ -43,57 +43,86 @@ class TaskWidget extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.fromLTRB(
                 width * 0.03, height * 0.02, width * 0.03, height * 0.02),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Flexible(
-                  child: Text(
-                    '$name',
-                    style:  TextStyle(
-                      fontSize: SizeConfig.blockSizeHorizontal*4.7,
-                      color: context.theme.textTheme.caption!.color,
-                      fontWeight: FontWeight.w600
-                    ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '$name',
+                            style:  TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal*4.7,
+                                color: context.theme.textTheme.caption!.color,
+                                fontWeight: FontWeight.w600
+                            ),
+                          ),
+                          const SizedBox(height: 15,),
+                          priority != null ? Padding(
+                            padding: const EdgeInsets.only(bottom: 15),
+                            child: PriorityWidget(name:priority!,colour:context.theme.primaryColor,textColor:context.theme.textTheme.caption!.color!),
+                          ):Container(),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                               CircleAvatar(
+                                radius: 15,
+                                backgroundColor:context.theme.textTheme.caption!.color,
+                                child: Text(
+                                  'E',
+                                  style:
+                                      TextStyle(fontSize: SizeConfig.blockSizeHorizontal*3.5, fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              SizedBox(
+                                width: width * 0.05,
+                              ),
+                              dueDate != null ? Text(
+                                Time.DateFormat.yMEd().format(dueDate!),
+                                    style:  TextStyle(
+                                      fontSize: SizeConfig.blockSizeHorizontal*3.7,
+                                      color: context.theme.textTheme.caption!.color,
+                                    ),
+                                  ) : Container(),
+                            ],
+                          ),
+
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 15,),
-                priority != null ? Padding(
-                  padding: const EdgeInsets.only(bottom: 15),
-                  child: PriorityWidget(name:priority!,colour:context.theme.primaryColor,textColor:context.theme.textTheme.caption!.color!),
-                ):Container(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
                   children: [
-                    Row(
-                      children: [
-                         CircleAvatar(
-                          radius: 15,
-                          backgroundColor:context.theme.textTheme.caption!.color,
-                          child: Text(
-                            'E',
-                            style:
-                                TextStyle(fontSize: SizeConfig.blockSizeHorizontal*3.5, fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        SizedBox(
-                          width: width * 0.05,
-                        ),
-                        dueDate != null ? Text(
-                          Time.DateFormat.yMEd().format(dueDate!),
-                              style:  TextStyle(
-                                fontSize: SizeConfig.blockSizeHorizontal*3.7,
-                                color: context.theme.textTheme.caption!.color,
-                              ),
-                            ) : Container(),
-                      ],
-                    ),
-                    Container(
-                      height: 18,
-                      width: 18,
-                      child:  loading == true?CircularProgressIndicator(
+                    task!.isAdmin!
+                        ?IconButton(icon:  const Icon(Icons.add,color: Colors.blueAccent,),
+                      onPressed: () {
+                          Get.toNamed('/task',arguments: task);
+                          },)
+                        :Container(),
+                    task!.isAdmin!
+                        ?IconButton(icon:  const Icon(Icons.delete,color: Colors.red,),
+                      onPressed: () {
+                          print('delete');
+                          },)
+                        :Container(),
+                    SizedBox(
+                      height:20,
+                      width: 20,
+                      child:  loading == true
+                          ?CircularProgressIndicator(
                         color: context.theme.textTheme.caption!.color,
-                      ):Container(),
+                      )
+                          :Container(),
                     ),
                   ],
                 ),

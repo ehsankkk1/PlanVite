@@ -147,6 +147,9 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                                           .allSprints![index]
                                                           .tasks![index2]
                                                           .priority,
+                                                      task: _backLogController
+                                                          .allSprints![index]
+                                                          .tasks![index2],
                                                       loading: false,
                                                     ),
                                                   )

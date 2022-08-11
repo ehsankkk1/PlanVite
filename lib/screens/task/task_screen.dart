@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/task/task_controller.dart';
-import 'package:plane_vite/widgets/custom_check_box.dart';
+import 'package:intl/intl.dart' as Time;
 import '../../widgets/app_bar_no_drawer.dart';
 import '../../widgets/priorty_widget.dart';
 
@@ -57,6 +57,7 @@ class TaskScreen extends StatelessWidget {
                         child: TextField(
                           style: const TextStyle(fontFamily: 'HacenN',color: Colors.black),
                           keyboardType: TextInputType.multiline,
+                          controller: _taskController.taskTitleTextFieldController,
                           maxLines: null,
                           cursorColor: kMainPink.value,
                           decoration: InputDecoration(
@@ -73,96 +74,70 @@ class TaskScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: height * 0.05,
+                        height: height * 0.01,
                       ),
-                      Row(
-                        children: [
-                          Obx(() {
-                            return CustomCheckbox(
-                              onTap: () {
-                                controller.PickApproved();
-                              },
-                              color: context.theme.textTheme.caption!.color!,
-                              size: 20,
-                              iconSize: 18,
-                              isSelected: controller.approved.value,
-                            );
-                          }),
-                          SizedBox(
-                            width: width * 0.03,
-                          ),
-                          Text(
-                            'Approved'.tr,
-                            style: const TextStyle(fontFamily: 'HacenN',
-                              color: Colors.grey,
-                              fontSize: 18,
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: height * 0.03,
-                      ),
-                      Row(
-                        children: [
-                          Obx(() {
-                            return GestureDetector(
-                                onTap: () {
-                                  controller.dateBool.value = false;
-                                  showDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate: DateTime(2021),
-                                    lastDate: DateTime(2023),
-                                    builder: (context, child) => Theme(
+                      Obx(() {
+                        return GestureDetector(
+                            onTap: () async {
+                              var date = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime(2100),
+                                builder: (BuildContext context, Widget? child) {
+                                  return
+                                    Theme(
                                       data: ThemeData().copyWith(
+
                                         colorScheme: ColorScheme.dark(
                                           primary: context.theme.primaryColor,
-                                          onPrimary: context
-                                              .theme.textTheme.caption!.color!,
+                                          onPrimary: context.theme.textTheme
+                                              .caption!.color!,
                                           surface: context.theme.primaryColor,
-                                          onSurface: context
-                                              .theme.textTheme.caption!.color!,
+
+                                          onSurface: context.theme.textTheme
+                                              .caption!.color!,
+
                                         ),
-                                        dialogBackgroundColor:context.theme.hintColor,
+                                        dialogBackgroundColor: context.theme.hintColor,
+
                                       ),
                                       child: child!,
-                                    ),
-                                  ).then((date) {
-                                    controller.year = date?.year.toString();
-                                    controller.month = date?.month.toString();
-                                    controller.day = date?.day.toString();
-
-                                    controller.date = date.toString();
-
-                                    controller.PickDate();
-                                  });
+                                    );
                                 },
-                                child: Icon(
+                              );
+                              if (date != null) {
+                                _taskController.addTaskEndTime.value = date;
+                              }
+                            },
+                            child: Row(
+                              children: [
+                                Icon(
                                   Icons.date_range,
-                                  color: controller.dateBool.value
-                                      ? context.theme.primaryColor
-                                      : kGrey,
-                                ));
-                          }),
-                          SizedBox(
-                            width: width * 0.05,
-                          ),
-                          Obx(() {
-                            return Text(
-                              controller.dateBool == false
-                                  ? 'Due Date'.tr
-                                  :controller.year==null?'Due Date'.tr
-                                  : '${controller.year}/${controller
-                                  .month}/${controller.day}',
-                              style: const TextStyle(fontFamily: 'HacenN',
-                                color: Colors.grey,
-                                fontSize: 18,
-                              ),
-                            );
-                          }),
-                        ],
-                      ),
+                                  color:  context.theme.primaryColor,
+                                ),
+                                SizedBox(
+                                  width: width * 0.05,
+                                ),
+                                _taskController.addTaskEndTime.value == null
+                                    ?Text(
+                                  'Due Date'.tr,
+                                  style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 16,
+                                  ),
+                                )
+                                    :Text(
+                                  Time.DateFormat.yMEd().format(_taskController.addTaskEndTime.value!),
+                                  style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            )
+                        );
+                      }),
 
                       SizedBox(
                         height: height * 0.03,
@@ -401,61 +376,7 @@ class TaskScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: height * 0.03,
-                      ),
-                      Text(
-                        'Sub Tasks'.tr,
-                        style: TextStyle(fontFamily: 'HacenN',
-                          color: context.theme.textTheme.caption!.color!,
-                          fontSize: 17,
-                        ),
-                      ),
                       // sub task text field
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              _taskController.addSubTask();
-                              _taskController.subTaskController.clear();
-                            },
-                            icon: Icon(
-                              Icons.add,
-                              color: context.theme.primaryColor,
-                              size: 30,
-                            ),
-                          ),
-                          Expanded(
-                            child: TextField(
-                              style: const TextStyle(fontFamily: 'HacenN',color: Colors.black),
-                              controller: _taskController.subTaskController,
-                              cursorColor: context.theme.primaryColor,
-                              decoration: InputDecoration(
-                                focusedBorder: const UnderlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                ),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide.none),
-                                hintText: 'Add Sub Task'.tr,
-                                hintStyle: const TextStyle(fontFamily: 'HacenN',
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Obx(() {
-                        return Center(
-                          child: Column(
-                            children: List.generate(
-                                _taskController.subTasks.length,
-                                (index) => _subTaskWidget(
-                                      title: _taskController.subTasks[index],
-                                    )),
-                          ),
-                        );
-                      }),
                       SizedBox(
                         height: height * 0.03,
                       ),
@@ -515,39 +436,3 @@ class TaskScreen extends StatelessWidget {
   }
 }
 
-class _subTaskWidget extends StatelessWidget {
-  _subTaskWidget({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-
-  String title;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Material(
-        elevation: 6,
-        borderRadius: BorderRadius.circular(15),
-        child: Container(
-          width: width * 0.5,
-          decoration: BoxDecoration(
-            color: context.theme.primaryColorLight,
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(
-                width * 0.05, width * 0.05, width * 0.05, width * 0.05),
-            child: Text(
-              title,
-              style: TextStyle(fontFamily: 'HacenN',
-                color: context.theme.textTheme.caption!.color!,
-                fontSize: 17,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
