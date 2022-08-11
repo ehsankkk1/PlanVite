@@ -40,7 +40,8 @@ double rating=0;
                           child:  CircleAvatar(
                             radius: 35,
                             backgroundColor: Colors.black12,
-                            foregroundImage: AssetImage('images/user.jpg'),
+
+                            foregroundImage: NetworkImage(_myDrawerController.userInfo?.image==null?"https://th.bing.com/th/id/OIP.QqThEN77e1aL9ps4M3mDGwAAAA?pid=ImgDet&w=220&h=220&c=7&dpr=1,88":_myDrawerController.userInfo?.image),
                           ),
                         ),
                         const SizedBox(height: 25,),

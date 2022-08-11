@@ -63,7 +63,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                             return SprintWidget(
                                 addButton: true,
                                 checkBox: false,
-                                sprintName: "Users",
+                                sprintName: "Users".tr,
                                 onTap: () {
                                   _backLogController.showAddUserField(context);
                                 },
@@ -83,7 +83,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                 return SprintWidget(
                                   addButton: true,
                                   checkBox: false,
-                                  sprintName: "Statues",
+                                  sprintName: "Statues".tr,
                                   onTap: () {
                                     _backLogController.showAddStatues(context);
                                   },

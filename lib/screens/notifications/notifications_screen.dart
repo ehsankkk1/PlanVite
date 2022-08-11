@@ -25,7 +25,7 @@ class NotificationsScreen extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(
                         width * 0.03, height * 0.025, width * 0.03, height * 0.025),
                     child: AppBarWidgetNoDrawer(
-                      head: "Notifications",
+                      head: "Notifications".tr,
                       save: false,
                     ),
                   ),

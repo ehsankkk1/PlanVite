@@ -49,7 +49,7 @@ class ToDoScreen extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Text(
-            'Add',
+            'Add'.tr,
             style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
             ),
@@ -59,7 +59,7 @@ class ToDoScreen extends StatelessWidget {
       backgroundColor: context.theme.backgroundColor,
       title: Center(
           child: Text(
-            'Add Task',
+            'Add Task'.tr,
             style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
             ),
@@ -281,7 +281,7 @@ class ToDoScreen extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(
                     width * 0.03, height * 0.025, width * 0.03, height * 0.025),
                 child: AppBarWidgetNoDrawer(
-                  head: "Personal Tasks",
+                  head: "Personal Tasks".tr,
                   save: false,
                 ),
               ),
@@ -335,7 +335,7 @@ class ToDoScreen extends StatelessWidget {
                     width: width * 0.08,
                   ),
                   Text(
-                    'My Tasks',
+                    'My Tasks'.tr,
                     style: TextStyle(fontFamily: 'HacenN',
                       fontSize: 42,
                       color: context.theme.textTheme.caption!.color,
@@ -357,7 +357,7 @@ class ToDoScreen extends StatelessWidget {
                   );
                 }
                 return Text(
-                  '${ _todoController.completedTasksInt.toString()} of ${_todoController.personalList.length.toString()}'.tr,
+                   _todoController.completedTasksInt.toString()+' of '.tr+_todoController.personalList.length.toString(),
 
                   style: const TextStyle(fontFamily: 'HacenN',
                     color: kGrey,
@@ -439,7 +439,7 @@ class _todo_item extends StatelessWidget {
 
 
                         _todoController.personalList[index].description == null
-                            ? 'there is no description'
+                            ? 'there is no description'.tr
                             : _todoController.personalList[index].description
                             .toString(),
                         style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
@@ -485,7 +485,7 @@ class _todo_item extends StatelessWidget {
                           AlertDialog(
                             title: Center(
                               child: Text(
-                                'Are you sure you ant to delete this task ? '
+                                'Are you sure you ant to delete this task ? '.tr
                                     .tr,
                                 style: TextStyle(fontFamily: 'HacenN',
                                     color: context.theme.textTheme.caption!

@@ -41,7 +41,7 @@ class ColumnHeader extends StatelessWidget {
           children: [
             Checkbox(value: true, onChanged: (value){},activeColor: kMainPink.value,),
              Text(
-              'Only view my tasks',
+              'Only view my tasks'.tr,
               style:  TextStyle(
                 fontSize: SizeConfig.blockSizeHorizontal*4,
                 color: context.theme.textTheme.caption!.color,

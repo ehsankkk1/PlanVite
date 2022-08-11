@@ -35,7 +35,7 @@ class TaskScreen extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(width * 0.03, height * 0.025,
                       width * 0.03, height * 0.025),
                   child: AppBarWidgetNoDrawer(
-                    head: "Personal Task",
+                    head: "Task".tr,
                   ),
                 ),
                 Padding(
@@ -219,8 +219,8 @@ class TaskScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: DropdownButton(
-                              hint: const Center(
-                                  child: Text('Select User to Assign', style: TextStyle(fontFamily: 'HacenN',fontSize: 16),)),
+                              hint:  Center(
+                                  child: Text('Select User to Assign'.tr, style: TextStyle(fontFamily: 'HacenN',fontSize: 16),)),
 
                               underline: Container(
 

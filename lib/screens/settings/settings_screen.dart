@@ -17,7 +17,7 @@ SecureStorage storage = SecureStorage();
       status: 'Loading...',
     );*/
     Get.defaultDialog(
-        title: 'Loading...',
+        title: 'Loading...'.tr,
         titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
         content: LoaderScreen(),
         backgroundColor: kBackGround.value
@@ -57,7 +57,7 @@ SecureStorage storage = SecureStorage();
             Navigator.pop(context);
           },
           child: Text(
-            'Cancel',
+            'Cancel'.tr,
             style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
               fontSize: 18,
@@ -71,7 +71,7 @@ SecureStorage storage = SecureStorage();
             onClickLogOut();
           },
           child: Text(
-            'Yes',
+            'Yes'.tr,
             style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
               fontSize: 18,
@@ -83,7 +83,7 @@ SecureStorage storage = SecureStorage();
       backgroundColor: context.theme.backgroundColor,
       title: Center(
           child: Text(
-            'are you sure you want to log out ? ',
+            'are you sure you want to log out ? '.tr,
             style: TextStyle(fontFamily: 'HacenN',
               color: context.theme.textTheme.caption!.color!,
             ),
@@ -383,69 +383,7 @@ SecureStorage storage = SecureStorage();
 
 
                                     ],),
-                                  SizedBox(height: height*0.01,),
-                                  Stack(
-
-
-                                    children: [
-                                      //SizedBox(width: width*0.2,),
-                                      Align(
-                                        alignment: Alignment(-0.42,0),
-                                        child: Text('Purple'.tr,
-                                          style: TextStyle(fontFamily: 'HacenN',
-                                            color: context.theme.textTheme.caption!.color,
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                      ),
-                                      //SizedBox(width: width*0.437,),
-                                      Align(
-                                          alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){
-                                            controller.changeToPurple();
-
-                                            controller.storeThemeSetting1(false);
-                                            controller.storeThemeSetting(false);
-                                            controller.storeThemeSetting3(false);
-                                            controller.storeThemeSetting2(true);
-                                            Get.changeThemeMode(ThemeMode.dark);
-                                            ThemeService().switchTheme;
-
-
-                                          }, color: context.theme.primaryColor,size: 25,isSelected: controller.isPurple.value,)),
-
-                                    ],),
-                                  SizedBox(height: height*0.01,),
-                                  Stack(
-
-
-                                    children: [
-                                      //SizedBox(width: width*0.2,),
-                                      Align(
-                                        alignment: Alignment(-0.45,0),
-                                        child: Text('Blue'.tr,
-                                          style: TextStyle(fontFamily: 'HacenN',
-                                            color: context.theme.textTheme.caption!.color,
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                      ),
-                                      //SizedBox(width: width*0.437,),
-                                      Align(
-                                          alignment: Alignment.topRight,
-                                          child: CustomCheckbox(onTap: (){
-
-                                            controller.changeToBlue();
-                                            controller.storeThemeSetting3(true);
-                                            controller.storeThemeSetting1(false);
-                                            controller.storeThemeSetting(false);
-                                            controller.storeThemeSetting2(false);
-                                            Get.changeThemeMode(ThemeMode.dark);
-                                            ThemeService().switchTheme;
-
-                                          }, color: context.theme.primaryColor,size: 25, isSelected: controller.isBlue.value,)),
-
-                                    ],),
+                                SizedBox(height: height*0.03,),
 
                                 ],
                               ),

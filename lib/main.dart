@@ -73,8 +73,8 @@ class MyApp extends StatelessWidget {
     return Obx((){
      return GetMaterialApp(
 
-       theme: controller.isPink.value==true?Themes.pink:controller.isDark.value==true?Themes.dark:controller.isBlue==true?Themes.blue:Themes.pink,
-       darkTheme: controller.isPink.value==true?Themes.pink:controller.isDark.value==true?Themes.dark:controller.isBlue==true?Themes.blue:Themes.pink,
+       theme: controller.isPink.value==true?Themes.pink:controller.isDark.value==true?Themes.dark:Themes.pink,
+       darkTheme: controller.isPink.value==true?Themes.pink:controller.isDark.value==true?Themes.dark:Themes.pink,
         //themeMode: ThemeService().theme,
         //theme: ThemeData(fontFamily: 'HacenN', colorScheme: ColorScheme.fromSwatch().copyWith(secondary: kMainPink.value)),
         debugShowCheckedModeBanner: false,

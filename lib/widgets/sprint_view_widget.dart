@@ -71,7 +71,7 @@ class SprintWidget extends StatelessWidget {
                           children: [
                             Checkbox(value: checkBoxValue, onChanged: onChangedBoxValue,activeColor: context.theme.primaryColor,),
                              Text(
-                              'Activate',
+                              'Activate'.tr,
                               style:  TextStyle(fontFamily: 'HacenN',
                                 fontSize: 15,
                                 color: context.theme.textTheme.caption!.color,
