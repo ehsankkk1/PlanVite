@@ -27,6 +27,9 @@ class NotificationsScreen extends StatelessWidget {
                     child: AppBarWidgetNoDrawer(
                       head: "Notifications".tr,
                       save: false,
+                      onBackTap: (){
+                        Get.back();
+                      },
                     ),
                   ),
                   Obx((){

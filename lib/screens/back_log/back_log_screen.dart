@@ -50,7 +50,12 @@ class BackLogScreen extends GetView<BackLogScreen> {
               children: [
                 // notification and drawer
                 AppBarWidgetNoDrawer(
+                  save: false,
                   head: 'Back Log'.tr,
+                 onBackTap: (){
+                    Get.back();
+                    _sprintController.load();
+                 },
 
                 ),
                 const SizedBox(height: 0),

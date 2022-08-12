@@ -285,6 +285,9 @@ class ToDoScreen extends StatelessWidget {
                 child: AppBarWidgetNoDrawer(
                   head: "Personal Tasks".tr,
                   save: false,
+                  onBackTap: (){
+                    Get.back();
+                  },
                 ),
               ),
               Row(

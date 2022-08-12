@@ -37,6 +37,9 @@ class AgendaScreen extends StatelessWidget {
                 child: AppBarWidgetNoDrawer(
                   head: "Agenda".tr,
                   save: false,
+                  onBackTap: (){
+                    Get.back();
+                  },
                 ),
               ),
 

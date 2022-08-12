@@ -12,11 +12,13 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
     this.save=true,
     this.visible=true,
     this.onSaveTap,
+    this.onBackTap,
   }) : super(key: key);
 
   String? head;
   bool save;
   Function()? onSaveTap;
+  Function()? onBackTap;
   bool visible;
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         InkWell(
-          onTap: () {Get.back();},
+          onTap: onBackTap,
           child: Icon(
             Icons.arrow_back,
             color: context.theme.primaryColor,

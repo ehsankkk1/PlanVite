@@ -39,6 +39,9 @@ class TaskScreen extends StatelessWidget {
                     onSaveTap: (){
                       _taskController.editTaskTap(context);
                     },
+                    onBackTap: (){
+                      Get.back();
+                    },
                     head: "Task".tr,
                   ),
                 ),

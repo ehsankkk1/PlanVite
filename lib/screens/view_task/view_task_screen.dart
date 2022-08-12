@@ -33,6 +33,9 @@ class ViewTaskScreen extends StatelessWidget {
                       save: false,
                       visible: true,
                       head: controller.viewTask!.name,
+                      onBackTap: (){
+                        Get.back();
+                      },
                     ),
                   ),
 
