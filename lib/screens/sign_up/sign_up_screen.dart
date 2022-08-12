@@ -9,36 +9,23 @@ import '../../widgets/custom_text_field.dart';
 
 class SignupScreen extends StatelessWidget {
   final GlobalKey<FormState> _globalKey = GlobalKey<FormState>();
-  TextEditingController nameController = new TextEditingController();
-  TextEditingController emailController = new TextEditingController();
-  TextEditingController passwordController = new TextEditingController();
-  TextEditingController confirmPasswordController = new TextEditingController();
-  TextEditingController phonelController=new TextEditingController();
+  TextEditingController nameController =  TextEditingController();
+  TextEditingController emailController =  TextEditingController();
+  TextEditingController passwordController =  TextEditingController();
+  TextEditingController confirmPasswordController =  TextEditingController();
+  TextEditingController phonelController=TextEditingController();
   final SignupController _signUpController = Get.find();
   File? _file1;
 
 
-  Future gellarypicker() async {
-    final myfile = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-
-      _file1 = File(myfile!.path);
-      _signUpController.imageFile=_file1;
-
-
-    if(_file1 != null){
-      _signUpController.PickFile();
-    }
-  }
   Future upload()async{
     if(_file1==null) { return;}
     String base64=base64Encode(_file1!.readAsBytesSync());
     String imagename=_file1!.path.split("/").last;
     _signUpController.encodedImage=base64;
     _signUpController.imageName=imagename;
-
-
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -101,13 +88,14 @@ class SignupScreen extends StatelessWidget {
 
                                 child: Obx((){
                                   return  GestureDetector(
-                                    onTap: (){
-                                      _signUpController.fileBool.value=false;
-                                      gellarypicker();
+                                    onTap: () async {
+                                      //_signUpController.fileBool.value=false;
+                                      //gellarypicker();
+                                      await _signUpController.gellarypicker();
                                     },
-                                    child: (_signUpController.fileBool.value)
+                                    child: _signUpController.file1.value != null
                                         ?CircleAvatar(
-                                      foregroundImage: Image.file(_file1!).image,
+                                      foregroundImage: Image.file(_signUpController.file1.value!).image,
                                     )
                                         : Icon(
                                       Icons.add_a_photo,

@@ -28,6 +28,7 @@ dependencies:
   intl: ^0.17.0
   flutter_inset_box_shadow: ^1.0.8
   animations: ^2.0.2
+  image_cropper: ^2.0.3
   get_storage: ^2.0.3
   flutter_rating_bar: ^4.0.1
   holding_gesture: ^1.1.0

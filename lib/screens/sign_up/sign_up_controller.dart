@@ -1,10 +1,13 @@
+import 'dart:io';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:plane_vite/screens/sign_up/sign_up_service.dart';
 import 'package:flutter/material.dart';
 import '../../constants.dart';
 import '../../models/user.dart';
-import '../../widgets/loader_screen.dart';
+import 'package:flutter/material.dart';
 import 'dart:developer';
 
 import '../Drawer/drawer_controller.dart';
@@ -21,8 +24,8 @@ class SignupController extends GetxController {
   var message;
   var encodedImage='';
   var imageName='';
-  var fileBool;
-var imageFile;
+  Rxn<File> file1 = Rxn<File>();
+
   late SignupService _service = SignupService();
 
 
@@ -35,13 +38,8 @@ var imageFile;
     phoneNumber = '';
     passwordBool = true.obs;
     confirmPasswordBool = true.obs;
-    fileBool=false.obs;
     _service=SignupService();
     super.onInit();
-  }
-
-  void PickFile(){
-    fileBool.value=true;
   }
 
   void securePassword() {
@@ -62,7 +60,7 @@ var imageFile;
         password: password,
         confirmPassword: confirmPassword,
         phoneNumber: phoneNumber,
-      imageFile: imageFile,
+        imageFile: file1.value,
     );
 
     signupStatus = await _service.register(user);
@@ -92,5 +90,36 @@ var imageFile;
       errorMessageBoxGet(message,context);
       log('error here');
     }
+  }
+
+  Future gellarypicker() async {
+    final myfile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (myfile != null) {
+      CroppedFile? croppedFile = await ImageCropper().cropImage(
+        sourcePath: myfile.path,
+        cropStyle: CropStyle.circle,
+        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
+        aspectRatioPresets: [
+          CropAspectRatioPreset.square,
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper'
+              //toolbarColor:kBlueColor2,
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: true
+          ),
+          IOSUiSettings(
+            title: 'Cropper',
+          ),
+        ],
+      );
+      if ( croppedFile != null){
+        file1.value = File(croppedFile!.path);
+      }
+
+    }
+    update();
   }
 }
