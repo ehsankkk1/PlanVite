@@ -44,7 +44,7 @@ const int breakPoint=350;
 void loaderBoxGet(BuildContext context){
   Get.defaultDialog(
     barrierDismissible: false,
-    title: 'Loading...',
+    title: 'Loading...'.tr,
     titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
     content: LoaderScreen(),
     backgroundColor: context.theme.backgroundColor,
@@ -52,7 +52,7 @@ void loaderBoxGet(BuildContext context){
 }
 void errorBoxGet(BuildContext context){
   Get.defaultDialog(
-    title: 'No Internet Connection',
+    title: 'No Internet Connection'.tr,
     titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
     content: LoaderScreen(error: true,),
     backgroundColor: context.theme.backgroundColor,

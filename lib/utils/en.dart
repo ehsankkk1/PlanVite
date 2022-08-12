@@ -86,10 +86,11 @@ Map <String, String> en={
   ' of ': ' of ',
   'Completed Tasks :':'Completed Tasks :',
   'This Project Progress to Others :':'This Project Progress to Others :',
-
   "Agenda":"Agenda",
   'tap on the icon to unpin the task':'tap on the icon to unpin the task',
   'Project Title':'Project Title',
+  'No Internet Connection':'No Internet Connection',
+
 
 
 

@@ -86,6 +86,10 @@ Map <String, String> ar={
 ' of ': ' من ',
   'Completed Tasks :':' المهام المنتهية :',
   'This Project Progress to Others :':'تقدم هذا المشروع نسبة لباقي المشاريع :',
+  "Agenda":"جدول الأعمال",
+  'tap on the icon to unpin the task':'اضفط على الأيقونة لازالة جدولة المهمة',
+  'Project Title':'عنوان المشروع',
+  'No Internet Connection':'لا يوجد اتصال بالانترنت',
 
 
 
