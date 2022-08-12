@@ -13,7 +13,7 @@ import '../../widgets/loader_screen.dart';
 class SettingsScreen extends StatelessWidget {
   SettingsController controller = Get.find();
 SecureStorage storage = SecureStorage();
-  void onClickLogOut() async {
+  void onClickLogOut(context) async {
     /*    EasyLoading.show(
       status: 'Loading...',
     );*/
@@ -21,7 +21,7 @@ SecureStorage storage = SecureStorage();
         title: 'Loading...'.tr,
         titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
         content: LoaderScreen(),
-        backgroundColor: kBackGround.value
+        backgroundColor: context.theme.primaryColor,
     );
 
     await controller.logOutOnClick();
@@ -69,7 +69,7 @@ SecureStorage storage = SecureStorage();
         TextButton(
           onPressed: () {
             Navigator.pop(context);
-            onClickLogOut();
+            onClickLogOut(context);
           },
           child: Text(
             'Yes'.tr,

@@ -87,11 +87,11 @@ class ViewTaskScreen extends StatelessWidget {
                               CircleAvatar(
                                 radius: 37,
                                 backgroundColor: context.theme.primaryColor,
-                                child: const CircleAvatar(
+                                child:  CircleAvatar(
                                   radius: 35,
                                   backgroundColor: Colors.black12,
                                   foregroundImage:
-                                  AssetImage('images/joey.png'),
+                                  NetworkImage(_viewTaskController.viewTask!.assigneeInfo!.image!),
                                 ),
                               ),
                               SizedBox(
