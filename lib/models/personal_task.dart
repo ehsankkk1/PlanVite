@@ -51,7 +51,7 @@ class Data {
     description: json["description"],
     deadline: DateTime.parse(json["deadline"]),
     userId: json["user_id"],
-    completed: json["completed"],
+    completed: json["completed"].toString(),
   );
 
   Map<String, dynamic> toJson() => {
