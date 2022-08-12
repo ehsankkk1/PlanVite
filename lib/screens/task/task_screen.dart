@@ -10,15 +10,6 @@ import '../../widgets/priorty_widget.dart';
 
 class TaskScreen extends StatelessWidget {
   TaskController controller = Get.find();
-  File? _file1;
-
-  Future gellarypicker() async {
-    final myfile = await ImagePicker().pickImage(source: ImageSource.gallery);
-    _file1 = File(myfile!.path);
-    if (_file1 != null) {
-      controller.PickFile();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -373,15 +364,14 @@ class TaskScreen extends StatelessWidget {
                             child: Obx(() {
                               return GestureDetector(
                                 onTap: () {
-                                  gellarypicker();
+                                  _taskController.gellarypicker();
                                 },
-                                child: (controller.fileBool.value)
+                                child: _taskController.file1.value!=null
                                     ? GestureDetector(
                                         onTap: () {
-                                          controller.fileBool.value = false;
-                                          gellarypicker();
+                                          _taskController.gellarypicker();
                                         },
-                                        child: Image.file(_file1!))
+                                        child: Image.file(_taskController.file1.value!))
                                     : Icon(
                                         Icons.add_a_photo,
                                         size: 50,

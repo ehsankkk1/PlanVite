@@ -103,7 +103,7 @@ class ViewTaskScreen extends StatelessWidget {
                               Text(
                                 controller.viewTask!.assigneeInfo != null
                                     ? controller.viewTask!.assigneeInfo!.name!
-                                    : '',
+                                    : 'Task for all users',
                                 style: TextStyle(fontFamily: 'HacenN',
                                   color: context.theme.textTheme.caption!.color,
                                   fontSize: 22,
@@ -341,7 +341,9 @@ class ViewTaskScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(25),
                         boxShadow: [kBoxShadow],
                       ),
-                      child: Image(image: AssetImage('images/joey.png')),
+                      child: controller.viewTask!.imageUrl != null
+                          ?Image(image: NetworkImage(controller.viewTask!.imageUrl!))
+                          :Icon(Icons.camera_enhance_outlined),
 
                     ),
                   ),

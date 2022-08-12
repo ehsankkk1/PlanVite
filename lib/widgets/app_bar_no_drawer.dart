@@ -33,12 +33,14 @@ class AppBarWidgetNoDrawer extends StatelessWidget {
             size: 35,
           ),
         ),
-        Text(
-          "$head",
-          style:  TextStyle(fontFamily: 'HacenN',
-            fontSize: 18,
-            color: context.theme.textTheme.caption!.color,
-            fontWeight: FontWeight.bold,
+        Flexible(
+          child: Text(
+            "$head",
+            style:  TextStyle(fontFamily: 'HacenN',
+              fontSize: 18,
+              color: context.theme.textTheme.caption!.color,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         save?InkWell(

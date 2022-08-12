@@ -48,7 +48,7 @@ class Agenda {
     priority: json["priority"],
     isAdmin: json["isAdmin"],
     isMyTask: json["isMyTask"],
-    assigneeInfo: ProjectUser.fromJson(json["assignee info"]),
+    //assigneeInfo: ProjectUser.fromJson(json["assignee info"]),
   );
 
   Map<String, dynamic> toJson() => {

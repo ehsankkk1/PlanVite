@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:plane_vite/models/project_user_model.dart';
 import 'package:plane_vite/screens/task/task_services.dart';
 import '../../models/task_model.dart';
 import '../back_log/back_log_controller.dart';
 import '../sprint/sprint_controller.dart';
-
+import 'dart:io';
 
 class TaskController extends GetxController{
 
@@ -14,9 +16,9 @@ class TaskController extends GetxController{
   var medium;
   var high;
   var approved;
+  Rxn<File> file1 = Rxn<File>();
   Rxn<DateTime> addTaskEndTime = Rxn<DateTime>();
-  var fileBool;
-  TaskService _taskService = TaskService();
+  final TaskService _taskService = TaskService();
   final BackLogController _backLogController = Get.find();
   Task? oneTask=Get.arguments[0];
   int? taskIndex=Get.arguments[1];
@@ -36,7 +38,7 @@ class TaskController extends GetxController{
     medium=false.obs;
     high=false.obs;
     approved=false.obs;
-    fileBool=false.obs;
+
 
     allProjectUsers= _backLogController.allProjectUsers;
     SprintController _sprintController= Get.find();
@@ -74,13 +76,17 @@ class TaskController extends GetxController{
       if(allUserDropDownValue != null){
         oneTask!.userId = allUserDropDownValue;
       }
-      bool success =await _taskService
+      if(file1.value != null){
+        oneTask!.image = file1.value;
+      }
+      Task? tmp = await _taskService
           .editTask(
           oneTask!,
           oneTask!.id!,
           context
       );
-      if(success){
+      if(tmp != null){
+        oneTask = tmp;
         _backLogController.allSprints![sprintIndex!].tasks![taskIndex!] = oneTask!;
 
         for(int i=0;i<allProjectUsers.length;i++){
@@ -96,7 +102,33 @@ class TaskController extends GetxController{
     }
   }
 
-
+  Future gellarypicker() async {
+    final myfile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (myfile != null) {
+      CroppedFile? croppedFile = await ImageCropper().cropImage(
+        compressQuality: 50,
+        sourcePath: myfile.path,
+        aspectRatio: const CropAspectRatio(ratioX: 3, ratioY: 2),
+        aspectRatioPresets: [
+          CropAspectRatioPreset.ratio16x9,
+        ],
+        uiSettings: [
+          AndroidUiSettings(
+              toolbarTitle: 'Cropper'
+              toolbarWidgetColor: Colors.white,
+              initAspectRatio: CropAspectRatioPreset.original,
+              lockAspectRatio: true),
+          IOSUiSettings(
+            title: 'Cropper',
+          ),
+        ],
+      );
+      if ( croppedFile != null){
+        file1.value = File(croppedFile.path);
+      }
+    }
+    update();
+  }
   void PickLow(){
     oneTask!.priority = "low";
     low.value=!low.value;
@@ -118,11 +150,6 @@ class TaskController extends GetxController{
   void PickApproved(){
     approved.value=!approved.value;
   }
-
-  void PickFile(){
-    fileBool.value=true;
-  }
-
 
 
   void setAllUserDropDownValue(int value) {

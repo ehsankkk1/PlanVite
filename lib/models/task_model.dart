@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 import 'package:plane_vite/models/project_user_model.dart';
-
+import 'dart:io';
 
 Task oneTaskFromJson(String str) => Task.fromJson(json.decode(str));
 
@@ -25,6 +25,8 @@ class Task {
     this.subtasksList,
     this.isAdmin,
     this.isMyTask,
+    this.image,
+    this.imageUrl,
   });
 
   int? id;
@@ -42,6 +44,8 @@ class Task {
   bool? isloading = false;
   ProjectUser? assigneeInfo;
   List<SubtasksList>? subtasksList;
+  File? image;
+  String? imageUrl;
 
   factory Task.fromJson(Map<String, dynamic> json) => Task(
     id: json["id"],
@@ -56,6 +60,7 @@ class Task {
     userId: json["user_id"],
     isAdmin: json["isAdmin"],
     isMyTask: json["isMyTask"],
+    imageUrl: json["image"],
     assigneeInfo: json["assignee info"] != null?ProjectUser.fromJson(json["assignee info"]):null,
     subtasksList: List<SubtasksList>.from(json["subtasks list"].map((x) => SubtasksList.fromJson(x))),
   );

@@ -13,17 +13,11 @@ import '../../widgets/loader_screen.dart';
 class SettingsScreen extends StatelessWidget {
   SettingsController controller = Get.find();
 SecureStorage storage = SecureStorage();
-  void onClickLogOut(context) async {
+  void onClickLogOut(BuildContext context) async {
     /*    EasyLoading.show(
       status: 'Loading...',
     );*/
-    Get.defaultDialog(
-        title: 'Loading...'.tr,
-        titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
-        content: LoaderScreen(),
-        backgroundColor: context.theme.primaryColor,
-    );
-
+    loaderBoxGet(context);
     await controller.logOutOnClick();
    // Get.back();
     if (controller.logOutStatus) {
@@ -32,12 +26,7 @@ SecureStorage storage = SecureStorage();
       //Get.offNamed('/login');
       //EasyLoading.showSuccess(message);
     } else {
-      Get.defaultDialog(
-          title: controller.message,
-          titleStyle: TextStyle(color: kWritings.value,fontSize: 25),
-          content: LoaderScreen(error: true,),
-          backgroundColor: kBackGround.value
-      );
+      errorBoxGet(context);
       /* EasyLoading.showError(
         message,
         duration: const Duration(seconds: 10),

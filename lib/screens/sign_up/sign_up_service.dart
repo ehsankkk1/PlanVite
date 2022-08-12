@@ -24,9 +24,12 @@ class SignupService {
     'confirmPassword': user.confirmPassword.toString(),
     'phone': user.phoneNumber.toString(),
     });
-    request.files.add(
-        await http.MultipartFile.fromPath('image', user.imageFile!.path)
-    );
+    if(user.imageFile != null){
+      request.files.add(
+          await http.MultipartFile.fromPath('image', user.imageFile!.path)
+      );
+    }
+
     request.headers.addAll(headers);
 
     http.StreamedResponse response = await request.send();
