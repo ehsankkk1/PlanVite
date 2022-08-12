@@ -89,12 +89,7 @@ Obx((){
                             ),
                             SizedBox(height: height * 0.05,),
                             Text(
-
-
-                              _agendaController.agendaList[index].description == null
-                                  ? 'there is no description'.tr
-                                  : _agendaController.agendaList[index].description
-                                  .toString(),
+                              _agendaController.agendaList[index].description??'there is no description'.tr,
                               style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                                   .color),
                             ),

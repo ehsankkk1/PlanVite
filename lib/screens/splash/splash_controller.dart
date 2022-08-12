@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -19,8 +18,9 @@ class SplashController extends GetxController{
 
   await FirebaseMessaging.instance.getToken().then((newToken){
      UserInformation.Fcm_Token=newToken!;
-
    });
+
+  print(UserInformation.Fcm_Token);
     storage=SecureStorage();
     validityToken=false;
     _service=SplashService();

@@ -114,7 +114,7 @@ class SprintScreen extends GetView<SprintController> {
 
           item: TaskWidget(
 
-            image: _sprintController.listData![i].tasks![j].assigneeInfo?.image==null?null:_sprintController.listData![i].tasks![j].assigneeInfo?.image,
+            image: _sprintController.listData[i].tasks![j].assigneeInfo?.image,
 
             name: _sprintController.listData[i].tasks![j].name,
             dueDate: _sprintController.listData[i].tasks![j].deadline,
