@@ -213,8 +213,8 @@ class ToDoScreen extends StatelessWidget {
                     _todoController.dateBool == false
                         ? 'Due Date'.tr
                         : _todoController.year == null ? 'Due Date'.tr
-                        : '${_todoController.year}/${_todoController
-                        .month}/${_todoController.day}',
+                        : '${_todoController.day}/${_todoController
+                        .month}/${_todoController.year}',
                     style: const TextStyle(fontFamily: 'HacenN',
                       color: Colors.grey,
                       fontSize: 16,

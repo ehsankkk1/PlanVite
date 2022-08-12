@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart' as Time;
 import 'package:holding_gesture/holding_gesture.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -101,7 +102,9 @@ Obx((){
                             ),
                             SizedBox(height: height * 0.05,),
                             Text(
-                             DateFormat(_agendaController.agendaList[index].deadline.toString()).toString(),
+                              //Time.DateFormat.yMEd().format(addTaskEndTime.value!),
+                              Time.DateFormat.yMEd().format(_agendaController.agendaList[index].deadline!),
+                             //DateFormat(_agendaController.agendaList[index].deadline.toString()).toString(),
                               style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                                   .color),
                             ),
