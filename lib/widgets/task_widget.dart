@@ -110,13 +110,13 @@ class TaskWidget extends StatelessWidget {
                 Column(
                   children: [
                     task!.isAdmin! && backLog!
-                        ?IconButton(icon:  const Icon(Icons.add,color: Colors.blueAccent,),
+                        ?IconButton(icon:   Icon(Icons.add,color: context.theme.primaryColor,),
                       onPressed: () {
                           Get.toNamed('/task',arguments: [task,taskIndex,sprintIndex]);
                           },)
                         :Container(),
                     task!.isAdmin!  && backLog!
-                        ?IconButton(icon:  const Icon(Icons.delete,color: Colors.red,),
+                        ?IconButton(icon:  const Icon(Icons.delete,color: Colors.redAccent,),
                       onPressed: () {
                           print('delete');
                           },)
