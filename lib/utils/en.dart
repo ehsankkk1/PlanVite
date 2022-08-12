@@ -92,6 +92,10 @@ Map <String, String> en={
   'No Internet Connection':'No Internet Connection',
 
 
+  'About':'About',
+  'Log out':'Log out',
+
+
 
 
 };

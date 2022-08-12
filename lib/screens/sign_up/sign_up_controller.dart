@@ -22,7 +22,7 @@ class SignupController extends GetxController {
   var encodedImage='';
   var imageName='';
   var fileBool;
-
+var imageFile;
   late SignupService _service = SignupService();
 
 
@@ -61,7 +61,8 @@ class SignupController extends GetxController {
         email: email,
         password: password,
         confirmPassword: confirmPassword,
-        phoneNumber: phoneNumber
+        phoneNumber: phoneNumber,
+      imageFile: imageFile,
     );
 
     signupStatus = await _service.register(user);

@@ -91,6 +91,9 @@ Map <String, String> ar={
   'Project Title':'عنوان المشروع',
   'No Internet Connection':'لا يوجد اتصال بالانترنت',
 
+  'About':'حول',
+  'Log out':'تسجيل الخروج',
+
 
 
 

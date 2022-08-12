@@ -20,6 +20,7 @@ class TaskWidget extends StatelessWidget {
     this.backLog=false,
     this.sprintIndex,
     this.taskIndex,
+
   });
 
   String? name;
@@ -32,6 +33,7 @@ class TaskWidget extends StatelessWidget {
   bool? backLog;
   int? sprintIndex;
   int? taskIndex;
+
   @override
 
   Widget build(BuildContext context) {

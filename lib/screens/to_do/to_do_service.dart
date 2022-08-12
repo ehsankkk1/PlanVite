@@ -8,6 +8,7 @@ import 'package:plane_vite/models/personal_task_send.dart';
 import 'package:plane_vite/models/personal_tasks.dart';
 
 import '../../config/server_config.dart';
+import '../../config/user_information.dart';
 
 class TodoService{
 
@@ -139,27 +140,31 @@ Future DeleteTask(String token,id)async{
 
 }
   Future<String>getCompleted(String token)async{
-    var response = await http.get(url2,
-        headers: {
-          'Accept': 'application/json',
-          'Authorization':'Bearer '+token,
-        }
 
-    );
+    var headers = {
+      'Authorization': 'Bearer ' + UserInformation.User_Token
+    };
+    var request = http.Request('GET', Uri.parse(ServerConfig.domainNameServer + ServerConfig.getCompletedTasks));
+
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+
+
     print(response.statusCode);
-    print(response.body);
 
 
+    String response1 = await response.stream.bytesToString();
     if(response.statusCode==200){
       print('tryyyyy');
 
-      var completed = response.body;
-      print('completeeeeeeeeeeeed');
-      print(completed);
+      final body = jsonDecode(response1)["data"];
 
-      return completed;
+      return body.toString();
     }else {
-      return completedFromJson(response.body).message;
+
+      final body = jsonDecode(response1)["message"];
+      return body;
     }
   }
 

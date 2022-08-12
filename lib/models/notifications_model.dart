@@ -77,8 +77,8 @@ class Adder {
     id: json["id"],
     email: json["email"],
     name: json["name"],
-    rating: json["rating"],
-    phoneNumber: json["phone_number"],
+    rating: json["rating"].toString(),
+    phoneNumber: json["phone_number"].toString(),
 
   );
 

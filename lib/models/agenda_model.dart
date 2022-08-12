@@ -61,15 +61,15 @@ class Datum {
     id: json["id"],
     name: json["name"],
     description: json["description"],
-    deadline: DateTime.parse(json["deadline"]),
+    deadline: json["deadline"] !=null?DateTime.parse(json["deadline"]):null,
     sprintId: json["sprint_id"],
     userId: json["user_id"],
     statusId: json["status_id"],
     priority: json["priority"],
     isAdmin: json["isAdmin"],
     isMyTask: json["isMyTask"],
-    assigneeInfo: AssigneeInfo.fromJson(json["assignee info"]),
-    subtasksList: List<dynamic>.from(json["subtasks list"].map((x) => x)),
+    assigneeInfo: json["assignee info"]!=null?AssigneeInfo.fromJson(json["assignee info"]):null,
+   // subtasksList: List<dynamic>.from(json["subtasks list"].map((x) => x)),
   );
 
   Map<String, dynamic> toJson() => {

@@ -21,8 +21,9 @@ class SignupService {
       'password': user.password,
       'confirmPassword': user.confirmPassword,
       'phone': user.phoneNumber,
-      'encodedImage':user.encodedImage,
-      'imageName':user.imageName,
+     //'encodedImage':user.encodedImage,
+      //'imageName':user.imageName,
+      'image':user.imageFile,
 
     });
     if (response.statusCode == 200) {

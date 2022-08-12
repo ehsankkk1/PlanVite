@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
+
 class User {
   String? userName;
   String? email;
@@ -6,6 +10,7 @@ class User {
   String? phoneNumber;
   String? encodedImage;
   String? imageName;
+  File? imageFile;
 
   User({
     this.userName,
@@ -15,5 +20,6 @@ class User {
     this.phoneNumber,
     this.encodedImage,
     this.imageName,
+    this.imageFile,
   });
 }

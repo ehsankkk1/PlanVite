@@ -311,6 +311,7 @@ SecureStorage storage = SecureStorage();
                             child: Padding(
                               padding: const EdgeInsets.only(right: 50,top: 0),
                               child: Column(
+
                                 children: [
                                   Stack(children: [
 
@@ -378,7 +379,7 @@ SecureStorage storage = SecureStorage();
 
 
                                               }, color: context.theme.primaryColor,size: 25, isSelected: controller.isDark.value,));
-                                        })
+                                        }),
 
 
 
@@ -395,6 +396,7 @@ SecureStorage storage = SecureStorage();
                             child: Stack(
 
                               children: [
+
                                 Align(
                                   alignment: Alignment(-1,-1),
                                   child: Icon(
@@ -406,7 +408,7 @@ SecureStorage storage = SecureStorage();
                                 ),
                                 //SizedBox(width: 15,),
                                 Align(
-                                  alignment: Alignment(-0.5,-0.85),
+                                  alignment: Alignment(-0.5,-0.60),
                                   child: Text(
                                     'About'.tr,
                                     style: TextStyle(fontFamily: 'HacenN',
@@ -443,7 +445,7 @@ SecureStorage storage = SecureStorage();
                                   ),
                                   //SizedBox(width: 15,),
                                   Align(
-                                    alignment: Alignment(-0.5,-0.85),
+                                    alignment: Alignment(-0.5,-0.60),
                                     child: GestureDetector(
                                       onTap: (){
                                         ShowAlert(context);

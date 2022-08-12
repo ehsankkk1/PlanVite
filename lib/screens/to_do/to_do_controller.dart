@@ -89,7 +89,7 @@ void PutFalse(String status,int id) async{
   print("edit done");
   personalList=await service.getPersonal(UserInformation.User_Token);
   completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
+  completedTasks=double.parse(completedTasksToAll.toString())*personalList.length;
 
   completedTasksInt=completedTasks?.round();
   print("get done");
@@ -106,7 +106,7 @@ void PutTrue(String status,int id) async{
   print("edit done");
   personalList=await service.getPersonal(UserInformation.User_Token);
   completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
+  completedTasks=double.parse(completedTasksToAll.toString())*personalList.length;
   completedTasksInt=completedTasks?.round();
 
   print("get done");
@@ -120,7 +120,7 @@ void PutTrue(String status,int id) async{
   isLoading2(true);
     personalList=await service.getPersonal(UserInformation.User_Token);
   completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
+  completedTasks=double.parse(completedTasksToAll.toString())*personalList.length;
 
   completedTasksInt=completedTasks?.round();
 
@@ -147,7 +147,7 @@ Future<void> addTaskOnClick() async {
   isLoading(true);
   personalList = await service.getPersonal(UserInformation.User_Token);
   completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
+  completedTasks=double.parse(completedTasksToAll.toString())*personalList.length;
 
   completedTasksInt=completedTasks?.round();
   isLoading(false);
@@ -166,7 +166,7 @@ void DeleteTask(int id)async{
   await service.DeleteTask(UserInformation.User_Token,id.toString());
   personalList=await service.getPersonal(UserInformation.User_Token);
   completedTasksToAll=await service.getCompleted(UserInformation.User_Token);
-  completedTasks=double.parse(completedTasksToAll)*personalList.length;
+  completedTasks=double.parse(completedTasksToAll.toString())*personalList.length;
 
   completedTasksInt=completedTasks?.round();
 

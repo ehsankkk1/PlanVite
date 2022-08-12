@@ -17,9 +17,15 @@ class SignupScreen extends StatelessWidget {
   final SignupController _signUpController = Get.find();
   File? _file1;
 
+
   Future gellarypicker() async {
     final myfile = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+
       _file1 = File(myfile!.path);
+      _signUpController.imageFile=_file1;
+
+
     if(_file1 != null){
       _signUpController.PickFile();
     }
@@ -30,6 +36,7 @@ class SignupScreen extends StatelessWidget {
     String imagename=_file1!.path.split("/").last;
     _signUpController.encodedImage=base64;
     _signUpController.imageName=imagename;
+
 
   }
 
