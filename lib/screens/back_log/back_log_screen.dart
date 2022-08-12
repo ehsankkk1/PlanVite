@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 import 'package:plane_vite/widgets/user_card_widget.dart';
 import '../../constants.dart';
 import '../../widgets/app_bar_no_drawer.dart';
@@ -19,6 +20,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
 
   final MyDrawerController _myDrawerController = Get.find();
   final BackLogController _backLogController = Get.put(BackLogController());
+  final SprintController _sprintController = Get.put(SprintController());
 
 
   @override
@@ -49,6 +51,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                 // notification and drawer
                 AppBarWidgetNoDrawer(
                   head: 'Back Log'.tr,
+
                 ),
                 const SizedBox(height: 0),
                 _backLogController.isLoading.value

@@ -58,6 +58,14 @@ void onReady() async{
     listData[oldListIndex!].tasks![oldItemIndex!].isloading = false;
     update();
   }
+ Future <void> load()async{
+    listData = await sprintService.getAllColumnsInActiveSprint(projectId);
+    print(listData);
+    if(listData.isNotEmpty){
+      update();
+    }
+
+  }
 
 
 }

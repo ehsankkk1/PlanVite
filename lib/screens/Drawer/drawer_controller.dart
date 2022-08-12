@@ -33,7 +33,12 @@ class MyDrawerController extends GetxController {
   }
   @override
 
-
+Future<void> load()async{
+    isLoading.value = false;
+    allProjects = await _drawerServices.getProjects(UserInformation.User_Token);
+    userInfo = await _drawerServices.getUserInfo(UserInformation.User_Token);
+    isLoading.value = true;
+  }
   void toggleDrawer() async{
     print("Toggle drawer");
 

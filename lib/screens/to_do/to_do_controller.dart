@@ -34,13 +34,7 @@ var month;
 var day;
 var date;
 @override
-  void onInit() {
-  done = false.obs;
-  dateBool=false.obs;
-  date='';
 
-    super.onInit();
-  }
   void Done(){
 
   done.value=!done.value;
@@ -115,7 +109,7 @@ void PutTrue(String status,int id) async{
 
 }
 @override
-  void onReady() async{
+  void onInit() async{
   print('johny1');
   isLoading2(true);
     personalList=await service.getPersonal(UserInformation.User_Token);
