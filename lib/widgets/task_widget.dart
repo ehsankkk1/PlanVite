@@ -20,7 +20,7 @@ class TaskWidget extends StatelessWidget {
     this.backLog=false,
     this.sprintIndex,
     this.taskIndex,
-
+    this.pinFunction,
   });
 
   String? name;
@@ -33,7 +33,7 @@ class TaskWidget extends StatelessWidget {
   bool? backLog;
   int? sprintIndex;
   int? taskIndex;
-
+  Function()? pinFunction;
   @override
 
   Widget build(BuildContext context) {
@@ -115,7 +115,7 @@ class TaskWidget extends StatelessWidget {
                 Column(
                   children: [
                     task!.isAdmin! && backLog!
-                        ?IconButton(icon:   Icon(Icons.add,color: context.theme.primaryColor,),
+                        ?IconButton(icon:Icon(Icons.add,color: context.theme.primaryColor,),
                       onPressed: () {
                           Get.toNamed('/task',arguments: [task,taskIndex,sprintIndex]);
                           },)
@@ -125,6 +125,12 @@ class TaskWidget extends StatelessWidget {
                       onPressed: () {
                           print('delete');
                           },)
+                        :Container(),
+
+                    task!.isMyTask! && backLog! == false
+                        ?IconButton(icon:Icon(Icons.push_pin_outlined,color: context.theme.primaryColor,),
+                      onPressed: pinFunction
+                    )
                         :Container(),
                     SizedBox(
                       height:20,

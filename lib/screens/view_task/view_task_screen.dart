@@ -286,7 +286,8 @@ class ViewTaskScreen extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      GestureDetector(
+                      controller.viewTask!.isAdmin! || controller.viewTask!.isMyTask!
+                          ?GestureDetector(
                         onTap: () {
                           controller.addSubTaskDialog(context);
                         },
@@ -294,7 +295,8 @@ class ViewTaskScreen extends StatelessWidget {
                           size: 35,
 
                         ),
-                      ),
+                      )
+                          :Container(),
                     ],
                   ),
                   // sub task text field

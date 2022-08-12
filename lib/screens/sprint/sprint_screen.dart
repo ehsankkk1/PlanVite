@@ -121,6 +121,9 @@ class SprintScreen extends GetView<SprintController> {
             priority: _sprintController.listData[i].tasks![j].priority,
             loading: _sprintController.listData[i].tasks![j].isloading,
             task:_sprintController.listData[i].tasks![j],
+            pinFunction: (){
+              print('tap');
+            },
           ),),);
       }
       _lists.add(BoardList(
