@@ -116,7 +116,7 @@ class SignupController extends GetxController {
         ],
       );
       if ( croppedFile != null){
-        file1.value = File(croppedFile!.path);
+        file1.value = File(croppedFile.path);
       }
 
     }

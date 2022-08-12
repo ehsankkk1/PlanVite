@@ -262,7 +262,7 @@ class BackLogService {
 
       if (response.statusCode == 200) {
         String response1 = await response.stream.bytesToString();
-        final body = jsonDecode(response1)["data"];
+        final body = jsonDecode(response1)["data"]["statues"];
         var jsonEncode = json.encode(body);
         List<Statues> projectStatues = statuesFromJson(jsonEncode.toString());
         //successMessageBoxGet('$email Added',context);
