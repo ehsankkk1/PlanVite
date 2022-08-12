@@ -25,6 +25,7 @@ class AgendaService{
     if(response.statusCode==200){
 
       var agenda = agendaFromJson(response.body);
+      print(response.body);
       print(agenda);
       return agenda.data;
     }else {

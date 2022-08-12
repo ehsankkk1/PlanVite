@@ -114,6 +114,7 @@ class SprintScreen extends GetView<SprintController> {
 
           item: TaskWidget(
 
+
             image: _sprintController.listData![i].tasks![j].assigneeInfo?.image==null?null:_sprintController.listData![i].tasks![j].assigneeInfo?.image,
 
             name: _sprintController.listData[i].tasks![j].name,
@@ -121,9 +122,7 @@ class SprintScreen extends GetView<SprintController> {
             priority: _sprintController.listData[i].tasks![j].priority,
             loading: _sprintController.listData[i].tasks![j].isloading,
             task:_sprintController.listData[i].tasks![j],
-            pinFunction: (){
-              print('tap');
-            },
+            pinFunction: (){_sprintController.pinTask(_sprintController.listData[i].tasks![j].id);}
           ),),);
       }
       _lists.add(BoardList(

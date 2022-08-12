@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 
 class SprintService {
 
-
+var message;
   Future<List<Users>> getProjectUsers(int projectID) async {
     var headers = {
       'Authorization':'Bearer '+UserInformation.User_Token,
@@ -105,4 +105,27 @@ class SprintService {
     }
 
   }
+
+  Future <bool> pinTask(String token,id)async{
+    var url2=Uri.parse(ServerConfig.domainNameServer+'tasks/'+id.toString()+'/pin');
+    var response = await http.put(url2,
+        headers: {
+          'Accept': 'application/json',
+          'Authorization':'Bearer '+token,
+        }
+
+    );
+
+    print(response.statusCode);
+    if(response.statusCode==200){
+
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
+
+
 }

@@ -1,7 +1,9 @@
 import 'package:boardview/boardview_controller.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:plane_vite/models/active_sprint_model.dart';
 import 'package:plane_vite/screens/sprint/sprint_service.dart';
+import '../../config/user_information.dart';
 import '../../models/project_users.dart';
 import 'sprint_model.dart';
 
@@ -10,6 +12,7 @@ class SprintController extends GetxController{
 
   List<Users> usersList=[];
   int projectId = 2;
+bool  pinStatus=false;
   final SprintService sprintService = new SprintService();
 
 
@@ -64,6 +67,28 @@ void onReady() async{
     if(listData.isNotEmpty){
       update();
     }
+
+  }
+  void pinTask(id)async{
+    //isLoading(true);
+   // await sprintService.pinTask(UserInformation.User_Token,id);
+    EasyLoading.show(
+      status: 'Loading...'.tr,
+    );
+     pinStatus=await sprintService.pinTask(UserInformation.User_Token, id);
+    if (pinStatus) {
+      EasyLoading.showSuccess('Pinned Successfully'.tr);
+    } else {
+      EasyLoading.showError(
+       'Server Error'.tr,
+        duration: Duration(seconds: 10),
+        dismissOnTap: true,
+      );
+
+      print('error here');
+    }
+
+   // isLoading(false);
 
   }
 

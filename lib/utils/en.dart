@@ -97,6 +97,10 @@ Map <String, String> en={
   'this app is made to help you managing your work tasks and your daily tasks to make your life much easier':'this app is made to help you managing your work tasks and your daily tasks to make your life much easier',
 
 
+  'Pinned Successfully':'Pinned Successfully',
+  'Server Error':'Server Error',
+
+
 
 
 };

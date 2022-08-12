@@ -21,6 +21,7 @@ class SplashController extends GetxController{
      UserInformation.Fcm_Token=newToken!;
 
    });
+  print(UserInformation.Fcm_Token);
     storage=SecureStorage();
     validityToken=false;
     _service=SplashService();
