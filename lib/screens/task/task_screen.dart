@@ -190,11 +190,10 @@ class TaskScreen extends StatelessWidget {
                                             radius: 20,
                                             backgroundColor: context.theme
                                                 .primaryColor,
-                                            child: const CircleAvatar(
+                                            child:  CircleAvatar(
                                               radius: 20,
                                               backgroundColor: Colors.black12,
-                                              foregroundImage: AssetImage(
-                                                  'images/joey.png'),
+                                              foregroundImage: NetworkImage(user.image==null?"https://th.bing.com/th/id/OIP.QqThEN77e1aL9ps4M3mDGwAAAA?pid=ImgDet&w=220&h=220&c=7&dpr=1,88":user.image!),
                                             ),
                                           ),
                                           SizedBox(width: width*0.05,),
