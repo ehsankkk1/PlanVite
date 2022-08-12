@@ -11,6 +11,7 @@ import 'package:intl/intl.dart' as Time;
 
 class BackLogController extends GetxController{
 var ratingStatus=false;
+var kickStatus=false;
 var userRate;
   var selectedLang;
   var  selectedLangBool ;
@@ -48,6 +49,7 @@ var userRate;
     super.onInit();
 
   }
+  void nothing(){}
  void rateUser(userId,context)async{
 
 
@@ -64,6 +66,31 @@ var userRate;
 
       print('error here');
     }
+
+}
+
+void kickUser(userId,context, String? email)async{
+
+
+
+  loaderBoxGet(context);
+  kickStatus=await _backLogService.kickUser2(UserInformation.User_Token,projectId,userId,email);
+  Get.back();
+  if (kickStatus) {
+    successMessageBoxGet(_backLogService.message, context);
+    for(int i=0;i<allProjectUsers.length;i++){
+      if(allProjectUsers[i].id==userId){
+        allProjectUsers.removeAt(i);
+        update();
+      }
+    }
+  } else {
+    errorMessageBoxGet(
+        Get.locale.toString()=='ar'?'خطأ في الخادم':
+        _backLogService.message, context);
+
+    print('error here');
+  }
 
 }
   void changeSelectedLang()async{
