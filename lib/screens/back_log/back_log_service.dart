@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 
 class BackLogService {
 
+  bool isAdmin=false;
 
   Future<ProjectUser?> addNewUser(int projectID, String email, BuildContext context) async {
     loaderBoxGet(context);
@@ -263,6 +264,7 @@ class BackLogService {
       if (response.statusCode == 200) {
         String response1 = await response.stream.bytesToString();
         final body = jsonDecode(response1)["data"]["statues"];
+        isAdmin = jsonDecode(response1)["data"]["isAdmin"];
         var jsonEncode = json.encode(body);
         List<Statues> projectStatues = statuesFromJson(jsonEncode.toString());
         //successMessageBoxGet('$email Added',context);

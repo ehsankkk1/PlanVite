@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -64,7 +62,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                         children: [
                           GetBuilder<BackLogController>(builder: (_backLogController) {
                             return SprintWidget(
-                                addButton: true,
+                                addButton: _backLogController.isAdmin,
                                 checkBox: false,
                                 sprintName: "Users".tr,
                                 onTap: () {
@@ -84,7 +82,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                           GetBuilder<BackLogController>(
                               builder: (_backLogController) {
                                 return SprintWidget(
-                                  addButton: true,
+                                  addButton: _backLogController.isAdmin,
                                   checkBox: false,
                                   sprintName: "Statues".tr,
                                   onTap: () {
@@ -118,7 +116,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                                     .allSprints![index].id!,
                                                 context);
                                           },
-                                          addButton: true,
+                                          addButton: _backLogController.isAdmin,
                                           checkBoxValue: _backLogController
                                               .allSprints![index].isActive!,
                                           onChangedBoxValue: (value) {
@@ -126,7 +124,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                                 .toggleSprintValue(
                                                 index, context);
                                           },
-                                          checkBox: true,
+                                          checkBox: _backLogController.isAdmin,
                                           sprintName: _backLogController
                                               .allSprints![index].name!,
                                           coloredBoxes: List.generate(
@@ -166,11 +164,11 @@ class BackLogScreen extends GetView<BackLogScreen> {
                               );
                             },
                           ),
-                          _addButtonSprint(
+                          _backLogController.isAdmin?_addButtonSprint(
                             onTap: () {
                               _backLogController.showAddSprintField(context);
                             },
-                          ),
+                          ):Container(),
                         ],
                       ),
                     )
@@ -192,6 +190,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
       ),
     );
   }
+
 
 }
 

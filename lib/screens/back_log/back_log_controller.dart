@@ -17,7 +17,7 @@ class BackLogController extends GetxController{
   List<ProjectUser> allProjectUsers =[];
   List<Sprint>? allSprints =[];
   List<Statues>? allStatues =[];
-
+ bool isAdmin=false;
   Rxn<DateTime> addTaskEndTime = Rxn<DateTime>();
   Rxn<DateTime> addSprintEndTime = Rxn<DateTime>();
   var isLoading = false.obs;
@@ -37,6 +37,8 @@ class BackLogController extends GetxController{
     allSprints = await _backLogService.getAllSprints(projectId);
     allStatues = await _backLogService.getAllStatues(projectId);
     allProjectUsers = await _backLogService.getAllUsers(projectId);
+    isAdmin= _backLogService.isAdmin;
+    print(isAdmin);
     if(allSprints != [] && allStatues != [] && allProjectUsers != []){
       isLoading.value = true;
     }

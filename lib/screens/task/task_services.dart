@@ -33,6 +33,7 @@ class TaskService{
       http.StreamedResponse response = await request.send();
       String response1 = await response.stream.bytesToString();
       print(response.statusCode);
+      print(response1);
       if (response.statusCode == 200) {
         print(response1);
         Get.back();

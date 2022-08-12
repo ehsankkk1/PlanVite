@@ -37,6 +37,7 @@ class TaskController extends GetxController{
     high=false.obs;
     approved=false.obs;
     fileBool=false.obs;
+
     allProjectUsers= _backLogController.allProjectUsers;
     SprintController _sprintController= Get.find();
     taskTitleTextFieldController = TextEditingController(text: oneTask!.name);
@@ -70,7 +71,9 @@ class TaskController extends GetxController{
       oneTask!.name = taskTitleTextFieldController.text;
       oneTask!.description = taskDescriptionTextFieldController.text;
       oneTask!.deadline = addTaskEndTime.value;
-      oneTask!.userId = allUserDropDownValue;
+      if(allUserDropDownValue != null){
+        oneTask!.userId = allUserDropDownValue;
+      }
       bool success =await _taskService
           .editTask(
           oneTask!,
