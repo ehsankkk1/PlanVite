@@ -24,9 +24,8 @@ class SuperSprintScreen extends StatelessWidget {
     return GetBuilder<SprintController>(builder: (logic) {
       return Scaffold(
         backgroundColor: context.theme.backgroundColor,
-        body: logic.isLoading.value ?
-        SprintScreen()
-       :SafeArea(
+        body: logic.isLoading.value ==false
+            ? SafeArea(
           child: Column(
             children: [
               Padding(
@@ -52,7 +51,34 @@ class SuperSprintScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),
+        )
+            :logic.listData!.isEmpty
+            ?SafeArea(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                    width * 0.03, height * 0.025, width * 0.03, 0),
+                child: AppBarWidget(
+                  controller: _myDrawerController,
+                  head: 'Sample Project'.tr,
+                  backLog: true,
+                  onBacklogPressed: () {
+                    Get.toNamed(
+                      '/backlog', arguments: _sprintController.projectId,);
+                  },
+                ),
+              ),
+               Expanded(
+                child: Center(
+                  child:Text('Please Activate Sprint First'
+                    ,style: TextStyle(color: context.theme.textTheme.caption!.color,fontSize: 25),)
+                ),
+              ),
+            ],
+          ),
+        )
+          :SprintScreen()
 
       );
     });
@@ -69,13 +95,13 @@ class SprintScreen extends GetView<SprintController> {
     final MyDrawerController _myDrawerController = Get.find();
     List<BoardList> _lists = [];
     List<BoardItem> items = [];
-    for (int i = 0; i < _sprintController.listData.length; i++) {
-      for (int j = 0; j < _sprintController.listData[i].tasks!.length; j++) {
+    for (int i = 0; i < _sprintController.listData!.length; i++) {
+      for (int j = 0; j < _sprintController.listData![i].tasks!.length; j++) {
         items.insert(
           j,
           BoardItem(
-          draggable: (_sprintController.listData[i].tasks![j].isMyTask!
-              || _sprintController.listData[i].tasks![j].isAdmin!),
+          draggable: (_sprintController.listData![i].tasks![j].isMyTask!
+              || _sprintController.listData![i].tasks![j].isAdmin!),
           onStartDragItem: (int? listIndex, int? itemIndex,
               BoardItemState? state) {
 
@@ -88,16 +114,16 @@ class SprintScreen extends GetView<SprintController> {
 
 
             var item =
-            _sprintController.listData[oldListIndex!].tasks![oldItemIndex!];
-            _sprintController.listData[oldListIndex].tasks!.removeAt(
+            _sprintController.listData![oldListIndex!].tasks![oldItemIndex!];
+            _sprintController.listData![oldListIndex].tasks!.removeAt(
                 oldItemIndex);
-            _sprintController.listData[listIndex!].tasks!.insert(
+            _sprintController.listData![listIndex!].tasks!.insert(
                 itemIndex!, item);
 
             if(listIndex != oldListIndex){
               bool success = await _sprintController.sprintService.updateTaskStatues(
-                  _sprintController.listData[listIndex].status_id!,
-                  _sprintController.listData[listIndex].tasks![itemIndex].id!);
+                  _sprintController.listData![listIndex].status_id!,
+                  _sprintController.listData![listIndex].tasks![itemIndex].id!);
               if (success) {
                 _sprintController.changeToFalse(listIndex,itemIndex);
               }
@@ -114,15 +140,15 @@ class SprintScreen extends GetView<SprintController> {
 
           item: TaskWidget(
 
-            image: _sprintController.listData[i].tasks![j].assigneeInfo?.image,
+            image: _sprintController.listData![i].tasks![j].assigneeInfo?.image,
 
-            name: _sprintController.listData[i].tasks![j].name,
-            dueDate: _sprintController.listData[i].tasks![j].deadline,
-            priority: _sprintController.listData[i].tasks![j].priority,
-            loading: _sprintController.listData[i].tasks![j].isloading,
-            task:_sprintController.listData[i].tasks![j],
+            name: _sprintController.listData![i].tasks![j].name,
+            dueDate: _sprintController.listData![i].tasks![j].deadline,
+            priority: _sprintController.listData![i].tasks![j].priority,
+            loading: _sprintController.listData![i].tasks![j].isloading,
+            task:_sprintController.listData![i].tasks![j],
             pinFunction: (){
-             _sprintController.pinTask(_sprintController.listData[i].tasks![j].id, context);
+             _sprintController.pinTask(_sprintController.listData![i].tasks![j].id, context);
             },
           ),),);
       }
@@ -135,7 +161,7 @@ class SprintScreen extends GetView<SprintController> {
               child: Container(
                 padding: EdgeInsets.all(width * 0.01),
                 child: ColumnHeader(
-                  title: _sprintController.listData[i].statusName,),
+                  title: _sprintController.listData![i].statusName,),
               )),
         ],
         items: items,
@@ -162,7 +188,7 @@ class SprintScreen extends GetView<SprintController> {
                 },
               ),
             ),
-            Expanded(
+           Expanded(
                 child: Container(
                   margin: const EdgeInsets.only(
                       left: 10, bottom: 10, right: 10),
@@ -177,7 +203,8 @@ class SprintScreen extends GetView<SprintController> {
                     boardViewController: _sprintController
                         .boardViewController,
                   ),
-                )),
+                ))
+
           ],
         ),
       ),

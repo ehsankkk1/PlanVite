@@ -13,13 +13,13 @@ class SprintController extends GetxController{
 
   List<Users> usersList=[];
   int projectId = 2;
-bool  pinStatus=false;
-  final SprintService sprintService = new SprintService();
+  bool pinStatus=false;
+  final SprintService sprintService = SprintService();
 
 
   BoardViewController boardViewController=BoardViewController();
 
-  List<ActiveSprint> listData = [];
+  List<ActiveSprint>? listData = [];
 
   var isLoading = false.obs;
   @override
@@ -44,28 +44,31 @@ void onReady() async{
   }
 
   Future<void> onChangeIndex(int index) async {
+
     isLoading.value = false;
     update();
     projectId = index ;
     listData = await sprintService.getAllColumnsInActiveSprint(projectId);
     print(listData);
-    if(listData.isNotEmpty){
+    if(listData != null){
       isLoading.value = true;
+      print("list data"+listData.toString());
       update();
     }
   }
+
   void changeToTrue(int? oldListIndex,int? oldItemIndex){
-    listData[oldListIndex!].tasks![oldItemIndex!].isloading = true;
+    listData![oldListIndex!].tasks![oldItemIndex!].isloading = true;
     update();
   }
   void changeToFalse(int? oldListIndex,int? oldItemIndex){
-    listData[oldListIndex!].tasks![oldItemIndex!].isloading = false;
+    listData![oldListIndex!].tasks![oldItemIndex!].isloading = false;
     update();
   }
  Future <void> load()async{
     listData = await sprintService.getAllColumnsInActiveSprint(projectId);
     print(listData);
-    if(listData.isNotEmpty){
+    if(listData != null){
       update();
     }
 

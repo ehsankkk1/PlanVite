@@ -44,7 +44,7 @@ var message;
     }
   }
 
-  Future<List<ActiveSprint>> getAllColumnsInActiveSprint(int projectID) async {
+  Future<List<ActiveSprint>?> getAllColumnsInActiveSprint(int projectID) async {
     try {
       var headers = {
         'Authorization': 'Bearer ' + UserInformation.User_Token
@@ -65,15 +65,18 @@ var message;
         //successMessageBoxGet('$email Added',context);
         return activeSprint;
       }
+      if(response.statusCode == 404){
+        return [];
+      }
       else {
         // errorMessageBoxGet('error',context);
         print(response.reasonPhrase);
-        return [];
+        return null;
       }
     } on SocketException catch (e) {
       //errorMessageBoxGet('Network error',context);
       print(e);
-      return [];
+      return null;
     }
   }
 
