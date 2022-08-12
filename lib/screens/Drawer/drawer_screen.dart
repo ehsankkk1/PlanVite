@@ -82,8 +82,8 @@ double rating=0;
                             SizedBox(width: width*0.02,),
                             Column(
                               children: [
-                                SizedBox(height: 6,),
-                                Text('rated by  '+_myDrawerController.userInfo!.userRatingCount.toString()+'  users',
+
+                                Text('rated by  '.tr+_myDrawerController.userInfo!.userRatingCount.toString()+'  users'.tr,
                                  style: TextStyle(fontFamily: 'HacenN',
                                     fontSize: 16,
                                     color: context.theme.textTheme.caption!.color,

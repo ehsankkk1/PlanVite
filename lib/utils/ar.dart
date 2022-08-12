@@ -90,9 +90,12 @@ Map <String, String> ar={
   'tap on the icon to unpin the task':'اضفط على الأيقونة لازالة جدولة المهمة',
   'Project Title':'عنوان المشروع',
   'No Internet Connection':'لا يوجد اتصال بالانترنت',
-
   'About':'حول',
   'Log out':'تسجيل الخروج',
+  '  users':'  مستخدم',
+  'rated by  ':'قيم من  ',
+  'this app is made to help you managing your work tasks and your daily tasks to make your life much easier':'صنع هذا التطبيق لمساعدتك بادارة مهام عملك ومهامك الشخصية وجعل تجربتك أكثر سهولة',
+
 
 
 
