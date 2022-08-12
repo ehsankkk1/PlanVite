@@ -122,7 +122,7 @@ class SprintScreen extends GetView<SprintController> {
             loading: _sprintController.listData[i].tasks![j].isloading,
             task:_sprintController.listData[i].tasks![j],
             pinFunction: (){
-              print('tap');
+             _sprintController.pinTask(_sprintController.listData[i].tasks![j].id, context);
             },
           ),),);
       }

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:plane_vite/models/active_sprint_model.dart';
 import 'package:plane_vite/screens/sprint/sprint_service.dart';
 import '../../config/user_information.dart';
+import '../../constants.dart';
 import '../../models/project_users.dart';
 import 'sprint_model.dart';
 
@@ -69,21 +70,16 @@ void onReady() async{
     }
 
   }
-  void pinTask(id)async{
+  void pinTask(id, context)async{
     //isLoading(true);
    // await sprintService.pinTask(UserInformation.User_Token,id);
-    EasyLoading.show(
-      status: 'Loading...'.tr,
-    );
+    loaderBoxGet(context);
      pinStatus=await sprintService.pinTask(UserInformation.User_Token, id);
+     Get.back();
     if (pinStatus) {
-      EasyLoading.showSuccess('Pinned Successfully'.tr);
+      successMessageBoxGet( 'Pinned Successfully'.tr, context);
     } else {
-      EasyLoading.showError(
-       'Server Error'.tr,
-        duration: Duration(seconds: 10),
-        dismissOnTap: true,
-      );
+      errorMessageBoxGet( 'Server Error'.tr, context);
 
       print('error here');
     }

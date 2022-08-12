@@ -110,6 +110,9 @@ void PutTrue(String status,int id) async{
 }
 @override
   void onInit() async{
+  done = false.obs;
+  dateBool=false.obs;
+  date='';
   print('johny1');
   isLoading2(true);
     personalList=await service.getPersonal(UserInformation.User_Token);
