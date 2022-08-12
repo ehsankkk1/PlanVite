@@ -91,7 +91,7 @@ class ViewTaskScreen extends StatelessWidget {
                                   radius: 35,
                                   backgroundColor: Colors.black12,
                                   foregroundImage:
-                                  NetworkImage(_viewTaskController.viewTask!.assigneeInfo!.image!),
+                                  NetworkImage(_viewTaskController.viewTask?.assigneeInfo?.image==null?'https://th.bing.com/th/id/OIP.QqThEN77e1aL9ps4M3mDGwAAAA?pid=ImgDet&w=220&h=220&c=7&dpr=1,88':_viewTaskController.viewTask!.assigneeInfo!.image!),
                                 ),
                               ),
                               SizedBox(
