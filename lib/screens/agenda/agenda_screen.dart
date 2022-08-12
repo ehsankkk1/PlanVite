@@ -106,7 +106,7 @@ Obx((){
                             SizedBox(height: height * 0.05,),
                             Text(
                               //Time.DateFormat.yMEd().format(addTaskEndTime.value!),
-                              Time.DateFormat.yMEd().format(_agendaController.agendaList[index].deadline!),
+                              Time.DateFormat.yMEd().format(_agendaController.agendaList[index].deadline==null?DateTime.now():_agendaController.agendaList[index].deadline!),
                              //DateFormat(_agendaController.agendaList[index].deadline.toString()).toString(),
                               style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                                   .color),
@@ -138,7 +138,7 @@ Obx((){
                     ),
                     SizedBox(width: width * 0.15,),
                     Flexible(
-                      child: Text(_agendaController.agendaList.isEmpty?'':_agendaController.agendaList[index].name.toString(),
+                      child: Text(_agendaController.agendaList[index].name.toString(),
                         style:   TextStyle(
                             fontSize: 18,
                             fontFamily: 'HacenN',color: context.theme.textTheme.caption!
