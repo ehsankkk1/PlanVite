@@ -15,7 +15,7 @@ import '../../models/personal_task.dart';
 
 class AgendaController extends GetxController{
 
-  List<Datum> agendaList=[];
+  List<Agenda> agendaList=[];
 
   // ProductsService _service=ProductsService();
   AgendaService _service= AgendaService();
@@ -32,21 +32,22 @@ class AgendaController extends GetxController{
   @override
   void onReady()async {
 
-    agendaList=await _service.getNotifications(UserInformation.User_Token);
+    agendaList=await _service.getAgenda();
     isLoading(false);
     super.onReady();
+
   }
   void unPin(id)async{
     isLoading(true);
     await _service.unPinTask(UserInformation.User_Token,id);
-    agendaList=await _service.getNotifications(UserInformation.User_Token);
+    agendaList=await _service.getAgenda();
     isLoading(false);
 
   }
   void load()async{
 
     isLoading(true);
-    agendaList=await _service.getNotifications(UserInformation.User_Token);
+    agendaList=await _service.getAgenda();
     isLoading(false);
 
   }
