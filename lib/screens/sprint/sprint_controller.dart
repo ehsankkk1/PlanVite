@@ -80,7 +80,7 @@ void onReady() async{
       successMessageBoxGet(sprintService.message, context);
     } else {
       errorMessageBoxGet(
-
+       Get.locale.toString()=='ar'?'خطأ في الخادم':
           sprintService.message, context);
 
       print('error here');

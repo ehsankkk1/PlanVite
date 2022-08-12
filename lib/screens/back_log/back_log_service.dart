@@ -353,6 +353,32 @@ class BackLogService {
     }
 
   }
+var message;
+  Future <bool> rateUser2(String token,projectId,userId,userRate)async{
+    var url2=Uri.parse(ServerConfig.domainNameServer+'projects/'+projectId.toString()+'/review/'+userId.toString());
+    var response = await http.post(url2,
+        headers: {
+          'Accept': 'application/json',
+          'Authorization':'Bearer '+token,
+        },
+      body: {
+        'rating': userRate.toString(),
+      }
+
+    );
+    var jsonResponse = jsonDecode(response.body);
+    message = jsonResponse['message'];
+    print(message);
+    print(response.statusCode);
+    if(response.statusCode==200){
+
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
 
 
 }

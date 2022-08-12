@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:holding_gesture/holding_gesture.dart';
 import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 import 'package:plane_vite/widgets/user_card_widget.dart';
 import '../../constants.dart';
@@ -26,13 +27,15 @@ class BackLogScreen extends GetView<BackLogScreen> {
     BackLogController controller = Get.find();
     Widget buildRating(var index) =>
         RatingBar.builder(
-          minRating: 0.5,
-          allowHalfRating: true,
+          minRating: 0,
+          allowHalfRating: false,
 
           itemBuilder: (context, _) =>
               Icon(Icons.star, color: context.theme.primaryColor),
           onRatingUpdate: (rating) {
             controller.rating.value = rating.toInt();
+            _backLogController.userRate=rating;
+
           },
 
         );
@@ -76,10 +79,40 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                 coloredBoxes: List.generate(
                                   _backLogController.allProjectUsers.length,
                                       (index) =>
-                                      UserCardWidget(
-                                          _backLogController
-                                              .allProjectUsers[index].email!
-                                          , true
+                                      HoldDetector(
+                                        onHold: (){
+                                          showDialog(context: context, builder: (context)=>AlertDialog(
+                                            title: Center(
+                                              child: Text('Please leave a star rating'.tr,
+                                                style: TextStyle(color: context.theme.textTheme.caption!.color),
+                                              ),
+                                            ),
+                                            content: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              mainAxisSize:MainAxisSize.min ,
+                                              children: [
+                                                Text('rate user '.tr +'$index',),
+                                                SizedBox(height: 30,),
+                                                buildRating(index),
+
+                                              ],
+                                            ),actions: [
+                                            TextButton(onPressed: (){
+                                              Navigator.pop(context);
+                                              _backLogController.rateUser(
+
+                                                  _backLogController.allProjectUsers[index].id,context);
+                                             }, child: Text('Ok',
+                                              style: TextStyle(color: context.theme.textTheme.caption!.color,),
+                                            ),)
+                                          ],
+                                          ),);
+                                        },
+                                        child: UserCardWidget(
+                                            _backLogController
+                                                .allProjectUsers[index].email!
+                                            , true
+                                        ),
                                       ),
                                 )
                             );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:plane_vite/config/user_information.dart';
 import 'package:plane_vite/models/statues.dart';
 import 'package:plane_vite/models/project_user_model.dart';
 import 'package:plane_vite/screens/back_log/back_log_service.dart';
@@ -9,7 +10,8 @@ import '../../models/task_model.dart';
 import 'package:intl/intl.dart' as Time;
 
 class BackLogController extends GetxController{
-
+var ratingStatus=false;
+var userRate;
   var selectedLang;
   var  selectedLangBool ;
   var rating=0.obs;
@@ -32,6 +34,7 @@ class BackLogController extends GetxController{
   @override
   Future<void> onInit() async {
 
+
     selectedLang='en';
     selectedLangBool = true.obs;
     allSprints = await _backLogService.getAllSprints(projectId);
@@ -45,7 +48,24 @@ class BackLogController extends GetxController{
     super.onInit();
 
   }
+ void rateUser(userId,context)async{
 
+
+
+    loaderBoxGet(context);
+    ratingStatus=await _backLogService.rateUser2(UserInformation.User_Token,projectId,userId,userRate.toInt());
+    Get.back();
+    if (ratingStatus) {
+      successMessageBoxGet(_backLogService.message, context);
+    } else {
+      errorMessageBoxGet(
+          Get.locale.toString()=='ar'?'خطأ في الخادم':
+          _backLogService.message, context);
+
+      print('error here');
+    }
+
+}
   void changeSelectedLang()async{
 
     if(selectedLang=='ar'){
