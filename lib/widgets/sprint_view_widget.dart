@@ -62,7 +62,7 @@ class SprintWidget extends StatelessWidget {
                                   color: context.theme.primaryColor,
                                 ),
                                 onTap: onTap,
-                              ):Container(width: 15,height: 15,)
+                              ):Container(width: 40,height: 40,)
 
                             ],
                           ),
