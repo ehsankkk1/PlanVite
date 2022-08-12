@@ -37,7 +37,10 @@ class TaskScreen extends StatelessWidget {
                       width * 0.03, height * 0.025),
                   child: AppBarWidgetNoDrawer(
                     onSaveTap: (){
-                      _taskController.editTaskTap(context);
+                      if(_taskController.taskTitleTextFieldController.text!=''){
+                        _taskController.editTaskTap(context);
+                      }
+
                     },
                     onBackTap: (){
                       Get.back();

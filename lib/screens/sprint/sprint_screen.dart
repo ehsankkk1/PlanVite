@@ -142,6 +142,7 @@ class SprintScreen extends GetView<SprintController> {
 
             image: _sprintController.listData![i].tasks![j].assigneeInfo?.image,
 
+
             name: _sprintController.listData![i].tasks![j].name,
             dueDate: _sprintController.listData![i].tasks![j].deadline,
             priority: _sprintController.listData![i].tasks![j].priority,

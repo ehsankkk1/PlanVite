@@ -7,10 +7,11 @@ import '../constants.dart';
 
 
 class UserCardWidget extends StatelessWidget {
-   UserCardWidget(this.username,this.showImage);
+   UserCardWidget(this.username,this.showImage,this.onDelete);
 
   String username;
   bool showImage;
+  Function()? onDelete;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,21 +25,39 @@ class UserCardWidget extends StatelessWidget {
         child: Padding(
           padding:  EdgeInsets.fromLTRB( width * 0.03,height * 0.02,width * 0.03,height * 0.02),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children:  [
-              showImage
-              ?CircleAvatar(radius:25,backgroundColor: context.theme.textTheme.caption!.color,child: Text('E',style: TextStyle(fontFamily: 'HacenN',fontSize: 25,fontWeight: FontWeight.bold),),)
-              :Container(),
-              SizedBox(width: width * 0.05,),
+
               Flexible(
-                child: Text(
-                  username,
-                  style:  TextStyle(fontFamily: 'HacenN',
-                    fontSize: 16,
-                    color: context.theme.textTheme.caption!.color,
-                  ),),
+                child: Row(
+                  children: [
+                    showImage
+                        ?CircleAvatar(radius:25,backgroundColor: context.theme.textTheme.caption!.color,child: Text('E',style: TextStyle(fontFamily: 'HacenN',fontSize: 25,fontWeight: FontWeight.bold),),)
+                        :Container(),
+                    SizedBox(width: width * 0.05,),
+
+                    Flexible(
+                      child: Text(
+                        username,
+                        style:  TextStyle(fontFamily: 'HacenN',
+                          fontSize: 16,
+                          color: context.theme.textTheme.caption!.color,
+                        ),),
+                    ),
+                  ],
+                ),
               ),
+
+              GestureDetector(
+                onTap: onDelete,
+                child: Icon(Icons.exit_to_app,
+                color: Colors.red,
+                ),
+              ),
+
             ],
           ),
+
         ),
       ),
     );

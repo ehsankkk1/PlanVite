@@ -21,6 +21,7 @@ class TaskWidget extends StatelessWidget {
     this.sprintIndex,
     this.taskIndex,
     this.pinFunction,
+    this.taskName,
   });
 
   String? name;
@@ -33,6 +34,7 @@ class TaskWidget extends StatelessWidget {
   bool? backLog;
   int? sprintIndex;
   int? taskIndex;
+  String? taskName;
   Function()? pinFunction;
   @override
 
@@ -87,7 +89,7 @@ class TaskWidget extends StatelessWidget {
                                 backgroundColor:context.theme.textTheme.caption!.color,
                                 child: image==null?
                                 Text(
-                                  name![0],
+                                  task?.assigneeInfo?.name==null?'N':task!.assigneeInfo!.name![0],
                                   style:
                                       TextStyle(fontSize: SizeConfig.blockSizeHorizontal*3.5, fontWeight: FontWeight.bold),
                                 )

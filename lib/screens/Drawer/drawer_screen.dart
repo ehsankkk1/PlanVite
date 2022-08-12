@@ -25,16 +25,16 @@ double rating=0;
     SkeletonController _skeletonController = Get.find();
     MyDrawerController _myDrawerController = Get.find();
     return Obx(() {
-      return RefreshIndicator(
-        color: context.theme.primaryColor,
-        backgroundColor: context.theme.backgroundColor,
-        onRefresh:_myDrawerController.load ,
-        child: Scaffold(
-          backgroundColor: context.theme.hintColor,
-          body: _myDrawerController.isLoading.value
-              ? Container(
-            //width: width*0.5,
-            child: SafeArea(
+      return Scaffold(
+        backgroundColor: context.theme.hintColor,
+        body: _myDrawerController.isLoading.value
+            ? Container(
+          //width: width*0.5,
+          child: SafeArea(
+            child: RefreshIndicator(
+              color: context.theme.primaryColor,
+              backgroundColor: context.theme.backgroundColor,
+              onRefresh:_myDrawerController.load ,
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -167,12 +167,12 @@ double rating=0;
                 ),
               ),
             ),
-          )
-              : Container(
-            child:Center(
-              child: CircularProgressIndicator(
-                color: context.theme.textTheme.caption!.color,
-              ),
+          ),
+        )
+            : Container(
+          child:Center(
+            child: CircularProgressIndicator(
+              color: context.theme.textTheme.caption!.color,
             ),
           ),
         ),

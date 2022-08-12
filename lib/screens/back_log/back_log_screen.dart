@@ -109,9 +109,8 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                           ),);
                                         },
                                         child: UserCardWidget(
-                                            _backLogController
-                                                .allProjectUsers[index].email!
-                                            , true
+                                            _backLogController.allProjectUsers[index].email!
+                                            , true,(){_backLogController.kickUser(_backLogController.allProjectUsers[index].id,context,_backLogController.allProjectUsers[index].email);},
                                         ),
                                       ),
                                 )
@@ -133,7 +132,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                             _backLogController
                                                 .allStatues![index]
                                                 .name ?? '',
-                                            false
+                                            false,_backLogController.nothing,
                                         ),
                                   ),
                                 );

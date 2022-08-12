@@ -380,5 +380,33 @@ var message;
 
   }
 
+  Future <bool> kickUser2(String token,projectId,userId,email)async{
+    var url2=Uri.parse(ServerConfig.domainNameServer+'projects/'+projectId.toString()+'/revokeParticipant');
+    var response = await http.post(url2,
+        headers: {
+          'Accept': 'application/json',
+          'Authorization':'Bearer '+token,
+        },
+        body: {
+          'email':email,
+        }
+
+    );
+    var jsonResponse = jsonDecode(response.body);
+    message = jsonResponse['message'];
+    print(message);
+    print(response.statusCode);
+    if(response.statusCode==200){
+
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
+
+
+
 
 }
