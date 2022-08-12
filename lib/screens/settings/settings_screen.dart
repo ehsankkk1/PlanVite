@@ -7,6 +7,7 @@ import 'package:plane_vite/storage/secure_storage.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 
 import '../../config/theme_service.dart';
+import '../../widgets/app_bar_no_drawer.dart';
 import '../../widgets/loader_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -100,6 +101,32 @@ SecureStorage storage = SecureStorage();
           return alertDialog;
         });
   }
+  void ShowAlert2(BuildContext context) {
+    var alertDialog = AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+
+      backgroundColor: context.theme.backgroundColor,
+      title: Center(
+          child: Text(
+            'this app is made to help you managing your work tasks and your daily tasks to make your life much easier'.tr,
+            style: TextStyle(fontFamily: 'HacenN',
+              color: context.theme.textTheme.caption!.color!,
+            ),
+          )),
+      content: Container(
+        width: width * 0.7,
+        height: height * 0.04,
+
+      ),
+    );
+    showDialog(
+        context: context,
+        builder: (BuildContext) {
+          return alertDialog;
+        });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -108,13 +135,18 @@ SecureStorage storage = SecureStorage();
 
           backgroundColor: context.theme.backgroundColor,
           appBar: AppBar(
+            leading: new IconButton(
+              icon: new Icon(Icons.home),
+              onPressed: () => Navigator.of(context).pop(),
+              color: context.theme.primaryColor,
+            ),
+
             backgroundColor: context.theme.backgroundColor,
-            title: Center(
-              child: Text(
-                'Settings'.tr,
-                style: TextStyle(fontFamily: 'HacenN',
-                  color: context.theme.textTheme.caption!.color,
-                ),
+            centerTitle: true,
+            title: Text(
+              'Settings'.tr,
+              style: TextStyle(fontFamily: 'HacenN',
+                color: context.theme.textTheme.caption!.color,
               ),
             ),
           ),
@@ -125,6 +157,7 @@ SecureStorage storage = SecureStorage();
                 child: Obx((){
                   return Column(
                     children: [
+
                       Column(
                         children: [
                           SizedBox(height: 20,),
@@ -399,23 +432,33 @@ SecureStorage storage = SecureStorage();
 
                                 Align(
                                   alignment: Alignment(-1,-1),
-                                  child: Icon(
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      ShowAlert2(context);
+                                    },
+                                    child: Icon(
 
-                                    Icons.help_outline,
-                                    color: context.theme.textTheme.caption!.color,
-                                    size: 45,
+                                      Icons.help_outline,
+                                      color: context.theme.textTheme.caption!.color,
+                                      size: 45,
+                                    ),
                                   ),
                                 ),
                                 //SizedBox(width: 15,),
                                 Align(
                                   alignment: Alignment(-0.5,-0.60),
-                                  child: Text(
-                                    'About'.tr,
-                                    style: TextStyle(fontFamily: 'HacenN',
-                                      color: context.theme.textTheme.caption!.color,
-                                      fontSize: 25,
-                                    ),
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      ShowAlert2(context);
+                                    },
+                                    child: Text(
+                                      'About'.tr,
+                                      style: TextStyle(fontFamily: 'HacenN',
+                                        color: context.theme.textTheme.caption!.color,
+                                        fontSize: 25,
+                                      ),
 
+                                    ),
                                   ),
                                 ),
                                 //SizedBox(width: width*0.4,),

@@ -90,10 +90,11 @@ Map <String, String> en={
   'tap on the icon to unpin the task':'tap on the icon to unpin the task',
   'Project Title':'Project Title',
   'No Internet Connection':'No Internet Connection',
-
-
   'About':'About',
   'Log out':'Log out',
+  '  users':'  users',
+  'rated by  ':'rated by  ',
+  'this app is made to help you managing your work tasks and your daily tasks to make your life much easier':'this app is made to help you managing your work tasks and your daily tasks to make your life much easier',
 
 
 

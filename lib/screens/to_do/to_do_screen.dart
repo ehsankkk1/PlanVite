@@ -9,6 +9,7 @@ import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/to_do/to_do_controller.dart';
 import 'package:plane_vite/widgets/custom_check_box.dart';
 import '../../widgets/app_bar_no_drawer.dart';
+import 'package:intl/intl.dart' as Time;
 import 'package:plane_vite/config/user_information.dart';
 
 class ToDoScreen extends StatelessWidget {
@@ -453,7 +454,9 @@ class _todo_item extends StatelessWidget {
                       ),
                       SizedBox(height: height * 0.05,),
                       Text(
-                        DateFormat(_todoController.personalList[index].deadline.toString()).toString(),
+                        //  Time.DateFormat.yMEd().format(_agendaController.agendaList[index].deadline!),
+                        Time.DateFormat.yMEd().format(_todoController.personalList[index].deadline!),
+                       // DateFormat(_todoController.personalList[index].deadline.toString()).toString(),
                         style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                             .color),
                       ),
