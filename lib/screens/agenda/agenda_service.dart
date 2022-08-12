@@ -30,4 +30,18 @@ class AgendaService{
       return [];
     }
   }
+   Future <void> unPinTask(String token,id)async{
+    var url2=Uri.parse(ServerConfig.domainNameServer+'tasks/'+id.toString()+'pin');
+    var response = await http.put(url2,
+        headers: {
+          'Accept': 'application/json',
+          'Authorization':'Bearer '+token,
+        }
+
+    );
+    print(response.statusCode);
+
+   }
+
+
 }

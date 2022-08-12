@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:holding_gesture/holding_gesture.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/to_do/to_do_controller.dart';
@@ -452,7 +453,7 @@ class _todo_item extends StatelessWidget {
                       ),
                       SizedBox(height: height * 0.05,),
                       Text(
-                        _todoController.personalList[index].deadline.toString(),
+                        DateFormat(_todoController.personalList[index].deadline.toString()).toString(),
                         style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
                             .color),
                       ),

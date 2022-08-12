@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:holding_gesture/holding_gesture.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:plane_vite/constants.dart';
 import 'package:plane_vite/screens/agenda/agenda_controller.dart';
@@ -26,40 +27,7 @@ class AgendaScreen extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
           backgroundColor: context.theme.backgroundColor,
-          bottomNavigationBar: BottomAppBar(
-            color: context.theme.cardColor,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Text('Add',
-                // style: TextStyle(
-                //   color: kMainPink,
-                //   //fontFamily: 'OleoScriptSwashCaps',
-                //   fontSize: 20,
-                //   fontWeight: FontWeight.w500,
-                // ),
-                // ),
-                IconButton(
-                    onPressed: () {
-                     // ShowAlert(context);
-                    },
-                    icon: Icon(
-                      Icons.add,
-                      color: context.theme.primaryColor,
-                      size: 35,
-                    )),
-                // Text('Task',
-                // style: TextStyle(
-                //   color: kMainPink,
-                //   fontSize: 20,
-                //   fontWeight: FontWeight.w500,
-                //
-                //   // fontFamily: 'OleoScriptSwashCaps',
-                // ),
-                // )
-              ],
-            ),
-          ),
+
           body: Column(
             children: [
               Padding(
@@ -71,16 +39,8 @@ class AgendaScreen extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(
-                height: height * 0.01,
-              ),
-
-
-
-
-
                  Text(
-                 'tasks',
+                 'tap on the icon to unpin the task'.tr,
                   style: const TextStyle(fontFamily: 'HacenN',
                     color: kGrey,
                   ),
@@ -95,55 +55,128 @@ class AgendaScreen extends StatelessWidget {
 
 
 
+Obx((){
+  if(_agendaController.isLoading.isFalse){
 
-                 Expanded(
-                  child: Obx((){
-                    if(_agendaController.isLoading.isFalse){
+    return   Expanded(
+      child:
 
-                      return  GridView.builder(
-                          itemCount: 2,
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1,
-                            childAspectRatio: 4,
-                          ),
-                          itemBuilder: (context, index) => Padding(
-                            padding: EdgeInsets.only(
-                                left: width * 0.05,
-                                right: width * 0.05,
-                                bottom: height * 0.001,
-                                top: height * 0.001),
-                            child: Container(
-                              color: context.theme.backgroundColor,
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      SizedBox(
-                                        width: width * 0.02,
-                                      ),
 
-                                      SizedBox(
-                                        width: width * 0.02,
-                                      ),
+      GridView.builder(
+        itemCount: _agendaController.agendaList.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1,
+          childAspectRatio: 4,
+        ),
+        itemBuilder: (context, index) => Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            HoldDetector(
+              onHold:(){
+                showDialog(context: context, builder: (context) =>
+                    AlertDialog(
+                      title: Center(
+                        child: Column(
 
-                                    ],
-                                  ),
-                                  Divider(
-                                    height: height * 0.02,
-                                    endIndent: 1,
-                                    thickness: 1.5,
-                                    color: context.theme.primaryColor,
-                                  )
-                                ],
-                              ),
+                          children: [
+                            Text('Task Details : '.tr,
+                              style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
+                                  .color),
                             ),
-                          ));
-                    }
-                    return CircularProgressIndicator();
-                  })
+                            SizedBox(height: height * 0.05,),
+                            Text(
 
-                  // }),
+
+                              _agendaController.agendaList[index].description == null
+                                  ? 'there is no description'.tr
+                                  : _agendaController.agendaList[index].description
+                                  .toString(),
+                              style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
+                                  .color),
+                            ),
+                            SizedBox(height: height * 0.06,),
+                            Text('Task Deadline : '.tr,
+                              style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
+                                  .color),
+                            ),
+                            SizedBox(height: height * 0.05,),
+                            Text(
+                             DateFormat(_agendaController.agendaList[index].deadline.toString()).toString(),
+                              style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
+                                  .color),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                    ),);
+              },
+
+              child: Container(
+                height: height*0.05,
+                width: width,
+                color: context.theme.backgroundColor,
+                child: Row(
+
+                  children: [
+
+                    SizedBox(width: width * 0.08,),
+                    GestureDetector(
+                      onTap: (){
+                        _agendaController.unPin(_agendaController.agendaList[index].id);
+                      },
+                      child: Icon(Icons.push_pin_rounded,
+                        size: 25,
+                        color: context.theme.primaryColor,
+                      ),
+                    ),
+                    SizedBox(width: width * 0.15,),
+                    Flexible(
+                      child: Text(_agendaController.agendaList.isEmpty?'':_agendaController.agendaList[index].name.toString(),
+                        style:   TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'HacenN',color: context.theme.textTheme.caption!
+                            .color),
+                      ),
+                    ),
+
+
+                  ],
                 ),
+
+              ),
+            ),
+            Divider(
+              height: height * 0.05,
+              endIndent: 1,
+              thickness: 1,
+              color: kGrey,
+            ),
+          ],
+        ),
+
+      ),
+
+
+
+
+      // }),
+    );
+  }
+  return Center(
+    child: Column(
+
+      children: [
+        SizedBox(height: height*0.3,),
+
+        CircularProgressIndicator(
+
+        ),
+      ],
+    ),
+  );
+})
+
 
 
             ],
@@ -154,145 +187,5 @@ class AgendaScreen extends StatelessWidget {
   }
 }
 
-class _agenda_item extends StatelessWidget {
-  _agenda_item(this.index, this.pinned);
 
-  int index;
-  bool pinned;
-
-  @override
-  Widget build(BuildContext context) {
-    final AgendaController _agendaController = Get.find();
-
-    return Padding(
-      padding: EdgeInsets.only(
-          left: width * 0.05,
-          right: width * 0.05,
-          bottom: height * 0.001,
-          top: height * 0.01),
-      child: HoldDetector(
-        onHold: () {
-          showDialog(context: context, builder: (context) =>
-              AlertDialog(
-                title: Center(
-                  child: Column(
-
-                    children: [
-                      Text('Task Details : '.tr,
-                        style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
-                            .color),
-                      ),
-                      SizedBox(height: height * 0.05,),
-                      Text(
-
-
-                       // _agendaController.personalList[index].description == null
-                             'there is no description'.tr,
-                           // : _agendaController.personalList[index].description
-                           // .toString(),
-                        style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
-                            .color),
-                      ),
-                      SizedBox(height: height * 0.06,),
-                      Text('Task Deadline : '.tr,
-                        style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
-                            .color),
-                      ),
-                      SizedBox(height: height * 0.05,),
-                      Text(
-                       // _agendaController.personalList[index].deadline.toString(),
-                        'deadline',
-                        style: TextStyle(fontFamily: 'HacenN',color: context.theme.textTheme.caption!
-                            .color),
-                      ),
-                    ],
-                  ),
-                ),
-                content: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // Text('rate user '.tr + '$index',),
-                    // SizedBox(height: 30,),
-
-
-                  ],
-                ), actions: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(onPressed: () {
-                      Navigator.pop(context);
-                    }, child: Text('Cancel'.tr,
-                      style: TextStyle(fontFamily: 'HacenN',color: Colors.grey,
-                        fontSize: 18,
-                      ),
-                    ),),
-                    TextButton(onPressed: () {
-                      Navigator.pop(context);
-                      showDialog(context: context, builder: (context) =>
-                          AlertDialog(
-                            title: Center(
-                              child: Text(
-                                'Are you sure you ant to delete this task ? '.tr
-                                    .tr,
-                                style: TextStyle(fontFamily: 'HacenN',
-                                    color: context.theme.textTheme.caption!
-                                        .color),
-                              ),
-                            ),
-                            actions: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceBetween,
-                                children: [
-                                  TextButton(onPressed: () {
-                                    Navigator.pop(context);
-                                  }, child: Text('No'.tr,
-                                    style: TextStyle(fontFamily: 'HacenN',color: Colors.grey,
-                                      fontSize: 18,
-                                    ),
-                                  ),),
-
-
-                                ],
-                              )
-                            ],
-                          ));
-                    }, child: Text('Delete Task'.tr,
-                      style: TextStyle(fontFamily: 'HacenN',color: context.theme.primaryColor,
-                        fontSize: 18,
-                      ),
-                    ),),
-                  ],
-                )
-              ],
-              ),);
-        },
-        child: Container(
-          color: context.theme.backgroundColor,
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: width * 0.02,
-                  ),
-
-
-                  SizedBox(
-                    width: width * 0.075,
-                  ),
-
-
-                ],
-              ),
-              const Divider(height: 90, thickness: 1, color: kGrey,),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 

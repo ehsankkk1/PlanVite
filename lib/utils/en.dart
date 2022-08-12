@@ -87,6 +87,9 @@ Map <String, String> en={
   'Completed Tasks :':'Completed Tasks :',
   'This Project Progress to Others :':'This Project Progress to Others :',
 
+  "Agenda":"Agenda",
+  'tap on the icon to unpin the task':'tap on the icon to unpin the task',
+
 
 
 };

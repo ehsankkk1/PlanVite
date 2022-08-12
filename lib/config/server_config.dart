@@ -18,6 +18,7 @@ class ServerConfig {
   static const userInfo='user/info';
   static const viewTask='tasks';
   static const sendSubTask='subtasks';
+  static const pin='/pin';
 
 
 

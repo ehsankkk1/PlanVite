@@ -31,11 +31,17 @@ class AgendaController extends GetxController{
   }
   @override
   void onReady()async {
-    //  productsList= await _service.getProducts(UserInformation.User_Token);
-    // isLoading(true);
+
     agendaList=await _service.getNotifications(UserInformation.User_Token);
     isLoading(false);
     super.onReady();
+  }
+  void unPin(id)async{
+    isLoading(true);
+    await _service.unPinTask(UserInformation.User_Token,id);
+    agendaList=await _service.getNotifications(UserInformation.User_Token);
+    isLoading(false);
+
   }
 
 
