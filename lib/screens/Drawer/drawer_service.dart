@@ -98,7 +98,7 @@ class DrawerServices{
         var jsonEncode = json.encode(body);
         Projects oneProjectAdd = oneProjectsFromJson(jsonEncode.toString());
         Get.back();
-        successMessageBoxGet('${oneProjectAdd.name} \n Added to Projects', context);
+        successMessageBoxGet('${oneProjectAdd.name} \n' +'Added to Projects'.tr, context);
         //successMessageBoxGet('$email Added',context);
         return oneProjectAdd;
       }

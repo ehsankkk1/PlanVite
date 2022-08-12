@@ -63,7 +63,7 @@ Future<void> load()async{
             Navigator.pop(context);
           },
           child: Text(
-            'Cancel',
+            'Cancel'.tr,
             style: TextStyle(
               color: context.theme.textTheme.caption!.color!,
             ),
@@ -75,7 +75,7 @@ Future<void> load()async{
             await addNewProjectTap(context);
           },
           child: Text(
-            'Add',
+            'Add'.tr,
             style: TextStyle(
               color: context.theme.textTheme.caption!.color!,
             ),
@@ -85,7 +85,7 @@ Future<void> load()async{
       backgroundColor: context.theme.backgroundColor,
       title: Center(
           child: Text(
-            'Add New Project',
+            'Add New Project'.tr,
             style: TextStyle(
               color: context.theme.textTheme.caption!.color!,
             ),

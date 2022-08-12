@@ -9,6 +9,7 @@ import 'package:plane_vite/widgets/user_card_widget.dart';
 import '../../constants.dart';
 import '../../widgets/app_bar_no_drawer.dart';
 import '../../widgets/sprint_view_widget.dart';
+import '../../widgets/status_card.dart';
 import '../../widgets/task_widget.dart';
 import '../Drawer/drawer_controller.dart';
 import 'back_log_controller.dart';
@@ -128,11 +129,11 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                   coloredBoxes: List.generate(
                                     _backLogController.allStatues!.length,
                                         (index) =>
-                                        UserCardWidget(
+                                        UserCardWidget2(
                                             _backLogController
                                                 .allStatues![index]
                                                 .name ?? '',
-                                            false,_backLogController.nothing,
+                                            false,
                                         ),
                                   ),
                                 );
@@ -174,6 +175,7 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                                         .symmetric(
                                                         horizontal: 8.0),
                                                     child: TaskWidget(
+                                                      deleteTask: (){_backLogController.deleteTask(_backLogController.allSprints![index].tasks![index2].id,context);},
 
                                                       backLog: true,
                                                       name: _backLogController

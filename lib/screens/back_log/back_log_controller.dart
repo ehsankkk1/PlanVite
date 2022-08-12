@@ -12,6 +12,7 @@ import 'package:intl/intl.dart' as Time;
 class BackLogController extends GetxController{
 var ratingStatus=false;
 var kickStatus=false;
+var deleteTaskStatus=false;
 var userRate;
   var selectedLang;
   var  selectedLangBool ;
@@ -66,6 +67,32 @@ var userRate;
 
       print('error here');
     }
+
+}
+void deleteTask(taskId,context)async{
+
+
+
+  loaderBoxGet(context);
+  deleteTaskStatus=await _backLogService.deleteTask2(UserInformation.User_Token,taskId);
+  Get.back();
+  if (deleteTaskStatus) {
+    successMessageBoxGet(_backLogService.message, context);
+   for(int i=0;i<allSprints!.length;i++){
+     for(int j=0;j<allSprints![i].tasks!.length;j++){
+       if(allSprints![i].tasks![j].id==taskId){
+         allSprints![i].tasks!.removeAt(j);
+         update();
+       }
+     }
+   }
+  } else {
+    errorMessageBoxGet(
+        Get.locale.toString()=='ar'?'خطأ في الخادم':
+        _backLogService.message, context);
+
+    print('error here');
+  }
 
 }
 
@@ -138,7 +165,7 @@ void kickUser(userId,context, String? email)async{
       backgroundColor: context.theme.backgroundColor,
       title: Center(
           child: Text(
-            'Add New User',
+            'Add New User'.tr,
             style: TextStyle(
               color: context.theme.textTheme.caption!.color!,
             ),
@@ -212,7 +239,7 @@ void kickUser(userId,context, String? email)async{
       backgroundColor: context.theme.backgroundColor,
       title: Center(
           child: Text(
-            'Add New Statues',
+            'Add New Statues'.tr,
             style: TextStyle(
               color: context.theme.textTheme.caption!.color!,
             ),
@@ -286,7 +313,7 @@ void kickUser(userId,context, String? email)async{
       backgroundColor: context.theme.backgroundColor,
       title: Center(
           child: Text(
-            'Add New Task',
+            'Add New Task'.tr,
             style: TextStyle(
               color: context.theme.textTheme.caption!.color!,
             ),
@@ -432,7 +459,7 @@ void kickUser(userId,context, String? email)async{
       backgroundColor: context.theme.backgroundColor,
       title: Center(
           child: Text(
-            'Add New Sprint',
+            'Add New Sprint'.tr,
             style: TextStyle(
               color: context.theme.textTheme.caption!.color!,
             ),

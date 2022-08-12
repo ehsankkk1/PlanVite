@@ -97,6 +97,17 @@ Map <String, String> en={
   'this app is made to help you managing your work tasks and your daily tasks to make your life much easier':'this app is made to help you managing your work tasks and your daily tasks to make your life much easier',
   'Pinned Successfully':'Pinned Successfully',
   'Server Error':'Server Error',
+  'Added to Projects':'Added to Projects',
+  'Please Activate Sprint First':'Please Activate Sprint First',
+  'Add New User':'Add New User',
+  'Add New Statues':'Add New Statues',
+  'Add New Task':'Add New Task',
+  'Add New Sprint':'Add New Sprint',
+  'Back Log':'Back Log',
+
+  'Add New Project':'Add New Project',
+  'Work Rate :':'Work Rate :',
+
 
 
 
