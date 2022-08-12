@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:plane_vite/config/project_info.dart';
 import 'package:plane_vite/screens/agenda/agenda_controller.dart';
+import 'package:plane_vite/screens/notifications/notifications_controller.dart';
 import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 import 'package:plane_vite/widgets/drawer_item.dart';
 import '../../constants.dart';
@@ -16,6 +17,7 @@ import 'drawer_controller.dart';
 class DrawerScreen extends GetView<MyDrawerController> {
   HomeController _homeController =   Get.put(HomeController());
   AgendaController _agendaController =   Get.put(AgendaController());
+  NotificationsController _notificationsController =   Get.put(NotificationsController());
   DrawerScreen({Key? key}) : super(key: key);
 double rating=0;
   @override
@@ -146,6 +148,7 @@ double rating=0;
                   Divider(thickness: 1, color: context.theme.primaryColor,),
                   DrawerItem(Icons.notifications, 35, 'Notifications'.tr, () {
                     Get.toNamed('/notifications');
+                    _notificationsController.load();
                   }),
 
                   DrawerItem(Icons.article, 35, 'Agenda'.tr, () {

@@ -31,5 +31,11 @@ notificationsList=await _service.getNotifications(UserInformation.User_Token);
     isLoading(false);
     super.onReady();
   }
+  void load()async{
+    isLoading(true);
+    notificationsList=await _service.getNotifications(UserInformation.User_Token);
+    isLoading(false);
+
+  }
 
 }
