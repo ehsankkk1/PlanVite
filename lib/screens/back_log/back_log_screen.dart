@@ -110,6 +110,8 @@ class BackLogScreen extends GetView<BackLogScreen> {
                                           ),);
                                         },
                                         child: UserCardWidget(
+                                          _backLogController.allProjectUsers[index].image,
+                                            _backLogController.allProjectUsers[index].name,
                                             _backLogController.allProjectUsers[index].email!
                                             , true,(){_backLogController.kickUser(_backLogController.allProjectUsers[index].id,context,_backLogController.allProjectUsers[index].email);},
                                         ),

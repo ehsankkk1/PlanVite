@@ -7,8 +7,9 @@ import '../constants.dart';
 
 
 class UserCardWidget extends StatelessWidget {
-   UserCardWidget(this.username,this.showImage,this.onDelete);
-
+   UserCardWidget(this.image,this.name,this.username,this.showImage,this.onDelete);
+  String? image;
+  String? name;
   String username;
   bool showImage;
   Function()? onDelete;
@@ -32,7 +33,10 @@ class UserCardWidget extends StatelessWidget {
                 child: Row(
                   children: [
                     showImage
-                        ?CircleAvatar(radius:25,backgroundColor: context.theme.textTheme.caption!.color,child: Text('E',style: TextStyle(fontFamily: 'HacenN',fontSize: 25,fontWeight: FontWeight.bold),),)
+                        ?CircleAvatar(radius:25,backgroundColor: context.theme.textTheme.caption!.color,child:image==null? Text( name![0],style: TextStyle(fontFamily: 'HacenN',fontSize: 25,fontWeight: FontWeight.bold),)
+                      :Image(image: NetworkImage(image!)),
+
+                      )
                         :Container(),
                     SizedBox(width: width * 0.05,),
 
