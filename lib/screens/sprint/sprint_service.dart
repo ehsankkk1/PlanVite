@@ -115,7 +115,9 @@ var message;
         }
 
     );
-
+    var jsonResponse = jsonDecode(response.body);
+    message = jsonResponse['message'];
+    print(message);
     print(response.statusCode);
     if(response.statusCode==200){
 

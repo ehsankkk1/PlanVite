@@ -77,9 +77,11 @@ void onReady() async{
      pinStatus=await sprintService.pinTask(UserInformation.User_Token, id);
      Get.back();
     if (pinStatus) {
-      successMessageBoxGet( 'Pinned Successfully'.tr, context);
+      successMessageBoxGet(sprintService.message, context);
     } else {
-      errorMessageBoxGet( 'Server Error'.tr, context);
+      errorMessageBoxGet(
+
+          sprintService.message, context);
 
       print('error here');
     }

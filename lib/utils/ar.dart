@@ -95,7 +95,6 @@ Map <String, String> ar={
   '  users':'  مستخدم',
   'rated by  ':'قيم من  ',
   'this app is made to help you managing your work tasks and your daily tasks to make your life much easier':'صنع هذا التطبيق لمساعدتك بادارة مهام عملك ومهامك الشخصية وجعل تجربتك أكثر سهولة',
-
   'Pinned Successfully':'تم جدولة المهمة',
   'Server Error':'خطأ في المخدم',
 
