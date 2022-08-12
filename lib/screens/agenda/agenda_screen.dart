@@ -170,7 +170,8 @@ Obx((){
         SizedBox(height: height*0.3,),
 
         CircularProgressIndicator(
-
+          backgroundColor: context.theme.primaryColor,
+          color: context.theme.cardColor,
         ),
       ],
     ),

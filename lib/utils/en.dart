@@ -89,6 +89,7 @@ Map <String, String> en={
 
   "Agenda":"Agenda",
   'tap on the icon to unpin the task':'tap on the icon to unpin the task',
+  'Project Title':'Project Title',
 
 
 

@@ -43,6 +43,13 @@ class AgendaController extends GetxController{
     isLoading(false);
 
   }
+  void load()async{
+
+    isLoading(true);
+    agendaList=await _service.getNotifications(UserInformation.User_Token);
+    isLoading(false);
+
+  }
 
 
 }

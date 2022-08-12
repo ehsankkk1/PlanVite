@@ -104,7 +104,7 @@ class MyDrawerController extends GetxController {
               ),
               enabledBorder:
               const OutlineInputBorder(borderSide: BorderSide.none),
-              hintText: 'Task Title'.tr,
+              hintText: 'Project Title'.tr,
               hintStyle: const TextStyle(
                 color: Colors.grey,
               ),
@@ -170,7 +170,7 @@ class MyDrawerController extends GetxController {
                           ),
                         )
                             :Text(
-                          addProjectEndTime.value.toString(),
+                          addProjectEndTime.value!.day.toString()+'/'+addProjectEndTime.value!.month.toString()+'/'+addProjectEndTime.value!.year.toString(),
                           style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 16,

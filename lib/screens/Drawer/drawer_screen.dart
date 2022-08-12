@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:plane_vite/config/project_info.dart';
+import 'package:plane_vite/screens/agenda/agenda_controller.dart';
 import 'package:plane_vite/screens/sprint/sprint_controller.dart';
 import 'package:plane_vite/widgets/drawer_item.dart';
 import '../../constants.dart';
@@ -14,6 +15,7 @@ import 'drawer_controller.dart';
 
 class DrawerScreen extends GetView<MyDrawerController> {
   HomeController _homeController =   Get.put(HomeController());
+  AgendaController _agendaController =   Get.put(AgendaController());
   DrawerScreen({Key? key}) : super(key: key);
 double rating=0;
   @override
@@ -108,7 +110,7 @@ double rating=0;
                     _skeletonController.changeScreen(0);
                     _homeController.load();
                   }),
-                  DrawerItem(Icons.task, 35, 'Todo Tasks'.tr, () {
+                  DrawerItem(Icons.task, 35, 'Personal Tasks'.tr, () {
                     Get.toNamed('/todo');
                   }),
                   Divider(thickness: 1, color: context.theme.primaryColor,),
@@ -147,7 +149,9 @@ double rating=0;
                   }),
 
                   DrawerItem(Icons.article, 35, 'Agenda'.tr, () {
+
                     Get.toNamed('/agenda');
+                    _agendaController.load();
                   }),
                   DrawerItem(Icons.settings, 35, 'Settings'.tr, () {
                     Get.toNamed('/settings');
