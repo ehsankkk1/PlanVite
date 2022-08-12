@@ -97,6 +97,15 @@ Map <String, String> ar={
   'this app is made to help you managing your work tasks and your daily tasks to make your life much easier':'صنع هذا التطبيق لمساعدتك بادارة مهام عملك ومهامك الشخصية وجعل تجربتك أكثر سهولة',
   'Pinned Successfully':'تم جدولة المهمة',
   'Server Error':'خطأ في المخدم',
+  'Added to Projects':'تم الاضافة الى المشاريع',
+  'Please Activate Sprint First':'الرجاء تفعيل المرحلة اولا',
+  'Add New User':'اضافة مستخدم جديد',
+  'Add New Statues':'اضافة حالة جديدة',
+  'Add New Task':'اضافة مهمة جديدة',
+  'Add New Sprint':'اضافة مرحلة جديدة',
+  'Back Log':'السجل',
+  'Add New Project':'اضافة مشروع جديد',
+  'Work Rate :':'معدل الانجاز :',
 
 
 

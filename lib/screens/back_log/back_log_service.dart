@@ -389,6 +389,7 @@ var message;
         },
         body: {
           'email':email,
+
         }
 
     );
@@ -406,6 +407,30 @@ var message;
 
   }
 
+
+  Future <bool> deleteTask2(String token,id)async{
+    var url2=Uri.parse(ServerConfig.domainNameServer+'tasks/'+id.toString());
+    var response = await http.delete(url2,
+        headers: {
+          'Accept': 'application/json',
+          'Authorization':'Bearer '+token,
+        },
+
+
+    );
+    var jsonResponse = jsonDecode(response.body);
+    message = jsonResponse['message'];
+    print(message);
+    print(response.statusCode);
+    if(response.statusCode==200){
+
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
 
 
 

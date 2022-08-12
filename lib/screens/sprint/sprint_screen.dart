@@ -71,7 +71,7 @@ class SuperSprintScreen extends StatelessWidget {
               ),
                Expanded(
                 child: Center(
-                  child:Text('Please Activate Sprint First'
+                  child:Text('Please Activate Sprint First'.tr
                     ,style: TextStyle(color: context.theme.textTheme.caption!.color,fontSize: 25),)
                 ),
               ),

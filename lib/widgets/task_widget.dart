@@ -22,6 +22,7 @@ class TaskWidget extends StatelessWidget {
     this.taskIndex,
     this.pinFunction,
     this.taskName,
+    this.deleteTask,
   });
 
   String? name;
@@ -36,6 +37,7 @@ class TaskWidget extends StatelessWidget {
   int? taskIndex;
   String? taskName;
   Function()? pinFunction;
+  Function()? deleteTask;
   @override
 
   Widget build(BuildContext context) {
@@ -123,10 +125,8 @@ class TaskWidget extends StatelessWidget {
                           },)
                         :Container(),
                     task!.isAdmin!  && backLog!
-                        ?IconButton(icon:  const Icon(Icons.delete,color: Colors.redAccent,),
-                      onPressed: () {
-                          print('delete');
-                          },)
+                        ?IconButton(icon:  const Icon(Icons.delete,color: Colors.red,),
+                      onPressed: deleteTask,)
                         :Container(),
 
                     task!.isMyTask! && backLog! == false
