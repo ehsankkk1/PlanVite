@@ -113,6 +113,9 @@ class SprintScreen extends GetView<SprintController> {
               BoardItemState? state) async {},
 
           item: TaskWidget(
+
+            image: _sprintController.listData![i].tasks![j].assigneeInfo?.image==null?null:_sprintController.listData![i].tasks![j].assigneeInfo?.image,
+
             name: _sprintController.listData[i].tasks![j].name,
             dueDate: _sprintController.listData[i].tasks![j].deadline,
             priority: _sprintController.listData[i].tasks![j].priority,

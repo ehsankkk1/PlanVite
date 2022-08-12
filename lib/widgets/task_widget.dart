@@ -26,7 +26,7 @@ class TaskWidget extends StatelessWidget {
   String? name;
   String? priority;
   DateTime? dueDate;
-  Image? image;
+  String? image;
   Image? avatar;
   bool? loading;
   Task? task;
@@ -85,11 +85,14 @@ class TaskWidget extends StatelessWidget {
                                CircleAvatar(
                                 radius: 15,
                                 backgroundColor:context.theme.textTheme.caption!.color,
-                                child: Text(
-                                  'E',
+                                child: image==null?
+                                Text(
+                                  name![0],
                                   style:
                                       TextStyle(fontSize: SizeConfig.blockSizeHorizontal*3.5, fontWeight: FontWeight.bold),
-                                ),
+                                )
+                                :
+                                Image(image:NetworkImage(image!)),
                               ),
                               SizedBox(
                                 width: width * 0.05,
