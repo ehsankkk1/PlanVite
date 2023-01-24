@@ -1,16 +1,44 @@
-# plane_vite
+# PlanVite
+PlanVite is a task management app for Scrum teams, with features such as task creation, progress tracking, real-time collaboration, multiple languages, dark mode, notifications, and an agenda view. It also allows for drag and drop task management and dynamic task statuses for efficient team organization and communication.
 
-A new Flutter project.
+![icon-02 (1)](https://user-images.githubusercontent.com/102434828/214419900-66c1065d-b45f-4879-bc51-8d854d273ddd.png)
+
+## Features
+- Create and assign tasks to team members
+- Track the progress of tasks and set due dates
+- Organize tasks into sprints and prioritize them using the Scrum backlog
+- Collaborate with team members and discuss tasks in real-time
+- Generate reports on team performance and progress
+- Switch between multiple languages
+- Enjoy a sleek dark mode
+- Receive notifications for upcoming tasks and deadlines
+- Access an agenda view to see all upcoming tasks and events
+- Drag and drop functionality to easily move and re-prioritize tasks
+- Dynamic task statuses to reflect real-time progress and completion
 
 ## Getting Started
+- Create a team and invite your team members to join
+- Create a new sprint and add tasks to the backlog
+- Assign tasks to team members and set due dates
+- Track the progress of tasks in real-time and update their status as needed
+- Use the built-in subtask feature to discuss and collaborate on tasks with your team
+- Generate reports to review team performance and progress
+- Switch the app language from settings
+- Switch to dark mode from settings
+- Enable notifications from settings to stay on top of upcoming tasks and deadlines
+- Use the agenda view to see all upcoming tasks and events in a calendar format
 
-This project is a starting point for a Flutter application.
+## Support
+If you have any questions or feedback, please don't hesitate to reach out to our support team.
 
-A few resources to get you started if this is your first Flutter project:
+## CONTRIBUTORS:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+[Johny Kodsy](https://github.com/johnykoudsy)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Rita Rezeq](https://github.com/RitaRezeq)
+
+[Ehsan Abourshaed](https://github.com/ehsankkk1)
+
+Edward Karra
+
+Esraa Abo Srour
