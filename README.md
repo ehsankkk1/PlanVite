@@ -16,6 +16,12 @@ PlanVite is a task management app for Scrum teams, with features such as task cr
 - Drag and drop functionality to easily move and re-prioritize tasks
 - Dynamic task statuses to reflect real-time progress and completion
 
+
+![photo_2023-01-24 13 20 02 (1)](https://user-images.githubusercontent.com/102434828/214425471-c7075979-f238-43b2-b867-b6e23e64fccc.jpeg)
+
+![photo_2023-01-24 13 20 05](https://user-images.githubusercontent.com/102434828/214424501-6309d260-02cc-4bae-9714-1fa760d2d641.jpeg)
+
+
 ## Getting Started
 - Create a team and invite your team members to join
 - Create a new sprint and add tasks to the backlog
@@ -27,6 +33,8 @@ PlanVite is a task management app for Scrum teams, with features such as task cr
 - Switch to dark mode from settings
 - Enable notifications from settings to stay on top of upcoming tasks and deadlines
 - Use the agenda view to see all upcoming tasks and events in a calendar format
+
+
 
 ## Support
 If you have any questions or feedback, please don't hesitate to reach out to our support team.
