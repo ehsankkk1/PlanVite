@@ -1,9 +1,11 @@
 # Third year university project
+[Check video](https://www.linkedin.com/posts/ehsan-abourshaid-29438622b_androiddevelopment-iosdevelopment-flutter-activity-6966834641127280640-I9QS?utm_source=share&utm_medium=member_desktop)
 # PlanVite
 
 PlanVite is a task management app for Scrum teams, with features such as task creation, progress tracking, real-time collaboration, multiple languages, dark mode, notifications, and an agenda view. It also allows for drag and drop task management and dynamic task statuses for efficient team organization and communication.
 
 ![icon-02 (1)](https://user-images.githubusercontent.com/102434828/214419900-66c1065d-b45f-4879-bc51-8d854d273ddd.png)
+
 
 ## Features
 - Create and assign tasks to team members
